@@ -1,0 +1,488 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/ControlPanel/DistrictMaster.master" AutoEventWireup="true" CodeFile="EditSOPIE1.aspx.cs" Inherits="ControlPanel_District_EditSOP" ValidateRequest="false" Title="HACCP Builder | SOPs" %>
+
+<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
+<%@ Register src="../../Controls/DistrictAddress.ascx" tagname="DistrictAddress" tagprefix="uc1" %>
+<%@ Register Src="~/Controls/Advertisement.ascx" TagPrefix="ucl" TagName="Advs" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolder" Runat="Server">
+     <div >
+      <div class="MainHeading">
+               Add/Edit SOP
+               <span style="font-size:10px; margin-left:250px;">
+               <asp:ImageButton ID="btnBack" runat="server" onclick="btnBack_Click"  ImageUrl="~/images/buttons/ButtonBackToMain.jpg" />            
+               </span>
+     </div>               
+    </div>        
+    <div>
+        <div class="ContentLeft" >
+                <div class="ContactDetail">
+                    <uc1:DistrictAddress ID="DistrictAddress1" runat="server" />
+                </div>                
+       </div>
+        <div class="ContentRight" >                     
+                <ucl:Advs id="adv1" runat="server"></ucl:Advs>
+       </div>             
+                    
+    </div>
+    <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>    
+    <div class="SOPDiv">
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Title</div>
+            <div class="DistrictSearchCol2">
+                <%--<div id="txtTitle" runat="server"  contenteditable="true" indicateeditable="true" enableviewstate="true"  style="height:40px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtTitle" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="40px" Width="600px">
+                </FCKeditorV2:FCKeditor>
+                <%--<FCKeditorV2:FCKeditor ID="txtTitle" runat="server" Height="40px" Width="600px"></FCKeditorV2:FCKeditor>--%>
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"> Facility Location</div>
+            <div class="DistrictSearchCol2">
+                <%--<div runat="server" id="txtLocation" contenteditable="true" indicateeditable="true" style="height:40px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtLocation" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="40px" Width="600px">
+                </FCKeditorV2:FCKeditor>
+            </div>
+        </div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Purpose</div>
+            <div class="DistrictSearchCol2">
+               <%-- <div runat="server" id="txtPurpose" contenteditable="true" indicateeditable="true" style="height:40px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtPurpose" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="40px" Width="600px">
+                </FCKeditorV2:FCKeditor>
+            </div>
+        </div>   
+        <div class="Clearer"></div>
+             
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Scope</div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtScope" contenteditable="true" indicateeditable="true" style="height:40px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtScope" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="40px" Width="600px">
+                </FCKeditorV2:FCKeditor>
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Keyword</div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtKeyword" contenteditable="true" indicateeditable="true" style="height:40px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtKeyword" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="40px" Width="600px">
+                </FCKeditorV2:FCKeditor>
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px"/></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>        
+        
+        <div class="SOPEditDiv">
+         <div class="DistrictSearchCol1" >Instructions</div>
+        <div class="DistrictSearchCol2" >
+             <%--<div runat="server" id="txtInstruction1" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+             <FCKeditorV2:FCKeditor ID="txtInstruction1" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="40px" Width="600px">
+             </FCKeditorV2:FCKeditor>            
+        </div>
+        </div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction2" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+              <FCKeditorV2:FCKeditor ID="txtInstruction2" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor>             
+            </div>
+        </div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction3" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction3" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false"  ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction4" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction4" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtInstruction5" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction5" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%-- <div runat="server" id="txtInstruction6" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+             <FCKeditorV2:FCKeditor ID="txtInstruction6" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="60px" Width="600px">
+             </FCKeditorV2:FCKeditor>
+            </div>
+        </div>        
+        <div class="Clearer"></div> 
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction7" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction7" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtInstruction8" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction8" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction9" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+               <FCKeditorV2:FCKeditor ID="txtInstruction9" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction10" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction10" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true" Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Instructions</div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction11" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction11" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction12" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction12" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtInstruction13" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction13" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtInstruction14" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction14" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction15" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction15" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtInstruction16" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction16" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtInstruction17" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction17" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtInstruction18" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction18" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%--<div runat="server" id="txtInstruction19" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction19" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%--<div runat="server" id="txtInstruction20" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtInstruction20" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px"/></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Monitoring</div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtMonitoring1" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring1" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtMonitoring2" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring2" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtMonitoring3" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring3" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtMonitoring4" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring4" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                  <%--<div runat="server" id="txtMonitoring5" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring5" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%--<div runat="server" id="txtMonitoring6" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring6" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtMonitoring7" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                <FCKeditorV2:FCKeditor ID="txtMonitoring7" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px"/></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Corrective Actions</div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtCorrective1" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                 <FCKeditorV2:FCKeditor ID="txtCorrective1" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>       
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                 <%--<div runat="server" id="txtCorrective2" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                 <FCKeditorV2:FCKeditor ID="txtCorrective2" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtCorrective3" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                 <FCKeditorV2:FCKeditor ID="txtCorrective3" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtCorrective4" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                 <FCKeditorV2:FCKeditor ID="txtCorrective4" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1"></div>
+            <div class="DistrictSearchCol2">
+                  <%--<div runat="server" id="txtCorrective5" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                 <FCKeditorV2:FCKeditor ID="txtCorrective5" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px" /></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPEditDiv">
+            <div class="DistrictSearchCol1">Verification and Record Keeping</div>
+            <div class="DistrictSearchCol2">
+                <%-- <div runat="server" id="txtVerification" contenteditable="true" indicateeditable="true" style="height:60px; width:600px; border:solid 2px blue; overflow:auto;">
+                </div>--%>
+                 <FCKeditorV2:FCKeditor ID="txtVerification" runat="server" BasePath="~/fckeditor/" ToolbarSet="Basic" ToolbarStartExpanded="false" ToolbarCanCollapse="true"  Height="70px" Width="600px">
+             </FCKeditorV2:FCKeditor> 
+            </div>
+        </div>        
+        <div class="Clearer"></div>
+        
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol1"></div>
+        <div class="SOPCol3">
+            <asp:ImageButton ID="cmdSubmit" ImageUrl="~/images/buttons/ButtonUpdate.gif" 
+                runat="server" onclick="cmdSubmit_Click" />
+                
+            <asp:ImageButton ID="cmdCancel" ImageUrl="~/images/buttons/ButtonCancel.gif" 
+                runat="server" onclick="cmdCancel_Click"/>
+            <asp:Label ID="lblCustomSOP" runat="server" Visible="false"></asp:Label>
+            <asp:Label ID="lblIsAdditional" runat="server" Visible="false"></asp:Label>
+            <asp:Label ID="lblRemoved" runat="server" Visible="false"></asp:Label>
+        </div>  
+    </div>
+    <div class="Clearer"></div>
+    <div class="ViewPlanClearer"></div>
+    <div class="PageFooter">
+        <asp:Label ID="lblFooter" Text=" © HACCP Builder 2009" ForeColor="White" runat="server"></asp:Label>
+    </div>    
+</asp:Content>
+

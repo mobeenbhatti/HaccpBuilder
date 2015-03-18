@@ -1,0 +1,144 @@
+<%@ Master Language="C#" AutoEventWireup="true" Inherits="Marketing" Codebehind="Marketing.master.cs" %>
+<%@ Register Src="Controls/Login.ascx" TagName="Login" TagPrefix="ucLogin" %>
+<%@ Register Src="Controls/NewsletterSignup.ascx" TagName="NewsletterSignup" TagPrefix="ucNewsLetterSignup" %>
+<%@ Register Src="Controls/TopMainMenu.ascx" TagName="TopMainMenu" TagPrefix="ucTopNav" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<title>School HACCP Builder from School HACCP</title>
+	<meta content="school haccp, school, haccp" name="KEYWORDS">
+	<meta content="School HACCP Builder - Be HACCP Compliant in less than 30 minutes."
+		name="DESCRIPTION">
+	<meta content="SchoolHACCP.com" name="AUTHOR">
+	<meta content="INDEX, FOLLOW" name="ROBOTS">
+	<meta content="1 days" name="REVISIT-AFTER">
+	<meta content="document" name="RESOURCE-TYPE">
+	<meta content="Global" name="DISTRIBUTION">
+	<link id="AdaptersInvariantImportCSS" runat="server" href="~/StaticContent/CSS/CSSMenu/Import.css"
+		rel="stylesheet" type="text/css" />
+	<!--[if lt IE 7]>
+    <link runat="server" rel="stylesheet" href="~/StaticContent/CSS/CSSMenu/BrowserSpecific/IEMenu6.css" type="text/css" id="IEMenu6CSS" />
+<![endif]-->
+</head>
+<body>
+	<form id="form1" runat="server">
+		<!-- 
+
+  SITE TITLE & TOP NAVIGATION
+
+  -->
+		<asp:ScriptManager ID="ScriptManager1" runat="server" />
+		<a id="tryit" href='<%=Page.ResolveUrl("~/FreeTrialKitchen.aspx") %>'></a>
+		<%--<a id="tryit" href='<%=Page.ResolveUrl("~/MYSQLConnect.aspx") %>'></a>--%>
+		<div id="header-container">
+			<div id="header-name">
+				<asp:HyperLink ID="lnkHomeBanner" runat="server" CssClass="BannerLink" ForeColor="White"
+					ImageUrl="~/App_Themes/Grid/Images/Logo175w.jpg" NavigateUrl="~/Default.aspx"
+					Text="School HACCP, Inc." ToolTip="SchoolHACCP.com - home page">
+				</asp:HyperLink>
+			</div>
+			<div id="header-navigation">
+				<ucTopNav:TopMainMenu ID="TopMainMenu1" runat="server" />
+				&nbsp;</div>
+		</div>
+		<!-- 
+  
+  TOP NAV 
+
+-->
+		<div id="mainnav-container">
+			<div id="mainnav">
+				<div class="none">
+					<a href="#maincontent">skip to the main content area of this page</a></div>
+				<asp:SiteMapDataSource ID="SiteMap" runat="server" ShowStartingNode="False" SiteMapProvider="CssSiteMapProvider" />
+				<asp:Menu ID="Menu" runat="server" DataSourceID="SiteMap" MaximumDynamicDisplayLevels="1"
+					Orientation="Vertical" StaticDisplayLevels="2" StaticSubMenuIndent="0">
+				</asp:Menu>
+			</div>
+			<div id="mainnav-side">
+				<ucLogin:Login ID="Login1" runat="server" />
+			</div>
+			<div id="posterphoto" runat="server">
+			</div>
+		</div>
+		<div class="clear">
+		</div>
+		<!-- 
+  
+  BREADCRUMB
+  
+-->
+		<div id="breadcrumb-container">
+			<div id="breadcrumb-left">
+				<asp:SiteMapPath ID="SiteMapPath1" runat="server">
+				</asp:SiteMapPath>
+			</div>
+			<div id="breadcrumb-right">
+				<div>
+					<fieldset>
+						<legend>Search our site</legend>
+						<label for="search">
+							search our site</label>
+						<asp:TextBox ID="search" runat="server" AccessKey="s" CssClass="searchbox"></asp:TextBox>
+						<ajax:TextBoxWatermarkExtender ID="tbwSearch" runat="server" TargetControlID="search"
+							WatermarkText="enter search phrase">
+						</ajax:TextBoxWatermarkExtender>
+						<label>
+							search</label>
+						<input class="button-search" name="Search" type="button" value="Search" />
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		<div class="clear">
+		</div>
+		<!-- 
+
+  CONTENT
+
+  -->
+		<div id="content-container">
+			<div id="content">
+				<asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+				</asp:ContentPlaceHolder>
+			</div>
+			<!-- 
+	
+	SIDE COLUMN
+	
+	-->
+			<div id="content-side">
+				<div class="separator-side-column">
+				</div>
+				<ucNewsLetterSignup:NewsletterSignup ID="NewsletterSignup1" runat="server" />
+				<div class="separator-side-column">
+				</div>
+				<div class="separator-side-column">
+				</div>
+				<asp:ContentPlaceHolder ID="cphSideContent" runat="server">
+				</asp:ContentPlaceHolder>
+			</div>
+		</div>
+		<div class="clear">
+		</div>
+		<!-- 
+  
+  END CONTENT CONTAINER 
+  
+  -->
+		<!-- 
+  
+  FOOTER
+  
+   -->
+		<div id="footer-container">
+			<div id="footer-right">
+				<p>
+					SchoolHACCP, Inc. 186 Washington Street Saint Paul, MN 55102 | 612-296-2486<br />
+					Copyright &copy; 2007</p>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

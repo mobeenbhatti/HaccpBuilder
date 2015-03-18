@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="ControlPanel_Admin_AdminMaster" Codebehind="AdminMaster.master.cs" %>
+
+
+<%@ Register src="../Controls/TopAdminSiteMenu.ascx" tagname="TopAdminSiteMenu" tagprefix="uc1" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%--<head id="Head1" runat="server">
+	<title>School HACCP Control Panel</title>
+	<link id="AdaptersInvariantImportCSS" runat="server" href="~/StaticContent/CSS/CSSMenu/Import.css"
+		rel="stylesheet" type="text/css" />
+		<link type="text/css" rel="Stylesheet" href="../App_Themes/Default/Default.css" />
+		<link id="Link1" runat="server" rel="Shortcut Icon" href="~/App_Themes/Grid/favicon.ico" type="image/x-icon" />
+        <link id="Link2" runat="server" rel="icon" href="~/App_Themes/Grid/favicon.ico" type="image/ico" />	
+</head>
+<body>
+	<form id="form1" runat="server">
+		<div class="Main">
+            <div class="TopMenu">
+                <div id="mainmenu">
+                    <uc1:TopAdminSiteMenu ID="TopAdminSiteMenu1" runat="server" />
+                </div>            
+            </div>
+            <asp:ContentPlaceHolder ID="PlaceHolder" runat="server">
+                
+			    
+                
+			</asp:ContentPlaceHolder>
+        </div>
+	</form>
+</body>--%>
+<script type="text/javascript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+
+
+
+//-->
+</script>
+<script language="javascript" type="text/javascript">
+ var sessionTimeout = "<%= Session.Timeout %>";
+    function CloseExtendSessionLifeBox() {
+        var boxElement = document.getElementById("dvOverlay");
+        //var boxElement = document.getElementById("<%# ExtendSessionLifeBox.ClientID %>");
+        //checking if the element exists before trying to use it
+        var label = document.getElementById("lblSessionMessage");      
+        if (label) {
+            //            boxElement.style.display = "none";
+            //            boxElement.style.visibility = "hidden";           
+            label.innerHTML  = "You have now been timed out due to inactivity. Any data on the page you were working on in the website that had not been saved by clicking continue/save has been lost. Please log back in and continue. The HACCP Builder site times out after 60 minutes of inactivity. You are provided with a 10 minute notification prior to actually being timed out.";
+
+        }
+    }
+    function DisplayExtendSessionLifeBox() {
+
+        //        var boxElement = document.getElementById("ctl00_ExtendSessionLifeBox");
+        var boxElement = document.getElementById("dvOverlay");
+        //var boxElement = document.getElementById("<%# ExtendSessionLifeBox.ClientID %>");
+        sessionTimeout = sessionTimeout - 1;       
+        if (sessionTimeout == 9) {
+            if (boxElement) {
+                boxElement.style.visibility = "visible";
+                boxElement.focus();
+            }
+        }
+        if (sessionTimeout == -1) {
+            CloseExtendSessionLifeBox();
+        }
+        window.setTimeout("DisplayExtendSessionLifeBox()", 60000);
+    }
+</script>
+<head id="Head2" runat="server">
+    <title>HACCP Builder Admin Panel</title>
+	<link id="Link3" runat="server" href="~/StaticContent/CSS/CSSMenu/Import.css"
+		rel="stylesheet" type="text/css" />
+		<link type="text/css" rel="Stylesheet" href="../App_Themes/Default/Default2.css" />
+		<link type="text/css" rel="Stylesheet" href="../App_Themes/Default/Default3.css" />
+		<link id="Link4" runat="server" rel="Shortcut Icon" href="~/App_Themes/Grid/favicon.ico" type="image/x-icon" />
+        <link id="Link5" runat="server" rel="icon" href="~/App_Themes/Grid/favicon.ico" type="image/ico" />
+       
+</head>
+<body onload="MM_preloadImages('../App_Themes/Control/images/tab_controlpanel_hov.jpg','../App_Themes/Control/images/tab_mangeuser_hov.jpg','../App_Themes/Control/images/tab_create_loc_hov.jpg','../App_Themes/Control/images/tab_copy_loc_hov.jpg','../App_Themes/Control/images/tab_active_hov.jpg','../App_Themes/Control/images/tab_reports_hov.jpg')">
+    <form id="form2" runat="server">
+    <div id="dvOverlay" class="overlay-timeout">    
+             <asp:Panel ID="ExtendSessionLifeBox" runat="server" CssClass="overlaypanel" >
+             <%--<asp:Panel ID="ExtendSessionLifeBox" runat="server" style="height:50px; width:450px; background-color:#999999; color:White; border:solid 1px black; display:none; position:absolute;">--%>
+            <div id="lblSessionMessage" >You are about to be timed out due to inactivity. You have 10 minutes before you are timed out. Please click continue and/or save your data within 10 minutes or your data will be lost</div>
+            <%--<asp:Label ID="lblSessionMessage" runat="server" Text="You are about to be timed out due to inactivity. You have 10 minutes before you are timed out. Please click continue and/or save your data within 10 minutes or your data will be lost"></asp:Label>--%>
+           <br /><br />
+           <asp:Button ID="cmdSessionConfirm" runat="server" Text="OK" CausesValidation="false" Width="80px" />
+           <%--<input type="button" id="cmdSessionCancel" value="No" onclick="CloseExtendSessionLifeBox(); return false;" style="width:80px;" />--%>
+           </asp:Panel> 
+    </div>
+    <div id="wrapper">
+        <div id="container">            
+	<!--Header Start -->
+		<div id="header">
+        		<div class="top_link"><asp:HyperLink ID="HyperLink7" NavigateUrl="~/ControlPanel/Admin/Default.aspx" CssClass="Hyper_Link" Text="Home" runat="server"></asp:HyperLink> | <asp:HyperLink ID="HyperLink6" NavigateUrl="~/ControlPanel/Logout.aspx" Text="Logout" CssClass="Hyper_Link" runat="server"></asp:HyperLink>
+      			</div >
+	  	</div>
+           <div id="tabs_bg">
+             <table width="1000" border="0" cellspacing="0" cellpadding="0">
+               <tr>
+                 <td>
+                 <asp:Image ID="imgSpacer" ImageUrl="~/images/District Images/spacer.gif" Width="10" Height="14" runat="server" />                 
+               </tr>
+               <tr>               
+                 <td>                 
+                     <table width="1000" border="0" cellspacing="0" cellpadding="0">
+                   <tr>
+                     <td width="20"><asp:Image ID="Image1" ImageUrl="~/images/District Images/spacer.gif" Width="20" Height="34" runat="server" /></td>
+                     <td width="125" align="center">
+                     <asp:HyperLink ID="hlControlPanel" NavigateUrl="~/ControlPanel/Admin/Default.aspx" CssClass="tab_blank" Text="ADMIN PANEL" runat="server"></asp:HyperLink>
+                     </td>
+                     <td width="2"><asp:Image ID="Image2" ImageUrl="~/images/District Images/spacer.gif" Width="2" Height="34" runat="server" /></td>
+                     <td width="125" ><asp:HyperLink ID="hlUsers" NavigateUrl="~/ControlPanel/Admin/CreateDistrict.aspx" CssClass="tab_blank" Text="COMMAND CENTRAL" runat="server"></asp:HyperLink></td>
+                     <td width="2"><asp:Image ID="Image3" ImageUrl="~/images/District Images/spacer.gif" Width="2" Height="34" runat="server" /></td>
+                     <td width="125"><asp:HyperLink ID="hlCreateLocation" NavigateUrl="~/ControlPanel/Admin/CreateHBFlex.aspx" CssClass="tab_blank" Text="HBFlex DISTRICT" runat="server"></asp:HyperLink></td>
+                     <td width="2"><asp:Image ID="Image4" ImageUrl="~/images/District Images/spacer.gif" Width="2" Height="34" runat="server" /></td>
+                     <td width="125"><asp:HyperLink ID="hlCopyLocation" NavigateUrl="~/ControlPanel/Admin/CreateHBez.aspx" CssClass="tab_blank" Text="HBez KITCHEN" runat="server"></asp:HyperLink></td>
+                     <td width="2"><asp:Image ID="Image5" ImageUrl="~/images/District Images/spacer.gif" Width="2" Height="34" runat="server" /></td>
+                     <td width="125"><asp:HyperLink ID="hlAlerts" NavigateUrl="~/ControlPanel/Admin/ViewKitchen.aspx" CssClass="tab_blank" Text="VIEW KITCHEN" runat="server"></asp:HyperLink></td>
+                     <%--<td width="2"><asp:Image ID="Image6" ImageUrl="~/images/District Images/spacer.gif" Width="2" Height="34" runat="server" /></td>
+                     <td width="125"><asp:HyperLink ID="hlReports" NavigateUrl="~/ControlPanel/Admin/CreateKitchen.aspx" CssClass="tab_blank" Text="EDIT KITCHEN" runat="server"></asp:HyperLink></td>--%>
+                     <td>&nbsp;</td>
+                     
+                   </tr>
+                 </table>               
+                 </td>
+               </tr>
+             </table>
+           </div>
+           <div id="tab_bar"><img src="../App_Themes/Control/images/spacer.gif" width="10" height="8" /></div>
+           
+            <asp:ContentPlaceHolder ID="PlaceHolder" runat="server">
+                
+			</asp:ContentPlaceHolder>
+	    </div>
+	    <div id="footer" align="center"><div id="footer_txt">© HACCP Builder </div>
+    </div>    
+    </form>
+    
+</body>
+</html>

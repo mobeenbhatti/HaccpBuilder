@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="XMLSchema1"
+    targetNamespace="http://tempuri.org/XMLSchema1.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/XMLSchema1.xsd"
+    xmlns:mstns="http://tempuri.org/XMLSchema1.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <!--- Deifinition Of Simple Elements-->
+  <xs:element name="Id" type="xs:integer"/>
+  <xs:element name="Name" type="xs:string"/>
+  <xs:element name="Address" type="xs:string"></xs:element>
+
+  <!--- Deifinition Of Building Blocks-->
+  <xs:complexType name="EmployeeType">
+    <xs:sequence>
+      <xs:element ref="Id"></xs:element>
+      <xs:element ref="Name"></xs:element>
+      <xs:element name="Designation" type="xs:string"></xs:element>
+      <xs:element name="Qualification" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StudentType">
+    <xs:sequence>
+      <xs:element ref="Id"></xs:element>
+      <xs:element ref="Name"></xs:element>
+      <xs:element name="CourseName" type="xs:string"></xs:element>
+      <xs:element name="Department" type="xs:string"></xs:element>      
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CourseType">
+    <xs:sequence>
+      <xs:element ref="Id"></xs:element>
+      <xs:element ref="Name"></xs:element>         
+      <xs:element name="Duration" type="xs:duration"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LibraryType">
+    <xs:sequence>
+      <xs:element name="LibraryName" type="xs:string"></xs:element>
+      <xs:element name ="Department" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DepartmentType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"></xs:element>
+      <xs:element name="ChairmanName" type="xs:string"></xs:element>
+      <xs:element name="Faculty" type="EmployeeType"></xs:element>
+      <xs:element name="Courses" type="CourseType"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name ="MainLibraryType">
+    <xs:restriction base="xs:string" ></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VCType" >
+    <xs:restriction base="xs:string"></xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="UniversityType">
+    <xs:sequence>
+      <xs:element ref="Name"></xs:element>
+      <xs:element ref="Address"></xs:element>
+      <xs:element name="VC" type="VCType" maxOccurs="1"></xs:element>
+      <xs:element name ="MainLibrary" type="LibraryType" maxOccurs="1"></xs:element>
+      <xs:element name="Department" type="DepartmentType" minOccurs="1"></xs:element>
+      <xs:element name="Student" type="StudentType"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="University" type="UniversityType"></xs:element>
+</xs:schema>

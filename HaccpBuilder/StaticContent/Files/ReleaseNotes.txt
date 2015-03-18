@@ -1,0 +1,9 @@
+//////////////////////////////////////////////
+
+RELEASE NOTES - Started on 25-11-08
+
+/////////////////////////////////////////////
+
+DATE		PAGE						TASK
+------------------------------------------------------------------------------------------------------------------
+25/11/08	DailyParticipationHaccp		Change the ddlCycleMeasuredBy drop down selected property

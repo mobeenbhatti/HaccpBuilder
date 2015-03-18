@@ -1,0 +1,45 @@
+﻿<asp:GridView runat="server" SkinId="gridviewSkin" CssClass="grid" BorderStyle="None" BorderWidth="0px" 
+CellPadding="2" Width="100%" GridLines="None" EmptyDataText="There are no data records to display." ShowHeaderWhenEmpty="true">
+   
+   <%--<RowStyle Font-Names="Verdana" Font-Size="11px" ForeColor="Black" BackColor="Silver" />--%>
+   <RowStyle Font-Names="Verdana" Font-Size="11px" ForeColor="Black" BackColor="#FFFFFF" />
+   <HeaderStyle BorderStyle="None" BorderWidth="0px" 
+     Font-Names="Verdana" Font-Size="11px" CssClass="table_header" />                     
+    <AlternatingRowStyle BackColor="#F2F2F2" Font-Names="Verdana" Font-Size="11px" ForeColor="Black" />
+</asp:GridView>
+
+<asp:GridView runat="server" SkinId="gridviewHeadSkin" CssClass="grid" BorderStyle="None" BorderWidth="0px" CellPadding="2" Width="100%" GridLines="None" >
+   <%--<RowStyle Font-Names="Verdana" Font-Size="11px" ForeColor="Black" BackColor="Silver" />--%>   
+                <%-- <HeaderStyle BorderStyle="None" BorderWidth="0px" Font-Bold="True" 
+                    Font-Names="Verdana" Font-Size="11px" ForeColor="#56895E" CssClass="gridheaderline" /> --%>
+                <HeaderStyle BorderStyle="None" BorderWidth="0px" Font-Bold="True" BackColor="#dcdcdc"
+                    Font-Names="Verdana" Font-Size="11px" ForeColor="#56895E" CssClass="gridheaderline" />
+                
+</asp:GridView>
+<asp:DetailsView runat="server" CssClass="DetailsView" BorderStyle="None" BorderWidth="0px">
+</asp:DetailsView>
+
+<asp:GridView runat="server" SkinId="gridviewHaccpSkin" CssClass="grid" BorderStyle="None" BorderWidth="0px" CellPadding="2" Width="100%" GridLines="None" >
+   <RowStyle Font-Names="Verdana" Font-Size="XX-Small" ForeColor="Black"  />
+   <AlternatingRowStyle Font-Names="Verdana" Font-Size="XX-Small" ForeColor="Black" />  
+                <%-- <HeaderStyle BorderStyle="None" BorderWidth="0px" Font-Bold="True" 
+                    Font-Names="Verdana" Font-Size="11px" ForeColor="#56895E" CssClass="gridheaderline" /> --%>
+                <HeaderStyle BorderStyle="None" BorderWidth="0px" Font-Bold="True" Font-Names="Verdana" Font-Size="X-Small" ForeColor="Black" CssClass="gridheaderline" />
+                
+</asp:GridView>
+<asp:GridView runat="server" SkinId="gridViewSimpleSkin" CssClass="grid" BorderStyle="None" BorderWidth="0px" 
+CellPadding="2" Width="100%" GridLines="Both" EmptyDataText="There are no data records to display." >
+   <RowStyle Font-Names="Verdana" Font-Size="11px" ForeColor="Black" />               
+   <HeaderStyle BorderStyle="None" BorderWidth="0px" Font-Names="Verdana" Font-Size="11px" CssClass="table_header" />   
+</asp:GridView>
+
+<asp:GridView runat="server" SkinId="gridViewSimpleSkin2" CssClass="grid" BorderStyle="None" BorderWidth="0px" 
+CellPadding="2" Width="100%" GridLines="Vertical" EmptyDataText="There are no data records to display." >
+  
+   <RowStyle Font-Names="Verdana" Font-Size="11px" ForeColor="Black" BackColor="#FFFFFF" />
+              
+                <HeaderStyle BorderStyle="None" BorderWidth="0px" 
+                    Font-Names="Verdana" Font-Size="11px" CssClass="table_header" />                     
+                <AlternatingRowStyle BackColor="#F2F2F2" Font-Names="Verdana" Font-Size="11px" 
+                    ForeColor="Black" />
+</asp:GridView>

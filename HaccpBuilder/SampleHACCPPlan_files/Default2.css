@@ -1,0 +1,249 @@
+* {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+BODY {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #999999
+}
+#wrapper {
+	MARGIN: 0px auto; WIDTH: 1000px
+}
+#container {
+	FLOAT: left; WIDTH: 100%; BACKGROUND-COLOR: #ffffff
+}
+#header {
+	FLOAT: left; BACKGROUND-IMAGE: url(images/header.jpg); WIDTH: 1000px; HEIGHT: 162px
+}
+.top_link {
+	PADDING-RIGHT: 10px; FONT-SIZE: 12px; FLOAT: right; COLOR: #ffffff; PADDING-TOP: 3px; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+#top_link {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+#tabs_bg {
+	FLOAT: left; BACKGROUND-IMAGE: url(images/bg_black_tabs.jpg); WIDTH: 1000px; HEIGHT: 48px
+}
+#tab_bar {
+	FLOAT: left; WIDTH: 1000px; HEIGHT: 8px; BACKGROUND-COLOR: #e3245a
+}
+#tab_blank:hover {
+	DISPLAY: block; BACKGROUND-IMAGE: url(images/tab_blank_hover.jpg); WIDTH: 125px; COLOR: #ffffff; HEIGHT: 24px; TEXT-DECORATION: none
+}
+#tab_blank {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND-IMAGE: url(images/tab_blank.jpg); WIDTH: 125px; COLOR: #ffffff; PADDING-TOP: 10px; HEIGHT: 24px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.tab_blank:hover {
+	DISPLAY: block; BACKGROUND-IMAGE: url(images/tab_blank_hover.jpg); WIDTH: 125px; COLOR: #ffffff; HEIGHT: 24px; TEXT-DECORATION: none
+}
+.tab_blank {
+	DISPLAY: block; FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND-IMAGE: url(images/tab_blank.jpg); WIDTH: 125px; COLOR: #ffffff; PADDING-TOP: 10px; HEIGHT: 24px; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.Hyper_Link {
+	COLOR: #ffffff
+}
+.tab_blank:active {
+	DISPLAY: block; BACKGROUND-IMAGE: url(images/tab_blank_hover.jpg); WIDTH: 125px; COLOR: #ffffff; HEIGHT: 24px; TEXT-DECORATION: none
+}
+.bdy_contents {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; WIDTH: 980px; PADDING-TOP: 10px
+}
+.grey_bg {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 690px; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #f2f2f2
+}
+.buttons_bg {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 10px; FLOAT: right; PADDING-BOTTOM: 10px; MARGIN-LEFT: 5px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 232px; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 235px; BACKGROUND-COLOR: #f2f2f2
+}
+.red_heading {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #bf0439; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.white_heading {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.plan_heading {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 7px; COLOR: #bf0439; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #dcdcdc
+}
+.PlanIndexLabel {
+	PADDING-LEFT: 20px; PADDING-BOTTOM: 7px
+}
+.text_bold {
+	FONT-WEIGHT: bold
+}
+#link_color {
+	COLOR: #bf0439; TEXT-DECORATION: none
+}
+#link_color:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.link_color {
+	COLOR: #bf0439; TEXT-DECORATION: none
+}
+.link_color:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.panel {
+	MARGIN-TOP: 20px; FLOAT: left; MARGIN-LEFT: 5px; WIDTH: 318px
+}
+.table_grey {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px; BACKGROUND: #f7f7f7; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 60px
+}
+.grey_bg_dis {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 10px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 958px; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #f7f7f7
+}
+.grey_bg_left {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cccccc 1px solid; PADDING-LEFT: 10px; FLOAT: left; MARGIN-BOTTOM: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 520px; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #f7f7f7
+}
+.grey_bg_right {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 5px; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; WIDTH: 390px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #f7f7f7
+}
+.discp_txt {
+	PADDING-BOTTOM: 10px; PADDING-TOP: 10px
+}
+.discp_bottom_bg {
+	FLOAT: left; WIDTH: 980px; PADDING-TOP: 5px; HEIGHT: 36px; BACKGROUND-COLOR: #d9d9d9
+}
+.discp_left_bg {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FLOAT: left; MARGIN-BOTTOM: 10px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 540px; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 36px; BACKGROUND-COLOR: #d9d9d9
+}
+.disc_buttons {
+	PADDING-LEFT: 10px; FLOAT: left
+}
+.log_heading {
+	MARGIN-TOP: 20px; FLOAT: left; WIDTH: 980px
+}
+.log_view {
+	MARGIN-TOP: 20px; FLOAT: left; WIDTH: 550px
+}
+.log_table_view {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.log_textbox {
+	FONT-SIZE: smaller; FONT-FAMILY: Verdana
+}
+.table_view {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 20px; FLOAT: left; BORDER-LEFT: #cccccc 1px solid; WIDTH: 980px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.table_bottom {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FLOAT: right; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; HEIGHT: 20px
+}
+.log_form_view {
+	MARGIN-TOP: 20px; FLOAT: left; WIDTH: 600px
+}
+.log_plan_view {
+	MARGIN-TOP: 20px; FLOAT: left; MARGIN-BOTTOM: 10px; WIDTH: 480px
+}
+.log_plan_right {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 20px; FLOAT: left; MARGIN-LEFT: 10px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 480px; PADDING-TOP: 5px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #f7f7f7
+}
+.log_form_left {
+	MARGIN-TOP: 10px; FLOAT: left; WIDTH: 540px
+}
+.log_right_view {
+	MARGIN-TOP: 10px; FLOAT: left; WIDTH: 390px
+}
+.form_view {
+	MARGIN-TOP: 20px; FLOAT: left; MARGIN-LEFT: 10px; WIDTH: 980px
+}
+.table_view {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.table_header {
+	BACKGROUND-IMAGE: url(images/bg_table_lightred.jpg); COLOR: #ffffff; HEIGHT: 30px
+}
+.alt_row {
+	HEIGHT: 20px; BACKGROUND-COLOR: #f2f2f2
+}
+.normal_row {
+	HEIGHT: 20px; BACKGROUND-COLOR: #ffffff
+}
+.table_form_view {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #f7f7f7
+}
+.GirdDiv {
+	MARGIN-LEFT: 10px; WIDTH: 97%; TEXT-ALIGN: left
+}
+#footer {
+	FLOAT: left; BACKGROUND-IMAGE: url(images/footer_bg.jpg); WIDTH: 1000px; HEIGHT: 46px
+}
+#footer_txt {
+	MARGIN-TOP: 20px; COLOR: #ffffff
+}
+.district_TextBox {
+	FONT-SIZE: 12px; WIDTH: 300px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; HEIGHT: 20px
+}
+.district_Dropdown {
+	PADDING-LEFT: 10px; FONT-SIZE: 10px; FLOAT: left; WIDTH: 300px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; HEIGHT: 60px
+}
+.grey_bg_form {
+	BORDER-RIGHT: #cccccc 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 10px; PADDING-LEFT: 10px; FLOAT: left; PADDING-BOTTOM: 10px; BORDER-LEFT: #cccccc 1px solid; WIDTH: 960px; PADDING-TOP: 10px; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 30px; BACKGROUND-COLOR: #f2f2f2
+}
+#progress {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 23px; Z-INDEX: 99; LEFT: 40%; VERTICAL-ALIGN: middle; BORDER-LEFT: #666666 1px solid; COLOR: #ffffff; BORDER-BOTTOM: #666666 1px solid; FONT-FAMILY: Calibri; POSITION: absolute; TOP: 50%; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.TextTemperature {
+	FONT-SIZE: 10px; WIDTH: 50px; FONT-FAMILY: Verdana
+}
+.SOPDiv {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 20px; WIDTH: 650px
+}
+.SOPCol1 {
+	PADDING-LEFT: 3px; FONT-SIZE: 12px; FLOAT: left; WIDTH: 150px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.SOPCol2 {
+	FLOAT: left; WIDTH: 470px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.SOPCol3 {
+	PADDING-LEFT: 3px; FLOAT: left; MARGIN-LEFT: 150px; WIDTH: 470px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.SOPEditDiv {
+	FLOAT: left; WIDTH: 850px
+}
+.DistrictSearchCol1 {
+	BORDER-LEFT-COLOR: window; FLOAT: left; BORDER-BOTTOM-COLOR: window; WIDTH: 210px; BORDER-TOP-COLOR: window; TEXT-ALIGN: left; BORDER-RIGHT-COLOR: window
+}
+.DistrictSearchCol11 {
+	FLOAT: left; WIDTH: 450px; TEXT-ALIGN: left
+}
+.SearchCol2 {
+	FLOAT: left; WIDTH: 220px; TEXT-ALIGN: left
+}
+.DistrictSearchCol2 {
+	FLOAT: left; WIDTH: 200px
+}
+.DistrictSearchCol2 SPAN {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: red; FONT-FAMILY: Verdana
+}
+.DistrictSearchCol3 {
+	FLOAT: left; WIDTH: 77px; TEXT-ALIGN: left
+}
+.DistrictSearchCol4 {
+	FLOAT: left; WIDTH: 65px; TEXT-ALIGN: center
+}
+.DistrictSearchCol5 {
+	FLOAT: left; WIDTH: 130px; TEXT-ALIGN: center
+}
+.GridDropDown {
+	FONT-SIZE: 10px; MARGIN-LEFT: 5px; WIDTH: 210px; FONT-FAMILY: Verdana; BACKGROUND-COLOR: white
+}
+.ProceduralDiv {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 10px; HEIGHT: 50px; widows: 500px
+}
+.ProceduralLabel {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; FLOAT: left; WIDTH: 500px; FONT-FAMILY: Verdana
+}
+.ProceduralTextBox {
+	FLOAT: left; WIDTH: 250px; HEIGHT: 40px
+}
+.SecondaryHeading {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #bf0439; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.HyperLink {
+	COLOR: red; FONT-FAMILY: Verdana
+}
+.content_right {
+	MARGIN-TOP: 10px; PADDING-LEFT: 10px; FLOAT: left; WIDTH: 390px
+}
+.content_district_right {
+	PADDING-LEFT: 15px; FLOAT: left; WIDTH: 370px
+}
+.grid_left {
+	FLOAT: left; WIDTH: 540px
+}

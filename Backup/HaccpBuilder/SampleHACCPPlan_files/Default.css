@@ -1,0 +1,265 @@
+BODY {
+	
+}
+.Main {
+	WIDTH: 1000px; BACKGROUND-COLOR: white
+}
+.GullCenter {
+	BACKGROUND-COLOR: white
+}
+.TopMenu {
+	WIDTH: 100%; HEIGHT: 27px; BACKGROUND-COLOR: white; TEXT-ALIGN: left
+}
+.grid A {
+	FONT-SIZE: 10px; COLOR: black; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+.grid A:link {
+	FONT-SIZE: 10px; COLOR: black; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+.grid A:hover {
+	FONT-SIZE: 10px; COLOR: black; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+.gridheaderline {
+	BORDER-BOTTOM: #000000 1px solid
+}
+.gridPager {
+	BACKGROUND-COLOR: silver
+}
+.Button {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-WEIGHT: bold; BORDER-LEFT: 2px solid; WIDTH: 120px; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0
+}
+.ButtonSmall {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-WEIGHT: bold; BORDER-LEFT: 2px solid; WIDTH: 60px; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0
+}
+.ButtonLarge {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-WEIGHT: bold; BORDER-LEFT: 2px solid; WIDTH: 200px; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0
+}
+.TextBox {
+	BORDER-RIGHT: 0px solid; BORDER-TOP: 2px solid; FONT-SIZE: 10px; BORDER-LEFT: 2px solid; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana
+}
+.TextBox1 {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-SIZE: 10px; BORDER-LEFT: 2px solid; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana
+}
+.DropDown {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-SIZE: 10px; BORDER-LEFT: 2px solid; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: white
+}
+.GridLabel {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana
+}
+.MainHeading {
+	MARGIN-TOP: 45px; FONT-WEIGHT: bold; FONT-SIZE: 16px; Z-INDEX: 500; MARGIN-BOTTOM: 20px; MARGIN-LEFT: 10px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.SecondaryHeading {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.ContentLeft {
+	FLOAT: left; WIDTH: 520px; TEXT-ALIGN: left
+}
+.ContentLeftTest {
+	FLOAT: left; MARGIN-LEFT: 10px; WIDTH: 80%; MARGIN-RIGHT: 20px; TEXT-ALIGN: left
+}
+.ContentRight {
+	PADDING-LEFT: 10px; FLOAT: left; VERTICAL-ALIGN: top; TEXT-ALIGN: left
+}
+.Clearer {
+	CLEAR: both; MARGIN-TOP: 10px
+}
+.ContactDetail {
+	MARGIN-LEFT: 20px; VERTICAL-ALIGN: top
+}
+.Buttons {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 10px; TEXT-ALIGN: left
+}
+.GirdDiv {
+	MARGIN-LEFT: 10px; WIDTH: 97%; TEXT-ALIGN: left
+}
+.SearchDiv {
+	MARGIN: 20px 10px 15px 15px; LINE-HEIGHT: 20px; HEIGHT: 20px; BACKGROUND-COLOR: #c0c0c0
+}
+.DistrictSearchDiv {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px; HEIGHT: 20px; BACKGROUND-COLOR: #c0c0c0
+}
+.SearchDiv1 {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 10px; WIDTH: 420px; HEIGHT: 20px; BACKGROUND-COLOR: #dcdcdc
+}
+.SearchDiv2 {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px; HEIGHT: 20px; BACKGROUND-COLOR: #dcdcdc
+}
+.ValidationDiv1 {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 10px; HEIGHT: 30px; BACKGROUND-COLOR: #dcdcdc; widows: 600px
+}
+.SearchCol1 {
+	PADDING-LEFT: 3px; FONT-WEIGHT: bold; FONT-SIZE: 12px; FLOAT: left; WIDTH: 520px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.ButtonSearch {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; BORDER-LEFT: 2px solid; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0; TEXT-ALIGN: left
+}
+.LogLable {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; FLOAT: left; WIDTH: 100px; FONT-FAMILY: Verdana
+}
+.ChecklistLabel {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; FLOAT: left; WIDTH: 250px; FONT-FAMILY: Verdana
+}
+.ChecklistLabel1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; FLOAT: left; WIDTH: 150px; FONT-FAMILY: Verdana
+}
+.ChecklistTextBox {
+	FLOAT: left; WIDTH: 250px; HEIGHT: 20px
+}
+.SearchCol2 SPAN {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: red; FONT-FAMILY: Verdana
+}
+.SearchCol3 {
+	FLOAT: left; WIDTH: 240px
+}
+.SearchCol4 {
+	FLOAT: left; WIDTH: 87px; TEXT-ALIGN: left
+}
+.FloatLeft {
+	FLOAT: left
+}
+.ButtonsCols {
+	PADDING-LEFT: 50px; FLOAT: left
+}
+.InventoryButtons {
+	MARGIN-TOP: 80px; MARGIN-LEFT: 10px; TEXT-ALIGN: left
+}
+.InventoryButton {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-WEIGHT: bold; BORDER-LEFT: 2px solid; WIDTH: 200px; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0
+}
+.Heading {
+	MARGIN-TOP: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; MARGIN-LEFT: 20px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.HeadingRight {
+	MARGIN-TOP: 25px; FONT-WEIGHT: bold; FONT-SIZE: 12px; MARGIN-BOTTOM: 10px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.SimpleHeading {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+}
+.ViewPlanLabel {
+	FLOAT: left; MARGIN-LEFT: 20px; WIDTH: 200px
+}
+.ViewPlanButton {
+	MARGIN-TOP: 25px; FLOAT: right; MARGIN-RIGHT: 10px; FONT-FAMILY: Verdana
+}
+.ViewPlanClearer {
+	MARGIN-BOTTOM: 25px
+}
+.DailyPart {
+	MARGIN-TOP: 10px; FLOAT: right; MARGIN-RIGHT: 135px
+}
+.HaccpPlantLeft {
+	MARGIN-TOP: 40px; MARGIN-LEFT: 20px; TEXT-ALIGN: left
+}
+.HaccpButton {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-WEIGHT: bold; BORDER-LEFT: 2px solid; WIDTH: 150px; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0
+}
+.SmallClearer {
+	MARGIN-BOTTOM: 20px
+}
+.DropDown {
+	BORDER-RIGHT: 2px solid; BORDER-TOP: 2px solid; FONT-WEIGHT: bold; BORDER-LEFT: 2px solid; WIDTH: 230px; BORDER-BOTTOM: 2px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #c0c0c0
+}
+.LogDesc {
+	MARGIN-BOTTOM: 20px; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.LogHeading {
+	FONT-WEIGHT: bold; COLOR: #56895e
+}
+.LogButton {
+	FLOAT: left; MARGIN-LEFT: 50px
+}
+.PageFooter {
+	MARGIN-BOTTOM: 40px; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px; HEIGHT: 20px; BACKGROUND-COLOR: #778888; TEXT-ALIGN: center
+}
+.DataList {
+	BORDER-LEFT-COLOR: black; BORDER-BOTTOM-COLOR: black; BORDER-TOP-COLOR: black; FONT-FAMILY: Verdana; BACKGROUND-COLOR: silver; BORDER-RIGHT-COLOR: black; outline-color: Black
+}
+.ValidateLabel {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #aa0000; FONT-FAMILY: Verdana
+}
+.LinkButton {
+	FONT-SIZE: 10px; COLOR: blue; FONT-FAMILY: Verdana
+}
+.CustomPaging {
+	MARGIN: 10px 10px 40px; HEIGHT: 20px; BACKGROUND-COLOR: silver; TEXT-ALIGN: center
+}
+.FoodGroupLabel {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Verdana; TEXT-ALIGN: left
+}
+.PrintHeading1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; FONT-FAMILY: Times New Roman
+}
+.PrintHeading2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; MARGIN-LEFT: 10px; FONT-FAMILY: Times New Roman
+}
+.PrintHeading3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; MARGIN-LEFT: 10px; FONT-FAMILY: Times New Roman
+}
+.PrintHeading4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; MARGIN-LEFT: 10px; FONT-FAMILY: Times New Roman
+}
+.PrintHeading5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 20px; FONT-FAMILY: Arial
+}
+.PrintHeading6 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Arial
+}
+.SOPHeading {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; MARGIN-BOTTOM: 10px; MARGIN-LEFT: 200px; MARGIN-RIGHT: 30px; FONT-FAMILY: Arial
+}
+.SOPHeading2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; MARGIN-BOTTOM: 10px; FONT-FAMILY: Arial
+}
+.SOPList {
+	MARGIN-TOP: 10px; FONT-SIZE: 12px; FONT-FAMILY: Arial
+}
+.SOPList1 {
+	MARGIN-TOP: 10px; FONT-SIZE: 12px; FLOAT: left; FONT-FAMILY: Arial
+}
+.SOPHeading1 {
+	MARGIN-TOP: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; FONT-FAMILY: Arial
+}
+.SOPLine {
+	MARGIN-LEFT: 10px; MARGIN-RIGHT: 20px
+}
+.HiddenCheckBoxText LABEL {
+	DISPLAY: none
+}
+.modalBackground {
+	FILTER: alpha(opacity=40); BACKGROUND-COLOR: #ccccff; opacity: 0.5
+}
+.ModalWindow {
+	BACKGROUND: #f0f0f0; LEFT: 1px; POSITION: absolute; TOP: -999px
+}
+.BackGround1 {
+	COLOR: #000; BACKGROUND-COLOR: #99ccff
+}
+.BackGround2 {
+	BACKGROUND-COLOR: #c0c0c0
+}
+
+@media Print    
+{
+.BackGround1 {
+	COLOR: #000; 
+}
+.BackGround2 {
+	BACKGROUND-COLOR: #c0c0c0
+}
+    }
+.PageBreak {
+	PAGE-BREAK-BEFORE: always
+}
+.Error {
+	COLOR: red
+}
+.popUpStyle {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; FILTER: alpha(opacity=80); PADDING-BOTTOM: 6px; FONT: 11px auto "Trebuchet MS", Verdana; COLOR: #4f6b72; PADDING-TOP: 6px; BACKGROUND-COLOR: #ffffff; opacity: 0.8
+}
+.drag {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; CURSOR: move; BORDER-BOTTOM: gray 1px solid; BACKGROUND-COLOR: #dddddd
+}
+#progress {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 23px; Z-INDEX: 99; LEFT: 40%; VERTICAL-ALIGN: middle; BORDER-LEFT: #666666 1px solid; COLOR: #ffffff; BORDER-BOTTOM: #666666 1px solid; FONT-FAMILY: Calibri; POSITION: absolute; TOP: 50%; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}

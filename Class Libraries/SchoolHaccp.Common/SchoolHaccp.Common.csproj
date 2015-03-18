@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE401A95-20A3-4733-A161-BDCEAA5A1CA8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolHaccp.Common</RootNamespace>
+    <AssemblyName>SchoolHaccp.Common</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AlertSettings.cs" />
+    <Compile Include="BreakFast.cs" />
+    <Compile Include="CCP.cs" />
+    <Compile Include="CCPGroup.cs" />
+    <Compile Include="ChecklistAddOnGroup.cs" />
+    <Compile Include="CheckListGroup.cs" />
+    <Compile Include="ColdHoldingLog.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="ContactAgreement.cs" />
+    <Compile Include="CorrectiveAction.cs" />
+    <Compile Include="CriticalLimit.cs" />
+    <Compile Include="Ctpat.cs" />
+    <Compile Include="CtpatGroup.cs" />
+    <Compile Include="Customers.cs" />
+    <Compile Include="DailyMeal.cs" />
+    <Compile Include="District.cs" />
+    <Compile Include="DistrictKitchen.cs" />
+    <Compile Include="DistrictTypeEnum.cs" />
+    <Compile Include="FoodCategories.cs" />
+    <Compile Include="FoodCategoryAction.cs" />
+    <Compile Include="FoodCategoryGroup.cs" />
+    <Compile Include="FoodSafetyQuestion.cs" />
+    <Compile Include="FoodSafetyResponse.cs" />
+    <Compile Include="FreeTrialRequest.cs" />
+    <Compile Include="FreezerLog.cs" />
+    <Compile Include="FreezerNewLog.cs" />
+    <Compile Include="HaccpUser.cs" />
+    <Compile Include="Hazards.cs" />
+    <Compile Include="HotHoldingLog.cs" />
+    <Compile Include="Ingredients.cs" />
+    <Compile Include="InventoryItem.cs" />
+    <Compile Include="Kitchen.cs" />
+    <Compile Include="KitchenCCPGroup.cs" />
+    <Compile Include="KitchenCheckListAddOnGroup.cs" />
+    <Compile Include="KitchenCheckListGroup.cs" />
+    <Compile Include="KitchenCtpatGroup.cs" />
+    <Compile Include="KitchenPlan.cs" />
+    <Compile Include="KitchenDetails.cs" />
+    <Compile Include="KitchenFoodCategoryGroup.cs" />
+    <Compile Include="KitchenInventoryCustom.cs" />
+    <Compile Include="KitchenMenuCustomItem.cs" />
+    <Compile Include="KitchenMenuItems.cs" />
+    <Compile Include="KitchenPlanCategory.cs" />
+    <Compile Include="KitchenProcessGroup.cs" />
+    <Compile Include="KitchenSOPGroup.cs" />
+    <Compile Include="KitchenValidationGroup.cs" />
+    <Compile Include="Lunch.cs" />
+    <Compile Include="MealServingCalendar.cs" />
+    <Compile Include="MenuItemsNew.cs" />
+    <Compile Include="MenuRecipe.cs" />
+    <Compile Include="MenuRecipeDetails.cs" />
+    <Compile Include="Mobile.cs" />
+    <Compile Include="PhLog.cs" />
+    <Compile Include="ProceduralQuestion.cs" />
+    <Compile Include="ProceduralResponse.cs" />
+    <Compile Include="Processes.cs" />
+    <Compile Include="ProcessGroup.cs" />
+    <Compile Include="ReceivingLog.cs" />
+    <Compile Include="RefrigerationLog.cs" />
+    <Compile Include="ResponseHistory.cs" />
+    <Compile Include="ShippingLog.cs" />
+    <Compile Include="SOP.cs" />
+    <Compile Include="SOPOld.cs" />
+    <Compile Include="SOPGroup.cs" />
+    <Compile Include="TemperatureLog.cs" />
+    <Compile Include="ThermoCalibrationLog.cs" />
+    <Compile Include="ValidationGroup.cs" />
+    <Compile Include="ValidationHistory.cs" />
+    <Compile Include="ValidationQuestion.cs" />
+    <Compile Include="ValidationResponse.cs" />
+    <Compile Include="Vendors.cs" />
+    <Compile Include="WebBenefits.cs" />
+    <Compile Include="WebContent.cs" />
+    <Compile Include="WebFeatures.cs" />
+    <Compile Include="WebNews.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebPageContent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

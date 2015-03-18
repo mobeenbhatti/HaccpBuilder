@@ -1,0 +1,362 @@
+/*
+Responsive Template Name: RS-1 Clean
+File: Media Queries CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+
+
+@media only screen and (max-width: 1139px) {
+ .container {
+ clear: both;
+ margin-left: auto !important;
+ margin-right: auto !important;
+ width: 1023px;
+}
+ .nav1 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 13px 10px;
+ white-space: nowrap;
+}
+ .nav2 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 13px 10px;
+ white-space: nowrap;
+}
+ .form-margin {
+ margin:0 14px;
+}
+ .form2 {
+min-width:305px;
+}
+.form {
+min-width:305px;
+}
+ .form .client-logo {
+width:305px;
+height:132px;
+}
+ .box-header {
+min-width:305px;
+}
+ .nav2 {
+padding:15px 0;
+width:100%;
+}
+ .label {
+width: 150px;
+}
+.field {
+width: 150px;
+}
+ .form3 .margin-lr {
+margin:0 6%;
+}
+ input.small, textarea.small, select.small {
+ width: 10em;
+}
+ .input {
+font-size:12px;
+}
+ .ph-top .margin-lr {
+ margin: 0 27%;
+}
+ .volume-marginl {
+margin-left:30em;
+}
+ .form4 {
+ width:46.4%;
+}
+}
+ @media only screen and (max-width: 1023px) {
+.container {
+ clear: both;
+ margin-left: auto !important;
+ margin-right: auto !important;
+ width: 975px;
+}
+ .nav1 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 15px 8px;
+ white-space: nowrap;
+}
+ .nav2 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 15px 9px;
+ white-space: nowrap;
+}
+ .form-margin {
+ margin:0 14px;
+}
+ .form2 {
+min-width:288px;
+}
+.form {
+min-width:288px;
+}
+ .form .client-logo {
+width:288px;
+height:132px;
+}
+ .box-header {
+min-width:288px;
+}
+ .nav2 {
+padding:15px 0;
+width:100%;
+}
+ .label {
+width: 150px;
+}
+.field {
+width: 150px;
+margin-left:10px;
+}
+ .form3 .margin-lr {
+margin:0 4%;
+}
+ input.small, textarea.small, select.small {
+ width: 10em;
+}
+ .input {
+font-size:11px;
+}
+ .ph-top .margin-lr {
+ margin: 0 27%;
+}
+ .volume-marginl {
+margin-left:25em;
+}
+ .form4 {
+ width:46.2%;
+}
+}
+ @media only screen and (max-width: 800px) {
+.container {
+ clear: both;
+ margin-left: auto !important;
+ margin-right: auto !important;
+ width: 675px;
+}
+ .nav1 {
+ background:url(images/nav-bg.jpg) repeat-x;
+ height:82px;
+ display:block;
+ z-index:9999999999;
+ width:799px;
+}
+ .header {
+width:799px;
+}
+ #titlediv {
+width:799px;
+}
+footer {
+width:799px;
+}
+ .nav1 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 13px 15px;
+ white-space: nowrap;
+ border-right: 1px solid #85B1DD;
+}
+ .nav2 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 15px 14%;
+ white-space: nowrap;
+}
+ .form-margin {
+ margin:10px 0;
+}
+ .form2 {
+min-width:649px;
+}
+.form {
+min-width:649px;
+float:none;
+}
+ .form .client-logo {
+width:300px;
+height:132px;
+}
+ .box-header {
+min-width:649px;
+}
+ .nav2 {
+padding:15px 0;
+width:100%;
+height:85px;
+}
+ .label {
+width: 157px;
+}
+.field {
+width: 157px;
+margin-left:10px;
+}
+ .form3 .margin-lr {
+margin:0 4%;
+}
+ input.small, textarea.small, select.small {
+ width: 10em;
+}
+ .input {
+font-size:11px;
+}
+ .ph-top .margin-lr {
+ margin: 0 15%;
+}
+ .form3 . {
+float:left;
+margin-top:10px;
+}
+ .volume-marginl {
+margin-left:4.5em;
+}
+ .form4 {
+ min-width:649px;
+float:none;
+}
+ .marginright {
+margin-bottom:10px;
+}
+ .date-marginl {
+margin-left:2em;
+}
+.date-marginl2 {
+margin-left:2em;
+}
+ .button-margin {
+margin-left:0em;
+margin-top:20px;
+}
+ button, input[type="submit"], input[type="button"], input[type="reset"], .button, .uploadifyButton {
+ outline: medium none;
+ padding: 7px 15px;
+}
+}
+ @media only screen and (max-width: 480px) {
+.container {
+ clear: both;
+ margin-left: auto !important;
+ margin-right: auto !important;
+ width: 400px;
+}
+ .nav1 {
+ background:url(images/nav-bg.jpg) repeat-x;
+ height:164px;
+ display:block;
+ z-index:9999999999;
+ width:479px;
+}
+ .header {
+width:479px;
+}
+ #titlediv {
+width:479px;
+}
+ footer {
+width:479px;
+}
+ .nav1 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 13px 14px;
+ white-space: nowrap;
+ border-right: 1px solid #85B1DD;
+}
+ .nav2 ul li a {
+ display: block;
+ text-decoration: none;
+ color: #ffffff;
+ padding: 015px 8px;
+ white-space: nowrap;
+}
+ .nav2 {
+padding:015px 0;
+width:100%;
+height:125px;
+}
+ .form-margin {
+ margin:10px 0;
+}
+ .form2 {
+min-width:375px;
+}
+.form {
+min-width:375px;
+float:none;
+}
+ .form .client-logo {
+width:300px;
+height:132px;
+}
+ .box-header {
+min-width:297px;
+}
+ .label {
+width: 157px;
+}
+.field {
+width: 157px;
+margin-left:10px;
+}
+ .spacing {
+margin:10px 0;
+}
+ .header .right {
+width:290px;
+}
+ .form3 .margin-lr {
+margin:10px 0;
+}
+ input.small, textarea.small, select.small {
+ width: 10em;
+}
+ .input {
+font-size:11px;
+}
+ .ph-top .margin-lr {
+ margin: 0 5;
+}
+ .form3 . {
+float:left;
+margin-top:10px;
+}
+ .volume-marginl {
+margin:10px 0 0 0;
+}
+ .form4 {
+ min-width:375px;
+float:none;
+}
+ .marginright {
+margin-bottom:10px;
+}
+ .date-marginl {
+margin-left:6em;
+}
+.date-marginl2 {
+margin-left:0em;
+margin-top:10px;
+}
+ .button-margin {
+margin-left:0em;
+margin-top:25px;
+}
+}

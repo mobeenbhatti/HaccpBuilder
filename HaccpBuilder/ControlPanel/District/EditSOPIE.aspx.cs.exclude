@@ -1,0 +1,315 @@
+﻿using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+
+using SchoolHaccp.Common;
+using SchoolHaccp.BusinessLogic;
+
+public partial class ControlPanel_District_EditSOP : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!this.IsPostBack)
+        {
+            
+                //Get SOP from Database
+                if (Request.QueryString["SOPId"] != null && Request.QueryString["GroupId"] != null)
+                {
+                    GetData();
+                }
+                string strTest = txtTitle.InnerHtml;
+            
+        }
+    }
+    protected void btnBack_Click(object sender, ImageClickEventArgs e)
+    {
+
+    }
+    protected void cmdSubmit_Click(object sender, ImageClickEventArgs e)
+    {
+       switch (Request.QueryString["Mode"])
+       {
+           case "1":
+               SaveSOP(1);
+               break;
+           case "2":
+               SaveSOP(2);
+               break;
+           case "3":
+               UpdateSOP();
+               break;
+       }
+        string strGroupId = Request.QueryString["GroupId"];
+        if (Request.QueryString["Review"] != null)
+        {
+            Response.Redirect("~/ControlPanel/District/SOPReview.aspx?GroupId=" + strGroupId);
+        }
+        else
+        {
+            Response.Redirect("~/ControlPanel/District/CustomSOP.aspx?GroupId=" + strGroupId);
+        }
+        
+    }    
+    private void GetData()
+    {
+        ProcessGetSOP getSOP = new ProcessGetSOP();
+        IDataReader drSOP= getSOP.GetSOPById(int.Parse(Request.QueryString["SOPId"]));
+        if (drSOP.Read())
+        {
+            //txtCorrective1.InnerHtml= HttpUtility.HtmlEncode( drSOP["CorrectiveAction1"].ToString());
+            //txtCorrective2.InnerHtml = HttpUtility.HtmlEncode(drSOP["CorrectiveAction2"].ToString());
+            //txtCorrective3.InnerHtml = HttpUtility.HtmlEncode(drSOP["CorrectiveAction3"].ToString());
+            //txtCorrective4.InnerHtml = HttpUtility.HtmlEncode(drSOP["CorrectiveAction4"].ToString());
+            //txtCorrective5.InnerHtml = HttpUtility.HtmlEncode(drSOP["CorrectiveAction5"].ToString());
+
+            //txtLocation.InnerHtml = HttpUtility.HtmlEncode(drSOP["FacilityLocation"].ToString());
+            //txtInstruction1.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions1"].ToString());
+            //txtInstruction10.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions10"].ToString());
+            //txtInstruction11.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions11"].ToString());
+            //txtInstruction12.InnerHtml =HttpUtility.HtmlEncode (drSOP["Instructions12"].ToString());
+            //txtInstruction13.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions13"].ToString());
+            //txtInstruction14.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions14"].ToString());
+            //txtInstruction15.InnerHtml =HttpUtility.HtmlEncode (drSOP["Instructions15"].ToString());
+            //txtInstruction16.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions16"].ToString());
+            //txtInstruction17.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions17"].ToString());
+            //txtInstruction18.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions18"].ToString());
+            //txtInstruction19.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions19"].ToString());
+            //txtInstruction2.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions2"].ToString());
+            //txtInstruction20.InnerHtml =HttpUtility.HtmlEncode (drSOP["Instructions20"].ToString());
+            //txtInstruction3.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions3"].ToString());
+            //txtInstruction4.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions4"].ToString());
+            //txtInstruction5.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions5"].ToString());
+            //txtInstruction6.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions6"].ToString());
+            //txtInstruction7.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions7"].ToString());
+            //txtInstruction8.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions8"].ToString());
+            //txtInstruction9.InnerHtml = HttpUtility.HtmlEncode(drSOP["Instructions9"].ToString());
+            //txtKeyword.InnerHtml = HttpUtility.HtmlEncode(drSOP["Keywords"].ToString());
+            ////newSOP.KitchenGroupId = int.Parse(Request.QueryString["GroupId"]);
+            //txtMonitoring1.InnerHtml = HttpUtility.HtmlEncode(drSOP["Monitoring1"].ToString());
+            //txtMonitoring2.InnerHtml = HttpUtility.HtmlEncode(drSOP["Monitoring2"].ToString());
+            //txtMonitoring3.InnerHtml = HttpUtility.HtmlEncode(drSOP["Monitoring3"].ToString());
+            //txtMonitoring4.InnerHtml =HttpUtility.HtmlEncode (drSOP["Monitoring4"].ToString());
+            //txtMonitoring5.InnerHtml = HttpUtility.HtmlEncode(drSOP["Monitoring5"].ToString());
+            //txtMonitoring6.InnerHtml = HttpUtility.HtmlEncode(drSOP["Monitoring6"].ToString());
+            //txtMonitoring7.InnerHtml = HttpUtility.HtmlEncode(drSOP["Monitoring7"].ToString());
+            //txtPurpose.InnerHtml = HttpUtility.HtmlEncode(drSOP["Purpose"].ToString());
+            //txtScope.InnerHtml = HttpUtility.HtmlEncode(drSOP["Scope"].ToString());            
+            //txtTitle.InnerHtml = HttpUtility.HtmlEncode(drSOP["Title"].ToString());
+            //txtVerification.InnerHtml = HttpUtility.HtmlEncode(drSOP["Verification"].ToString());
+            txtCorrective1.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["CorrectiveAction1"].ToString()));
+            txtCorrective2.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["CorrectiveAction2"].ToString()));
+            txtCorrective3.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["CorrectiveAction3"].ToString()));
+            txtCorrective4.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["CorrectiveAction4"].ToString()));
+            txtCorrective5.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["CorrectiveAction5"].ToString()));
+
+            txtLocation.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["FacilityLocation"].ToString()));
+            //txtInstruction1.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions1"].ToString()));
+            txtInstruction1.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions1"].ToString()));
+            txtInstruction10.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions10"].ToString()));
+            txtInstruction11.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions11"].ToString()));
+            txtInstruction12.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions12"].ToString()));
+            txtInstruction13.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions13"].ToString()));
+            txtInstruction14.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions14"].ToString()));
+            txtInstruction15.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions15"].ToString()));
+            txtInstruction16.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions16"].ToString()));
+            txtInstruction17.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions17"].ToString()));
+            txtInstruction18.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions18"].ToString()));
+            txtInstruction19.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions19"].ToString()));
+            //txtInstruction2.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions2"].ToString()));
+            txtInstruction2.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions2"].ToString()));
+            txtInstruction20.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions20"].ToString()));
+            //txtInstruction3.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions3"].ToString()));
+            txtInstruction3.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions3"].ToString()));
+            //txtInstruction4.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions4"].ToString()));
+            txtInstruction4.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions4"].ToString()));
+            txtInstruction5.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions5"].ToString()));
+            txtInstruction6.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions6"].ToString()));
+            txtInstruction7.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions7"].ToString()));
+            txtInstruction8.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions8"].ToString()));
+            txtInstruction9.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Instructions9"].ToString()));
+            txtKeyword.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Keywords"].ToString()));
+            //newSOP.KitchenGroupId = int.Parse(Request.QueryString["GroupId"]);
+            txtMonitoring1.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring1"].ToString()));
+            txtMonitoring2.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring2"].ToString()));
+            txtMonitoring3.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring3"].ToString()));
+            txtMonitoring4.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring4"].ToString()));
+            txtMonitoring5.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring5"].ToString()));
+            txtMonitoring6.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring6"].ToString()));
+            txtMonitoring7.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Monitoring7"].ToString()));
+            txtPurpose.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Purpose"].ToString()));
+            txtScope.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Scope"].ToString()));
+            //txtTitle.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Title"].ToString()));
+            txtTitle.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Title"].ToString()));
+            txtVerification.InnerHtml = HttpUtility.HtmlDecode(HttpUtility.HtmlEncode(drSOP["Verification"].ToString()));
+            lblCustomSOP.Text = drSOP["CustomSOP"].ToString();
+            lblIsAdditional.Text = drSOP["IsAdditional"].ToString();
+            lblRemoved.Text = drSOP["Removed"].ToString();
+        }
+        
+        
+    }
+    private void SaveSOP(int nType)
+    {
+        SOP newSOP = new SOP();
+
+        newSOP.CorrectiveAction1 = txtCorrective1.InnerHtml;
+        newSOP.CorrectiveAction2 = txtCorrective2.InnerHtml;
+        newSOP.CorrectiveAction3 = txtCorrective3.InnerHtml;
+        newSOP.CorrectiveAction4 = txtCorrective4.InnerHtml;
+        newSOP.CorrectiveAction5 = txtCorrective5.InnerHtml;
+        newSOP.CustomSOP = 1;
+        newSOP.DistrictId = (int)Session["DistrictId"];
+        newSOP.FacilityLocation = txtLocation.InnerHtml;
+        //newSOP.Instructions1 = txtInstruction1.InnerHtml;
+        newSOP.Instructions1 = txtInstruction1.InnerHtml;
+        newSOP.Instructions10 = txtInstruction10.InnerHtml;
+        newSOP.Instructions11 = txtInstruction11.InnerHtml;
+        newSOP.Instructions12 = txtInstruction12.InnerHtml;
+        newSOP.Instructions13 = txtInstruction13.InnerHtml;
+        newSOP.Instructions14 = txtInstruction14.InnerHtml;
+        newSOP.Instructions15 = txtInstruction15.InnerHtml;
+        newSOP.Instructions16 = txtInstruction16.InnerHtml;
+        newSOP.Instructions17 = txtInstruction17.InnerHtml;
+        newSOP.Instructions18 = txtInstruction18.InnerHtml;
+        newSOP.Instructions19 = txtInstruction19.InnerHtml;
+        //newSOP.Instructions2 = txtInstruction2.InnerHtml;
+        newSOP.Instructions2 = txtInstruction2.InnerHtml;
+        newSOP.Instructions20 = txtInstruction20.InnerHtml;
+        //newSOP.Instructions3 = txtInstruction3.InnerHtml;
+        newSOP.Instructions3 = txtInstruction3.InnerHtml;
+        //newSOP.Instructions4 = txtInstruction4.InnerHtml;
+        newSOP.Instructions4 = txtInstruction4.InnerHtml;
+        newSOP.Instructions5 = txtInstruction5.InnerHtml;
+        newSOP.Instructions6 = txtInstruction6.InnerHtml;
+        newSOP.Instructions7 = txtInstruction7.InnerHtml;
+        newSOP.Instructions8 = txtInstruction8.InnerHtml;
+        newSOP.Instructions9 = txtInstruction9.InnerHtml;
+        newSOP.Keywords = txtKeyword.InnerHtml;
+        newSOP.KitchenGroupId = int.Parse(Request.QueryString["GroupId"]);
+        newSOP.Monitoring1 = txtMonitoring1.InnerHtml;
+        newSOP.Monitoring2 = txtMonitoring2.InnerHtml;
+        newSOP.Monitoring3 = txtMonitoring3.InnerHtml;
+        newSOP.Monitoring4 = txtMonitoring4.InnerHtml;
+        newSOP.Monitoring5 = txtMonitoring5.InnerHtml;
+        newSOP.Monitoring6 = txtMonitoring6.InnerHtml;
+        newSOP.Monitoring7 = txtMonitoring7.InnerHtml;
+        newSOP.Purpose = txtPurpose.InnerHtml;
+        newSOP.Scope = txtScope.InnerHtml;
+        if (Request.QueryString["SOPId"] != null)
+        {
+            newSOP.SOPId = int.Parse(Request.QueryString["SOPId"]);
+        }       
+        //newSOP.Title = txtTitle.InnerHtml;
+        newSOP.Title = txtTitle.InnerHtml;
+        newSOP.Verification = txtVerification.InnerHtml;
+        if (nType == 2)        
+        {
+            newSOP.IsAdditional = 1;
+        }
+        newSOP.Removed = 0;
+
+        ProcessCreateSOP createSOP = new ProcessCreateSOP();
+        createSOP.SOP = newSOP;
+        createSOP.Invoke();        
+
+    }    
+    private void UpdateSOP()
+    {
+        SOP newSOP = new SOP();
+
+        newSOP.CorrectiveAction1 = txtCorrective1.InnerHtml;
+        newSOP.CorrectiveAction2 = txtCorrective2.InnerHtml;
+        newSOP.CorrectiveAction3 = txtCorrective3.InnerHtml;
+        newSOP.CorrectiveAction4 = txtCorrective4.InnerHtml;
+        newSOP.CorrectiveAction5 = txtCorrective5.InnerHtml;
+        if (lblCustomSOP.Text != "")
+        {
+            newSOP.CustomSOP = int.Parse(lblCustomSOP.Text);
+        }
+        else
+        {
+            newSOP.CustomSOP = 0;
+        }
+
+        newSOP.DistrictId = (int)Session["DistrictId"];
+        newSOP.FacilityLocation = txtLocation.InnerHtml;
+        //newSOP.Instructions1 = txtInstruction1.InnerHtml;
+        newSOP.Instructions1 = txtInstruction1.InnerHtml;
+        newSOP.Instructions10 = txtInstruction10.InnerHtml;
+        newSOP.Instructions11 = txtInstruction11.InnerHtml;
+        newSOP.Instructions12 = txtInstruction12.InnerHtml;
+        newSOP.Instructions13 = txtInstruction13.InnerHtml;
+        newSOP.Instructions14 = txtInstruction14.InnerHtml;
+        newSOP.Instructions15 = txtInstruction15.InnerHtml;
+        newSOP.Instructions16 = txtInstruction16.InnerHtml;
+        newSOP.Instructions17 = txtInstruction17.InnerHtml;
+        newSOP.Instructions18 = txtInstruction18.InnerHtml;
+        newSOP.Instructions19 = txtInstruction19.InnerHtml;
+        //newSOP.Instructions2 = txtInstruction2.InnerHtml;
+        newSOP.Instructions2 = txtInstruction2.InnerHtml;
+        newSOP.Instructions20 = txtInstruction20.InnerHtml;
+        //newSOP.Instructions3 = txtInstruction3.InnerHtml;
+        newSOP.Instructions3 = txtInstruction3.InnerHtml;
+        //newSOP.Instructions4 = txtInstruction4.InnerHtml;
+        newSOP.Instructions4 = txtInstruction4.InnerHtml;
+        newSOP.Instructions5 = txtInstruction5.InnerHtml;
+        newSOP.Instructions6 = txtInstruction6.InnerHtml;
+        newSOP.Instructions7 = txtInstruction7.InnerHtml;
+        newSOP.Instructions8 = txtInstruction8.InnerHtml;
+        newSOP.Instructions9 = txtInstruction9.InnerHtml;
+        newSOP.Keywords = txtKeyword.InnerHtml;
+        newSOP.KitchenGroupId = int.Parse(Request.QueryString["GroupId"]);
+        newSOP.Monitoring1 = txtMonitoring1.InnerHtml;
+        newSOP.Monitoring2 = txtMonitoring2.InnerHtml;
+        newSOP.Monitoring3 = txtMonitoring3.InnerHtml;
+        newSOP.Monitoring4 = txtMonitoring4.InnerHtml;
+        newSOP.Monitoring5 = txtMonitoring5.InnerHtml;
+        newSOP.Monitoring6 = txtMonitoring6.InnerHtml;
+        newSOP.Monitoring7 = txtMonitoring7.InnerHtml;
+        newSOP.Purpose = txtPurpose.InnerHtml;
+        newSOP.Scope = txtScope.InnerHtml;
+        if (Request.QueryString["SOPId"] != null)
+        {
+            newSOP.SOPId = int.Parse(Request.QueryString["SOPId"]);
+        }        
+        //newSOP.Title = txtTitle.InnerHtml;
+        newSOP.Title = txtTitle.InnerHtml;
+        newSOP.Verification = txtVerification.InnerHtml;
+        if (lblIsAdditional.Text != "")
+        {
+            newSOP.IsAdditional = int.Parse(lblIsAdditional.Text);
+        }
+        else
+        {
+            newSOP.IsAdditional = 0;
+        }
+        if (lblRemoved.Text != "")
+        {
+            newSOP.Removed = int.Parse(lblRemoved.Text);
+        }        
+        ProcessSetSOP setSOP = new ProcessSetSOP();
+        setSOP.SOP = newSOP;
+        setSOP.Invoke();
+    }
+    protected void cmdCancel_Click(object sender, ImageClickEventArgs e)
+    {
+        string strGroupId = Request.QueryString["GroupId"];
+        if (Request.QueryString["Review"] != null)
+        {
+            Response.Redirect("~/ControlPanel/District/SOPReview.aspx?GroupId=" + strGroupId);
+        }
+        else
+        {
+            Response.Redirect("~/ControlPanel/District/CustomSOP.aspx?GroupId=" + strGroupId);
+        }
+    }
+}

@@ -1,0 +1,253 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/ControlPanel/DistrictMaster.master" AutoEventWireup="true" Inherits="ControlPanel_District_EditSOP" ValidateRequest="false" Title="HACCP Builder | SOPs" Codebehind="Copy of EditSOP.aspx.cs" %>
+<%@ Register src="../../Controls/DistrictAddress.ascx" tagname="DistrictAddress" tagprefix="uc1" %>
+<%@ Register Src="~/Controls/Advertisement.ascx" TagPrefix="ucl" TagName="Advs" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolder" Runat="Server">
+     <div >
+      <div class="MainHeading">
+               Add/Edit SOP
+               <span style="font-size:10px; margin-left:250px;">
+               <asp:ImageButton ID="btnBack" runat="server" onclick="btnBack_Click"  ImageUrl="~/images/buttons/ButtonBackToMain.jpg" />            
+               </span>
+     </div>               
+    </div>        
+    <div>
+        <div class="ContentLeft" >
+                <div class="ContactDetail">
+                    <uc1:DistrictAddress ID="DistrictAddress1" runat="server" />
+                </div>                
+       </div>
+        <div class="ContentRight" >                     
+                <ucl:Advs id="adv1" runat="server"></ucl:Advs>
+       </div>             
+                    
+    </div>
+    <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+    <div class="SOPDiv">
+        <div class="SOPCol1">Title</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtTitle" Width="450px" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                ControlToValidate="txtTitle" ErrorMessage="RequiredFieldValidator">The field 
+            Title is required</asp:RequiredFieldValidator>
+                        </div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">Facility Location</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtLocation" Width="450px" runat="server"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">Purpose</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtPurpose" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">Scope</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtScope" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">Keyword</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtKeyword" Width="450px" runat="server"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px"/></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPCol1">Instructions</div>
+        <div class="SearchCol2"><asp:TextBox ID="txtInstruction1" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1"></div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction2" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction3" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction4" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction5" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction6" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction7" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction8" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction9" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction10" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">Instructions</div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction11" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction12" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction13" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction14" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction15" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction16" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction17" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction18" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction19" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtInstruction20" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px"/></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPCol1">Monitoring</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtMonitoring1" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtMonitoring2" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtMonitoring3" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtMonitoring4" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtMonitoring5" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtMonitoring6" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtMonitoring7" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px"/></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPCol1">Corrective Actions</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtCorrective1" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtCorrective2" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtCorrective3" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtCorrective4" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        
+        <div class="SOPCol1">     </div>
+        <div class="SOPCol3"><asp:TextBox ID="txtCorrective5" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol3"><hr width="420px" /></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        
+        <div class="SOPCol1">Verification and Record Keeping</div>
+        <div class="SOPCol2"><asp:TextBox ID="txtVerification" Width="450px" runat="server" 
+                Height="58px" TextMode="MultiLine"></asp:TextBox></div>
+        <div class="Clearer"></div>
+        <div class="ViewPlanClearer"></div>
+        <div class="SOPCol1"></div>
+        <div class="SOPCol3">
+            <asp:ImageButton ID="cmdSubmit" ImageUrl="~/images/buttons/ButtonUpdate.gif" 
+                runat="server" onclick="cmdSubmit_Click" />
+                
+            <asp:ImageButton ID="cmdCancel" ImageUrl="~/images/buttons/ButtonCancel.gif" 
+                runat="server" onclick="cmdCancel_Click"/>
+            <asp:Label ID="lblCustomSOP" runat="server" Visible="false"></asp:Label>
+            <asp:Label ID="lblIsAdditional" runat="server" Visible="false"></asp:Label>
+            <asp:Label ID="lblRemoved" runat="server" Visible="false"></asp:Label>
+        </div>  
+    </div>
+    <div class="Clearer"></div>
+    <div class="ViewPlanClearer"></div>
+    <div class="PageFooter">
+        <asp:Label ID="lblFooter" Text=" © HACCP Builder 2009" ForeColor="White" runat="server"></asp:Label>
+    </div>    
+</asp:Content>
+

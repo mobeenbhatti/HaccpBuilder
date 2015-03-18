@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
+	<siteMapNode url="Default.aspx" title="Home" description="Home">
+		<siteMapNode url="HACCP_Plan.aspx" title="Learn More" description="Learn More" />
+		<siteMapNode url="USDA_School_Lunch.aspx" title="Requirements" description="Requirements" />
+		<siteMapNode url="RequestInformation.aspx" title="Request Information" description="Request Information" />
+		<siteMapNode url="Contact.aspx" title="Contact Us" description="Contact School HACCP" />
+		<siteMapNode url="Demo.aspx" title="Step-by-Step Demo" description="Step-by-Step Demo" />
+		<siteMapNode url="Features.aspx" title="Features &amp; Benefits" description="Features &amp; Benefits" />
+	</siteMapNode>
+</siteMap>

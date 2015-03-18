@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1CD38558-5D37-4B90-9173-B4FC581BCE86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolHaccp.DataAccess</RootNamespace>
+    <AssemblyName>SchoolHaccp.DataAccess</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CountryRegionDS.cs">
+      <DependentUpon>CountryRegionDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CountryRegionDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CountryRegionDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccessBase.cs" />
+    <Compile Include="DataHelper.cs" />
+    <Compile Include="DataParameter.cs" />
+    <Compile Include="DataServices.cs" />
+    <Compile Include="Dataset\ContactDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Delete\DeleteBreakFast.cs" />
+    <Compile Include="Delete\DeleteCCP.cs" />
+    <Compile Include="Delete\DeleteColdHoldingLog.cs" />
+    <Compile Include="Delete\DeleteCtpat.cs" />
+    <Compile Include="Delete\DeleteCustomers.cs" />
+    <Compile Include="Delete\DeleteDailyMeal.cs" />
+    <Compile Include="Delete\DeleteDistrict.cs" />
+    <Compile Include="Delete\DeleteFoodCategory.cs" />
+    <Compile Include="Delete\DeleteFoodSafetyQuestion.cs" />
+    <Compile Include="Delete\DeleteFreeTrialRequest.cs" />
+    <Compile Include="Delete\DeleteFreezerLog.cs" />
+    <Compile Include="Delete\DeleteFreezerNewLog.cs" />
+    <Compile Include="Delete\DeleteHazards.cs" />
+    <Compile Include="Delete\DeleteHotHoldingLog.cs" />
+    <Compile Include="Delete\DeleteIngredients.cs" />
+    <Compile Include="Delete\DeleteKitchen.cs" />
+    <Compile Include="Delete\DeleteKitchenCCPGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenChecklistAddOnGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenCheckListGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenCtpatGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenFoodCategoryGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenInventoryCustom.cs" />
+    <Compile Include="Delete\DeleteKitchenMenuCustomItem.cs" />
+    <Compile Include="Delete\DeleteKitchenMenuItem.cs" />
+    <Compile Include="Delete\DeleteKitchenPlan.cs" />
+    <Compile Include="Delete\DeleteKitchenPlanCategory.cs" />
+    <Compile Include="Delete\DeleteKitchenProcessGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenSOPGroup.cs" />
+    <Compile Include="Delete\DeleteKitchenValidationGroup.cs" />
+    <Compile Include="Delete\DeleteLunch.cs" />
+    <Compile Include="Delete\DeleteMealServingCalendar.cs" />
+    <Compile Include="Delete\DeleteMenuItemsNew.cs" />
+    <Compile Include="Delete\DeleteMenuRecipe.cs" />
+    <Compile Include="Delete\DeleteMenuRecipeDetails.cs" />
+    <Compile Include="Delete\DeleteMobile.cs" />
+    <Compile Include="Delete\DeletePhLog.cs" />
+    <Compile Include="Delete\DeleteProcess.cs" />
+    <Compile Include="Delete\DeleteReceivingLog.cs" />
+    <Compile Include="Delete\DeleteRefrigerationLog.cs" />
+    <Compile Include="Delete\DeleteShippingLog.cs" />
+    <Compile Include="Delete\DeleteSOP.cs" />
+    <Compile Include="Delete\DeleteTemperatureLog.cs" />
+    <Compile Include="Delete\DeleteThermoCalibrationLog.cs" />
+    <Compile Include="Delete\DeleteValidationQuestion.cs" />
+    <Compile Include="Delete\DeleteVendors.cs" />
+    <Compile Include="FreeTrialRequestDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FreeTrialRequestDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GetCriticalLimits.cs" />
+    <Compile Include="Insert\CreateCCP.cs" />
+    <Compile Include="Insert\CreateCCPGroup.cs" />
+    <Compile Include="Insert\CreateCheckListGroup.cs" />
+    <Compile Include="Insert\CreateContactAgreement.cs" />
+    <Compile Include="Insert\CreateCriticalLimits.cs" />
+    <Compile Include="Insert\CreateCtpat.cs" />
+    <Compile Include="Insert\CreateCtpatGroup.cs" />
+    <Compile Include="Insert\CreateCustomer.cs" />
+    <Compile Include="Insert\CreateDistrict.cs" />
+    <Compile Include="Insert\CreateFoodCategory.cs" />
+    <Compile Include="Insert\CreateFoodCategoryGroup.cs" />
+    <Compile Include="Insert\CreateFoodSafetyQuestion.cs" />
+    <Compile Include="Insert\CreateFreeTrialRequest.cs" />
+    <Compile Include="Insert\CreateFreezerNewLog.cs" />
+    <Compile Include="Insert\CreateHazard.cs" />
+    <Compile Include="Insert\CreateIngredient.cs" />
+    <Compile Include="Insert\CreateKitchenCCPGroup.cs" />
+    <Compile Include="Insert\CreateKitchenCheckListAddonGroup.cs" />
+    <Compile Include="Insert\CreateKitchenCheckListGroup.cs" />
+    <Compile Include="Insert\CreateKitchenCorrectiveAction.cs" />
+    <Compile Include="Insert\CreateKitchenCtpatGroup.cs" />
+    <Compile Include="Insert\CreateKitchenFoodCategoryGroup.cs" />
+    <Compile Include="Insert\CreateKitchenPlan.cs" />
+    <Compile Include="Insert\CreateKitchenPlanCategory.cs" />
+    <Compile Include="Insert\CreateKitchenProcessGroup.cs" />
+    <Compile Include="Insert\CreateKitchenValidationGroup.cs" />
+    <Compile Include="Insert\CreateMenuItemNew.cs" />
+    <Compile Include="Insert\CreateMobile.cs" />
+    <Compile Include="Insert\CreatePhLog.cs" />
+    <Compile Include="Insert\CreateProceduralResponse.cs" />
+    <Compile Include="Insert\CreateProcess.cs" />
+    <Compile Include="Insert\CreateProcessGroup.cs" />
+    <Compile Include="Insert\CreateShippingLog.cs" />
+    <Compile Include="Insert\CreateSOP.cs" />
+    <Compile Include="Insert\CreateValidationGroup.cs" />
+    <Compile Include="Insert\CreateValidationHistory.cs" />
+    <Compile Include="Insert\CreateValidationQuestion.cs" />
+    <Compile Include="Insert\CreateValidationResponse.cs" />
+    <Compile Include="Insert\CreateVendor.cs" />
+    <Compile Include="Insert\CreateMenuRecipe.cs" />
+    <Compile Include="Insert\CreateMenuRecipeDetails.cs" />
+    <Compile Include="Select\GetCCP.cs" />
+    <Compile Include="Select\GetCCPGroup.cs" />
+    <Compile Include="Select\GetCheckListAdOnGroup.cs" />
+    <Compile Include="Select\GetCheckListGroup.cs" />
+    <Compile Include="Select\GetCleaningLog.cs" />
+    <Compile Include="Select\GetContact.cs" />
+    <Compile Include="Select\GetContactAgreement.cs" />
+    <Compile Include="Select\GetCriticalLimits.cs" />
+    <Compile Include="Select\GetCtpat.cs" />
+    <Compile Include="Select\GetCtpatGroup.cs" />
+    <Compile Include="Select\GetCustomers.cs" />
+    <Compile Include="Select\GetFoodCategories.cs" />
+    <Compile Include="Select\GetFoodCategory.cs" />
+    <Compile Include="Select\GetFoodCategoryActions.cs" />
+    <Compile Include="Select\GetFoodCategoryGroup.cs" />
+    <Compile Include="Select\GetFreeTrialRequest.cs" />
+    <Compile Include="Select\GetFreezerNewLog.cs" />
+    <Compile Include="Select\GetHazards.cs" />
+    <Compile Include="Select\GetIngredients.cs" />
+    <Compile Include="Select\GetKitchenCCPGroup.cs" />
+    <Compile Include="Select\GetKitchenCheckListAddOnGroup.cs" />
+    <Compile Include="Select\GetKitchenCheckListGroup.cs" />
+    <Compile Include="Select\GetKitchenCorrectiveActions.cs" />
+    <Compile Include="Select\GetKitchenCtpatGroup.cs" />
+    <Compile Include="Select\GetKitchenDetail.cs" />
+    <Compile Include="Select\GetKitchenFoodCategoryGroup.cs" />
+    <Compile Include="Select\GetKitchenPlan.cs" />
+    <Compile Include="Select\GetKitchenPlanCategory.cs" />
+    <Compile Include="Select\GetKitchenProcessGroup.cs" />
+    <Compile Include="Select\GetKitchenValidationGroup.cs" />
+    <Compile Include="Select\GetMaintenanceLog.cs" />
+    <Compile Include="Select\GetMenuItemsNew.cs" />
+    <Compile Include="Select\GetMenuRecipe.cs" />
+    <Compile Include="Select\GetMenuRecipeDetails.cs" />
+    <Compile Include="Select\GetMobileByUserName.cs" />
+    <Compile Include="Select\GetPestLog.cs" />
+    <Compile Include="Select\GetPhLog.cs" />
+    <Compile Include="Select\GetProceduralQuestions.cs" />
+    <Compile Include="Select\GetProceduralResponse.cs" />
+    <Compile Include="Select\GetProcess.cs" />
+    <Compile Include="Select\GetProcessGroup.cs" />
+    <Compile Include="Select\GetProcessHaccpCategory.cs" />
+    <Compile Include="Select\GetProcessHazardAnalysis.cs" />
+    <Compile Include="Select\GetShippingLog.cs" />
+    <Compile Include="Select\GetSOP.cs" />
+    <Compile Include="Select\GetSOPOld.cs" />
+    <Compile Include="Insert\CreateBreakFast.cs" />
+    <Compile Include="Insert\CreateColdHoldingLog.cs" />
+    <Compile Include="Insert\CreateDailyMeal.cs" />
+    <Compile Include="Insert\CreateDailyParticipation.cs" />
+    <Compile Include="Insert\CreateKitchen.cs" />
+    <Compile Include="Insert\CreateKitchenSOPGroup.cs" />
+    <Compile Include="Insert\CreateLunch.cs" />
+    <Compile Include="Insert\CreateMealServingCalendar.cs" />
+    <Compile Include="Insert\CreateFoodSafetyResponse.cs" />
+    <Compile Include="Insert\CreateFreezerLog..cs" />
+    <Compile Include="Insert\CreateHotHoldingLog.cs" />
+    <Compile Include="Insert\CreateKitchenInventoryCustom.cs" />
+    <Compile Include="Insert\CreateKitchenMenuCustomItem.cs" />
+    <Compile Include="Insert\CreateReceivingLog.cs" />
+    <Compile Include="Insert\CreateRefrigerationLog.cs" />
+    <Compile Include="Insert\CreateResponseHistory.cs" />
+    <Compile Include="Insert\CreateSOPOld.cs" />
+    <Compile Include="Insert\CreateSOPGroup.cs" />
+    <Compile Include="Insert\CreateTemperatureLog.cs" />
+    <Compile Include="Insert\CreateThermoCalibrationLog.cs" />
+    <Compile Include="Select\GetColdHoldingLog.cs" />
+    <Compile Include="Select\GetCustomInventory.cs" />
+    <Compile Include="Select\GetDailyMeal.cs" />
+    <Compile Include="Select\GetDailyParticipation.cs" />
+    <Compile Include="Select\GetDistrict.cs" />
+    <Compile Include="Select\GetFreezerLog..cs" />
+    <Compile Include="Select\GetHotHoldingLog.cs" />
+    <Compile Include="Select\GetKitchenMenuCustomItem.cs" />
+    <Compile Include="Select\GetDailyReports.cs" />
+    <Compile Include="Select\GetFoodSafetyQuestions.cs" />
+    <Compile Include="Select\GetFoodSafetyResponses.cs" />
+    <Compile Include="Select\GetInventoryItemsByKitchenId.cs" />
+    <Compile Include="Select\GetKitchenByUserName.cs" />
+    <Compile Include="Select\GetKitchenInventoryCustom.cs" />
+    <Compile Include="Select\GetKitchenMenuItems.cs" />
+    <Compile Include="Select\GetKitchenSOPGroup.cs" />
+    <Compile Include="Select\GetMealServingCalendar.cs" />
+    <Compile Include="Select\GetMenuItems.cs" />
+    <Compile Include="Select\GetReceivingLog.cs" />
+    <Compile Include="Select\GetRefrigerationLog.cs" />
+    <Compile Include="Select\GetResponseHistory.cs" />
+    <Compile Include="Select\GetSOPGroup.cs" />
+    <Compile Include="Select\GetTemperatureLog.cs" />
+    <Compile Include="Select\GetThermoCalibrationLog.cs" />
+    <Compile Include="Select\GetValidationGroup.cs" />
+    <Compile Include="Select\GetValidationHistory.cs" />
+    <Compile Include="Select\GetValidationQuestions.cs" />
+    <Compile Include="Select\GetValidationResponses.cs" />
+    <Compile Include="Select\GetVendors.cs" />
+    <Compile Include="Select\GetWeeklyReports.cs" />
+    <Compile Include="StateProvinceDS.cs">
+      <DependentUpon>StateProvinceDS.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StateProvinceDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateProvinceDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Insert\CreateWebBenefitsData.cs" />
+    <Compile Include="Insert\CreateWebFeaturesData.cs" />
+    <Compile Include="Insert\CreateWebNewsData.cs" />
+    <Compile Include="Insert\CreateWebPageContentData.cs" />
+    <Compile Include="ListParameter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Select\GetCultureListItemsData.cs" />
+    <Compile Include="Select\GetWebBenefitsByIdData.cs" />
+    <Compile Include="Select\GetWebBenefitsData.cs" />
+    <Compile Include="Select\GetWebFeaturesByIdData.cs" />
+    <Compile Include="Select\GetWebFeaturesData.cs" />
+    <Compile Include="Select\GetWebNewsByIdData.cs" />
+    <Compile Include="Select\GetWebNewsData.cs" />
+    <Compile Include="Select\GetWebPageContentByIdData.cs" />
+    <Compile Include="Select\GetWebPageContentData.cs" />
+    <Compile Include="StoredProcedure.cs" />
+    <Compile Include="TestReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestReportDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TimeZonesDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimeZonesDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Update\SetCCP.cs" />
+    <Compile Include="Update\SetColdHoldingLog.cs" />
+    <Compile Include="Update\SetContact.cs" />
+    <Compile Include="Update\SetCriticalLimits.cs" />
+    <Compile Include="Update\SetCtpat.cs" />
+    <Compile Include="Update\SetCustomers.cs" />
+    <Compile Include="Update\SetDailyParticipation.cs" />
+    <Compile Include="Update\SetDistrict.cs" />
+    <Compile Include="Update\SetFoodCategory.cs" />
+    <Compile Include="Update\SetFoodSafetyQuestion.cs" />
+    <Compile Include="Update\SetFoodSafetyResponse.cs" />
+    <Compile Include="Update\SetFreeTrialRequestData.cs" />
+    <Compile Include="Update\SetFreezerLog.cs" />
+    <Compile Include="Update\SetFreezerNewLog.cs" />
+    <Compile Include="Update\SetHazards.cs" />
+    <Compile Include="Update\SetHotHoldingLog.cs" />
+    <Compile Include="Update\SetIngredients.cs" />
+    <Compile Include="Update\SetKitchen.cs" />
+    <Compile Include="Update\SetKitchenInventory.cs" />
+    <Compile Include="Update\SetKitchenInventoryCustom.cs" />
+    <Compile Include="Update\SetKitchenMenu.cs" />
+    <Compile Include="Update\SetKitchenMenuCustomItem.cs" />
+    <Compile Include="Update\SetKitchenPlan.cs" />
+    <Compile Include="Update\SetMealServingCalendar.cs" />
+    <Compile Include="Update\SetMenuItemsNew.cs" />
+    <Compile Include="Update\SetMenuRecipe.cs" />
+    <Compile Include="Update\SetMenuRecipeDetails.cs" />
+    <Compile Include="Update\SetMobile.cs" />
+    <Compile Include="Update\SetPhLog.cs" />
+    <Compile Include="Update\SetProceduralResponse.cs" />
+    <Compile Include="Update\SetProcess.cs" />
+    <Compile Include="Update\SetProcessHaccpCategory.cs" />
+    <Compile Include="Update\SetProcessHazardAnalysis.cs" />
+    <Compile Include="Update\SetReceivingLog.cs" />
+    <Compile Include="Update\SetRefrigerationLog.cs" />
+    <Compile Include="Update\SetResponseHistory.cs" />
+    <Compile Include="Update\SetServices.cs" />
+    <Compile Include="Update\SetShippingLog.cs" />
+    <Compile Include="Update\SetSOP.cs" />
+    <Compile Include="Update\SetSOPOld.cs" />
+    <Compile Include="Update\SetTemperatureLog.cs" />
+    <Compile Include="Update\SetThermoCalibrationLog.cs" />
+    <Compile Include="Update\SetValidationHistory.cs" />
+    <Compile Include="Update\SetValidationResponse.cs" />
+    <Compile Include="Update\SetValidationQuestion.cs" />
+    <Compile Include="Update\SetVendors.cs" />
+    <Compile Include="Update\SetWebBenefitsByIdData.cs" />
+    <Compile Include="Update\SetWebFeaturesByIdData.cs" />
+    <Compile Include="Update\SetWebNewsByIdData.cs" />
+    <Compile Include="Update\SetWebPageContentByIdData.cs" />
+    <Compile Include="Update\SetKitchenCorrectiveAction.cs" />
+    <Compile Include="Update\SetKitchenPlanCategory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="CountryRegionDS.xsc">
+      <DependentUpon>CountryRegionDS.xsd</DependentUpon>
+    </None>
+    <None Include="CountryRegionDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CountryRegionDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CountryRegionDS.xss">
+      <DependentUpon>CountryRegionDS.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\ContactDS.xsc">
+      <DependentUpon>ContactDS.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\ContactDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ContactDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\ContactDS.xss">
+      <DependentUpon>ContactDS.xsd</DependentUpon>
+    </None>
+    <None Include="FreeTrialRequestDS.xsc">
+      <DependentUpon>FreeTrialRequestDS.xsd</DependentUpon>
+    </None>
+    <None Include="FreeTrialRequestDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FreeTrialRequestDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="FreeTrialRequestDS.xss">
+      <DependentUpon>FreeTrialRequestDS.xsd</DependentUpon>
+    </None>
+    <None Include="StateProvinceDS.xsc">
+      <DependentUpon>StateProvinceDS.xsd</DependentUpon>
+    </None>
+    <None Include="StateProvinceDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>StateProvinceDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="StateProvinceDS.xss">
+      <DependentUpon>StateProvinceDS.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TestReportDataSet.xsc">
+      <DependentUpon>TestReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TestReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TestReportDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TestReportDataSet.xss">
+      <DependentUpon>TestReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TimeZonesDS.xsc">
+      <DependentUpon>TimeZonesDS.xsd</DependentUpon>
+    </None>
+    <None Include="TimeZonesDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TimeZonesDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="TimeZonesDS.xss">
+      <DependentUpon>TimeZonesDS.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolHaccp.Common\SchoolHaccp.Common.csproj">
+      <Project>{DE401A95-20A3-4733-A161-BDCEAA5A1CA8}</Project>
+      <Name>SchoolHaccp.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<University xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="University.xsd">
+  <Name>B.Z.University Multan</Name>
+  <Address>Boason Road Multan</Address>
+  <VC>VC Name</VC>
+  <MainLibrary>Central Library</MainLibrary>
+  <Department>    
+    <Name>Pharmacy</Name>
+    <Chairman>Dr. Ahmad</Chairman>
+    <Faculty>
+      <Id>1</Id>
+      <Name>Prof Nasir</Name>
+      <Designation>Assistant Professor</Designation>
+      <Qualification>MPhil in Bio Chemistry</Qualification>
+    </Faculty>
+    <Faculty>
+      <Id>2</Id>
+      <Name>Prof Talha</Name>
+      <Designation>Associate Professor</Designation>
+      <Qualification>PhD in Organic Chemistry</Qualification>
+    </Faculty>    
+    <Course>
+      <Id>1</Id>
+      <Name>B. Pharmacy</Name>
+      <Duration>4 Years</Duration>
+    </Course>    
+  </Department>
+  <Department>
+    <Name>Electrical Engineering</Name>
+    <Chairman>Dr. Ahmad</Chairman>
+    <Faculty>
+      <Id>1</Id>
+      <Name>Prof Nasir</Name>
+      <Designation>Assistant Professor</Designation>
+      <Qualification>MPhil in Electrical Engineering</Qualification>
+    </Faculty>
+    <Faculty>
+      <Id>2</Id>
+      <Name>Prof Talha</Name>
+      <Designation>Associate Professor</Designation>
+      <Qualification>PhD in Physics</Qualification>
+    </Faculty>
+    <Faculty>
+      <Id>1</Id>
+      <Name>Prof Zubair</Name>
+      <Designation>Assistant Professor</Designation>
+      <Qualification>MPhil in Electronics</Qualification>
+    </Faculty>
+    <Course>
+      <Id>1</Id>
+      <Name>Electrical Engineeringy</Name>
+      <Duration>4 Years</Duration>
+    </Course>
+  </Department>
+  <Student>
+    <Id>1</Id>
+    <Name>Majid</Name>
+    <CourseName>B.Pharmacy</CourseName>
+    <Department>Electrical Engineering</Department>   
+  </Student>
+  <Student>
+    <Id>2</Id>
+    <Name>Ahamd</Name>
+    <CourseName>B.Pharmacy</CourseName>
+    <Department>Electrical Engineering</Department>
+  </Student>
+  <Student>
+    <Id>3</Id>
+    <Name>Nadeem</Name>
+    <CourseName>B.Pharmacy</CourseName>
+    <Department>Electrical Engineering</Department>
+  </Student>
+  
+</University>

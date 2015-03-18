@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="ControlPanel_DistrictMaster" Codebehind="DistrictMaster.master.cs" %>
+
+<%@ Register src="../Controls/TopDistrictSiteMenu.ascx" tagname="TopDistrictSiteMenu" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+	<title>HACCP Builder Control Panel</title>
+	<link id="AdaptersInvariantImportCSS" runat="server" href="~/StaticContent/CSS/CSSMenu/Import.css"
+		rel="stylesheet" type="text/css" />
+		<link type="text/css" rel="Stylesheet" href="../App_Themes/Default/Default.css" />
+		<link id="Link1" runat="server" rel="Shortcut Icon" href="~/App_Themes/Grid/favicon.ico" type="image/x-icon" />
+        <link id="Link2" runat="server" rel="icon" href="~/App_Themes/Grid/favicon.ico" type="image/ico" />
+	<!--[if lt IE 7]>
+    <link runat="server" rel="stylesheet" href="~/StaticContent/CSS/CSSMenu/BrowserSpecific/IEMenu6.css" type="text/css" id="IEMenu6CSS" />
+<![endif]-->
+</head>
+<body>
+	<form id="form1" runat="server">
+		<div class="Main">
+            <div class="TopMenu">
+                <div id="mainmenu">
+                
+	                <%--<ucDistrictMenu:TopDistrictMenu ID="TopDistrictMenu1" runat="server" />--%>
+                    <uc1:TopDistrictSiteMenu ID="TopDistrictSiteMenu1" runat="server" />
+                </div>            
+            </div>
+            <asp:ContentPlaceHolder ID="PlaceHolder" runat="server">
+                
+			</asp:ContentPlaceHolder>
+        </div>
+	</form>
+</body>
+</html>

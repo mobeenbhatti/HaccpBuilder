@@ -1,0 +1,566 @@
+﻿
+body {
+}
+.Main {
+    background-color: White;
+    width: 1000px;
+}
+.GullCenter {
+    background-color: White;
+}
+.TopMenu {
+    background-color: White;
+    height: 27px;
+    text-align: left;
+    width: 100%;
+}
+.grid a {
+    color: Black;
+    font-family: Verdana;
+    font-size: 10px;
+    text-decoration: underline;
+}
+.DetailsView {
+}
+.grid a:link {
+    color: Black;
+    font-family: Verdana;
+    font-size: 10px;
+    text-decoration: underline;
+}
+.grid a:hover {
+    color: Black;
+    font-family: Verdana;
+    font-size: 10px;
+    text-decoration: underline;
+}
+.gridheaderline {
+    border-bottom: 1px solid #000000;
+    text-align: left;
+}
+.gridheaderline2 {
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+    text-align: center;
+}
+.gridheaderline3 {
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+    text-align: left;
+}
+.gridheaderBreakline {
+    border: 0 none;
+    border-collapse: collapse;
+    page-break-before: always;
+    text-align: left;
+}
+.gridPager {
+    background-color: Silver;
+}
+.Button {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    font-weight: bold;
+    width: 120px;
+}
+.ButtonSmall {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    font-weight: bold;
+    width: 60px;
+}
+.ButtonLarge {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    font-weight: bold;
+    width: 200px;
+}
+.TextBox {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color;
+    border-image: none;
+    border-style: solid;
+    border-width: 2px 0 2px 2px;
+    font-family: Verdana;
+    font-size: 10px;
+}
+.TextBox1 {
+    border: 2px solid;
+    font-family: Verdana;
+    font-size: 10px;
+}
+.DropDown {
+    background-color: White;
+    border: 2px solid;
+    font-family: Verdana;
+    font-size: 10px;
+}
+.GridLabel {
+    font-family: Verdana;
+    font-size: 10px;
+}
+.MainHeading {
+    font-family: Verdana;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-top: 45px;
+    text-align: left;
+    z-index: 500;
+}
+.SecondaryHeading {
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+.ContentLeft {
+    float: left;
+    text-align: left;
+    width: 520px;
+}
+.ContentLeftTest {
+    float: left;
+    margin-left: 10px;
+    margin-right: 20px;
+    text-align: left;
+    width: 80%;
+}
+.ContentRight {
+    float: left;
+    padding-left: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+.Clearer {
+    clear: both;
+    margin-top: 10px;
+}
+.ContactDetail {
+    margin-left: 20px;
+    vertical-align: top;
+}
+.Buttons {
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align: left;
+}
+.GirdDiv {
+    margin-left: 10px;
+    text-align: left;
+    width: 97%;
+}
+.haccpGirdDiv {
+    margin-left: 18%;
+    text-align: left;
+    width: 650px;
+}
+.haccpGirdDiv2 {
+    margin: 0 auto;
+    text-align: left;
+    width: 750px;
+}
+.SearchDiv {
+    background-color: #C0C0C0;
+    height: 20px;
+    line-height: 20px;
+    margin: 20px 10px 15px 15px;
+}
+.DistrictSearchDiv {
+    background-color: #C0C0C0;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.SearchDiv1 {
+    background-color: #DCDCDC;
+    height: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 420px;
+}
+.SearchDiv2 {
+    background-color: #DCDCDC;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.ValidationDiv1 {
+    background-color: #DCDCDC;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.SearchCol1 {
+    float: left;
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 3px;
+    text-align: left;
+    width: 520px;
+}
+.ButtonSearch {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    text-align: left;
+}
+.LogLable {
+    float: left;
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: normal;
+    width: 100px;
+}
+.ChecklistLabel {
+    float: left;
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: normal;
+    width: 250px;
+}
+.ChecklistLabel1 {
+    float: left;
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: normal;
+    width: 150px;
+}
+.ChecklistTextBox {
+    float: left;
+    height: 20px;
+    width: 250px;
+}
+.SearchCol2 Span {
+    color: Red;
+    font-family: Verdana;
+    font-size: 10px;
+    font-weight: bold;
+}
+.SearchCol3 {
+    float: left;
+    width: 240px;
+}
+.SearchCol4 {
+    float: left;
+    text-align: left;
+    width: 87px;
+}
+.FloatLeft {
+    float: left;
+}
+.ButtonsCols {
+    float: left;
+    padding-left: 50px;
+}
+.InventoryButtons {
+    margin-left: 10px;
+    margin-top: 80px;
+    text-align: left;
+}
+.InventoryButton {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    font-weight: bold;
+    width: 200px;
+}
+.Heading {
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: left;
+}
+.HeadingRight {
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 25px;
+    text-align: left;
+}
+.SimpleHeading {
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+.ViewPlanLabel {
+    float: left;
+    margin-left: 20px;
+    width: 200px;
+}
+.ViewPlanButton {
+    float: right;
+    font-family: Verdana;
+    margin-right: 10px;
+    margin-top: 25px;
+}
+.ViewPlanClearer {
+    margin-bottom: 25px;
+}
+.DailyPart {
+    float: right;
+    margin-right: 135px;
+    margin-top: 10px;
+}
+.HaccpPlantLeft {
+    margin-left: 20px;
+    margin-top: 40px;
+    text-align: left;
+}
+.HaccpButton {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    font-weight: bold;
+    width: 150px;
+}
+.SmallClearer {
+    margin-bottom: 20px;
+}
+.DropDown {
+    background-color: #C0C0C0;
+    border: 2px solid;
+    font-family: Verdana;
+    font-weight: bold;
+    width: 230px;
+}
+.LogDesc {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.LogHeading {
+    color: #56895E;
+    font-weight: bold;
+}
+.LogButton {
+    float: left;
+    margin-left: 50px;
+}
+.PageFooter {
+    background-color: #778888;
+    height: 20px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+.DataList {
+    background-color: Silver;
+    border-color: Black;
+    font-family: Verdana;
+    outline-color: Black;
+}
+.ValidateLabel {
+    color: #AA0000;
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+}
+.LinkButton {
+    color: Blue;
+    font-family: Verdana;
+    font-size: 10px;
+}
+.CustomPaging {
+    background-color: Silver;
+    height: 20px;
+    margin: 10px 10px 40px;
+    text-align: center;
+}
+.FoodGroupLabel {
+    font-family: Verdana;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+.PrintHeading1 {
+    font-family: Times New Roman;
+    font-size: 16px;
+    font-weight: bold;
+}
+.PrintHeading2 {
+    font-family: Times New Roman;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.PrintHeading3 {
+    font-family: Times New Roman;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.PrintHeading4 {
+    font-family: Times New Roman;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.PrintHeading5 {
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+}
+.PrintHeading6 {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+.SOPHeading {
+    font-family: Verdana;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 200px;
+    margin-right: 30px;
+}
+.SOPHeading2 {
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.SOPList {
+    font-family: Arial;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.SOPList1 {
+    float: left;
+    font-family: Arial;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.SOPHeading1 {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.SOPLine {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+.HiddenCheckBoxText label {
+    display: none;
+}
+.modalBackground {
+    background-color: #CCCCFF;
+    opacity: 0.5;
+}
+.ModalWindow {
+    background: none repeat scroll 0 0 #F0F0F0;
+    left: 1px;
+    position: absolute;
+    top: -999px;
+}
+.haccpMain {
+}
+.haccpInner {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: Black;
+    margin: 2px auto;
+    padding: 20px;
+    width: 80%;
+    overflow:hidden;
+}
+.haccpInner1 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: Black;
+    margin: 2px auto;
+    overflow: visible;
+    width: 90%;
+}
+.BackGround1 {
+    color: #000000;
+    font-family: Verdana;
+    font-size: 13px;
+    width: 100%;
+}
+.BackGround2 {
+    font-family: Verdana;
+    font-size: x-small;
+}
+.haccpHeading1 {
+    font-family: Verdana;
+    font-size: small;
+}
+.haccpText {
+    font-family: Verdana;
+    font-size: xx-small;
+}
+.haccpList {
+    padding-left: 15px;
+}
+.BlueHeading {
+    color: Blue;
+    font-family: Verdana;
+    font-size: 13px;
+    font-weight: bold;
+}
+.PageBreak {
+    page-break-before: always;
+}
+.Error {
+    color: Red;
+}
+.popUpStyle {
+    background-color: White;
+    color: #4F6B72;
+    height: 500px;
+    overflow: scroll;
+    padding: 6px;
+    width: 850px;
+}
+.popUpStyle1 {
+    background-color: White;
+    border-color: White;
+    border-width: 1px;
+    padding: 10px;
+}
+.popUpStyleNew {
+    background-color: #F2F2F2;
+    color: #4F6B72;
+    opacity: 1;
+    padding: 6px;
+}
+.drag {
+    background-color: #DDDDDD;
+    border: 1px solid gray;
+    cursor: move;
+}
+#progress {
+    background-color: #FFFFFF;
+    border: 1px solid #666666;
+    color: #FFFFFF;
+    font-family: Calibri;
+    font-size: 23px;
+    font-weight: bold;
+    left: 40%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    vertical-align: middle;
+    z-index: 99;
+}
+.loading {
+    background-image: url("images/loader.gif");
+    background-position: right center;
+    background-repeat: no-repeat;
+}

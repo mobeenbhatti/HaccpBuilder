@@ -1,0 +1,1253 @@
+﻿<%@ page language="C#" autoeventwireup="true" inherits="ControlPanel_SampleHaccpPlan" stylesheet %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+     <title>Food Safety Management System Overview </title>
+    <link href="App_Themes/Default/Default.css" type="text/css"  />
+    <link href="App_Themes/Default/Default3.css" type="text/css" />
+</head>
+<body style="margin:0px; background:#999999;">
+    <form id="form1" runat="server">
+    <div class="haccpInner"> 
+         <%-- Kitchen Details --%>
+        <table width="100%" >
+        <tr>
+			<td valign="top" align="center" >						
+				<span style=" padding-bottom: 20px; padding-top: 20px; font-weight: bold;" class="haccpHeading1">
+			    Food Safety Management System Overview and HACCP Plan<br />
+                HACCP Builder Online Real-Time Solution
+			    </span>
+				<br/>		
+			</td>
+			<td class="haccpText">
+			</td>
+			<td class="haccpText">
+			</td>
+		</tr>	
+		<tr>	
+		<td >
+		    <hr />
+		</td>
+		</tr>			
+		<tr>		    
+             <td align="center"  class="BackGround1">		             
+                   <b>DESCRIPTION OF PROGRAM OVERVIEW AND FACILITY:</b>                      
+             </td>		    
+		</tr>		
+		<tr>
+		    <td class="haccpText" align="center" >	
+		        <asp:Repeater ID="rptKitchenDetails" runat="server" DataSourceID="SqlDSKitchenDetails"	>
+		        <ItemTemplate>
+		            <table  > 
+                        <tr>                      
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="lblKitchenCity" Text='<%# "Site Location Name: " + DataBinder.Eval(Container.DataItem,"KitchenName") %>' runat="server"></asp:Label>
+                            </td>  
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>                    
+                             <td class="haccpText" align="left">
+                                 <asp:Label ID="lblManager" Text='<%# "Manager: " + DataBinder.Eval(Container.DataItem,"Manager") %>' runat="server"></asp:Label>
+                             </td> 
+                        </tr>
+                         <tr>
+                        </tr>
+                        <tr>                       
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="lblMail2" Text='<%# "Email: " + DataBinder.Eval(Container.DataItem,"EmailAddress") %>' runat="server"></asp:Label>
+                            </td>                            
+                        </tr>
+                         <tr>
+                        </tr>
+                        <tr>
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="lblKitchenAddress" Text='<%# "Address: " + DataBinder.Eval(Container.DataItem,"Address").ToString().Trim() %>' runat="server"></asp:Label>
+                            </td>  
+                       </tr>
+                        <tr>
+                        </tr>
+                      <tr>
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="Label1" Text='<%# "County: " + DataBinder.Eval(Container.DataItem,"County") %>' runat="server"></asp:Label>
+                            </td>  
+                        </tr>
+                         <tr>
+                        </tr>
+                        <tr>
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="Label2" Text='<%# "City: " +  DataBinder.Eval(Container.DataItem,"City") + " " + DataBinder.Eval(Container.DataItem,"PostalCode")  %>' runat="server"></asp:Label>
+                            </td>  
+                        </tr>
+                        <tr>
+                        </tr>
+                        <tr>                    
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="lblPhone2" Text='<%# "Phone: " +   DataBinder.Eval(Container.DataItem,"Phone") %>' runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                         <tr>
+                        </tr>
+                        <tr>                  
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="lblAltPhone" Text='<%# "Alternate Phone: " + DataBinder.Eval(Container.DataItem,"AltPhone") %>' runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                         <tr>
+                        </tr>
+                        <tr>                  
+                            <td class="haccpText" align="left">
+                                <asp:Label ID="lblFax" Text='<%# "Fax: " + DataBinder.Eval(Container.DataItem,"Fax") %>' runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                         <tr>
+                        </tr>
+                    </table>
+		        </ItemTemplate>
+		        </asp:Repeater>		        
+                  <asp:SqlDataSource ID="SqlDSKitchenDetails" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>" 
+                    SelectCommand="uspAdm_GetKitchenDetailsByUserId" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:SessionParameter DefaultValue="SFSMSHB" Name="vchEmail" 
+                            SessionField="Username" Type="String" />
+                        <asp:SessionParameter DefaultValue="SFSMSHB" Name="vchPassword" 
+                            SessionField="Password" Type="String" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+            </td>
+		</tr>
+		<tr>	
+		<td >
+		    <hr />
+		</td>
+		</tr></table>
+		<div style="page-break-after:always"></div>	
+		<table width="100%" >
+		<tr>		    
+             <td align="left"  class="BackGround1">		             
+                   <b>Food Safety Program Overview</b>                      
+             </td>		    
+		</tr>			
+		<tr>		
+		<td>
+		    <asp:Repeater ID="rptKitchenPlan" runat="server"  DataSourceID="odsKitchenPlan">       
+             <ItemTemplate>
+                 <div runat="server" id="dvProgram" class="haccpText"><%#Eval("PlanText")%></div> 
+            </ItemTemplate>   
+            </asp:Repeater> 	
+	         <asp:ObjectDataSource ID="odsKitchenPlan" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetKitchenPlanByCategorySortId" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenPlan">
+                <SelectParameters>            
+                    <asp:Parameter DefaultValue="1" Name="nCategoryId" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                     <asp:Parameter DefaultValue="1" Name="nPlanSortId" Type="Int32" />
+                </SelectParameters>
+             </asp:ObjectDataSource>
+		</td>
+		</tr>
+		<tr>	
+		<td>
+		    <hr />
+		</td>
+		</tr>		
+	</table>	 
+        <div style="page-break-after:always"></div>
+         <%-- Procedural Question --%>
+		<table  width="100%">
+       
+        <tr>
+			<td class="BackGround1" >						
+				<b>HACCP PROCEDURAL QUESTIONS AND ANSWERS</b>									
+			</td>		
+		</tr>	
+		<tr><td></td></tr>	
+		<%-- Buyes Specs --%>
+		<tr>
+		    <td class="haccpHeading">
+		       <b> HACCP Procedural Questions:  Buyer Specifications</b>
+		    </td>
+		</tr>
+		<tr><td></td></tr> 
+		<tr>
+		    <td class="haccpText">
+		     <b>   Describe Establishment Requirements for Vendor Selection</b>
+		    </td>
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		        <asp:Label ID="lblQuestion1" Text="" runat="server"></asp:Label>
+		    </td>
+		</tr>	
+		<tr><td></td></tr> 
+		<tr><td></td></tr>	
+		<%-- Allergen Management --%>
+		<tr>
+		    <td class="haccpHeading">
+		       <b> HACCP Procedural Questions:  Allergen Management</b>
+		    </td>
+		</tr>
+		<tr><td></td></tr> 
+		<tr>
+		    <td class="haccpText">
+		       <p><b> Do any product/menu items contain potential allergen ingredients</b></p>
+		       <p><asp:RadioButton ID="rdlAllergenYes" Enabled="false" runat="server" Text="Yes" />
+		       <asp:RadioButton ID="rdlAllergenNo" Enabled="false" runat="server" Text="No" />
+		       <asp:RadioButton ID="rdlAllergenNA" Enabled="false" runat="server" Text="NA" />
+		       </p>
+		    </td>		   
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		       <b> If yes, describe allergen ingredients</b>
+		    </td>
+		    
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		        <asp:Label ID="lblQuestion2" Text="" runat="server"></asp:Label>
+		    </td>
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		       <b> Please describe procedures for allergen control:</b>
+		    </td>		    
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		        <asp:Label ID="lblQuestion2b" Text="" runat="server"></asp:Label>
+		    </td>
+		</tr>
+		<tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr> 
+		</tr>
+		<%-- Safety Hazard --%>
+		<tr>
+		    <td class="haccpHeading">
+		       <b> HACCP Procedural Questions:  Safety Hazard Procedures</b>
+		    </td>
+		</tr>
+		<tr><td></td></tr> 
+		<tr>
+		    <td class="haccpText">
+		      <b>Describe basic procedures to eliminate product/menu items from contamination  by biological, chemical and physical food safety hazards</b>
+		    </td>
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		        <asp:Label ID="lblQuestion3" Text="" runat="server"></asp:Label>
+		    </td>
+		</tr>
+		<tr><td></td></tr> 
+		<%-- Soiled And Unsanitized --%>
+		<tr>
+		    <td class="haccpHeading">
+		       <b> HACCP Procedural Questions:  Soiled and Unsanitized Surfaces</b>
+		    </td>
+		</tr>
+		<tr><td></td></tr> 
+		<tr>
+		    <td class="haccpText">
+		       <b> Do soiled and unsanitized surfaces of equipment and utensils contact raw or cooked food</b>
+		       </br>
+		        <asp:RadioButton ID="rdbSoilYes" Enabled="false" TextAlign="Right" runat="server" Text="Yes" />
+		        <asp:RadioButton ID="rdbSoilNo" Enabled="false" TextAlign="Right"  runat="server" Text="No" />
+		   <asp:RadioButton ID="rdbSoilNA" Enabled="false" TextAlign="Right"  runat="server" Text="NA" />
+		    </td>		    
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		       <b>If yes, describe how the raw or cooked food comes into contact with unclean or unsanitized surfaces</b>
+		    </td>		    
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		        <asp:Label ID="lblQuestion4" Text="" runat="server"></asp:Label>
+		    </td>
+		</tr>
+		<tr><td></td></tr> 		
+		<tr>
+		    <td  class="haccpHeading">
+		       <b> HACCP Procedural Questions:  Daily Requirements (HACCP Builder will fulfill requirements daily)</b>
+		    </td>
+		</tr>
+		<tr>
+		    <td class="haccpText">
+		     <asp:GridView ID="grdQuestion" runat="server" AutoGenerateColumns="false" DataSourceID="ObjectDataSource3" 
+                    SkinID="gridviewHaccpSkin" >
+                <Columns>
+                    <asp:TemplateField  ItemStyle-Width="10px">
+                        <ItemTemplate>
+                        <asp:HiddenField ID="hfQuestionId" Value='<%# DataBinder.Eval(Container.DataItem, "QuestionId") %>' runat="server" />                    
+                        </ItemTemplate>
+                    </asp:TemplateField>               
+                    <asp:BoundField DataField="Question" ItemStyle-Width="350px" HeaderText="Question" />                
+                    <asp:TemplateField HeaderText="Answer" ItemStyle-Width="80px">
+                        <ItemTemplate >
+                            <asp:RadioButton ID="rdbAnswerYes" Text="Yes" Enabled="false" GroupName="Answer" runat="server" /> 
+                            <asp:RadioButton ID="rdbAnswerNo" Text="No" Enabled="false" GroupName="Answer"  runat="server" /> 
+                             <asp:RadioButton ID="rdbAnswerNA" Text="NA" Enabled="false" GroupName="Answer"  runat="server" /> 
+                            <asp:Label ID="lblValidateProcess" Text="" CssClass="ValidateLabel" runat="server"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>                    
+                </Columns>
+            </asp:GridView>
+             <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetQuestionsDataSet" 
+        TypeName="SchoolHaccp.BusinessLogic.ProcessGetProceduralQuestion">        
+        </asp:ObjectDataSource>	
+		    </td>
+		</tr>
+		<td>
+		    <hr />
+		</td>
+	</table>
+		<div style="page-break-after:always"></div>
+		<%-- Vendors --%>
+		<table  width="100%">		
+		<tr>
+		    <td class="BackGround1">		       
+		       <b> VENDORS DETAIL REVIEW </b>
+		    </td>
+		</tr>
+		<tr>
+		    <td class="BackGround2">
+		        HACCP Procedural Questions: All Vendors
+		    </td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>		
+		    <td class="haccpText">
+		         <asp:GridView ID="grdHotHolding" runat="server" SkinID="gridviewHaccpSkin" AutoGenerateColumns="False" 
+                    DataSourceID="ObjectDataSource4">                
+                <Columns> 
+                    <%--<asp:BoundField DataField="Id" HeaderText="Entry ID" ItemStyle-Width="50px" HeaderStyle-CssClass="gridheaderline" />--%>
+                          
+                    <%--<asp:TemplateField HeaderText="Entry ID">                        
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlTableName" runat="server"  NavigateUrl="~/ControlPanel/Default2.aspx" Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="250px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >--%>
+	                    <asp:TemplateField HeaderText="Entry Date">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Entrydate","{0:d}") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	                    
+	                    <asp:TemplateField HeaderText="Vendor Name">
+	                        <ItemTemplate>
+	                        <asp:Label ID="lblName" runat="server"  Text='<%# DataBinder.Eval(Container.DataItem, "VendorName")  %>'></asp:Label>	                            	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                     <asp:TemplateField HeaderText="Contact Name">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "ContactName") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Phone">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblPhone" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Phone") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	
+	                     <asp:TemplateField HeaderText="Training and Certifications">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblTraining" runat="server" Text='<%# Eval("Training").ToString() == "1"? "Yes":"No" %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	                    
+	                    <asp:TemplateField HeaderText="Corrective Actions">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblCorrective" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "CorrectiveAction") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Training and/or Certifications Details">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblCertification" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "TrainingDetail") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Verified By">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblVerifyBy" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "VerifiedBy") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Verified Date">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblVerifiedDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "VarifiedDate","{0:d}") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	
+	                    <%--<asp:TemplateField HeaderText="Entry Date" ItemStyle-HorizontalAlign="Center">
+	                        <ItemTemplate>
+	                             <asp:Label ID="lblEntrydate" runat="server"  Text='<%# DataBinder.Eval(Container.DataItem, "EntryDate","{0:d}")  %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle Width="120px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >--%>                    
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource4" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetVendorByKitchenId" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetVendor">
+                <SelectParameters>
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                </SelectParameters>
+              </asp:ObjectDataSource>
+		    </td>
+		</tr>
+		<tr>
+		<td >
+		    <hr />
+		</td>
+		</tr>
+		</table>
+		<div style="page-break-after:always"></div>
+	    <%-- Customers --%>
+		<table  width="100%">			
+		<tr>
+		    <td class="BackGround1">		       
+		       <b> CUSTOMERS DETAIL REVIEW </b>
+		    </td>
+		</tr>
+		<tr>
+		    <td class="BackGround2" >
+		        HACCP Procedural Questions: All Customers
+		    </td>
+		</tr>		
+		<tr>
+		    <td class="haccpText">
+		         <asp:GridView ID="grdCustomers"    runat="server" SkinID="gridviewHaccpSkin" AutoGenerateColumns="False" 
+                    DataSourceID="ObjectDataSource7">                
+                <Columns> 
+                    <%--<asp:BoundField DataField="Id" HeaderText="Entry ID" ItemStyle-Width="50px" HeaderStyle-CssClass="gridheaderline" />--%>
+                          
+                    <%--<asp:TemplateField HeaderText="Entry ID">                        
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlTableName" runat="server"  NavigateUrl="~/ControlPanel/Default2.aspx" Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="250px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >--%>
+	                    <asp:TemplateField HeaderText="Entry Date">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Entrydate","{0:d}") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	                    
+	                    <asp:TemplateField HeaderText="Customer Name">
+	                        <ItemTemplate>
+	                        <asp:Label ID="lblName" runat="server"  Text='<%# DataBinder.Eval(Container.DataItem, "CompanyName")  %>'></asp:Label>	                            	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                     <asp:TemplateField HeaderText="Contact Name">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "ContactName") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Phone">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblPhone" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Phone") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	
+	                     <asp:TemplateField HeaderText="Training and Certifications">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblTraining" runat="server" Text='<%# Eval("Training").ToString() == "1"? "Yes":"No" %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	                    
+	                    <asp:TemplateField HeaderText="Corrective Actions">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblCorrective" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "CorrectiveAction") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Training and/or Certifications Details">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblCertification" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "TrainingDetail") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Verified By">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblVerifyBy" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "VerifiedBy") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Verified Date">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblVerifiedDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "VarifiedDate","{0:d}") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	
+	                    <%--<asp:TemplateField HeaderText="Entry Date" ItemStyle-HorizontalAlign="Center">
+	                        <ItemTemplate>
+	                             <asp:Label ID="lblEntrydate" runat="server"  Text='<%# DataBinder.Eval(Container.DataItem, "EntryDate","{0:d}")  %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle Width="120px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >--%>                    
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource7" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomerByKitchenId" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetCustomer">
+                <SelectParameters>
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                </SelectParameters>
+              </asp:ObjectDataSource>
+		    </td>
+		</tr>
+		<tr>
+		<td >
+		    <hr />
+		</td>
+		</tr>
+		</table>
+
+		<div style="page-break-after:always"></div>
+		<table  width="100%">
+		
+		
+        <%-- Inventory Items Repeater --%>
+        <tr>
+			<td class="haccpText">
+			    					
+				<b class="BackGround1">Inventory Items Review</b>
+				<asp:Repeater ID="rptInventory" runat="server" DataSourceID="ObjectDataSource2">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr > 
+                        <th class="haccpHeading">Quantity</td> 
+                        <th class="haccpHeading" align="left">Item Description</td>
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >        
+                        <td class="haccpText"><%#Eval("Quantity")%></td>
+                        <td class="haccpText"><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetHaccpInventory" 
+        TypeName="SchoolHaccp.BusinessLogic.ProcessGetInventoryItemsByKitchenId">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                SessionField="KitchenId" Type="Int32" />
+        </SelectParameters>
+        </asp:ObjectDataSource>					
+			</td>
+		</tr>	
+		<tr>
+		<td >
+		    <hr />
+		</td>
+		</tr>
+		</table>
+		<div style="width:100%" >
+         <div class="BackGround1">Product/Menu Detail All Recipes</div>  
+          <asp:Repeater ID="rptProcess" runat="server" 
+                DataSourceID="SqlDataSource2" onitemdatabound="rptProcess_ItemDataBound">             
+                <ItemTemplate>                 
+                  <asp:DetailsView ID="dtvProcess" runat="server" AutoGenerateRows="False" Height="50px">    
+                  <HeaderTemplate>            
+                    <table width="100%"> 
+                    <tr> 
+                        <td>                    
+                        </td>            
+                        <td></td>             
+                    </tr> 
+                   </HeaderTemplate>  
+                   <Fields>
+                          <asp:TemplateField ItemStyle-Width="650px" >
+                              <ItemTemplate> 
+                           <tr> 
+                           <td align="center">      
+                           <tr id="Tr1" runat="server" visible='<%# string.IsNullOrEmpty(Eval("ProcessName").ToString()) ? false : true%>'>
+                            <td class="BackGround1">
+                                <asp:Label ID="lblHeading" runat="server" Text='<%# Eval("ProcessName") %>'></asp:Label>                	
+                             </td>             
+                           </tr>      
+                           <tr id="Tr2" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field1").ToString()) ? false : true%>'>
+                           <td  height="22"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Field1") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr3" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field1").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr4" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field2").ToString()) ? false : true%>'>
+                           <td  height="18"  align="center" class="haccpText">
+                            <asp:Label ID="Label4" runat="server" Text='<%# Eval("Field2") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr5" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field2").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr6" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field3").ToString()) ? false : true%>'>
+                           <td  height="22"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("Field3") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr7" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field3").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr8" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field4").ToString()) ? false : true%>'>
+                          <td  height="18"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("Field4") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr9" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field4").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr10" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field5").ToString()) ? false : true%>'>
+                           <td  height="22"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("Field5") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr11" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field5").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr12" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field6").ToString()) ? false : true%>'>
+                           <td  height="18"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label8" runat="server" Text='<%# Eval("Field6") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr13" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field6").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr14" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field7").ToString()) ? false : true%>'>
+                           <td  height="22" valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label9" runat="server" Text='<%# Eval("Field7") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr15" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field7").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr16" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field8").ToString()) ? false : true%>'>
+                          <td  height="18"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("Field8") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr17" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field8").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr18" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field9").ToString()) ? false : true%>'>
+                           <td  height="22"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label11" runat="server" Text='<%# Eval("Field9") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr19" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field9").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr>
+                           <tr id="Tr20" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field10").ToString()) ? false : true%>'>
+                           <td  height="18"  valign="top" align="center" class="haccpText">
+                            <asp:Label ID="Label12" runat="server" Text='<%# Eval("Field10") %>'></asp:Label>
+                           </td>
+                           </tr>
+                           <tr id="Tr21" runat="server" visible='<%# string.IsNullOrEmpty(Eval("Field10").ToString()) ? false : true%>'>
+                   		        <td colspan="3" height="20" valign="top">
+							        <hr>
+						        </td>
+				            </tr> 
+				            </td>
+				          </tr>                            
+                   </ItemTemplate>
+                                </asp:TemplateField>
+                            </Fields>
+                       <FooterTemplate>
+                            </table>
+                               <div style="page-break-after:always"></div>
+                            </FooterTemplate>
+                        </asp:DetailsView>                  
+                    <asp:HiddenField ID="hfProcessId" Value='<%# Eval("ProcessId") %>' runat="server" />                  
+				<b class="haccpHeading"><asp:Label ID="lblProcess" runat="server" Text='<%# "Selected Recipes for " + Eval("ProcessName") %>'></asp:Label></b>
+				<asp:GridView ID="grdMenuProcess1" runat="server" Width="100%" SkinID="gridviewHaccpSkin" AutoGenerateColumns="False" 
+                    onrowdatabound="grdMenuProcess1_RowDataBound" >  
+                    <Columns>                    	                    
+	                    <asp:TemplateField HeaderText="Product/ Menu Item" ItemStyle-Width="30px" >
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Name")  %>'></asp:Label>	                            	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />	                        
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Process Type" ItemStyle-Width="50px">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblProcess" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Process") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Prep Type" ItemStyle-Width="50px" >
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblPreperation" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "PreparationType") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	
+	                     <asp:TemplateField HeaderText="RTE" ItemStyle-Width="50px" >
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblRte" runat="server" Text='<%# Eval("Ready").ToString()== "1"? "Yes": "No"%>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	
+	                    <asp:TemplateField HeaderText="Ingredient" ItemStyle-Width="70px" >
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblIngredient" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Ingredient") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                     <asp:TemplateField HeaderText="Vendor" >
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblVendor" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "VendorName") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >		
+	                    <asp:TemplateField HeaderText="Food Category">
+	                        <ItemTemplate>
+	                             <asp:Label ID="lblHazard" runat="server"  Text='<%# Eval("FoodCategory").ToString()== ""? "<span class=\"Error\">Requires Update</span>": Eval("FoodCategory")%>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                     <asp:TemplateField HeaderText="CCL Low Temp">
+	                        <ItemTemplate>
+	                             <asp:Label ID="lblCCLLow" runat="server"  Text='<%# Eval("CCLTempLow")%>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="CCL High Temp">
+	                        <ItemTemplate>
+	                             <asp:Label ID="lblCCLHigh" runat="server"  Text='<%# Eval("CCLTempHigh")%>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Control Point">
+	                        <ItemTemplate>
+	                             <asp:Label ID="lblCP" runat="server"  Text='<%# Eval("CP")%>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	                    
+	                     <asp:TemplateField HeaderText="Biological Hazards">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblBioHazards" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "BiologicalHazard") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Chemical Hazards">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblChemHazards" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "ChemicalHazard") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle  />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Physical Hazards">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblPhysHazards" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "PhysicalHazard") %>'></asp:Label>	                           
+	                        </ItemTemplate>
+	                        <ItemStyle />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >	                                       
+                </Columns>  
+            </asp:GridView>            
+                <asp:ObjectDataSource ID="ObjectDataSource6" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetMenuItemsNewByProcess" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetMenuItemNew">
+                <SelectParameters>
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                    <asp:Parameter DefaultValue="1" Name="nProcessId" Type="Int32" />
+                </SelectParameters>
+              </asp:ObjectDataSource>
+            <strong> <asp:Label ID="lblProcessMenu" runat="server"></asp:Label>	</strong>
+ 			<div style="page-break-after:always"></div>
+                </ItemTemplate>
+       </asp:Repeater>    
+           <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>" 
+                    SelectCommand="uspAdm_GetProcessesByKitchenMenuId" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:SessionParameter Name="nKitchenId" DefaultValue="1157911358" SessionField="KitchenId" Type="Int32" />
+            </SelectParameters>
+           </asp:SqlDataSource>
+           </div>
+         <div width="100%" >
+         <b class="BackGround1">LOG BASED CORRECTIVE ACTIONS</b>
+         <br /><br />
+         <b class="BackGround1">Cold Holding Log</b>
+         <div id="dvColdHoldingLog" visible="false" runat="server">Inactive</div>
+         <div>
+            <asp:Repeater ID="rptColdHoldingLog" runat="server" DataSourceID="ObjectDataSource8">
+                     <HeaderTemplate>
+                        <table> 
+                            <tr >  
+                            </tr> 
+                     </HeaderTemplate>
+                     <ItemTemplate>
+                         <tr >        
+                           
+                            <td class="haccpText"><%#Eval("Name")%></td>        
+                        </tr>     
+                     </ItemTemplate>
+                     <FooterTemplate>
+                     </table>
+                     </FooterTemplate>
+                </asp:Repeater>
+                <asp:ObjectDataSource ID="ObjectDataSource8" runat="server" OldValuesParameterFormatString="original_{0}"
+                    SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                        <asp:Parameter DefaultValue="1" Name="nLogTypeId" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+         </div>
+         </div>
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Cooling Temperature Log</b>
+         <div id="dvCoolingLog" visible="false" runat="server">Inactive</div>
+         <div>
+            <asp:Repeater ID="rptCoolingLog" runat="server" DataSourceID="ObjectDataSource9">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr >  
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >        
+                       
+                        <td class="haccpText" ><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+                <asp:ObjectDataSource ID="ObjectDataSource9" runat="server" OldValuesParameterFormatString="original_{0}"
+                    SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                        <asp:Parameter DefaultValue="2" Name="nLogTypeId" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+         </div>
+         </div>
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Freezer Log	</b>
+         <div id="dvFreezerLog"  visible="false" runat="server">Inactive</div>
+         <div>
+           <asp:Repeater ID="rptFreezerLog" runat="server" DataSourceID="ObjectDataSource11">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr >  
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >  
+                        <td class="haccpText"><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+           <asp:ObjectDataSource ID="ObjectDataSource11" runat="server" OldValuesParameterFormatString="original_{0}"
+                    SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                        <asp:Parameter DefaultValue="7" Name="nLogTypeId" Type="Int32" />
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+         </div>
+         </div>
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Hot Holding Log</b>
+         <div id="dvHotHoldingLog"  visible="false" runat="server">Inactive</div>
+         <div>
+           <asp:Repeater ID="rptHotHlodingLog" runat="server" DataSourceID="ObjectDataSource12">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr >  
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >        
+                       
+                        <td class="haccpText"><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+                 <asp:ObjectDataSource ID="ObjectDataSource12" runat="server" OldValuesParameterFormatString="original_{0}"
+                                        SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                                            <asp:Parameter DefaultValue="3" Name="nLogTypeId" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+         </div>
+         </div>
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Receiving Log</b>
+         <div id="dvReceivingLog"  visible="false" runat="server">Inactive</div>
+         <div>
+            <asp:Repeater ID="rptReceivingLog" runat="server" DataSourceID="ObjectDataSource13">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr >  
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >        
+                       
+                        <td class="haccpText"><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+            <asp:ObjectDataSource ID="ObjectDataSource13" runat="server" OldValuesParameterFormatString="original_{0}"
+                                        SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                                            <asp:Parameter DefaultValue="4" Name="nLogTypeId" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+         </div>
+         </div>
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Refrigeration Log</b>
+         <div id="dvRefrigrationLog"  visible="false" runat="server">Inactive</div>
+         <div>
+           <asp:Repeater ID="rptRefrigrationLog" runat="server" DataSourceID="ObjectDataSource14">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr >  
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >        
+                       
+                        <td class="haccpText"><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+           <asp:ObjectDataSource ID="ObjectDataSource14" runat="server" OldValuesParameterFormatString="original_{0}"
+                                        SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                                            <asp:Parameter DefaultValue="5" Name="nLogTypeId" Type="Int32" />
+                                        </SelectParameters>
+                                    </asp:ObjectDataSource>
+         </div>
+         </div>
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Shipping Log</b>
+         <div id="dvShippingLog"  visible="false" runat="server">Inactive</div>
+         <div>
+            <asp:Repeater ID="rptShippingLog" runat="server" DataSourceID="ObjectDataSource15">
+                 <HeaderTemplate>
+                    <table> 
+                        <tr >  
+                        </tr> 
+                 </HeaderTemplate>
+                 <ItemTemplate>
+                     <tr >        
+                       
+                        <td class="haccpText"><%#Eval("Name")%></td>        
+                    </tr>     
+                 </ItemTemplate>
+                 <FooterTemplate>
+                 </table>
+                 </FooterTemplate>
+                 </asp:Repeater>
+            <asp:ObjectDataSource ID="ObjectDataSource15" runat="server" OldValuesParameterFormatString="original_{0}"
+                    SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" DefaultValue="1157911358"/>
+                        <asp:Parameter DefaultValue="8" Name="nLogTypeId" Type="Int32" />
+                    </SelectParameters>
+             </asp:ObjectDataSource>
+         </div>
+         </div>  
+         <br /><br />
+         <div width="100%" >
+         <b class="BackGround1">Temperature Log (corrective actions with respect to food category)</b>
+         <div id="dvTemperatureLog"  visible="false" runat="server">Inactive</div>
+         <div>
+            <asp:Repeater ID="rptFoodcategory" DataSourceID="SqlDataSource3" runat="server" OnItemDataBound="rptFoodCatogary_ItemDataBound">
+            <HeaderTemplate>
+            <table>
+            </HeaderTemplate>
+            <ItemTemplate>
+            <tr>
+            <td>           
+            <b class="BackGround1"> <%#Eval("FoodCategory")%> </b>            
+            <tr>
+            </tr>           
+                <asp:HiddenField ID="hfFoodCategoryId" Value='<%# Eval("FoodCategoryId") %>' runat="server" />
+                <asp:Repeater ID="rptFoodcategoryCorectiveAction" runat="server">
+                    <ItemTemplate>
+                        <tr>
+                            <td class="haccpText">
+                                <%#Eval("Name")%>
+                                
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </td>
+            <tr id="trFoodCategoryCorrectiveActions" runat="server" visible="false">
+            <td>
+            <asp:Label ID="lblFoodCategoryCorrectiveActions" Text="No Requirement" runat="server"></asp:Label>
+            </td>
+            </tr>           
+        </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>   
+         <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+                        ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>" 
+                        SelectCommand="uspAdm_GetFoodCategoriesByKitchenIngredients" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" DefaultValue="1157911358" Type="Int32" />
+                </SelectParameters>
+                    </asp:SqlDataSource> 
+         </div>
+         </div>
+         <div style="page-break-after:always"></div> 
+           <!-- PEST CONTROL PLAN -->
+    <table width="100%">
+        <tr>		
+		<td >
+		    <asp:Repeater ID="Repeater1" runat="server"  DataSourceID="odsPestControlPlan">       
+             <ItemTemplate>
+                 <div runat="server" id="dvProgram" class="haccpText" ><%#Eval("PlanText")%></div> 
+            </ItemTemplate>   
+            </asp:Repeater> 	
+	         <asp:ObjectDataSource ID="odsPestControlPlan" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetKitchenPlanByCategorySortId" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenPlan">
+                <SelectParameters>            
+                    <asp:Parameter DefaultValue="9" Name="nCategoryId" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                     <asp:Parameter DefaultValue="3" Name="nPlanSortId" Type="Int32" />
+                </SelectParameters>
+             </asp:ObjectDataSource>
+		</td>
+		</tr>
+		<tr>	
+		<td >
+		    <hr />
+		</td>
+		</tr>	
+    </table>
+    <div style="page-break-after:always"></div>    
+    <!-- CLEANING AND SANITIZATION PLAN -->
+    <table width="100%">
+        <tr>		
+		<td>
+		    <asp:Repeater ID="rptSanitization" runat="server"  DataSourceID="odsSenitizationPlan">       
+             <ItemTemplate>
+                 <div runat="server" id="dvProgram" class="haccpText"><%#Eval("PlanText")%></div> 
+            </ItemTemplate>   
+            </asp:Repeater> 	
+	         <asp:ObjectDataSource ID="odsSenitizationPlan" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetKitchenPlanByCategorySortId" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenPlan">
+                <SelectParameters>            
+                    <asp:Parameter DefaultValue="9" Name="nCategoryId" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                     <asp:Parameter DefaultValue="2" Name="nPlanSortId" Type="Int32" />
+                </SelectParameters>
+             </asp:ObjectDataSource>
+		</td>
+		</tr>
+		<tr>	
+		<td >
+		    <hr />
+		</td>
+		</tr>	
+    </table>   
+     <div style="page-break-after:always"></div>
+    <!-- FACILITY AND EQUIPMENT PLAN -->
+    <table width="100%">
+        <tr>		
+		<td>
+		    <asp:Repeater ID="Repeater3" runat="server"  DataSourceID="odsMaintainencePlan">       
+             <ItemTemplate>
+                 <div runat="server" id="dvProgram" class="haccpText" ><%#Eval("PlanText")%></div> 
+            </ItemTemplate>   
+            </asp:Repeater> 	
+	         <asp:ObjectDataSource ID="odsMaintainencePlan" runat="server" 
+                OldValuesParameterFormatString="original_{0}" SelectMethod="GetKitchenPlanByCategorySortId" 
+                TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenPlan">
+                <SelectParameters>            
+                    <asp:Parameter DefaultValue="9" Name="nCategoryId" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />
+                     <asp:Parameter DefaultValue="4" Name="nPlanSortId" Type="Int32" />
+                </SelectParameters>
+             </asp:ObjectDataSource>
+		</td>
+		</tr>
+		<tr>	
+		<td>
+		    <hr />
+		</td>
+		</tr>	
+    </table>
+    <!-- PLACE SOP DETAILVIEW HERE -->    
+    <div style="page-break-after:always"></div>
+	<div width="100%">
+    <div class="BackGround1"> 
+      <b>HACCP-Based SOPs</b>       
+    </div>                                         
+            <asp:Repeater ID="Repeater2" runat="server" 
+                DataSourceID="sqlDSSOP" onitemdatabound="Repeater2_ItemDataBound">  
+                <ItemTemplate>               
+             <div>   
+                <asp:Repeater ID="rptSOP" runat="server">
+                <ItemTemplate>
+                    <div>
+                        <%# DataBinder.Eval(Container.DataItem, "SOPText")%>
+                    
+                     <div>			
+                        <hr />		
+                    </div>  
+                    </div>                  
+                    <div style="page-break-after:always"></div>
+                </ItemTemplate>
+                </asp:Repeater>              
+                <asp:HiddenField ID="hfSOPId" Value='<%# Eval("KitchenSOPId") %>' runat="server" />
+             </div>
+        </ItemTemplate>           
+        </asp:Repeater>
+          <asp:SqlDataSource ID="sqlDSSOP" runat="server" ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>" 
+            SelectCommand="uspAdm_GetSOPsBykitchenId" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+            <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                SessionField="KitchenId" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>  
+		
+		</div>
+    <%-- Procedural Steps --%>
+	<div style="page-break-after:always"></div>
+	<table width="100%">
+		<tr >
+			<td class="BackGround1">HACCP BUILDER PROCEDURAL STEPS									
+			</td>		
+		</tr>
+	</table>
+	<div style="width:100%;">        			
+		    <asp:Repeater ID="rptProceduralSteps" runat="server"  DataSourceID="sdsProceduralQuestion">       
+             <ItemTemplate>
+                 <div runat="server" id="dvProgram" class="haccpText" ><%#Eval("PlanText")%> 
+                 <div>		        
+		            <hr />	        
+		        </div>			  
+		        </div>     
+		        <div style="page-break-after:always"></div>	        
+            </ItemTemplate>   
+            </asp:Repeater> 	
+	         <asp:SqlDataSource ID="sdsProceduralQuestion" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>" 
+                    SelectCommand="uspAdm_GetKitchenPlan1ByCategoryId" 
+                    SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                    <asp:Parameter DefaultValue="10" Name="nKitchenPlanCategoryId" Type="Int32" />
+                    <asp:SessionParameter DefaultValue="1157911358" Name="nKitchenId" 
+                        SessionField="KitchenId" Type="Int32" />                     
+                    </SelectParameters>
+                    
+                </asp:SqlDataSource>				
+    </div>	
+    <div style="page-break-after:always"></div>
+    </div>
+    </form>
+</body>
+</html>

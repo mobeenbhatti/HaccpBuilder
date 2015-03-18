@@ -1,0 +1,165 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Facility.master.cs" Inherits="HaccpBuilder.ControlPanel.Kitchen.Facility" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="../../App_Themes/Facility/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Facility/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Facility/table.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Facility/mediaqueries.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../../JScript/jquery-ui.css" type="text/css" />
+    <link href="../../App_Themes/Facility/newsTicker.css" rel="Stylesheet" type="text/css" />
+
+    <script src="../../JScript/jquery-1.8.3.js" type="text/javascript"></script>
+    <script src="../../JScript/jquery-ui.js" type="text/javascript"></script>
+    <script src="../../JScript/ui.combobox.js" type="text/javascript"></script>   
+   <%-- <script src="../../JScript/Json2.js" type="text/javascript"></script>
+    <script src="../../JScript/newsTicker.js" type="text/javascript"></script>--%>
+
+</head>
+<body>
+ <script type="text/javascript">
+     $(function () {
+         $('[data-editableCombobox="true"]').each(function () {
+             $(this).combobox();
+         });
+         // Tooltip code
+         $(document).tooltip({
+             position: {
+                 my: "center bottom-20",
+                 at: "center top",
+                 using: function (position, feedback) {
+                     $(this).css(position);
+                     $("<div>")
+.addClass("arrow")
+.addClass(feedback.vertical)
+.addClass(feedback.horizontal)
+.appendTo(this);
+                 }
+             }
+         });
+         /// End Tootltip
+     });
+    </script>
+   
+   <style>
+.ui-combobox {
+position: relative;
+display: inline-block;
+z-index:300;
+}
+.ui-combobox-toggle {
+position: absolute;
+top: 0;
+bottom: 0;
+margin-left: -1px;
+padding: 0;
+/* support: IE7 */
+*height: 1.7em;
+*top: 0.1em;
+}
+.ui-combobox-input {
+margin: 0;
+padding: 0.3em;
+}
+</style>
+  
+    <form id="form1" runat="server">   
+        <div class="header"> <!----HEADER-TOP-START----->
+          <div class="container">
+            <div class="left"> <a id="logo" href="#"></a> </div>
+    
+            <div class="right"> 
+    
+            <font size="3" color="#0CF">Welcome:
+            <asp:LoginName runat="server" FormatString=" {0}" Font-Size="Small" ForeColor="White" />
+            </font> | <a href="../LogOut.aspx">Logout</a>
+    
+            </div>
+    
+          </div>
+        </div><!----HEADER-TOP-END----->
+        <div class="nav1"><!----HEADER-NAV-START----->
+            <ul class="container" id="Ul1">
+                <li id="pnlDashBoard"><a href="FacilityTest.aspx" class="left">
+      
+                  <div class="dash-ico"></div><span style="margin-left:20px;">Dashboard</span></a></li>
+                <li runat="server" id="pnlReports"><a href="KitchenReportsNew.aspx">Reports</a></li>
+                <li runat="server" id="pnlMobileAccount"><a href="LocationOperator.aspx">Add / Edit Mobile Login</a></li>
+                <li runat="server" id="pnlFacilitySubPlan"><a href="PlanIndexNew.aspx?Id=Facility">Facility Sub-Plans</a>
+                   <ul>
+                    <asp:Repeater ID="rptFacilityPlan" runat="server" DataSourceID="sqlDsFacilityPlan"> 
+                        <ItemTemplate>                    
+                                <li><a href="PlanIndexNew.aspx?Id=Facility"><%# Eval("PlanTitle") %></a></li>                                                                                                 
+                        </ItemTemplate>                                                
+                    </asp:Repeater>
+                     <asp:SqlDataSource ID="sqlDsFacilityPlan" runat="server" ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>"
+                        SelectCommand="uspAdm_GetKitchenPlanActiveByCategorySortId" SelectCommandType="StoredProcedure">
+                         <SelectParameters>   
+                            <asp:SessionParameter DefaultValue="1" Name="nKitchenId"  SessionField="KitchenId" Type="Int32" />       
+                            <asp:Parameter DefaultValue="2" Name="nSortOrder" Type="Int32" />                       
+                            <asp:Parameter DefaultValue="0" Name="nSideId" Type="Int32" />
+                    </SelectParameters>
+                    </asp:SqlDataSource>                   
+                  </ul>
+                </li>
+                <li class="last" runat="server" id="pnlPathogens"><a href="PlanIndexNew.aspx?Id=Pathogens">Pathogen Sub-Plans</a>
+                  <ul>
+                    <asp:Repeater ID="rptPathogen" runat="server" DataSourceID="sqlDdsPathogenPlan"> 
+                        <ItemTemplate>                    
+                                <li><a href="PlanIndexNew.aspx?Id=Pathogens"><%# Eval("PlanTitle") %></a></li>                                                                                                 
+                        </ItemTemplate>                                                
+                    </asp:Repeater>
+                     <asp:SqlDataSource ID="sqlDdsPathogenPlan" runat="server" ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>"
+                        SelectCommand="uspAdm_GetKitchenPlanActiveByCategorySortId" SelectCommandType="StoredProcedure">
+                         <SelectParameters>   
+                            <asp:SessionParameter DefaultValue="1" Name="nKitchenId"  SessionField="KitchenId" Type="Int32" />       
+                            <asp:Parameter DefaultValue="3" Name="nSortOrder" Type="Int32" />                       
+                            <asp:Parameter DefaultValue="0" Name="nSideId" Type="Int32" />
+                    </SelectParameters>
+                    </asp:SqlDataSource> 
+                  </ul>
+                </li>
+                <li class="last" runat="server" id="pnlPrintPlan"><a href="PlanIndexPrint.aspx">View / Print Plans</a></li>
+                <li class="last" runat="server" id="pnlBuildPlan"><a href="CustomInventory.aspx">Build / Edit Plan</a>
+                  <%--<ul>
+                    <li><a href="#">Allergen Plan</a></li>
+                    <li><a href="#">Allergen Plan</a></li>
+                    <li><a href="#">Allergen Plan</a></li>
+                    <li><a href="#" class="last">Allergen Plan</a></li>
+                  </ul>--%>
+                </li>
+                <li class="last" runat="server" id="pnlPlanIndex"><a href="PlanIndexNew.aspx">Plan Index Page</a>
+                 <%-- <ul>
+                    <li><a href="#">Allergen Plan</a></li>
+                    <li><a href="#">Allergen Plan</a></li>
+                    <li><a href="#">Allergen Plan</a></li>
+                    <li><a href="#" class="last">Allergen Plan</a></li>
+                  </ul>--%>
+                </li>
+             </ul>
+        </div><!----HEADER-NAV-END----->
+
+<%--<div id="titlediv"><!----HEADER-TITLE-START----->
+  <div class="container">
+    <div class="page-title">
+      <h1> Facility Dashboard</h1>
+    </div>
+  </div>
+</div>--%><!----HEADER-TITLE-END----->
+    <%--<div class="container">--%><!----CONTAINER-START----->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    <%--</div>--%><!----CONTAINER-END----->
+
+<div class="clear"></div>
+<br />
+<br />
+<br />
+<footer> </footer>
+    </form>
+</body>
+</html>

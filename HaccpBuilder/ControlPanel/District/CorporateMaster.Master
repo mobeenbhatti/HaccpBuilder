@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CorporateMaster.master.cs" Inherits="HaccpBuilder.ControlPanel.CorporateMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>    
+    <link href="../../App_Themes/Facility/style.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Facility/reset.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Facility/table.css" rel="stylesheet" type="text/css" />
+    <link href="../../App_Themes/Facility/mediaqueries.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="../../JScript/jquery-ui.css" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">  
+         <div class="header"> <!----HEADER-TOP-START----->
+          <div class="container">
+            <div class="left"> <a id="logo" href="#"></a> </div>
+    
+            <div class="right"> 
+    
+            <font size="3" color="#0CF">Welcome:
+            <asp:LoginName ID="LoginName1" runat="server" FormatString=" {0}" Font-Size="Small" ForeColor="White" />
+            </font> | <a href="../LogOut.aspx">Logout</a>
+    
+            </div>
+    
+          </div>
+        </div><!----HEADER-TOP-END----->
+        <div class="nav1"><!----HEADER-NAV-START----->
+            <ul class="container" id="Ul1">
+                <li id="pnlDashBoard"><a href="LayoutTest.aspx" class="left">
+      
+                <div class="dash-ico"></div><span style="margin-left:20px;">Dashboard</span></a></li>
+                <li runat="server" id="pnlReports"><a href="DistrictUsers.aspx">Manage Users</a></li>
+                <li runat="server" id="pnlMobileAccount"><a href="Redirect.aspx">Create Location</a></li>
+                <li runat="server" id="pnlFacilitySubPlan"><a href="Redirect.aspx?Mode=1">Copy Location</a></li>
+                <li class="last" runat="server" id="pnlPathogens"><a href="Alerts.aspx">Alerts</a></li>
+                <li class="last" runat="server" id="pnlPrintPlan"><a href="DistrictReports.aspx">Reports</a></li>               
+             </ul>
+        </div><!----HEADER-NAV-END----->  
+        <asp:ContentPlaceHolder ID="PlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div class="clear"></div>
+        <br />
+        <br />
+        <br />
+        <footer>© HACCP Builder </footer>    
+    </form>
+</body>
+</html>

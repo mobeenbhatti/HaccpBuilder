@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{892DAEC3-E138-40C2-8E34-07034EF95837}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchoolHaccp.BusinessLogic</RootNamespace>
+    <AssemblyName>SchoolHaccp.BusinessLogic</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="SchoolHaccp.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SchoolHaccp.Common\bin\Debug\SchoolHaccp.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CreateFoodCategoryGroup.cs" />
+    <Compile Include="CreateProcess.cs" />
+    <Compile Include="ProcessCreateCCP.cs" />
+    <Compile Include="ProcessCreateCCPGroup.cs" />
+    <Compile Include="ProcessCreateContactAgreement.cs" />
+    <Compile Include="ProcessCreateCtpat.cs" />
+    <Compile Include="ProcessCreateCtpatGroup.cs" />
+    <Compile Include="ProcessCreateCustomer.cs" />
+    <Compile Include="ProcessCreateCriticalLimits.cs" />
+    <Compile Include="ProcessCreateFoodCategory.cs" />
+    <Compile Include="ProcessCreateFreezerNewLog.cs" />
+    <Compile Include="ProcessCreateHazard.cs" />
+    <Compile Include="ProcessCreateIngredient.cs" />
+    <Compile Include="ProcessCreateKitchenCCPGroup.cs" />
+    <Compile Include="ProcessCreateKitchenCheckListAddOnGroup.cs" />
+    <Compile Include="ProcessCreateKitchenCorrectiveAction.cs" />
+    <Compile Include="ProcessCreateKitchenCtpatGroup.cs" />
+    <Compile Include="ProcessCreateKitchenFoodCategoryGroup.cs" />
+    <Compile Include="ProcessCreateKitchenPlan.cs" />
+    <Compile Include="ProcessCreateKitchenPlanCategory.cs" />
+    <Compile Include="ProcessCreateKitchenProcessGroup.cs" />
+    <Compile Include="ProcessCreateMeneRecipe.cs" />
+    <Compile Include="ProcessCreateMenuItemNew.cs" />
+    <Compile Include="ProcessCreateMenuRecipeDetails.cs" />
+    <Compile Include="ProcessCreateMobile.cs" />
+    <Compile Include="ProcessCreatePhLog.cs" />
+    <Compile Include="ProcessCreateProceduralResponse.cs" />
+    <Compile Include="ProcessCreateProcessGroup.cs" />
+    <Compile Include="ProcessCreateShippingLog.cs" />
+    <Compile Include="ProcessCreateVendor.cs" />
+    <Compile Include="ProcessDeleteCCP.cs" />
+    <Compile Include="ProcessDeleteCtpat.cs" />
+    <Compile Include="ProcessDeleteCustomer.cs" />
+    <Compile Include="ProcessDeleteDistrict.cs" />
+    <Compile Include="ProcessDeleteFoodCategory.cs" />
+    <Compile Include="ProcessDeleteFreezerNewLog.cs" />
+    <Compile Include="ProcessDeleteIngredient.cs" />
+    <Compile Include="ProcessDeleteKitchenCCPGroup.cs" />
+    <Compile Include="ProcessDeleteKitchenCheckListAddOnGroup.cs" />
+    <Compile Include="ProcessDeleteKitchenCtpatGroup.cs" />
+    <Compile Include="ProcessDeleteKitchenFoodCategoryGroup.cs" />
+    <Compile Include="ProcessDeleteKitchenPlan.cs" />
+    <Compile Include="ProcessDeleteKitchenPlanCategory.cs" />
+    <Compile Include="ProcessDeleteKitchenProcessGroup.cs" />
+    <Compile Include="ProcessDeleteMenuRecipeDetails.cs" />
+    <Compile Include="ProcessDeleteMenuItemNew.cs" />
+    <Compile Include="ProcessDeleteMenuRecipe.cs" />
+    <Compile Include="ProcessDeleteMobile.cs" />
+    <Compile Include="ProcessDeletePhLog.cs" />
+    <Compile Include="ProcessDeleteProcess.cs" />
+    <Compile Include="ProcessDeleteShippingLog.cs" />
+    <Compile Include="ProcessDeleteVendor.cs" />
+    <Compile Include="ProcessGetCCP.cs" />
+    <Compile Include="ProcessGetCCPGroup.cs" />
+    <Compile Include="ProcessGetCleaningLog.cs" />
+    <Compile Include="ProcessGetContactAgreement.cs" />
+    <Compile Include="ProcessGetCtpat.cs" />
+    <Compile Include="ProcessGetCtpatGroup.cs" />
+    <Compile Include="ProcessGetCustomer.cs" />
+    <Compile Include="ProcessGetCriticalLimits.cs" />
+    <Compile Include="ProcessGetFoodCategories.cs" />
+    <Compile Include="ProcessGetFoodCategory.cs" />
+    <Compile Include="ProcessGetFoodCategoryGroup.cs" />
+    <Compile Include="ProcessGetFreezerNewLog.cs" />
+    <Compile Include="ProcessGetHazard.cs" />
+    <Compile Include="ProcessGetHazardAnalysis.cs" />
+    <Compile Include="ProcessGetIngredient.cs" />
+    <Compile Include="ProcessGetKitchenCCPGroup.cs" />
+    <Compile Include="ProcessGetKitchenCheckListAddOnGroup.cs" />
+    <Compile Include="ProcessGetKitchenCorrectiveAction.cs" />
+    <Compile Include="ProcessGetKitchenCtpatGroup.cs" />
+    <Compile Include="ProcessGetKitchenFoodCategoryGroup.cs" />
+    <Compile Include="ProcessGetKitchenPlan.cs" />
+    <Compile Include="ProcessGetKitchenPlanCategory.cs" />
+    <Compile Include="ProcessGetKitchenProcessGroup.cs" />
+    <Compile Include="ProcessGetMaintenanceLog.cs" />
+    <Compile Include="ProcessGetMenuItemNew.cs" />
+    <Compile Include="ProcessGetMenuRecipe.cs" />
+    <Compile Include="ProcessGetMenuRecipeDetails.cs" />
+    <Compile Include="ProcessGetMobile.cs" />
+    <Compile Include="ProcessGetPestLog.cs" />
+    <Compile Include="ProcessGetPhLog.cs" />
+    <Compile Include="ProcessGetProceduralQuestion.cs" />
+    <Compile Include="ProcessGetProceduralResponse.cs" />
+    <Compile Include="ProcessGetProcess.cs" />
+    <Compile Include="ProcessGetProcessGroup.cs" />
+    <Compile Include="ProcessGetProcessHaccpCategory.cs" />
+    <Compile Include="ProcessGetShippingLog.cs" />
+    <Compile Include="ProcessGetValidationQuestions.cs" />
+    <Compile Include="ProcessGetValidationResponse.cs" />
+    <Compile Include="PrcocessSetThermoCalibrationLog.cs" />
+    <Compile Include="ProcessCreateBreakFast.cs" />
+    <Compile Include="ProcessCreateCheckListGroup.cs" />
+    <Compile Include="ProcessCreateDailyMeal.cs" />
+    <Compile Include="ProcessCreateDailyParticipation.cs" />
+    <Compile Include="ProcessCreateDistrict.cs" />
+    <Compile Include="ProcessCreateFoodSafetyQuestion.cs" />
+    <Compile Include="ProcessCreateFreeTrialRequest.cs" />
+    <Compile Include="ProcessCreateFreezerLog.cs" />
+    <Compile Include="ProcessCreateHotHoldingLog.cs" />
+    <Compile Include="ProcessContact.cs" />
+    <Compile Include="ProcessCountryRegion.cs" />
+    <Compile Include="ProcessCreateColdHoldingLog.cs" />
+    <Compile Include="ProcessCreateFoodSafetyResponse.cs" />
+    <Compile Include="ProcessCreateKitchen.cs" />
+    <Compile Include="ProcessCreateKitchenCheckListGroup.cs" />
+    <Compile Include="ProcessCreateKitchenInventoryCustom.cs" />
+    <Compile Include="ProcessCreateKitchenMenuCustomItem.cs" />
+    <Compile Include="ProcessCreateKitchenSOPGroup.cs" />
+    <Compile Include="ProcessCreateKitchenValidationGroup.cs" />
+    <Compile Include="ProcessCreateLunch.cs" />
+    <Compile Include="ProcessCreateMealServingCalendar.cs" />
+    <Compile Include="ProcessCreateReceivingLog.cs" />
+    <Compile Include="ProcessCreateRefrigerationLog.cs" />
+    <Compile Include="ProcessCreateResponseHistory.cs" />
+    <Compile Include="ProcessCreateSOP.cs" />
+    <Compile Include="ProcessCreateSOPGroup.cs" />
+    <Compile Include="ProcessCreateTemperatureLog.cs" />
+    <Compile Include="ProcessCreateThermoCalibrationLog.cs" />
+    <Compile Include="ProcessCreateValidationGroup.cs" />
+    <Compile Include="ProcessCreateValidationHistory.cs" />
+    <Compile Include="ProcessCreateValidationQuestion.cs" />
+    <Compile Include="ProcessCreateValidationResponse.cs" />
+    <Compile Include="ProcessCreateWebBenefits.cs" />
+    <Compile Include="ProcessCreateWebFeatures.cs" />
+    <Compile Include="ProcessCreateWebNews.cs" />
+    <Compile Include="ProcessCreateWebPageContent.cs" />
+    <Compile Include="ProcessDeleteBreakFast.cs" />
+    <Compile Include="ProcessDeleteColdHoldingLog.cs" />
+    <Compile Include="ProcessDeleteDailyMeal.cs" />
+    <Compile Include="ProcessDeleteFoodSafetQuestion.cs" />
+    <Compile Include="ProcessDeleteFreeTrialRequest.cs" />
+    <Compile Include="ProcessDeleteFreezerLog.cs" />
+    <Compile Include="ProcessDeleteHotHoldingLog.cs" />
+    <Compile Include="ProcessDeleteKitchen.cs" />
+    <Compile Include="ProcessDeleteKitchenCheckListGroup.cs" />
+    <Compile Include="ProcessDeleteKitchenInventoryCustom.cs" />
+    <Compile Include="ProcessDeleteKitchenMenuCustomItem.cs" />
+    <Compile Include="ProcessDeleteKitchenMenuItem.cs" />
+    <Compile Include="ProcessDeleteKitchenSOPGroup.cs" />
+    <Compile Include="ProcessDeleteKitchenValidationGroup.cs" />
+    <Compile Include="ProcessDeleteLunch.cs" />
+    <Compile Include="ProcessDeleteMealServingCalendar.cs" />
+    <Compile Include="ProcessDeleteReceivingLog.cs" />
+    <Compile Include="ProcessDeleteRefrigerationLog.cs" />
+    <Compile Include="ProcessDeleteSOP.cs" />
+    <Compile Include="ProcessDeleteTemperatureLog.cs" />
+    <Compile Include="ProcessDeleteThermoCalibrationLog.cs" />
+    <Compile Include="ProcessDeleteValidationQuestion.cs" />
+    <Compile Include="ProcessGetCheckListGroup.cs" />
+    <Compile Include="ProcessGetColdHoldingLog.cs" />
+    <Compile Include="ProcessGetContact.cs" />
+    <Compile Include="ProcessGetCultureListItems.cs" />
+    <Compile Include="ProcessGetCustomInventory.cs" />
+    <Compile Include="ProcessGetCustomMenuItems.cs" />
+    <Compile Include="ProcessGetDailyMeal.cs" />
+    <Compile Include="ProcessGetDailyParticipation.cs" />
+    <Compile Include="ProcessGetDailyReports.cs" />
+    <Compile Include="ProcessGetDistrict.cs" />
+    <Compile Include="ProcessGetFoodSafetyQuestions.cs" />
+    <Compile Include="ProcessGetFoodSafetyReponse.cs" />
+    <Compile Include="ProcessGetFreeTrialRequest.cs" />
+    <Compile Include="ProcessGetFreezerLog.cs" />
+    <Compile Include="ProcessGetHotHoldingLog.cs" />
+    <Compile Include="ProcessGetInventoryItemsByKitchenId.cs" />
+    <Compile Include="ProcessGetKitchen.cs" />
+    <Compile Include="ProcessGetKitchenCheckListGroup.cs" />
+    <Compile Include="ProcessGetKitchenDetail.cs" />
+    <Compile Include="ProcessGetKitchenInventoryCustom.cs" />
+    <Compile Include="ProcessGetKitchenMenuCustomItem.cs" />
+    <Compile Include="ProcessGetKitchenMenuItems.cs" />
+    <Compile Include="ProcessGetKitchenSOPGroup.cs" />
+    <Compile Include="ProcessGetKitchenValidationGroup.cs" />
+    <Compile Include="ProcessGetMealServingCalendar.cs" />
+    <Compile Include="ProcessGetMenuItems.cs" />
+    <Compile Include="ProcessGetReceivingLog.cs" />
+    <Compile Include="ProcessGetRefrigerationLog.cs" />
+    <Compile Include="ProcessGetResponseHistory.cs" />
+    <Compile Include="ProcessGetSOP.cs" />
+    <Compile Include="ProcessGetSOPGroup.cs" />
+    <Compile Include="ProcessGetTemperatureLog.cs" />
+    <Compile Include="ProcessGetThermoCalibrationLog.cs" />
+    <Compile Include="ProcessGetValidationGroup.cs" />
+    <Compile Include="ProcessGetValidationHistory.cs" />
+    <Compile Include="ProcessGetVendor.cs" />
+    <Compile Include="ProcessGetWebBenefits.cs" />
+    <Compile Include="ProcessGetWebBenefitsById.cs" />
+    <Compile Include="ProcessGetWebFeatures.cs" />
+    <Compile Include="ProcessGetWebFeaturesById.cs" />
+    <Compile Include="ProcessGetWebNews.cs" />
+    <Compile Include="IBusinessLogic.cs" />
+    <Compile Include="ProcessGetWebNewsById.cs" />
+    <Compile Include="ProcessGetWebPageContent.cs" />
+    <Compile Include="ProcessGetWebPageContentById.cs" />
+    <Compile Include="ProcessGetWeeklyReport.cs" />
+    <Compile Include="ProcessKitchenValidationGroup.cs" />
+    <Compile Include="ProcessSetCCP.cs" />
+    <Compile Include="ProcessSetColdHoldingLog.cs" />
+    <Compile Include="ProcessSetContact.cs" />
+    <Compile Include="ProcessSetCriticalLimits.cs" />
+    <Compile Include="ProcessSetCtpat.cs" />
+    <Compile Include="ProcessSetCustomer.cs" />
+    <Compile Include="ProcessSetFreezerNewLog.cs" />
+    <Compile Include="ProcessSetKitchenCorrectiveAction.cs" />
+    <Compile Include="ProcessSetDailyParticipation.cs" />
+    <Compile Include="ProcessSetDistrict.cs" />
+    <Compile Include="ProcessSetFoodCategory.cs" />
+    <Compile Include="ProcessSetFoodSafetyQuestion.cs" />
+    <Compile Include="ProcessSetFoodSafetyResponse.cs" />
+    <Compile Include="ProcessSetFreezerLog.cs" />
+    <Compile Include="ProcessSetHazard.cs" />
+    <Compile Include="ProcessSetHotHoldingLog.cs" />
+    <Compile Include="ProcessSetIngredient.cs" />
+    <Compile Include="ProcessSetKitchen.cs" />
+    <Compile Include="ProcessSetKitchenInventory.cs" />
+    <Compile Include="ProcessSetKitchenInventoryCustom.cs" />
+    <Compile Include="ProcessSetKitchenMenu.cs" />
+    <Compile Include="ProcessSetKitchenMenuCustomItem.cs" />
+    <Compile Include="ProcessSetKitchenPlan.cs" />
+    <Compile Include="ProcessSetKitchenPlanCategory.cs" />
+    <Compile Include="ProcessSetMealServingCalendar.cs" />
+    <Compile Include="ProcessSetMenuItemNew.cs" />
+    <Compile Include="ProcessSetMenuRecipe.cs" />
+    <Compile Include="ProcessSetMobile.cs" />
+    <Compile Include="ProcessSetPhLog.cs" />
+    <Compile Include="ProcessSetProceduralResponse.cs" />
+    <Compile Include="ProcessSetProcess.cs" />
+    <Compile Include="ProcessSetProcessHaccpCategory.cs" />
+    <Compile Include="ProcessSetReceivingLog.cs" />
+    <Compile Include="ProcessSetMenuRecipeDetails.cs" />
+    <Compile Include="ProcessSetRefrigerationLog.cs" />
+    <Compile Include="ProcessSetResponseHistory.cs" />
+    <Compile Include="ProcessSetShippingLog.cs" />
+    <Compile Include="ProcessSetSOP.cs" />
+    <Compile Include="ProcessSetTemperatureLog.cs" />
+    <Compile Include="ProcessSetThermoCalibrationLog.cs" />
+    <Compile Include="ProcessSetValidationHistory.cs" />
+    <Compile Include="ProcessSetValidationQuestion.cs" />
+    <Compile Include="ProcessSetValidationResponse.cs" />
+    <Compile Include="ProcessSetVendor.cs" />
+    <Compile Include="ProcessSetWebBenefitsById.cs" />
+    <Compile Include="ProcessSetWebFeaturesById.cs" />
+    <Compile Include="ProcessSetWebNewsById.cs" />
+    <Compile Include="ProcessSetWebPageContentById.cs" />
+    <Compile Include="ProcessStateProvince.cs" />
+    <Compile Include="ProcessTimeZones.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProcessSetProcessHazardAnalysis.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ProcessStateProvince.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SchoolHaccp.DataAccess\SchoolHaccp.DataAccess.csproj">
+      <Project>{1CD38558-5D37-4B90-9173-B4FC581BCE86}</Project>
+      <Name>SchoolHaccp.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

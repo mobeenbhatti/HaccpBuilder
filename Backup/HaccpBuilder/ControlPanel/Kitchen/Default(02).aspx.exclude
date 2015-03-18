@@ -1,0 +1,599 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true"  MasterPageFile="~/ControlPanel/Kitchen/MasterPage2.master" CodeFile="Default(02).aspx.cs" Inherits="ControlPanel_test" %>
+
+<%@ Register Src="~/Controls/ContactDetail.ascx" TagPrefix="Contact" TagName="Detail" %>
+<%@ Register Src="~/Controls/Advertisement.ascx" TagPrefix="ucl" TagName="Advs" %>
+<%@ Register assembly="eWorld.UI, Version=2.0.6.2393, Culture=neutral, PublicKeyToken=24d65337282035f2" namespace="eWorld.UI" tagprefix="ew" %>
+
+<asp:Content ID="content" ContentPlaceHolderID="PlaceHolder" runat="server">
+<script language="javascript" type="text/javascript">
+//    function ShowMyModalPopup()
+//    { 
+//   
+//     var modal = $find('<%=ModalPopupExtender1.ClientID %>'); 
+//    
+//     modal.show(); 
+//     //WebService.FetchOneCustomer(customerid,DisplayResult);
+//    }
+//    function HideModalPopup()
+//    {
+//      var modal = $find('<%=ModalPopupExtender1.ClientID %>'); 
+//      modal.hide();
+//    }
+</script>
+    <%--<center>--%>   
+        <div class="MainHeading">
+            MAIN CONTROL PANEL
+            <span style="font-size:10px; margin-left:340px;">
+               <a href="../../StaticContent/Files/Final School HACCP Training Manual.pdf" target=_blank"><img src="../../images/buttons/ButtonViewManual.jpg" alt="" /></a>            
+             </span>
+        </div>
+        <div>
+            <div class="ContentLeft">
+                <div class="ContactDetail">
+                    <Contact:Detail ID="cd" runat="server" />
+                </div>
+                <div class="Buttons">
+                   <div class="FloatLeft">
+                       <asp:ImageButton ID="btnEditPlan" runat="server" onclick="btnEditPlan_Click" ImageUrl="~/images/buttons/ButtonEditHaccpPlan-1.jpg" /> 
+                       <%--<asp:Button ID="btnEditPlan" runat="server" Text="Edit HACCP Plan" 
+                           CssClass="Button" onclick="btnEditPlan_Click" />--%>
+                   </div>
+                   <div class="ButtonsCols">
+                    <asp:ImageButton ID="btnInventoryManager" onclick="btnInventoryManager_Click" 
+                           runat="server"  ImageUrl="~/images/buttons/InventoryItemButtons-1.jpg" 
+                           style="height: 20px" /> 
+                        <%--<asp:Button ID="btnInventoryManager" runat="server" Text="Inventroy Items" 
+                            CssClass="Button" onclick="btnInventoryManager_Click" />--%>
+                   </div>
+                   <div class="ButtonsCols">
+                   <asp:ImageButton ID="btnViewSop"  runat="server"  
+                           ImageUrl="~/images/buttons/ButtonViewSOPs-1.jpg" onclick="btnViewSop_Click" /> 
+                        <%--<asp:Button ID="btnViewSop" runat="server" Text="View SOP's" 
+                            CssClass="Button" />--%>
+                   </div>
+                   <div class="Clearer" style="height:15px;" ></div>
+                   <%--<div class="ViewPlanClearer"></div>--%>
+                   <div class="FloatLeft">
+                   <asp:ImageButton ID="btnMenuManager" onclick="btnMenuManager_Click" runat="server"  ImageUrl="~/images/buttons/ButtonMenuItems-1.jpg" /> 
+                       <%--<asp:Button ID="btnMenuManager" runat="server" Text="Menu Items" 
+                           CssClass="Button" onclick="btnMenuManager_Click" />--%>
+                   </div>
+                   <div class="ButtonsCols">
+                   <%--<asp:ImageButton ID="btnAlerts"  runat="server"  
+                           ImageUrl="~/images/buttons/ButtonActiveAlertsRed-1.jpg" 
+                           onclick="btnAlerts_Click" /> --%>
+                        <%--<asp:Button ID="btnAlerts" runat="server" Text="Active Alerts" 
+                            CssClass="Button" />--%>
+                   </div>
+                   <div class="FloatLeft">
+                   </div>
+                   <div class="Clearer" style="height:15px;"></div>
+                </div>
+            </div>
+            <div class="ContentRight">                
+                <ucl:Advs id="adv1" runat="server"></ucl:Advs>
+            </div>
+            <div class="Clearer"></div>
+        </div>
+        <%--<div class="SearchDiv">
+            <div class="SearchCol1">KITCHENS IN THE DISTRICT</div>
+            <div class="SearchCol2">Search <span>Alerts:</span></div>
+            <div class="SearchCol3">
+                <asp:TextBox ID="TextBox1" runat="server" Width="240px" CssClass="TextBox"></asp:TextBox>
+            </div>
+            <div class="SearchCol4">
+                <asp:Button ID="Button6" runat="server" Text="GO" Width="87px" style="font-family:Verdana; border: solid 2px; background-color:#c0c0c0; text-align:left;" />
+            </div>
+        </div>--%>
+        <div class="GirdDiv">
+            <asp:GridView ID="grdDailyReports" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" onrowdatabound="grdDailyReports_RowDataBound" OnRowCommand="grdDailyReports_RowCommand" SkinID="gridviewSkin">                
+                <Columns>                    
+                    <asp:TemplateField HeaderText="Daily Reports">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlTableName" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>' Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="200px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate1" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date1","{0:d}")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "Date1","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                    <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag1")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate2" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date2","{0:d}")  %>'
+	                            Text='<%# DataBinder.Eval(Container.DataItem, "Date2","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag2")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate> 
+	                            <asp:HyperLink ID="hlDat3" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date3","{0:d}")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "Date3","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag3")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate4" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date4","{0:d}")  %>'
+	                            Text='<%# DataBinder.Eval(Container.DataItem, "Date4","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag4" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag4")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate5" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date5","{0:d}")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "Date5","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag5" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag5")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                    </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Calendar">
+                             <ItemTemplate>
+                                 <ew:CalendarPopup ID="CalendarPopup1" runat="server" AutoPostBack="True" 
+                                     CommandName="Calendar" ControlDisplay="TextBoxImage" 
+                                     ImageUrl="~/images/Calendar_scheduleHS.png" Width="80px" />
+                             </ItemTemplate>
+                             <ItemStyle Width="100px" />
+                             <HeaderStyle CssClass="gridheaderline" />
+                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Alerts">
+	                        <ItemTemplate>
+	                            <%--<asp:HyperLink ID="hlAlerts" runat="server" Text="No" NavigateUrl='<%# "~/ControlPanel/Kitchen/AlertsDates.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                            </asp:HyperLink>--%>
+	                            <asp:HyperLink ID="hlAlerts" runat="server" Text="No" NavigateUrl="">
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Report History">
+	                        <ItemTemplate>
+	                        <asp:HyperLink ID="hlView" runat="server" Text="View" NavigateUrl='<%# "~/ControlPanel/Kitchen/KitchenReport.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                        </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="100px" HorizontalAlign="Center" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="Actions">
+	                        <ItemTemplate>
+	                        <%--<asp:HyperLink ID="hlActions" runat="server" Text="No" NavigateUrl='<%# "~/ControlPanel/Kitchen/CorrectiveActions.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                        </asp:HyperLink>--%>
+	                        <asp:HyperLink ID="hlActions" runat="server" Text="No" NavigateUrl="">
+	                        </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <asp:TemplateField HeaderText="View">
+	                        <ItemTemplate>
+	                        <asp:HyperLink ID="hlPdf" runat="server" Text="PDF" NavigateUrl='<%# "~/ControlPanel/Kitchen/LogPdf.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName") %>' Target="_blank">
+	                        </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+           
+            <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="Get" 
+        TypeName="SchoolHaccp.BusinessLogic.ProcessGetDailyReports">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="Label1" DefaultValue="02/08/2008" 
+                Name="dtStartDate" PropertyName="Text" Type="DateTime" />
+        </SelectParameters>
+        </asp:ObjectDataSource>
+        </div>
+        <div style="margin-top:20px;"></div>
+        <div class="GirdDiv">
+            <asp:GridView ID="grdWeeklyReports" runat="server" AutoGenerateColumns="false" SkinID="gridviewSkin"
+                    DataSourceID="ObjectDataSource2" onrowdatabound="grdWeeklyReports_RowDataBound"                     
+                    onrowcommand="grdWeeklyReports_RowCommand">
+                        <Columns>
+	                        <asp:TemplateField HeaderText="Weekly Reports">
+	                    <ItemTemplate>
+	                        <asp:HyperLink ID="hlTableName" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>' Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                        </asp:HyperLink>
+	                    </ItemTemplate>
+	                    <ItemStyle Width="200px" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                     <%--<asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate1" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date1","{0:d}")  %>'
+	                             >
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >--%>
+	                        <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate1" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date1","{0:d}")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "Date1","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField >
+	                        <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag1")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                        <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate2" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date2","{0:d}")  %>'
+	                            Text='<%# DataBinder.Eval(Container.DataItem, "Date2","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <%-- <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate2" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date2","{0:d}")  %>'
+	                           >
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>--%>
+	                        <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag2")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                        <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate> 
+	                            <asp:HyperLink ID="hlDat3" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date3","{0:d}")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "Date3","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                   <%-- <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate> 
+	                            <asp:HyperLink ID="hlDat3" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date3","{0:d}")  %>'
+	                             >
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>--%>
+	                        <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag3" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag3")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                        <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate4" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date4","{0:d}")  %>'
+	                            Text='<%# DataBinder.Eval(Container.DataItem, "Date4","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <%-- <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate4" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date4","{0:d}")  %>'
+	                           >
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>--%>
+	                        <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag4" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag4")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                        <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate5" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date5","{0:d}")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "Date5","{0:d}")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+	                    <%-- <asp:TemplateField HeaderText="Date">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate5" runat="server" NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")+ "&date=" + DataBinder.Eval(Container.DataItem, "Date5","{0:d}")  %>'
+	                             >
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>--%>
+	                        <asp:TemplateField Visible="false">
+	                        <ItemTemplate>
+	                            <asp:Label ID="lblDateFlag5" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "DateFlag5")  %>'>
+	                            </asp:Label>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Calendar">
+                         <ItemTemplate>
+                             <ew:CalendarPopup ID="CalendarPopup1" runat="server" AutoPostBack="True" 
+                                 CommandName="Calendar" ControlDisplay="TextBoxImage" 
+                                 ImageUrl="~/images/Calendar_scheduleHS.png" Width="80px" />
+                         </ItemTemplate>
+                         <ItemStyle Width="100px" />
+	                     <HeaderStyle CssClass="gridheaderline" />
+                </asp:TemplateField>
+	                        <asp:TemplateField HeaderText="Alerts">
+	                    <ItemTemplate>
+	                        <%--<asp:HyperLink ID="hlAlerts" runat="server" Text="No" NavigateUrl='<%# "~/ControlPanel/Kitchen/AlertsDates.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                        </asp:HyperLink>--%>
+	                        <asp:HyperLink ID="hlAlerts" runat="server" Text="No" NavigateUrl="">
+	                            </asp:HyperLink>
+	                    </ItemTemplate>
+	                    <ItemStyle Width="40px" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                </asp:TemplateField>
+	                 <asp:TemplateField HeaderText="Report History">
+	                    <ItemTemplate>
+	                    <asp:HyperLink ID="hlView" runat="server" Text="View" NavigateUrl='<%# "~/ControlPanel/Kitchen/KitchenReport.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                    </asp:HyperLink>
+	                    </ItemTemplate>
+	                     <ItemStyle Width="100px" HorizontalAlign="Center" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                </asp:TemplateField>
+	                <asp:TemplateField HeaderText="Actions">
+	                    <ItemTemplate>
+	                    <%--<asp:HyperLink ID="hlActions" runat="server" Text="No" NavigateUrl='<%# "~/ControlPanel/Kitchen/CorrectiveActions.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                    </asp:HyperLink>--%>
+	                     <asp:HyperLink ID="hlActions" runat="server" Text="No" NavigateUrl="">
+	                        </asp:HyperLink>
+	                    </ItemTemplate>
+	                    <ItemStyle Width="50px" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                </asp:TemplateField>
+	                <asp:TemplateField HeaderText="View">
+	                        <ItemTemplate>
+	                        <asp:HyperLink ID="hlPdf" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TableName").ToString() == "Food Safety Check List"?"View":"PDF" %>' NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "TableName").ToString() == "Food Safety Check List"? "~/ControlPanel/Kitchen/FoodSafetyChecklistPrint.aspx": "~/ControlPanel/Kitchen/LogPdf.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName") %>' Target="_blank">
+	                        </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	               </asp:TemplateField>        	        
+	                    </Columns>
+                        <AlternatingRowStyle CssClass="AlterRowStyle" />
+                    </asp:GridView>
+     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="Get" 
+        TypeName="SchoolHaccp.BusinessLogic.ProcessGetWeeklyReport">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="Label1" DefaultValue="02/08/2008" 
+                Name="dtStartDate" PropertyName="Text" Type="DateTime" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+        </div>
+        <div style="margin-top:20px;"></div>
+        <div class="GirdDiv">
+            <asp:GridView ID="grdOtherReports" runat="server" AutoGenerateColumns="false" SkinID="gridviewSkin"
+                    DataSourceID="ObjectDataSource3" 
+                onrowdatabound="grdOtherReports_RowDataBound"  >
+                <Columns>
+                        <asp:TemplateField HeaderText="Other Reports">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="hlTableName" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>' Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+                                </asp:HyperLink>
+                            </ItemTemplate>
+                            <ItemStyle Width="200px" />
+                            <HeaderStyle CssClass="gridheaderline" />
+                        </asp:TemplateField > 
+                        <asp:TemplateField HeaderText="Edit">
+	                    <ItemTemplate>
+	                    <asp:HyperLink ID="hlEdit" runat="server" Text="Edit" NavigateUrl="~/ControlPanel/Kitchen/ValidationDates.aspx">
+	                    </asp:HyperLink>
+	                    </ItemTemplate>
+	                     <ItemStyle Width="100px" HorizontalAlign="Center" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                </asp:TemplateField>                      
+                        <asp:TemplateField HeaderText="Report History">
+	                    <ItemTemplate>
+	                    <asp:HyperLink ID="hlView" runat="server" Text="View" NavigateUrl='<%# "~/ControlPanel/Kitchen/KitchenReport.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                    </asp:HyperLink>
+	                    </ItemTemplate>
+	                     <ItemStyle Width="100px" HorizontalAlign="Center" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                </asp:TemplateField>
+	                <asp:TemplateField HeaderText="Actions">
+	                    <ItemTemplate>
+	                    <%--<asp:HyperLink ID="hlActions" runat="server" Text="No" NavigateUrl='<%# "~/ControlPanel/Kitchen/CorrectiveActions.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")  %>'>
+	                    </asp:HyperLink>--%>
+	                     <asp:HyperLink ID="hlActions" runat="server" Text="No" NavigateUrl="">
+	                        </asp:HyperLink>
+	                    </ItemTemplate>
+	                    <ItemStyle Width="50px" />
+	                    <HeaderStyle CssClass="gridheaderline" />
+	                </asp:TemplateField>
+	                <asp:TemplateField HeaderText="View">
+	                        <ItemTemplate>
+	                        <asp:HyperLink ID="hlPdf" runat="server" Text="View" NavigateUrl='<%# DataBinder.Eval(Container.DataItem, "TableName").ToString() == "Food Safety Check List"? "~/ControlPanel/Kitchen/FoodSafetyChecklistPrint.aspx": "~/ControlPanel/Kitchen/LogPdf.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName") %>' Target="_blank">
+	                        </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	               </asp:TemplateField>        
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetOtherReport" 
+        TypeName="SchoolHaccp.BusinessLogic.ProcessGetWeeklyReport">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="Label1" DefaultValue="02/08/2008" 
+                Name="dtStartDate" PropertyName="Text" Type="DateTime" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1"  runat="server" ConnectionString="<%$ ConnectionStrings:HaccpConnectionString %>" 
+                            SelectCommand="uspAdm_GetValidationDates" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+
+        </div>
+    
+       <%-- <cc1:ModalPopupExtender ID="ModalPopupExtender1" runat="server" TargetControlID="panEdit" PopupControlID="panEdit"
+ BackgroundCssClass="modalBackground" CancelControlID="btnCancel" OnCancelScript="HideModalPopup()" PopupDragHandleControlID="panEdit">
+</cc1:ModalPopupExtender>--%>
+
+<%--<asp:Panel ID="panEdit" runat="server" Height="180px" Width="400px" CssClass="ModalWindow">
+
+        <h1>Select Date</h1>
+        <table width="100%">
+            <tr>
+                <td class="formtext" style="height: 23px; width: 150px;" align="left">
+                   Entry Date:
+                </td>
+                <td>
+                    <asp:DropDownList ID="ddlEntryDate" runat="server" DataTextField="EntryDate" DataValueField="EntryDate" 
+                        DataSourceID="SqlDataSource1"></asp:DropDownList>
+                </td>
+            </tr> 
+       </table>
+       <br />
+       
+       <asp:Button ID="Button1" runat="server" Text="Update" onclick="Button1_Click" />
+       <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+</asp:Panel>--%>
+         <div style="margin-top:20px;"></div>
+         <div style="margin-left:20px;">
+         <div class="LogHeading">
+            CORRECTIVE ACTIONS
+         </div>
+         <div >
+         <asp:HyperLink ID="hlCorrectivePolicy" runat="server" Text="HACCP Corrective Actions Policy"
+          NavigateUrl="~/StaticContent/Files/HACCP CORRECTIVE ACTIONS POLICY.pdf" Target="_blank"></asp:HyperLink>
+         </div>
+         <div >
+         <asp:HyperLink ID="hlCorrectiveAction" runat="server" Text="HACCP Corrective Actions"
+          NavigateUrl="~/StaticContent/Files/HACCP CORRECTIVE ACTIONS.pdf" Target="_blank"></asp:HyperLink>
+         </div>         
+         <div class="LogHeading">
+            MANAGERS CHECKLIST
+         </div>
+         <div >
+         <asp:HyperLink ID="HyperLink1" runat="server" Text="HACCP Review Policy"
+          NavigateUrl="~/StaticContent/Files/HACCP REVIEW POLICY.pdf" Target="_blank"></asp:HyperLink>
+         </div>
+         <div >
+         <asp:HyperLink ID="HyperLink2" runat="server" Text="HACCP Monitoring Policy"
+          NavigateUrl="~/StaticContent/Files/HACCP MONITORING POLICY.pdf" Target="_blank"></asp:HyperLink>
+         </div>
+         </div>
+        <div class="GirdDiv">
+         <asp:GridView ID="grdCorrectiveAction" runat="server" AutoGenerateColumns="false" SkinID="gridviewSkin">
+                <Columns>
+                     <asp:TemplateField HeaderText="Corrective Action">
+	                        <ItemTemplate>
+	                            <asp:HyperLink ID="hlDate1" runat="server"  NavigateUrl='<%#"~/ControlPanel/Kitchen/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "CorrectiveAction")  %>'
+	                             Text='<%# DataBinder.Eval(Container.DataItem, "CorrectiveAction")  %>'>
+	                            </asp:HyperLink>
+	                        </ItemTemplate>
+	                        <ItemStyle Width="50px" />
+	                        <HeaderStyle CssClass="gridheaderline" />
+	                  </asp:TemplateField>
+                   <%-- <asp:CommandField HeaderText="Corrective Action" SelectText="" 
+                        ShowSelectButton="True" />--%>
+                </Columns>
+         </asp:GridView>
+        </div>
+         <div style="margin-top:20px;"></div>
+        <div class="GirdDiv">
+         <asp:GridView ID="grdMangerList" runat="server"  SkinID="gridviewSkin">
+                <Columns>
+                    <asp:CommandField HeaderText="Managers Check List" SelectText="" 
+                        ShowSelectButton="True"/>
+                </Columns>
+        </asp:GridView>
+        </div>
+        <div style="margin-top:20px;"></div>
+        <div class="GirdDiv">
+            <asp:GridView ID="grdTraining" runat="server"  SkinID="gridviewSkin">
+                <Columns>
+                    <asp:CommandField HeaderText="Training" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Log 1" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Log 2" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Log 3" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Log 4" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Log 5" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Training" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Status" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Training" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Status" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Training" SelectText="" ShowSelectButton="True" />
+                    <asp:CommandField HeaderText="Status" SelectText="" ShowSelectButton="True" />
+                </Columns>
+            </asp:GridView>
+        </div>
+        <div class="Clearer"></div>
+        <div class="PageFooter">
+            <asp:Label ID="lblFooter" Text=" © HACCP Builder 2009" ForeColor="White" runat="server"></asp:Label>
+        </div>
+         <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
+    <%-- <asp:CommandField HeaderText="Corrective Action" SelectText="" 
+                        ShowSelectButton="True" />--%> 
+</asp:Content>

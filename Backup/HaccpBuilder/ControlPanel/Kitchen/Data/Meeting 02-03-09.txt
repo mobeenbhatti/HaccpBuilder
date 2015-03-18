@@ -1,0 +1,15 @@
+All buttons should be in one line
+
+Remove Menu Items button from Inventory page
+Remove Inventory Items from Menu Manager
+Make the fonts smaller in Vendors, Ingredients and Menu Items pages
+Remove login status from all the pages
+Remove Error messages when moving back from Custom Inventory page
+Remove complete green line from Procedural Questions
+
+----------------------------
+Single Menu Item can be shipped to Multiple Customers
+In Receiving Log:
+
+Product NAmne should replaced with Ingredient
+Instead of School Name it should say Vendor

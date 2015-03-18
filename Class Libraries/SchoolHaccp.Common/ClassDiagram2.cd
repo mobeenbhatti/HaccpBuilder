@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SchoolHaccp.Common.DistrictKitchen">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgAAAAiEIAAAAEBAAAggRQAAAgAQAAQGAAgEAAACFA=</HashCode>
+      <FileName>DistrictKitchen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolHaccp.Common.Contact">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAFAAAAoCJBIACIgBAAAQwAAAAAAIQDAAAkJAAAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SchoolHaccp.Common.FoodSafetyQuestion" Collapsed="true">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABABgACAAAABAAgAAEAAACAACCBAkQAAgAIQIAAA=</HashCode>
+      <FileName>FoodSafetyQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

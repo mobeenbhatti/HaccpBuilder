@@ -1,0 +1,7 @@
+﻿<asp:GridView runat="server" SkinId="gridviewSkin" CssClass="zebra" BorderStyle="None" BorderWidth="0px" 
+GridLines="None" EmptyDataText="There are no data records to display." ShowHeaderWhenEmpty="true">    
+   <RowStyle  />
+   <HeaderStyle CssClass="align-left" />                     
+    <AlternatingRowStyle BackColor="#F1F1F1"  />
+</asp:GridView>
+

@@ -1,0 +1,329 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using SchoolHaccp.BusinessLogic;
+
+public partial class ControlPanel_SampleHaccpPlan : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        SetProceduralQuestions();
+        ProcessGetDailyReports dailyReports = new ProcessGetDailyReports();
+        DataSet dsReports = dailyReports.GetReportsStatus(1157911358);
+        foreach (DataRow dr in dsReports.Tables[0].Rows)
+        {
+            if (dr["ColdHoldingLog"].ToString() == "0")
+            {
+                dvColdHoldingLog.Visible = true;
+                rptColdHoldingLog.Visible = false;
+            }
+            if (dr["HotHoldingLog"].ToString() == "0")
+            {
+                dvHotHoldingLog.Visible = true;
+                rptHotHlodingLog.Visible = false;
+            }
+            if (dr["ReceivingLog"].ToString() == "0")
+            {
+                dvReceivingLog.Visible = true;
+                rptReceivingLog.Visible = false;
+            }
+            if (dr["FreezerLog"].ToString() == "0")
+            {
+                dvCoolingLog.Visible = true;
+                rptCoolingLog.Visible = false;
+            }
+            if (dr["RefrigerationLog"].ToString() == "0")
+            {
+                dvRefrigrationLog.Visible = true;
+                rptRefrigrationLog.Visible = false;
+            }
+            if (dr["FreezerNewLog"].ToString() == "0")
+            {
+                dvFreezerLog.Visible = true;
+                rptFreezerLog.Visible = false;
+            }
+            if (dr["ShippingLog"].ToString() == "0")
+            {
+                dvShippingLog.Visible = true;
+                rptShippingLog.Visible = false;
+            }
+            if (dr["TemperatureLog"].ToString() == "0")
+            {
+                dvTemperatureLog.Visible = true;
+                rptFoodcategory.Visible = false;
+            }
+        }
+    }
+    private void SetProceduralQuestions()
+    {
+
+        ProcessGetProceduralResponse getResponse = new ProcessGetProceduralResponse();
+        DataSet dsResponse;
+        dsResponse = getResponse.GetResponsesDataSet(1157911358, 1);
+        if (dsResponse.Tables[0].Rows.Count > 0)
+        {
+
+            foreach (DataRow dr in dsResponse.Tables[0].Rows)
+            {
+                lblQuestion1.Text = dr["CorrectiveAction"].ToString();
+
+            }
+        }
+        dsResponse = getResponse.GetResponsesDataSet(1157911358, 2);
+        if (dsResponse.Tables[0].Rows.Count > 0)
+        {
+
+            foreach (DataRow dr in dsResponse.Tables[0].Rows)
+            {
+                lblQuestion2.Text = dr["CorrectiveAction"].ToString();
+                if (dr["Response"].ToString() != "")
+                {
+                    if (int.Parse(dr["Response"].ToString()) == 1)
+                    {
+                        rdlAllergenYes.Checked = true;
+                    }
+                    else if (int.Parse(dr["Response"].ToString()) == 0)
+                    {
+                        rdlAllergenNo.Checked = true;
+                    }
+                    else
+                    {
+                        rdlAllergenNA.Checked = true;
+                    }
+                }
+            }
+        }
+        dsResponse = getResponse.GetResponsesDataSet(1157911358, 3);
+        if (dsResponse.Tables[0].Rows.Count > 0)
+        {
+
+            foreach (DataRow dr in dsResponse.Tables[0].Rows)
+            {
+                lblQuestion2b.Text = dr["CorrectiveAction"].ToString();
+
+            }
+        }
+        dsResponse = getResponse.GetResponsesDataSet(1157911358, 4);
+        if (dsResponse.Tables[0].Rows.Count > 0)
+        {
+
+            foreach (DataRow dr in dsResponse.Tables[0].Rows)
+            {
+                lblQuestion3.Text = dr["CorrectiveAction"].ToString();
+
+            }
+        }
+        dsResponse = getResponse.GetResponsesDataSet(1157911358, 5);
+        if (dsResponse.Tables[0].Rows.Count > 0)
+        {
+
+            foreach (DataRow dr in dsResponse.Tables[0].Rows)
+            {
+                lblQuestion4.Text = dr["CorrectiveAction"].ToString();
+                if (dr["Response"].ToString() != "")
+                {
+                    if (int.Parse(dr["Response"].ToString()) == 1)
+                    {
+                        rdbSoilYes.Checked = true;
+                    }
+                    else if (int.Parse(dr["Response"].ToString()) == 0)
+                    {
+                        rdbSoilNo.Checked = true;
+                    }
+                    else
+                    {
+                        rdbSoilNA.Checked = true;
+                    }
+                }
+            }
+        }
+        int i = 0;
+        dsResponse = getResponse.GetResponsesInfo(1157911358);
+        if (dsResponse.Tables[0].Rows.Count > 0)
+        {
+
+            foreach (DataRow dr in dsResponse.Tables[0].Rows)
+            {
+
+                RadioButton rdbAnswerYes = (RadioButton)grdQuestion.Rows[i].FindControl("rdbAnswerYes");
+                RadioButton rdbAnswerNo = (RadioButton)grdQuestion.Rows[i].FindControl("rdbAnswerNo");
+                RadioButton rdbAnswerNA = (RadioButton)grdQuestion.Rows[i].FindControl("rdbAnswerNA");
+                if (dr["Response"].ToString() != "")
+                {
+                    if (int.Parse(dr["Response"].ToString()) == 1)
+                    {
+                        rdbAnswerYes.Checked = true;
+                    }
+                    else if (int.Parse(dr["Response"].ToString()) == 0)
+                    {
+                        rdbAnswerNo.Checked = true;
+                    }
+                    else
+                    {
+                        rdbAnswerNA.Checked = true;
+                    }
+                }
+                i++;
+            }
+        }
+
+    }
+    protected void grdMenuAll_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            Label lblProcess = (Label)e.Row.FindControl("lblProcess");
+            Label lblPreparation = (Label)e.Row.FindControl("lblPreperation");
+            Label lblMenuItem = (Label)e.Row.FindControl("lblName");
+            //HyperLink hlMenuItem = (HyperLink)e.Row.FindControl("hlName");
+
+
+
+            string strval = lblMenuItem.Text;
+            string title = (string)ViewState["title"];
+            if (title == strval)
+            {
+                lblMenuItem.Visible = false;
+                lblMenuItem.Text = string.Empty;
+                lblProcess.Visible = false;
+                lblProcess.Text = string.Empty;
+                lblPreparation.Visible = false;
+                lblPreparation.Text = string.Empty;
+
+
+                //titleLabel.Visible = false;
+                //titleLabel.Text = string.Empty;
+            }
+            else
+            {
+                title = strval;
+                ViewState["title"] = title;
+                lblMenuItem.Visible = true;
+                lblProcess.Visible = true;
+                lblPreparation.Visible = true;
+                //titleLabel.Visible = true;
+                //titleLabel.Text = getCategory(title);
+            }
+        }
+    }
+    protected void rptProcess_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            DetailsView dtvProcess;
+            HiddenField hfProcessId;
+            GridView grdMenu;
+            DataSet dsProcessMenu;
+            Label lblProcessMenu;
+
+            dtvProcess = (DetailsView)e.Item.FindControl("dtvProcess");
+            hfProcessId = (HiddenField)e.Item.FindControl("hfProcessId");
+            grdMenu = (GridView)e.Item.FindControl("grdMenuProcess1");
+            lblProcessMenu = (Label)e.Item.FindControl("lblProcessMenu");
+            ProcessGetProcess getProcess = new ProcessGetProcess();
+            dtvProcess.DataSource = getProcess.GetProcessByID(int.Parse(hfProcessId.Value));
+            dtvProcess.DataBind();
+
+            ProcessGetMenuItemNew getMenuItem = new ProcessGetMenuItemNew();
+
+            dsProcessMenu = getMenuItem.GetMenuItemsNewByProcess(1157911358, int.Parse(hfProcessId.Value));
+
+            grdMenu.DataSource = dsProcessMenu;
+            grdMenu.DataBind();
+            if (dsProcessMenu.Tables[0].Rows.Count < 1)
+            {
+                lblProcessMenu.Text = "No Data Found";
+            }
+
+        }
+    }
+    protected void grdMenuProcess1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            Label lblProcess = (Label)e.Row.FindControl("lblProcess");
+            Label lblMenuItem = (Label)e.Row.FindControl("lblName");
+            Label lblPreparation = (Label)e.Row.FindControl("lblPreperation");
+
+
+
+            string strval = lblMenuItem.Text;
+            string title = (string)ViewState["title0"];
+            if (title == strval)
+            {
+                lblMenuItem.Visible = false;
+                lblMenuItem.Text = string.Empty;
+                lblProcess.Visible = false;
+                lblProcess.Text = string.Empty;
+                lblPreparation.Visible = false;
+                lblPreparation.Text = string.Empty;
+
+            }
+            else
+            {
+                title = strval;
+                ViewState["title0"] = title;
+                lblMenuItem.Visible = true;
+                lblProcess.Visible = true;
+                lblPreparation.Visible = true;
+
+            }
+        }
+    }
+    protected void rptFoodCatogary_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+
+            DataSet dsFoodcategoryCorectiveAction;
+            HiddenField hfFoodCategoryId;
+            Repeater rptFoodcategoryCorectiveAction;
+
+            //Repeater rptFoodcategory;
+
+            System.Web.UI.HtmlControls.HtmlTableRow trFoodCategoryCorrectiveActions;
+            //rptFoodcategory = (Repeater)e.Item.FindControl("rptFoodcategory");
+            rptFoodcategoryCorectiveAction = (Repeater)e.Item.FindControl("rptFoodcategoryCorectiveAction");
+            hfFoodCategoryId = (HiddenField)e.Item.FindControl("hfFoodCategoryId");
+            trFoodCategoryCorrectiveActions = (System.Web.UI.HtmlControls.HtmlTableRow)e.Item.FindControl("trFoodCategoryCorrectiveActions");
+
+            ProcessGetFoodCategory processGetFoodCategory = new ProcessGetFoodCategory();
+
+            //rptFoodcategory.DataSource = processGetFoodCategory.GetFoodCategoriesByKitchenId(1157911358);
+            //rptFoodcategory.DataBind();
+            dsFoodcategoryCorectiveAction = processGetFoodCategory.GetFoodCategoryCorrectiveActions(int.Parse(hfFoodCategoryId.Value)); ;
+            rptFoodcategoryCorectiveAction.DataSource = dsFoodcategoryCorectiveAction;
+            rptFoodcategoryCorectiveAction.DataBind();
+
+            if (dsFoodcategoryCorectiveAction.Tables[0].Rows.Count < 1)
+            {
+                trFoodCategoryCorrectiveActions.Visible = true;
+
+            }
+            else
+            {
+                trFoodCategoryCorrectiveActions.Visible = false;
+            }
+
+
+
+        }
+    }
+    protected void Repeater2_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            Repeater rptSOP;
+            HiddenField hfSOPId;
+            ProcessGetSOP getSOP = new ProcessGetSOP();
+            rptSOP = (Repeater)e.Item.FindControl("rptSOP");
+            hfSOPId = (HiddenField)e.Item.FindControl("hfSOPId");
+            rptSOP.DataSource = getSOP.GetSOPById(int.Parse(hfSOPId.Value));
+            rptSOP.DataBind();
+        }
+    }
+}
