@@ -1,32 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Class Libraries", "Class Libraries", "{90E922FF-C1B2-4D04-9207-DDEE2C27CCAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{66F2A559-8566-461F-8003-D50722A6D1C6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win", "Win", "{2E921A4D-CD6D-4EFA-8AA5-B21BC92DF3EE}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web", "Web\", "{498CBC6C-9613-48C0-92A2-27A6B014172B}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		ProjectReferences = "{DE401A95-20A3-4733-A161-BDCEAA5A1CA8}|SchoolHaccp.Common.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/Web"
-		Debug.AspNetCompiler.PhysicalPath = "Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Web\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Web"
-		Release.AspNetCompiler.PhysicalPath = "Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Web\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "56927"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolHaccp.BusinessLogic", "Class Libraries\SchoolHaccp.BusinessLogic\SchoolHaccp.BusinessLogic.csproj", "{892DAEC3-E138-40C2-8E34-07034EF95837}"
 EndProject
@@ -56,18 +37,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Release|.NET.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{498CBC6C-9613-48C0-92A2-27A6B014172B}.Release|x86.ActiveCfg = Debug|Any CPU
 		{892DAEC3-E138-40C2-8E34-07034EF95837}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{892DAEC3-E138-40C2-8E34-07034EF95837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{892DAEC3-E138-40C2-8E34-07034EF95837}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -169,9 +138,8 @@ Global
 		{DE401A95-20A3-4733-A161-BDCEAA5A1CA8} = {90E922FF-C1B2-4D04-9207-DDEE2C27CCAD}
 		{1CD38558-5D37-4B90-9173-B4FC581BCE86} = {90E922FF-C1B2-4D04-9207-DDEE2C27CCAD}
 		{CC9B8709-5D0E-4776-8C1F-9DA8B833ED00} = {90E922FF-C1B2-4D04-9207-DDEE2C27CCAD}
-		{E515A1AA-3DEA-47D1-8D11-2D2110E9BBAB} = {90E922FF-C1B2-4D04-9207-DDEE2C27CCAD}
-		{498CBC6C-9613-48C0-92A2-27A6B014172B} = {66F2A559-8566-461F-8003-D50722A6D1C6}
 		{14B3495A-5F27-4D2A-BCAE-8E637C418EDB} = {66F2A559-8566-461F-8003-D50722A6D1C6}
+		{E515A1AA-3DEA-47D1-8D11-2D2110E9BBAB} = {90E922FF-C1B2-4D04-9207-DDEE2C27CCAD}
 		{C31894E1-9975-4C1D-A0FB-A8EEC7C0B5A2} = {2E921A4D-CD6D-4EFA-8AA5-B21BC92DF3EE}
 		{F4D4AF29-D255-49DB-997E-3CBDE7960EEC} = {2E921A4D-CD6D-4EFA-8AA5-B21BC92DF3EE}
 	EndGlobalSection

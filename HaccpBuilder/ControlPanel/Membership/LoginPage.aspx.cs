@@ -41,7 +41,7 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
          if (Request.Cookies["myCookie"] != null) //Cookie Exists??
 
             {
-
+             //RGK Test Git
                 HttpCookie cookie = Request.Cookies.Get("myCookie");
 
                 string user = cookie.Values["user"].ToString();
