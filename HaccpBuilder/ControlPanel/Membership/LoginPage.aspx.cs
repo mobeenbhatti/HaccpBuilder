@@ -284,14 +284,34 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
                             //ProcessGetContactAgreement getAgreement = new ProcessGetContactAgreement();
                             //DataSet dsAgreement = getAgreement.GetContactAgreementByDate(nContactId, strIP);
                             //if (dsAgreement.Tables[0].Rows.Count > 0)
+
+                            // Mobeen
+                            //if (CheckAgreement(nContactId) == true)
+                            //{
+                            //    Response.Redirect("~/ControlPanel/Kitchen/FacilityTest.aspx");
+                            //}
+                            //else
+                            //{
+                            //    Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=k&Contact=" + nContactId.ToString());
+                            //}
+
+                            // Added mobeen
                             if (CheckAgreement(nContactId) == true)
                             {
-                                Response.Redirect("~/ControlPanel/Kitchen/FacilityTest.aspx");
+                                if (user != null && user.IsUpdated == false)
+                                {
+                                    Response.Redirect("~/ControlPanel/Kitchen/LoginUpdate.aspx");
+                                }
+                                else
+                                {
+                                    Response.Redirect("~/ControlPanel/Kitchen/FacilityTest.aspx");
+                                }
                             }
                             else
                             {
-                                Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=k&Contact=" + nContactId.ToString());
+                                Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=d&Contact=" + nContactId.ToString());
                             }
+
                         }
                     }
                     else
@@ -303,10 +323,13 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
         #endregion
         #region Mobile
             else
-                if (getRoles.IsUserInRole(this.Login1.UserName, this.Login1.Password, "KitchenEmployee"))
+                if (getRoles.IsUserInRole(this.Login1.UserName, password, "KitchenEmployee"))
+                {
+                    // mobeen - To support new Credential policy
+                if (this.Login1.UserName.Contains("@"))
                 {
                     ProcessGetMobile mobile = new ProcessGetMobile();
-                    IDataReader mobileReader = mobile.Get(this.Login1.UserName, this.Login1.Password);
+                    IDataReader mobileReader = mobile.Get(this.Login1.UserName, password);
                     string strInitials = "";
 
                     if (mobileReader.Read())
@@ -374,6 +397,99 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
                     {
                         Response.Redirect("~/ControlPanel/Membership/LoginFailure.aspx");
                     }
+
+
+                }
+                //added mobeen Old Credential ploicy
+                else
+                {
+                    ProcessGetMobile mobile = new ProcessGetMobile();
+                    IDataReader mobileReader = mobile.Get(this.Login1.UserName, this.Login1.Password);
+                    string strInitials = "";
+
+                    if (mobileReader.Read())
+                    {
+                        Session["KitchenId"] = (int)mobileReader["KitchenId"];
+                        Session["TypeId"] = (int)mobileReader["TypeId"];
+                        Session["MobileId"] = (int)mobileReader["MobileId"];
+                        if (mobileReader["Active"].ToString() != "1")
+                        {
+                            //Redirect to Error page
+                            Response.Redirect("~/ControlPanel/Membership/LoginFailure.aspx?Category=1");
+                        }
+
+                        if ((int)Session["TypeId"] == 1)
+                        {
+                            //Implemented for Free Trila Locations. If exceeds the limit , user couldn't login.
+                            TimeSpan span = DateTime.Today.Subtract(DateTime.Parse(mobileReader["CreatedDate"].ToString()));
+
+                            //if (span.Days > 10)
+                            //{
+                            //    //Redirect to Error Page
+                            //    Response.Redirect("~/ControlPanel/Membership/LoginFailure.aspx?category=2");
+                            //}
+                        }
+
+                        mobileReader.Close();
+                        // GET AGREEMENT INFO TO SHOW AGREEMENT PAGE
+                        ProcessGetContact getContactInfo = new ProcessGetContact();
+
+                        DataSet ds = getContactInfo.GetContactByUser(this.Login1.UserName, this.Login1.Password);
+                        if (ds.Tables[0].Rows.Count > 0)
+                        {
+                            foreach (DataRow dr in ds.Tables[0].Rows)
+                            {
+
+                                nContactId = int.Parse(dr["ContactId"].ToString());
+                                strInitials = dr["Initials"].ToString();
+                                Session["Initials"] = strInitials;
+                                if (dr["Active"].ToString() != "1")
+                                {
+                                    //Redirect to Error page, if Contact is inactive
+                                    Response.Redirect("~/ControlPanel/Membership/LoginFailure.aspx?Category=1");
+                                }
+                            }
+                            //ProcessGetContactAgreement getAgreement = new ProcessGetContactAgreement();
+                            //DataSet dsAgreement = getAgreement.GetContactAgreementByDate(nContactId, strIP);
+                            //if (dsAgreement.Tables[0].Rows.Count > 0)
+                           
+                            //mobeen
+                            //if (CheckAgreement(nContactId) == true)
+                            //{
+                            //    Response.Redirect("~/ControlPanel/Location/Default.aspx");
+                            //}
+                            //else
+                            //{
+                            //    Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=l&Contact=" + nContactId.ToString());
+                            //}
+
+                            //added mobeen
+                            if (CheckAgreement(nContactId) == true)
+                            {
+                                if (user != null && user.IsUpdated == false)
+                                {
+                                    Response.Redirect("~/ControlPanel/Location/LoginUpdate.aspx");
+                                }
+                                else
+                                {
+                                    Response.Redirect("~/ControlPanel/Location/Default.aspx");
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            // WHEN USER IS LOGIN FIRST TIME, MOVE TO AGREEMENT PAGE
+                            Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=l&Contact=" + nContactId.ToString());
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("~/ControlPanel/Membership/LoginFailure.aspx");
+                    }
+                
+                
+                }
 
                 }
             #endregion
