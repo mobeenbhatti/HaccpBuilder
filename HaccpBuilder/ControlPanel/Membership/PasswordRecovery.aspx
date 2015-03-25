@@ -15,12 +15,10 @@
     </div>       
     <div style="border:solid 1px black; width:300px; text-align:left; background-color:#dcdcdc;">
         <p>
-		    The PasswordRecovery control allows you to recover your password based on the security
-		    question and answer you provided when you signed up.
+		    The PasswordRecovery control allows you to recover your password.
 	    </p>
 	    <div>
-		    <asp:PasswordRecovery runat="server" ID="PasswordRecovery1" UserNameTitleText="Step 1"
-			    QuestionTitleText="Step 2" />
+		    <asp:PasswordRecovery runat="server" ID="PasswordRecovery1"  SubmitButtonText="Get Password" SubmitButtonType="Button" />
 	    </div>
 	</div>
     </div>

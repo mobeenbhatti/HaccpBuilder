@@ -101,12 +101,12 @@ namespace SchoolHaccp.Operational
 
         public override bool EnablePasswordReset
         {
-            get { return false; }
+            get { return true; }
         }
 
         public override bool EnablePasswordRetrieval
         {
-            get { return true; }
+            get { return false; }
         }
 
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
@@ -151,7 +151,7 @@ namespace SchoolHaccp.Operational
                     if (reader.Read())
                     {
                         user = new MembershipUser(this.Name, reader["Email"].ToString(), null,
-                            reader["Email"].ToString(), null, reader["Note"].ToString(),
+                            reader["Email"].ToString(), null, "",
                             true, false, Convert.ToDateTime(reader["CreatedDate"]),
                             Convert.ToDateTime(reader["LastLoginDate"]),
                             Convert.ToDateTime(reader["LastActivityDate"]),
@@ -205,7 +205,7 @@ namespace SchoolHaccp.Operational
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { throw new Exception("The method or operation is not implemented."); }
+            get { return false; }
         }
 
         public override bool RequiresUniqueEmail
@@ -215,8 +215,49 @@ namespace SchoolHaccp.Operational
 
         public override string ResetPassword(string username, string answer)
         {
-            throw new Exception("The method or operation is not implemented.");
+
+            HaccpUser user = new HaccpUser();
+            DataModel.Contact con;
+
+            if (username.Contains("@"))
+            {
+                con = (from n in _context.Contacts
+                       where n.EmailAddress == username && n.IsUpdated == true
+                       select n).FirstOrDefault();
+            
+            }
+            else
+            {
+                //cusomter login
+                con = (from n in _context.Contacts
+                       where n.UserId == username
+                       select n).FirstOrDefault();
+
+            }
+
+
+            if (con != null)
+            {
+                string pwd = Utilities.CreatePasswordHash("Passw0rd", con.PasswordSalt);
+
+                con.Password = pwd;
+                _context.SaveChanges();
+
+                
+            }
+       
+
+
+
+
+
+
+
+            bool result = false;
+      
+            return result;
         }
+
 
         public override bool UnlockUser(string userName)
         {
@@ -283,7 +324,7 @@ namespace SchoolHaccp.Operational
                 {
                     return false;
                 }
-            }  
+            }
             using (DataHelper dataHelper = new DataHelper(this.m_ValidateUserStoredProcedure))
             {
                 List<DataParameter> parameters = new List<DataParameter>(7);
@@ -310,7 +351,7 @@ namespace SchoolHaccp.Operational
                 return false;
             }
         }
-        
+
     }
 }
 
