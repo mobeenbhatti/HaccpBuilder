@@ -13,7 +13,7 @@ function ValidatorsEnabled(state)
 
    document.getElementById('<%=rqVldName.ClientID%>').disable = state;
    document.getElementById('<%=rqVldPassword.ClientID%>').disable = state;
-   document.getElementById('<%=rqVldEmail.ClientID%>').disable = state; 
+  
          
 
 }
@@ -58,7 +58,7 @@ function ValidatorsEnabled(state)
             <asp:ValidationSummary ID="ValidationSummary1" DisplayMode="List" runat="server" CssClass="msg-error" />
             <asp:RequiredFieldValidator ID="rqVldName" runat="server" Display="None" ErrorMessage="The value in field User Name is required." ControlToValidate="txtUserEdit"></asp:RequiredFieldValidator>
             <asp:RequiredFieldValidator ID="rqVldPassword" runat="server" Display="None"  ErrorMessage="The value in field Password is required." ControlToValidate="txtPasswordEdit"></asp:RequiredFieldValidator>
-            <asp:RequiredFieldValidator ID="rqVldEmail" runat="server" Display="None" ErrorMessage="The value in field Email Address is required." ControlToValidate="txtEmailAddressEdit"></asp:RequiredFieldValidator>
+            <%--<asp:RequiredFieldValidator ID="rqVldEmail" runat="server" Display="None" ErrorMessage="The value in field Email Address is required." ControlToValidate="txtEmailAddressEdit"></asp:RequiredFieldValidator>--%>
         </div>
         <div class="form3">        
         <h2 class="left h2margin-r">Add/Edit a User :</h2>
@@ -75,20 +75,23 @@ function ValidatorsEnabled(state)
         <h1 class="left h1margin-r">User Name:</h1>
         <div class="input left">
         <asp:TextBox ID="txtUserEdit" runat="server" MaxLength="40" Width="200px" ></asp:TextBox>
-        <asp:RegularExpressionValidator ID="REV_txtUserEdit" runat="server" ControlToValidate="txtUserEdit" Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid user name."  ValidationExpression="^[a-zA-Z0-9.\s\,\.\-_]{1,40}$"></asp:RegularExpressionValidator>
-        </div>
+      
+          <asp:RegularExpressionValidator ID="REV_txtUserEdit" runat="server" ControlToValidate="txtUserEdit" Text="*"
+			EnableClientScript="true" ErrorMessage="Please enter a valid user name.<br />" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator> 
+            
+             </div>
         <div class="clear"></div>
         <h1 class="left h1margin-r">Password:</h1>
         <div class="input left">
         <asp:TextBox ID="txtPasswordEdit" runat="server" Width="200px" ></asp:TextBox>
         </div>
-        <div class="clear"></div>
+      <%--  <div class="clear"></div>
         <h1 class="left h1margin-r">Email Address:</h1>
         <div class="input left">
         <asp:TextBox ID="txtEmailAddressEdit" runat="server" Width="200px"  ></asp:TextBox>
         <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmailAddressEdit"  Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid email.<br />"
         ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-        </div>
+        </div>--%>
         <div class="clear"></div>
         <asp:Button ID="cmdSubmit" Text="Submit" CssClass="Button Blue"  OnClick="cmdSubmit_Click" runat="server" />
   </div>    
@@ -115,7 +118,7 @@ function ValidatorsEnabled(state)
 	                    </asp:HyperLink>
 	                </ItemTemplate>	                        
 	            </asp:TemplateField >	                                 
-	            <asp:BoundField DataField="Password" HeaderText="Password"  />	                    
+	           <%-- <asp:BoundField DataField="Password" HeaderText="Password"  />--%>	                    
 	            <asp:BoundField DataField="Phone" HeaderText="Phone" />                    
 	            <asp:TemplateField HeaderText="Login Level">
 	                <ItemTemplate>

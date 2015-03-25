@@ -111,15 +111,6 @@ public partial class ControlPanel_District_DistrictUsers {
     protected global::System.Web.UI.WebControls.RequiredFieldValidator rqVldPassword;
     
     /// <summary>
-    /// rqVldEmail control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.RequiredFieldValidator rqVldEmail;
-    
-    /// <summary>
     /// hfContactId control.
     /// </summary>
     /// <remarks>
@@ -163,24 +154,6 @@ public partial class ControlPanel_District_DistrictUsers {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.TextBox txtPasswordEdit;
-    
-    /// <summary>
-    /// txtEmailAddressEdit control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtEmailAddressEdit;
-    
-    /// <summary>
-    /// revEmail control.
-    /// </summary>
-    /// <remarks>
-    /// Auto-generated field.
-    /// To modify move field declaration from designer file to code-behind file.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.RegularExpressionValidator revEmail;
     
     /// <summary>
     /// cmdSubmit control.

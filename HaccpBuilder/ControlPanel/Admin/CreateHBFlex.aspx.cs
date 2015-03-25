@@ -191,7 +191,13 @@ public partial class ControlPanel_Admin_CreateHBFlex : System.Web.UI.Page
         //newContact.Phone = txtPhone.Text;
         //newContact.EmailAlerts = rdbAlertsYes.Checked ? 1 : 0;
         newContact.UserId = txtUser.Text.Trim();
-        newContact.Password = txtPassword.Text;
+       string password = txtPassword.Text;
+        string passwordSalt = Guid.NewGuid().ToString();
+        if (txtUser.Text.Contains("@"))
+            password = Utilities.CreatePasswordHash(password, passwordSalt);
+        newContact.Password = password;
+        newContact.PasswordSalt = passwordSalt;
+        newContact.IsUpdated = true;
 
         ProcessCreateDistrict createDistrict = new ProcessCreateDistrict();
         createDistrict.District = newDistrict;
@@ -440,7 +446,13 @@ public partial class ControlPanel_Admin_CreateHBFlex : System.Web.UI.Page
         newContact.Email = this.txtEmail.Text.Trim();
         newContact.Name = this.txtManagerName.Text.Trim();
         newContact.UserId = this.txtUser.Text.Trim();
-        newContact.Password = this.txtPassword.Text;
+        string password = txtPassword.Text;
+        string passwordSalt = Guid.NewGuid().ToString();
+        if (txtUser.Text.Contains("@"))
+            password = Utilities.CreatePasswordHash(password, passwordSalt);
+        newContact.Password = password;
+        newContact.PasswordSalt = passwordSalt;
+        newContact.IsUpdated = true;
         newContact.ContactId = int.Parse(hfContactId.Value);
 
         ProcessSetDistrict setDistrict = new ProcessSetDistrict();

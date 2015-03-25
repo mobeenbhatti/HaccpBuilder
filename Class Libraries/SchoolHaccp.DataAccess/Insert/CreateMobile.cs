@@ -153,7 +153,7 @@ namespace SchoolHaccp.DataAccess.Insert
 
         private void Build()
         {
-            object[] parameters = new object[81];
+            object[] parameters = new object[83];
             parameters[0] = this.Mobile.KitchenId;
             parameters[1] = this.Mobile.Name;
             parameters[2] = this.Mobile.TemperatureLog;
@@ -235,7 +235,8 @@ namespace SchoolHaccp.DataAccess.Insert
             parameters[78] = this.Address.Country;
             parameters[79] = this.Mobile.CheckList;
             parameters[80] = this.Mobile.CheckListAlert;
-
+            parameters[81] = this.Conatact.PasswordSalt;
+            parameters[82] = this.Conatact.IsUpdated;
 
             //        @nDistrictId INT
             //,@chMobileName VARCHAR(200)

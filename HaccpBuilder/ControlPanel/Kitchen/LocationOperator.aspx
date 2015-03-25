@@ -608,14 +608,14 @@
       </div>     
     </div>  
      <div class="left margin-lr">
-          <label>Employee Email:</label>
+          <%--<label>Employee Email:</label>
           <div class="input">
             <asp:TextBox ID="txtEmail" runat="server" Width="200px" ></asp:TextBox>
             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" Text="*"
             ErrorMessage="The value in field Employee Email is required." ControlToValidate="txtEmail"  Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator> 
             <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" Text="*"
 			EnableClientScript="true" ErrorMessage="Please enter a valid email.<br />" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator> 
-          </div>
+          </div>--%>
      </div> 
     <div class="clear"></div>
   </div>
@@ -626,9 +626,10 @@
         <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>     
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="*"
         ErrorMessage="The value in field User ID is required." ControlToValidate="txtUserId" Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="REV_txtUser" runat="server" ControlToValidate="txtUserId"
-        EnableClientScript="true" ErrorMessage="Please enter a valid user name." Text="*" ValidationExpression="^[a-zA-Z0-9.\s\,\.\-_ ]{1,40}$"></asp:RegularExpressionValidator>   
-      </div>     
+     
+            <asp:RegularExpressionValidator ID="REV_txtUser" runat="server" ControlToValidate="txtUserId" Text="*"
+			EnableClientScript="true" ErrorMessage="Please enter a valid user name.<br />" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator> 
+           </div>     
     </div>    
      <div class="left margin-lr">
           <label> Password:</label>
@@ -1029,7 +1030,7 @@
                 </ItemTemplate>               
             </asp:TemplateField>
             <asp:BoundField DataField="UserName" HeaderText="User Name" />
-            <asp:BoundField DataField="Password" HeaderText="Password" />
+            <%--<asp:BoundField DataField="Password" HeaderText="Password" />--%>
             </Columns>
     </asp:GridView>  
   </div>  

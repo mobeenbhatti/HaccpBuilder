@@ -167,9 +167,9 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Display="None"
                     ErrorMessage="The value in field User ID is required." ControlToValidate="txtUser"
                     Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="REV_txtUser" runat="server" ControlToValidate="txtUser"
-                    Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid user name."
-                    ValidationExpression="^[a-zA-Z0-9.\s\,\.\-_ ]{1,40}$"></asp:RegularExpressionValidator>
+               <asp:RegularExpressionValidator ID="REV_txtUser" runat="server" ControlToValidate="txtUser"
+                    Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid user name.<br />"
+                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
             </div>
             <div class="SearchDiv1">
                 <div class="DistrictSearchCol1">

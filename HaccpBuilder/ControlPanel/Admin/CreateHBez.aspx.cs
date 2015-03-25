@@ -184,6 +184,10 @@ public partial class ControlPanel_Admin_CreateHBez : System.Web.UI.Page
         string strUserName, strPassword;
         //strUserName = "UID" + GenerateUserName();
         //strPassword = GenerateRandomPassword();
+        string password = txtPassword.Text;
+        string passwordSalt = Guid.NewGuid().ToString();
+        if (txtUser.Text.Contains("@"))
+            password = Utilities.CreatePasswordHash(password, passwordSalt);
 
         Contact newContact = new Contact();
         newContact.AltPhone = txtAltPhone.Text;
@@ -193,7 +197,9 @@ public partial class ControlPanel_Admin_CreateHBez : System.Web.UI.Page
         newContact.Phone = txtPhone.Text;
         newContact.EmailAlerts = 0;
         newContact.UserId = txtUser.Text;
-        newContact.Password = txtPassword.Text;
+        newContact.Password = password;
+        newContact.PasswordSalt = passwordSalt;
+        newContact.IsUpdated = true;
 
         ProcessCreateKitchen createKitchen = new ProcessCreateKitchen();
         createKitchen.Kitchen = newKitchen;
@@ -403,7 +409,14 @@ public partial class ControlPanel_Admin_CreateHBez : System.Web.UI.Page
         newContact.EmailAlerts = 0;
         newContact.ContactId = int.Parse(hfContactId.Value);
         newContact.UserId = txtUser.Text.Trim();
-        newContact.Password = txtPassword.Text.Trim();
+        string password = txtPassword.Text;
+        string passwordSalt = Guid.NewGuid().ToString();
+        if (txtUser.Text.Contains("@"))
+            password = Utilities.CreatePasswordHash(password, passwordSalt);
+        newContact.Password = password;
+        newContact.PasswordSalt = passwordSalt;
+        newContact.IsUpdated = true;
+
 
         ProcessSetKitchen setKitchen = new ProcessSetKitchen();
         setKitchen.Kitchen = newKitchen;

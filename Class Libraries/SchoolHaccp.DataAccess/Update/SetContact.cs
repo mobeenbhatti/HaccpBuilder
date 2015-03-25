@@ -48,12 +48,14 @@ namespace SchoolHaccp.DataAccess.Update
 
 		private void Build()
 		{
-            object[] parameters = new object[5];
+            object[] parameters = new object[7];
             parameters[0]= this.Contact.ContactId;
             parameters[1] = this.Contact.UserId;
             parameters[2] = this.Contact.Password;
             parameters[3] = this.Contact.Email;
             parameters[4] = this.Contact.RoleName;
+            parameters[5] = this.Contact.PasswordSalt;
+            parameters[6] = this.Contact.IsUpdated;
             
             Parameters = parameters;
 		}

@@ -136,12 +136,19 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
     {
         if (CheckData() == true)
         {
+            string password = txtPasswordEdit.Text;
+            string passwordSalt = Guid.NewGuid().ToString();
+            if (txtUserEdit.Text.Contains("@"))
+                password = Utilities.CreatePasswordHash(password, passwordSalt);
+
             Contact contact = new Contact();
             contact.ContactId = int.Parse(hfContactId.Value);
-            contact.Email = txtEmailAddressEdit.Text;
+            contact.Email = txtUserEdit.Text;
             contact.UserId = txtUserEdit.Text;
-            contact.Password = txtPasswordEdit.Text;
-            contact.RoleName = "KitchenAdmin"; 
+            contact.Password = password;
+            contact.RoleName = "KitchenAdmin";
+            contact.PasswordSalt = passwordSalt;
+            contact.IsUpdated = true;
             //if (rdbLoginLevel.SelectedIndex == 1)
             //{ contact.RoleName = "KitchenAdmin"; }
             //else
@@ -162,7 +169,7 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             ProcessSetContact setContact = new ProcessSetContact();
             setContact.Contact = contact;
             setContact.Invoke();
-           int nStatus =  SendMessage(contact.UserId, contact.Password, contact.Email);
+            int nStatus = SendMessage(contact.UserId, txtPasswordEdit.Text, contact.Email);
            if (nStatus == 1)
            {
                lblInfo.Text = "User Information Updated Succesfully and email has been sent";
@@ -222,8 +229,8 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             {
                 hfContactId.Value = dsContact.Tables[0].Rows[0]["ContactId"].ToString();
                 ddlKitchenEdit.SelectedValue = dsContact.Tables[0].Rows[0]["KitchenId"].ToString();
-                txtEmailAddressEdit.Text = dsContact.Tables[0].Rows[0]["EmailAddress"].ToString();
-                txtPasswordEdit.Text = dsContact.Tables[0].Rows[0]["Password"].ToString();
+                txtUserEdit.Text = dsContact.Tables[0].Rows[0]["EmailAddress"].ToString();
+                //txtPasswordEdit.Text = dsContact.Tables[0].Rows[0]["Password"].ToString();
                 txtUserEdit.Text = dsContact.Tables[0].Rows[0]["UserId"].ToString();
                 strRoleName = dsContact.Tables[0].Rows[0]["RoleName"].ToString();
             }
@@ -241,10 +248,10 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             //{
             //    //rdbDistrictRead.Checked = true;
             //}
-            txtEmailAddressEdit.Enabled = true;
+           // txtEmailAddressEdit.Enabled = true;
             txtPasswordEdit.Enabled = true;
             txtUserEdit.Enabled = true;
-            rqVldEmail.Enabled = true;
+           // rqVldEmail.Enabled = true;
             rqVldName.Enabled = true;
             rqVldPassword.Enabled = true;
             ValidationSummary1.Enabled = true;
@@ -253,16 +260,16 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
         }
         if (nState == 2)
         {
-            txtEmailAddressEdit.Enabled = false;
+          //  txtEmailAddressEdit.Enabled = false;
             txtPasswordEdit.Enabled = false;
             txtUserEdit.Enabled = false;
-            rqVldEmail.Enabled = false;
+           // rqVldEmail.Enabled = false;
             rqVldName.Enabled = false;
             rqVldPassword.Enabled = false;
             //rqVldRole.Enabled = false;
             ValidationSummary1.Enabled = false;
             cmdSubmit.Enabled = false;
-            txtEmailAddressEdit.Text = "";
+           // txtEmailAddressEdit.Text = "";
             txtUserEdit.Text = "";
             txtPasswordEdit.Text = "";
             grdUser.DataBind();

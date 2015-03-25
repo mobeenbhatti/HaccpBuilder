@@ -39,7 +39,7 @@ namespace SchoolHaccp.DataAccess.Insert
         public void Insert(string strMode)
         {
 
-            object[] parameters = new object[26];
+            object[] parameters = new object[28];
             parameters[0] = this.Kitchen.DistrictId;
             parameters[1] = this.Kitchen.Name;
             parameters[2] = this.Kitchen.TemperatureLog;
@@ -66,6 +66,8 @@ namespace SchoolHaccp.DataAccess.Insert
             parameters[23] = this.Address.County;
             parameters[24] = this.Kitchen.KitchenId;
             parameters[25] = this.Conatact.phpUserId;
+            parameters[26] = this.Conatact.PasswordSalt;
+            parameters[27] = this.Conatact.IsUpdated;
             DataServices dataServices = new DataServices("uspAdm_CreateKitchenPHP");
             object returnValue = dataServices.ExecuteScalar(parameters);
 
@@ -120,7 +122,7 @@ namespace SchoolHaccp.DataAccess.Insert
         }
         public void CreateKitchenContact()
         {
-            object[] parameters = new object[16];
+            object[] parameters = new object[18];
            
             parameters[0] = this.Conatact.Name;
             parameters[1] = this.Conatact.Email;
@@ -138,7 +140,8 @@ namespace SchoolHaccp.DataAccess.Insert
             parameters[13] = this.Kitchen.KitchenId;
             parameters[14] = this.Conatact.Initials;
             parameters[15] = this.Address.TimeZone;
-
+            parameters[16] = this.Conatact.PasswordSalt;
+            parameters[17] = this.Conatact.IsUpdated;
             DataServices dataServices = new DataServices("uspAdm_InsertKitchenContact");
             object returnValue = dataServices.ExecuteScalar(parameters);
 

@@ -100,7 +100,7 @@ namespace SchoolHaccp.DataAccess.Update
 
         private void Build()
         {
-            object[] parameters = new object[84];
+            object[] parameters = new object[86];
             parameters[0] = this.Mobile.KitchenId;
             parameters[1] = this.Conatact.Name;
             parameters[2] = this.Mobile.TemperatureLog;
@@ -185,7 +185,8 @@ namespace SchoolHaccp.DataAccess.Update
             parameters[81] = this.Address.Country;
             parameters[82] = this.m_Mobile.CheckList;
             parameters[83] = this.m_Mobile.CheckListAlert;
-
+            parameters[84] = this.Conatact.PasswordSalt;
+            parameters[85] = this.Conatact.IsUpdated;
             Parameters = parameters;
         }
 

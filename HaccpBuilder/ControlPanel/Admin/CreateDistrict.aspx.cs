@@ -20,16 +20,18 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
     private string mode = "NEW";
     private bool itemFound = false;
     public static string state = "FreeTrial";
+    public string password = string.Empty;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-           
+
             if (Request.QueryString["DistrictId"] != null)
             {
                 mode = "EDIT";
                 state = "District";
                 SetPage();
+                RequiredFieldValidator8.Enabled = false;
                 GetData();
             }
             else if (Request.QueryString["RequestId"] != null)
@@ -37,6 +39,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 mode = "EDIT";
                 state = "FreeTrial";
                 SetPage();
+                RequiredFieldValidator8.Enabled = false;
                 GetData();
             }
             else
@@ -44,18 +47,18 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 mode = "NEW";
                 SetPage();
             }
-           
+
         }
         if (lblInfo.Visible == true)
         {
             lblInfo.Visible = false;
         }
-       
+
     }
     protected void btnBack_Click(object sender, ImageClickEventArgs e)
     {
 
-    }   
+    }
     protected void cmdSubmit_Click(object sender, ImageClickEventArgs e)
     {
 
@@ -68,7 +71,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 {
                     lblInfo.Text = "Corporate Created Succesfully";
                     lblInfo.Visible = true;
-                   
+
                 }
                 else
                 {
@@ -87,9 +90,9 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
     }
     private bool CheckData(int nMode)
     {
-       
+
         if (nMode == 1)
-        {     
+        {
             ProcessGetDistrict District = new ProcessGetDistrict();
             IDataReader drDistrict = District.GetDistrictByName(txtDistrictName.Text.Trim());
             if (drDistrict.Read())
@@ -98,7 +101,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 lblInfo.Visible = true;
                 drDistrict.Close();
                 return false;
-               
+
             }
             else
             {
@@ -120,7 +123,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 }
 
             }
-          
+
         }
         if (nMode == 2)
         {
@@ -155,11 +158,16 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         {
             return false;
         }
-        
-        
+
+
     }
     private int CreateData()
     {
+        string password = txtPassword.Text;
+        string passwordSalt = Guid.NewGuid().ToString();
+        if (txtUser.Text.Contains("@"))
+            password = Utilities.CreatePasswordHash(password, passwordSalt);
+
         //if (state == "FreeTrial")
         //{
         //    DeleteData();
@@ -173,12 +181,12 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         newDistrict.DistrictPrinting = int.Parse(ddlDistrictPrint.SelectedValue);
         newDistrict.Active = int.Parse(ddlStatus.SelectedValue);
         // Command Central
-        newDistrict.TypeId = int.Parse(ddlType.SelectedValue);  
+        newDistrict.TypeId = int.Parse(ddlType.SelectedValue);
         newDistrict.Reports = 1;
-        
+
 
         Address newAddress = new Address();
-        newAddress.City = txtCity.Text.Trim();      
+        newAddress.City = txtCity.Text.Trim();
         //newAddress.State = ddlStateProvince.SelectedItem.Text;
         if (hfState.Value != "")
         {
@@ -189,22 +197,23 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
             newAddress.State = this.ddlStateProvince.SelectedValue;
         }
         newAddress.ZipCode = txtZipCode.Text;
-        newAddress.TimeZone = ddlTimeZone.SelectedValue;       
+        newAddress.TimeZone = ddlTimeZone.SelectedValue;
         newAddress.Country = ddlCountry.SelectedValue;
-        
-        Contact newContact = new Contact();        
-        newContact.Email = txtEmail.Text.Trim();
-        newContact.Name = txtManagerName.Text.Trim();        
-        newContact.UserId = txtUser.Text.Trim();
-        newContact.Password = txtPassword.Text;
 
+        Contact newContact = new Contact();
+        newContact.Email = txtEmail.Text.Trim();
+        newContact.Name = txtManagerName.Text.Trim();
+        newContact.UserId = txtUser.Text.Trim();
+        newContact.Password = password;
+        newContact.PasswordSalt = passwordSalt;
+        newContact.IsUpdated = true;
         ProcessCreateDistrict createDistrict = new ProcessCreateDistrict();
         createDistrict.District = newDistrict;
         createDistrict.Contact = newContact;
         createDistrict.Address = newAddress;
         createDistrict.Invoke();
 
-        
+
         return 1;
 
     }
@@ -239,11 +248,11 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
     private void SetPage()
     {
         if (mode == "NEW")
-        {            
+        {
             this.txtCity.Text = "";
             this.txtEmail.Text = "";
-            this.txtDistrictName.Text = "";            
-            this.txtManagerName.Text = "";           
+            this.txtDistrictName.Text = "";
+            this.txtManagerName.Text = "";
             this.txtZipCode.Text = "";
             this.txtKitchenNumber.Text = "";
             this.txtPassword.Text = "";
@@ -292,8 +301,8 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                     txtManagerName.Text = dr["DistrictManager"].ToString().Trim();
                     //txtPassword.Text = dr["Password"].ToString().Trim();
                     //txtUser.Text = dr["UserId"].ToString().Trim();
-                    txtZipCode.Text = dr["PostalCode"].ToString();                   
-                    ddlDistrictPrint.SelectedIndex = 2;                   
+                    txtZipCode.Text = dr["PostalCode"].ToString();
+                    ddlDistrictPrint.SelectedIndex = 2;
                     //ddlDistrictType.SelectedIndex = 2;
                     ddlStatus.SelectedIndex = 2;
                     ddlCountry.SelectedValue = dr["Country"].ToString().Trim();
@@ -319,7 +328,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                     txtEmail.Text = dr["EmailAddress"].ToString().Trim();
                     txtKitchenNumber.Text = dr["NumberOfKitchens"].ToString();
                     txtManagerName.Text = dr["DistrictManager"].ToString().Trim();
-                    txtPassword.Text = dr["Password"].ToString().Trim();
+                    // txtPassword.Text = dr["Password"].ToString().Trim();
                     txtUser.Text = dr["UserId"].ToString().Trim();
                     txtZipCode.Text = dr["PostalCode"].ToString();
                     ddlTimeZone.SelectedValue = dr["TimeZone"].ToString();
@@ -392,10 +401,12 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 lblInfo.Visible = true;
             }
         }
-        
+
     }
     private void UpdateData()
     {
+
+
         District newDistrict = new District();
         newDistrict.Name = this.txtDistrictName.Text.Trim();
         newDistrict.NumberOfKitchens = int.Parse(this.txtKitchenNumber.Text);
@@ -404,7 +415,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         newDistrict.DistrictPrinting = int.Parse(this.ddlDistrictPrint.SelectedValue);
         newDistrict.Active = int.Parse(this.ddlStatus.SelectedValue);
         newDistrict.DistrictId = int.Parse(hfDistrictId.Value);
-        newDistrict.TypeId = int.Parse(ddlType.SelectedValue); 
+        newDistrict.TypeId = int.Parse(ddlType.SelectedValue);
         newDistrict.Reports = 1;
 
         Address newAddress = new Address();
@@ -427,7 +438,17 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         newContact.Email = this.txtEmail.Text.Trim();
         newContact.Name = this.txtManagerName.Text.Trim();
         newContact.UserId = this.txtUser.Text.Trim();
-        newContact.Password = this.txtPassword.Text;
+      
+
+            string password = txtPassword.Text;
+            string passwordSalt = Guid.NewGuid().ToString();
+            if (txtUser.Text.Contains("@"))
+                password = Utilities.CreatePasswordHash(password, passwordSalt);
+            newContact.Password = password;
+            newContact.PasswordSalt = passwordSalt;
+            newContact.IsUpdated = true;
+
+
         newContact.ContactId = int.Parse(hfContactId.Value);
 
         ProcessSetDistrict setDistrict = new ProcessSetDistrict();
@@ -454,7 +475,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
             lblInfo.Visible = true;
             mode = "NEW";
             SetPage();
-        }        
+        }
 
     }
     protected void cmdCancel_Click(object sender, ImageClickEventArgs e)
