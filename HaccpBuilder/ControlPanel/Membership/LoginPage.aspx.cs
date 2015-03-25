@@ -236,6 +236,7 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
                         {
                             Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=k&Contact=" + nContactId.ToString());
                         }
+
                     }
                     else
                     {
@@ -295,6 +296,8 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
                             //    Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=k&Contact=" + nContactId.ToString());
                             //}
 
+
+
                             // Added mobeen
                             if (CheckAgreement(nContactId) == true)
                             {
@@ -309,7 +312,7 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
                             }
                             else
                             {
-                                Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=d&Contact=" + nContactId.ToString());
+                                Response.Redirect("~/ControlPanel/Membership/Agreement.aspx?target=k&Contact=" + nContactId.ToString());
                             }
 
                         }
