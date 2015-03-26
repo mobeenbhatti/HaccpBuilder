@@ -218,6 +218,10 @@ namespace SchoolHaccp.Operational
 
             HaccpUser user = new HaccpUser();
             DataModel.Contact con;
+            
+            Random rnd = new Random();
+            int month = rnd.Next(1, 1000);
+            string newPassword = "Haccp" + month.ToString();
 
             if (username.Contains("@"))
             {
@@ -238,24 +242,17 @@ namespace SchoolHaccp.Operational
 
             if (con != null)
             {
-                string pwd = Utilities.CreatePasswordHash("Passw0rd", con.PasswordSalt);
+              
+                string pwd = Utilities.CreatePasswordHash(newPassword, con.PasswordSalt);
 
                 con.Password = pwd;
                 _context.SaveChanges();
 
                 
             }
-       
 
 
-
-
-
-
-
-            bool result = false;
-      
-            return result;
+            return newPassword;
         }
 
 

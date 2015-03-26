@@ -18,7 +18,13 @@
 		    The PasswordRecovery control allows you to recover your password.
 	    </p>
 	    <div>
-		    <asp:PasswordRecovery runat="server" ID="PasswordRecovery1"  SubmitButtonText="Get Password" SubmitButtonType="Button" />
+		    <asp:PasswordRecovery runat="server" ID="PasswordRecovery1"  SubmitButtonText="Get Password" SubmitButtonType="Button">
+                <MailDefinition BodyFileName="EmailTemplates/PasswordRecovery.txt" 
+                Subject="Your password has been reset...">
+            </MailDefinition>
+
+
+		    </asp:PasswordRecovery>
 	    </div>
 	</div>
     </div>
