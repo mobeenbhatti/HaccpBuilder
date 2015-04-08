@@ -2,6 +2,7 @@
     Title="Admin Panel | Create Free Trial Kitchen" Codebehind="CreateFreeTrial.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolder" runat="Server">
+     <script language="javascript" type="text/javascript" src="../../JScript/overlibmws.js"></script>
     <div>
         <div class="MainHeading">
             Create Free Trial Kitchen <span style="font-size: 10px; margin-left: 340px;"><a href="Default.aspx">
@@ -228,10 +229,15 @@
                     Assign/Edit Password:</div>
                 <div class="DistrictSearchCol2">
                     <asp:TextBox ID="txtPassword" runat="server" Width="200px" CssClass="TextBox1"></asp:TextBox>
+                     <img id="Img_passwordhelp" style="vertical-align: middle" alt="" runat="server"
+                        src="~/App_Themes/Control/images/board_help.gif" />
                 </div>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" Display="None"
                     ErrorMessage="The value in field Password is required." ControlToValidate="txtPassword"
                     Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword"
+                    Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid password.<br />"
+                    ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
             </div>
             <div class="SearchDiv1">
                 <div class="DistrictSearchCol1">

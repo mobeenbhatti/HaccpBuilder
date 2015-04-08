@@ -309,6 +309,15 @@ public partial class ControlPanel_Admin_CreateHBez {
     protected global::System.Web.UI.WebControls.TextBox txtPassword;
     
     /// <summary>
+    /// Img_passwordhelp control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.HtmlControls.HtmlImage Img_passwordhelp;
+    
+    /// <summary>
     /// RequiredFieldValidator8 control.
     /// </summary>
     /// <remarks>
@@ -316,6 +325,15 @@ public partial class ControlPanel_Admin_CreateHBez {
     /// To modify move field declaration from designer file to code-behind file.
     /// </remarks>
     protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
+    
+    /// <summary>
+    /// RegularExpressionValidator5 control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator5;
     
     /// <summary>
     /// ddlStatus control.

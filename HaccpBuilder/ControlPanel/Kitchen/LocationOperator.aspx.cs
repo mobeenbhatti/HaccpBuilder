@@ -220,6 +220,17 @@ namespace HaccpBuilder.ControlPanel.Kitchen
                 pnlFscl.Visible = false;
                 pnlValidation.Visible = false;
             }
+
+
+            string Info1 = "<b>The password length must be greater than or equal to 8.</b>";
+            Info1 += "<b>The password must contain one or more uppercase characters.</b><br /> ";
+            Info1 += "<b>The password must contain one or more lowercase characters.</b><br /> ";
+            Info1 += "<b>The password must contain one or more numeric values.</b><br /> ";
+            Info1 += "<b>The password must contain one or more special characters.</b><br /> ";
+
+
+            Img_passwordhelp.Attributes.Add("onmouseover", "return overlib('" + Info1 + "', WRAP,BASE,2,LEFT,OFFSETX,-16,OFFSETY,20,TEXTFONTCLASS,'popUpBox');");
+            Img_passwordhelp.Attributes.Add("onmouseout", "return nd();");
             GetIntialData();
             grdHotHolding.DataBind();
         }

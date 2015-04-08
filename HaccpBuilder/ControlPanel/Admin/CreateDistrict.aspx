@@ -6,7 +6,7 @@
     TagPrefix="uc1" %>
 <%@ Register Src="~/Controls/Advertisement.ascx" TagPrefix="ucl" TagName="Advs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolder" runat="Server">
-
+      <script language="javascript" type="text/javascript" src="../../JScript/overlibmws.js"></script>
     <script language="javascript" type="text/javascript">
         function MoveBack() {
             window.location = "Default.aspx";
@@ -193,7 +193,13 @@
                     Assign/Edit Password:</div>
                 <div class="DistrictSearchCol2">
                     <asp:TextBox ID="txtPassword" runat="server" Width="200px" CssClass="TextBox1"></asp:TextBox>
+                     <img id="Img_passwordhelp" style="vertical-align: middle" alt="" runat="server"
+                        src="~/App_Themes/Control/images/board_help.gif" />
                 </div>
+                 <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtPassword"
+                    Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid password.<br />"
+                    ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
+                
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" Display="None"
                     ErrorMessage="The value in field Password is required." ControlToValidate="txtPassword"
                     Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
