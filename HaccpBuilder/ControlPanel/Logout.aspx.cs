@@ -16,6 +16,11 @@ namespace HaccpBuilder.ControlPanel
             FormsAuthentication.SignOut();
             Session["KitchenId"] = null;
             Session["TypeID"] = null;
+            Session["District"] = null;
+            Session["MobileId"] = null;
+            Session["User"] = null;
+            Session["Username"] = null;
+            Session["Password"] = null;
             Session["User"] = null;
             Session.Abandon();
             Response.Redirect("~/ControlPanel/Membership/LoginPage.aspx", true);
