@@ -2,7 +2,7 @@
 <%@ Register src="../../Controls/DistrictAddrssNew.ascx" tagname="DistrictAddrssNew" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="PlaceHolder" Runat="Server">
-
+        <script language="javascript" type="text/javascript" src="../../JScript/overlibmws.js"></script>
     <script language="javascript" type="text/javascript">
 function MoveBack()
 {
@@ -12,7 +12,9 @@ function ValidatorsEnabled(state)
 {
 
    document.getElementById('<%=rqVldName.ClientID%>').disable = state;
-   document.getElementById('<%=rqVldPassword.ClientID%>').disable = state;
+    document.getElementById('<%=rqVldPassword.ClientID%>').disable = state;
+    document.getElementById('<%=RegularExpressionValidator7.ClientID%>').disable = state;
+    document.getElementById('<%=REV_txtUserEdit.ClientID%>').disable = state;
   
          
 
@@ -84,6 +86,11 @@ function ValidatorsEnabled(state)
         <h1 class="left h1margin-r">Password:</h1>
         <div class="input left">
         <asp:TextBox ID="txtPasswordEdit" runat="server" Width="200px" ></asp:TextBox>
+              <img id="Img_passwordhelp" style="vertical-align: middle" alt="" runat="server"
+                            src="~/App_Themes/Control/images/board_help.gif" />
+             <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPasswordEdit"
+                             EnableClientScript="true" Text="Please Enter a valid password." ErrorMessage="Please enter a valid password.<br />"
+                            display="Dynamic" ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
         </div>
       <%--  <div class="clear"></div>
         <h1 class="left h1margin-r">Email Address:</h1>

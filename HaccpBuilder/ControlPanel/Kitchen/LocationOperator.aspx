@@ -636,7 +636,8 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="*"
                             ErrorMessage="The value in field User ID is required." ControlToValidate="txtUserId" Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
 
-                        <asp:RegularExpressionValidator ID="REV_txtUser" Style="display: block;" runat="server" ControlToValidate="txtUserId" Text="Please enter a valid user name."
+                        <asp:RegularExpressionValidator ID="REV_txtUser" Style="display: block;" runat="server" ControlToValidate="txtUserId" 
+                            Text="Please enter a valid user name."
                             EnableClientScript="true" ErrorMessage="Please enter a valid user name.<br />" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                     </div>
                 </div>
