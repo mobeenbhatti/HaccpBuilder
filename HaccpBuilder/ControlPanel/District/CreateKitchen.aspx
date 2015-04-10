@@ -372,7 +372,7 @@ function SetAlerts(nLogId)
     </div>
     <div class="clear"></div>
     <h1 class="left h1margin-r">Location Manager Email:</h1>
-    <div class="input">
+    <div class="input left">
         <asp:TextBox ID="txtEmail" runat="server" Width="200px" ></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Display="None" 
                              ErrorMessage="The value in field Contact Email is required." ControlToValidate="txtEmail"  Font-Names="Verdana" Font-Size="10px"
@@ -427,7 +427,7 @@ function SetAlerts(nLogId)
 		Display="None" ErrorMessage="Please enter a state/province.<br />"></asp:RequiredFieldValidator> 
     </div>
     <div class="clear"></div>
-    <h1 class="left h1margin-r">TiimeZone:</h1>
+    <h1 class="left h1margin-r">TimeZone:</h1>
     <div class="input left">
         <asp:DropDownList ID="ddlTimeZone" runat="server" DataSourceID="dqlDsTimeZone"
 			DataTextField="DisplayName" DataValueField="Name" AppendDataBoundItems="true" >

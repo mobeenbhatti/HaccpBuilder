@@ -42,12 +42,12 @@ namespace HaccpBuilder.ControlPanel.Kitchen
                     int nUpdated = SendMessage(email, password, email);
                     if (nUpdated == 1)
                     {
-                        errorMsg.InnerText = "Credentials updated Succesfully and sent at your email address. Please relogin with new credentials.";
+                        errorMsg.InnerText = "Your login credentials have been successfully updated. Please login with your new login credentials.";
 
                     }
                     else
                     {
-                        errorMsg.InnerText = "Credentials Created Succesfully, but there is problem occured in email sending. Please relogin with new credentials.";
+                        errorMsg.InnerText = "Your login credentials have been successfully updated, but there is problem occured in email sending. Please login with your new login credentials.";
 
                     }
 
