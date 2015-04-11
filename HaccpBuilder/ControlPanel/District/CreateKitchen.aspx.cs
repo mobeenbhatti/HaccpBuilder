@@ -362,10 +362,10 @@ public partial class ControlPanel_District_CreateKitchen : System.Web.UI.Page
     }
     private string GenerateRandomPassword()
     {
-
+        
         int maxSize = 20;
         int minSize = 8;
-        char[] passwordCharacters = "123456789".ToCharArray();
+        char[] passwordCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
         //char[] passwordCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".ToCharArray();
 
         int size = maxSize;
