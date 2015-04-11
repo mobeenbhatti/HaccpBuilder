@@ -213,15 +213,37 @@ namespace SchoolHaccp.Operational
             get { throw new Exception("The method or operation is not implemented."); }
         }
 
+        private string GenerateRandomPassword()
+        {
+
+            int maxSize = 20;
+            int minSize = 8;
+            char[] passwordCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
+            //char[] passwordCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".ToCharArray();
+
+            int size = maxSize;
+            byte[] data = new byte[7];
+            System.Security.Cryptography.RNGCryptoServiceProvider crypto = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            crypto.GetNonZeroBytes(data);
+            size = (data[0] % (maxSize - minSize)) + minSize;
+            // ERROR: Not supported in C#: ReDimStatement
+            crypto.GetNonZeroBytes(data);
+            System.Text.StringBuilder result = new System.Text.StringBuilder(size);
+            foreach (byte datum in data)
+            {
+                result.Append(passwordCharacters[datum % (passwordCharacters.Length - 1)]);
+            }
+
+            return result.ToString();
+
+        }
         public override string ResetPassword(string username, string answer)
         {
 
             HaccpUser user = new HaccpUser();
             DataModel.Contact con;
-            
-            Random rnd = new Random();
-            int month = rnd.Next(1, 1000);
-            string newPassword = "Haccp" + month.ToString();
+    
+            string newPassword = GenerateRandomPassword();
 
             if (username.Contains("@"))
             {
