@@ -37,8 +37,15 @@
 		//
 		// ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
 		// user logs in your system.
-
-		return true;
+        if (HttpContext.Current.User.Identity.IsAuthenticated)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+		
 	}
 
 	public override void SetConfig()

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace HaccpBuilder.ControlPanel.Location
 {
-    public partial class LocationMaster : System.Web.UI.MasterPage
+    public partial class Dashboard : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

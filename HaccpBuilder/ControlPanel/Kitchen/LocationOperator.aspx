@@ -329,39 +329,39 @@
 
             if (nLogId == 1) {
                 var rdbColdHoldingLogOff = document.getElementById('<%=rdbColdHoldingLogOff.ClientID%>');
-            var rdbColdHoldingLogOn = document.getElementById('<%=rdbColdHoldingLogOn.ClientID%>');
-            var rdbColdHoldingLogAlertOn = document.getElementById('<%=rdbColdHoldingLogAlertOn.ClientID%>');
-            var rdbColdHoldingLogAlertOff = document.getElementById('<%=rdbColdHoldingLogAlertOff.ClientID%>');
+                var rdbColdHoldingLogOn = document.getElementById('<%=rdbColdHoldingLogOn.ClientID%>');
+                var rdbColdHoldingLogAlertOn = document.getElementById('<%=rdbColdHoldingLogAlertOn.ClientID%>');
+                var rdbColdHoldingLogAlertOff = document.getElementById('<%=rdbColdHoldingLogAlertOff.ClientID%>');
 
-            if (rdbColdHoldingLogOff.checked == true) {
+                if (rdbColdHoldingLogOff.checked == true) {
 
-                rdbColdHoldingLogAlertOn.disabled = true;
-                rdbColdHoldingLogAlertOff.disabled = true;
-                rdbColdHoldingLogAlertOff.checked = true;
+                    rdbColdHoldingLogAlertOn.disabled = true;
+                    rdbColdHoldingLogAlertOff.disabled = true;
+                    rdbColdHoldingLogAlertOff.checked = true;
+                }
+                if (rdbColdHoldingLogOn.checked == true) {
+                    rdbColdHoldingLogAlertOn.disabled = false;
+                    rdbColdHoldingLogAlertOff.disabled = false;
+                }
             }
-            if (rdbColdHoldingLogOn.checked == true) {
-                rdbColdHoldingLogAlertOn.disabled = false;
-                rdbColdHoldingLogAlertOff.disabled = false;
-            }
-        }
-        if (nLogId == 2) {
-            var rdbFreezerLogOff = document.getElementById('<%=rdbFreezerLogOff.ClientID%>');
-            var rdbFreezerLogOn = document.getElementById('<%=rdbFreezerLogOn.ClientID%>');
-            var rdbFreezerLogAlertOn = document.getElementById('<%=rdbFreezerLogAlertOn.ClientID%>');
-            var rdbFreezerLogAlertOff = document.getElementById('<%=rdbFreezerLogAlertOff.ClientID%>');
+            if (nLogId == 2) {
+                var rdbFreezerLogOff = document.getElementById('<%=rdbFreezerLogOff.ClientID%>');
+                var rdbFreezerLogOn = document.getElementById('<%=rdbFreezerLogOn.ClientID%>');
+                var rdbFreezerLogAlertOn = document.getElementById('<%=rdbFreezerLogAlertOn.ClientID%>');
+                var rdbFreezerLogAlertOff = document.getElementById('<%=rdbFreezerLogAlertOff.ClientID%>');
 
-            if (rdbFreezerLogOff.checked == true) {
-                rdbFreezerLogAlertOn.disabled = true;
-                rdbFreezerLogAlertOff.disabled = true;
-                rdbFreezerLogAlertOff.checked = true;
+                if (rdbFreezerLogOff.checked == true) {
+                    rdbFreezerLogAlertOn.disabled = true;
+                    rdbFreezerLogAlertOff.disabled = true;
+                    rdbFreezerLogAlertOff.checked = true;
+                }
+                if (rdbFreezerLogOn.checked == true) {
+                    rdbFreezerLogAlertOn.disabled = false;
+                    rdbFreezerLogAlertOff.disabled = false;
+                }
             }
-            if (rdbFreezerLogOn.checked == true) {
-                rdbFreezerLogAlertOn.disabled = false;
-                rdbFreezerLogAlertOff.disabled = false;
-            }
-        }
-        if (nLogId == 3) {
-            var rdbFoodSafetyOff = document.getElementById('<%=rdbFoodSafetyOff.ClientID%>');
+            if (nLogId == 3) {
+                var rdbFoodSafetyOff = document.getElementById('<%=rdbFoodSafetyOff.ClientID%>');
             var rdbFoodSafetyOn = document.getElementById('<%=rdbFoodSafetyOn.ClientID%>');
             var rdbFoodSafetyAlertOn = document.getElementById('<%=rdbFoodSafetyAlertOn.ClientID%>');
             var rdbFoodSafetyAlertOff = document.getElementById('<%=rdbFoodSafetyAlertOff.ClientID%>');
@@ -578,6 +578,7 @@
 
     </script>
 
+
     <div id="titlediv">
         <!----HEADER-TITLE-START----->
         <div class="container">
@@ -598,6 +599,11 @@
         <asp:Label ID="lblInfo" runat="server" Text="" CssClass="msg-error" Visible="false"></asp:Label>
         <div class="slidingDiv">
             <div class="ph-top">
+            </div>
+
+            <div class="alert alert-info">
+
+                <strong>Password:</strong> Length must be 8 characters or more, must contain one or more UPPER CASE letters, LOWER CASE letters, NUMERIC value and Special Character.
             </div>
             <div class="clear"></div>
             <div class="form3">
@@ -624,13 +630,14 @@
             </div>
             <div class="form3">
                 <div class="left">
-                    <label>Assign/Edit User Name: </label>
+                    <label>Enter User’s Email Address: </label>
                     <div class="input">
                         <asp:TextBox ID="txtUserId" runat="server"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" Text="*"
                             ErrorMessage="The value in field User ID is required." ControlToValidate="txtUserId" Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
 
-                        <asp:RegularExpressionValidator ID="REV_txtUser" runat="server" ControlToValidate="txtUserId" Text="Please enter a valid user name."
+                        <asp:RegularExpressionValidator ID="REV_txtUser" Style="display: block;" runat="server" ControlToValidate="txtUserId" 
+                            Text="Please enter a valid user name."
                             EnableClientScript="true" ErrorMessage="Please enter a valid user name.<br />" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                     </div>
                 </div>
@@ -642,9 +649,9 @@
                             src="~/App_Themes/Control/images/board_help.gif" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" Text="*"
                             ErrorMessage="The value in field Password is required." ControlToValidate="txtPassword" Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPassword"
-                             EnableClientScript="true" Text="Please Enter a valid password." ErrorMessage="Please enter a valid password.<br />"
-                            display="Dynamic" ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator Style="display: block;" ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPassword"
+                            EnableClientScript="true" Text="Please Enter a valid password." ErrorMessage="Please enter a valid password.<br />"
+                             ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
                     </div>
                 </div>
                 <div class="left">
