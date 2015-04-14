@@ -198,7 +198,7 @@
                 </div>
                  <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtPassword"
                     Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid password.<br />"
-                    ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
+                    ValidationExpression="(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
                 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" Display="None"
                     ErrorMessage="The value in field Password is required." ControlToValidate="txtPassword"
