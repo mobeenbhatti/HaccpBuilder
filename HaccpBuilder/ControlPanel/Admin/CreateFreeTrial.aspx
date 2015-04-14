@@ -237,7 +237,7 @@
                     Font-Names="Verdana" Font-Size="10px"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword"
                     Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid password.<br />"
-                    ValidationExpression="(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
+                    ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
             </div>
             <div class="SearchDiv1">
                 <div class="DistrictSearchCol1">

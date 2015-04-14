@@ -90,7 +90,7 @@ function ValidatorsEnabled(state)
                             src="~/App_Themes/Control/images/board_help.gif" />
              <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPasswordEdit"
                              EnableClientScript="true" Text="Please Enter a valid password." ErrorMessage="Please enter a valid password.<br />"
-                            display="Dynamic" ValidationExpression="(?=^.{8,}$)(?=.*\d)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
+                            display="Dynamic" ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>
         </div>
       <%--  <div class="clear"></div>
         <h1 class="left h1margin-r">Email Address:</h1>

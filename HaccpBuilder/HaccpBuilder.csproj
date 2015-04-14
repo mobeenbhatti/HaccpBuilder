@@ -327,8 +327,6 @@
     <Content Include="App_Themes\Mobile\bootstrap.css" />
     <Content Include="App_Themes\Mobile\style.css" />
     <Content Include="ControlPanel\District\LoginUpdate.aspx" />
-    <Content Include="ControlPanel\Kitchen\LoginUpdate.aspx" />
-    <Content Include="ControlPanel\Location\LoginUpdate.aspx" />
     <Content Include="ControlPanel\Location\VAlidationCheck.aspx" />
     <Content Include="ControlPanel\Location\ValidationCheck2.aspx" />
     <Content Include="JScript\bootstrap.js" />
@@ -2750,13 +2748,6 @@
     <Compile Include="ControlPanel\Kitchen\LocationOperator.aspx.designer.cs">
       <DependentUpon>LocationOperator.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ControlPanel\Kitchen\LoginUpdate.aspx.cs">
-      <DependentUpon>LoginUpdate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ControlPanel\Kitchen\LoginUpdate.aspx.designer.cs">
-      <DependentUpon>LoginUpdate.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ControlPanel\Kitchen\MaintenanceLogOld.aspx.cs">
       <DependentUpon>MaintenanceLogOld.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3596,13 +3587,6 @@
     </Compile>
     <Compile Include="ControlPanel\Location\LocationMaster.master.designer.cs">
       <DependentUpon>LocationMaster.master</DependentUpon>
-    </Compile>
-    <Compile Include="ControlPanel\Location\LoginUpdate.aspx.cs">
-      <DependentUpon>LoginUpdate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ControlPanel\Location\LoginUpdate.aspx.designer.cs">
-      <DependentUpon>LoginUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="ControlPanel\Location\MaintenanceLog.aspx.cs">
       <DependentUpon>MaintenanceLog.aspx</DependentUpon>
