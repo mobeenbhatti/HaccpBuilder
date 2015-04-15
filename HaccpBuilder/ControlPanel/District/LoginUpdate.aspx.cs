@@ -12,7 +12,7 @@ namespace HaccpBuilder.ControlPanel.District
 {
     public partial class LoginUpdate : System.Web.UI.Page
     {
-        private Entities _context = new Entities();
+       
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -29,15 +29,18 @@ namespace HaccpBuilder.ControlPanel.District
                 HaccpUser user = (HaccpUser)Session["User"];
                 if (Utilities.IsEmailExist(email, user.ContactId) != true)
                 {
-                    var contact = (from c in _context.Contacts
-                                   where c.ContactId == user.ContactId
-                                   select c).FirstOrDefault();
-                    contact.EmailAddress = email;
-                    contact.Password = Utilities.CreatePasswordHash(password, passwordSalt);
-                    contact.UserId = email;
-                    contact.IsUpdated = true;
-                    contact.PasswordSalt = passwordSalt;
-                    _context.SaveChanges();
+                    using (var _context = new Entities())
+                    {
+                        var contact = (from c in _context.Contacts
+                                       where c.ContactId == user.ContactId
+                                       select c).FirstOrDefault();
+                        contact.EmailAddress = email;
+                        contact.Password = Utilities.CreatePasswordHash(password, passwordSalt);
+                        contact.UserId = email;
+                        contact.IsUpdated = true;
+                        contact.PasswordSalt = passwordSalt;
+                        _context.SaveChanges();
+                    }
                     int nUpdated = SendMessage(email, password, email);
                     if (nUpdated == 1)
                     {

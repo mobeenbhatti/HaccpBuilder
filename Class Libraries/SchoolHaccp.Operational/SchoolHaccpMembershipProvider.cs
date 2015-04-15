@@ -298,11 +298,14 @@ namespace SchoolHaccp.Operational
             }
             else
             {
+               
                 if (username.Contains("@"))
                 {
                     con = (from n in _context.Contacts
                            where n.EmailAddress == username && n.IsUpdated == true
                            select n).FirstOrDefault();
+
+                    _context.Refresh(System.Data.Objects.RefreshMode.StoreWins, con);
                     if (con != null)
                     {
                         string pwd = Utilities.CreatePasswordHash(password, con.PasswordSalt);
