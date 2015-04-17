@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LocationLayout.Master.cs" Inherits="HaccpBuilder.ControlPanel.Location.LocationLayout" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HACCP Builder Control Panel</title>
+
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <!-- FontAwsome -->
+    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css' />
+    <link href="../../css/dashboard.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <header>
+            <div class="container">
+                <div class="col-sm-6">
+                    <div class="logo"></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="pull-right loginout">
+                        <a class="dropdown-toggle" href="../LogOut.aspx" data-toggle="dropdown" id="navLogin">
+                            <i class="fa fa-user"></i>Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid top-nav-bg">
+            <div class="container">
+
+                <div class="col-sm-9">
+                    <div class="col-sm-6 text-left">
+                        <a href="Default.aspx" class=" btn-info top-btn text-center">
+                            <i class="fa fa-home"></i>&nbsp;Dashboard
+                        </a>
+                        <a href="" class=" btn-info top-btn  text-center">
+                            <i class="fa fa-arrow-right"></i>&nbsp;Previous
+                        </a>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <asp:ContentPlaceHolder runat="server" ID="pageTitle"></asp:ContentPlaceHolder>
+
+                    </div>
+                </div>
+                <div class="col-sm-3 text-right time">
+                    <div class="col-sm-6 text-center">
+                        <span class="currentTime">
+                            <i class="fa fa-clock-o"></i>&nbsp;04:35 PM
+                        </span>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <span class="userGuide">
+                            <a href="#" class="white-link">
+                                <i class="fa fa-question-circle"></i>&nbsp;User Guide
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row faculity mt30">
+                <div class="col-sm-6">
+                    <div class="users">
+                        <ul>
+                            <li>
+                                <i class="fa fa-user"></i>
+                            </li>
+                            <li>Faculty Name
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="users">
+                        <ul>
+                            <li>
+                                <i class="fa fa-users"></i>
+                            </li>
+                            <li>Member Name
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+          
+            <asp:ContentPlaceHolder ID="PlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            <div class="container text-center">
+                © HACCP Builder 
+            </div>
+        </footer>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../../js/bootstrap.min.js"></script>
+
+    </form>
+</body>
+</html>
