@@ -129,7 +129,7 @@ namespace SchoolHaccp.DataAccess.Insert
 
 		private void Build()
 		{
-            object[] parameters = new object[16];
+            object[] parameters = new object[18];
             parameters[0] = this.District.Name;
             parameters[1] = this.District.DistrictPrinting;
             parameters[2] = this.District.DistrictType;
@@ -146,6 +146,8 @@ namespace SchoolHaccp.DataAccess.Insert
             parameters[13] = this.District.TypeId;
             parameters[14] = this.Address.TimeZone;
             parameters[15] = this.Address.Country;
+            parameters[16] = this.Conatact.PasswordSalt;
+            parameters[17] = this.Conatact.IsUpdated;
 
     //        @nDistrictId INT
     //,@chDistrictName VARCHAR(200)
