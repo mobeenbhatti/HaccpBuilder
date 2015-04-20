@@ -48,7 +48,7 @@
 
                 <div class="col-sm-9">
                     <div class="col-sm-6 text-left">
-                        <a href="Default.aspx" class=" btn-info top-btn text-center">
+                        <a href="Dashboard.aspx" class=" btn-info top-btn text-center">
                             <i class="fa fa-home"></i>&nbsp;Dashboard
                         </a>
                         <a href="" class=" btn-info top-btn  text-center">
@@ -86,7 +86,8 @@
                             <li>
                                 <i class="fa fa-user"></i>
                             </li>
-                            <li>Faculty Name
+                            <li>
+                                <asp:Label ID="lblFacultyName" runat="server" Text="Label"></asp:Label>
                             </li>
                         </ul>
                     </div>
@@ -97,14 +98,16 @@
                             <li>
                                 <i class="fa fa-users"></i>
                             </li>
-                            <li>Member Name
+                            <li>
+                                
+                                <asp:LoginName runat="server" FormatString=" {0}" />
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-          
+
             <asp:ContentPlaceHolder ID="PlaceHolder" runat="server">
             </asp:ContentPlaceHolder>
         </div>

@@ -113,6 +113,16 @@ namespace SchoolHaccp.BusinessLogic
             return kitchen.GetKitchensByTypeId();
 
         }
+
+         [System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Select, true)]
+        public DataSet GetKitchenByKitchenId(int nKitchenId)
+        {
+            GetKitchenByUserName kitchen = new GetKitchenByUserName();
+            return kitchen.GetKitchenByKitchenId(nKitchenId);
+
+        }
+
+        
         public DataSet GetKitchenTemperatureRangeByKitchenId(int nKitchenId, int nLogId)
         {
             GetKitchenByUserName kitchen = new GetKitchenByUserName();

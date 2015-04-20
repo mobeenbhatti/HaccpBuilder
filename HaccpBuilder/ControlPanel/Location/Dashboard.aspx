@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ControlPanel/Location/LocationMaster.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="HaccpBuilder.ControlPanel.Location.Dashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ControlPanel/Location/LocationLayout.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="HaccpBuilder.ControlPanel.Location.Dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -19,51 +19,35 @@
                             <i class="fa fa-tasks"></i>
                             <strong>Tasks</strong>
                         </div>
-                        <div class="col-xs-2 task-due-time">
-                            <i class="fa fa-clock-o"></i>
-                            <strong>Due Time</strong>
-                        </div>
-
+                       
                     </li>
                     <li>
                         <div class="col-xs-10">
                             <span><i class="fa fa-check-square-o"></i></span>
                             <a href="#">Checklist One</a>
                         </div>
-                        <div class="col-xs-2 task-due-time">
-                            <span><i class="fa fa-clock-o"></i></span>
-                            04:35 PM
-                        </div>
+                        
                     </li>
                     <li>
                         <div class="col-xs-10">
                             <span><i class="fa fa-file-text-o"></i></span>
                             <a href="#">Refrigerator log.</a>
                         </div>
-                        <div class="col-xs-2 task-due-time">
-                            <span><i class="fa fa-clock-o"></i></span>
-                            04:35 PM
-                        </div>
+                        
                     </li>
                     <li>
                         <div class="col-xs-10">
                             <span><i class="fa fa-file-text-o"></i></span>
                             <a href="#">Freezer Log.M</a>
                         </div>
-                        <div class="col-xs-2 task-due-time">
-                            <span><i class="fa fa-file-text-o"></i></span>
-                            04:35 PM
-                        </div>
+                       
                     </li>
                     <li>
                         <div class="col-xs-10">
                             <span><i class="fa fa-check-square-o"></i></span>
                             <a href="#">Checklist Two.M</a>
                         </div>
-                        <div class="col-xs-2 task-due-time">
-                            <span><i class="fa fa-clock-o"></i></span>
-                            04:35 PM
-                        </div>
+                       
                     </li>
 
 

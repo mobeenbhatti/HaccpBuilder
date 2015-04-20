@@ -129,6 +129,13 @@ namespace SchoolHaccp.DataAccess.Select
             //parameters[0] = nTypeId;
             return dataServices.ExecuteDataSet("uspAdm_GetKitchenByTypeId");
         }
+        public DataSet GetKitchenByKitchenId(int nKitchenId)
+        {
+            DataServices dataServices = new DataServices();
+            object[] parameters = new object[1];
+            parameters[0] = nKitchenId;
+            return dataServices.ExecuteDataSet("uspAdm_GetKitchenByKitchenId", parameters);
+        }
         public DataSet GetKitchenTemperatureRangeByKitchenId(int nKitchenId, int nLogId)
         {
             DataServices dataServices = new DataServices();

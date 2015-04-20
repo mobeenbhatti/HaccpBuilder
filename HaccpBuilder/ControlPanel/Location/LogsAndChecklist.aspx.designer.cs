@@ -10,51 +10,33 @@
 namespace HaccpBuilder.ControlPanel.Location {
     
     
-    public partial class LocationLayout {
+    public partial class LogsAndChecklist {
         
         /// <summary>
-        /// head control.
+        /// rptReports control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Repeater rptReports;
         
         /// <summary>
-        /// form1 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// pageTitle control.
+        /// ObjectDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder pageTitle;
-        
-        /// <summary>
-        /// lblFacultyName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFacultyName;
-        
-        /// <summary>
-        /// PlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder PlaceHolder;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
     }
 }
