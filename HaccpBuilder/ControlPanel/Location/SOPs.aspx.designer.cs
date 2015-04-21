@@ -10,60 +10,42 @@
 namespace HaccpBuilder.ControlPanel.Location {
     
     
-    public partial class LocationLayout {
+    public partial class SOPs {
         
         /// <summary>
-        /// head control.
+        /// rptSop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Repeater rptSop;
         
         /// <summary>
-        /// form1 control.
+        /// rptCtpat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Repeater rptCtpat;
         
         /// <summary>
-        /// pageTitle control.
+        /// sqlDSSOP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder pageTitle;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlDSSOP;
         
         /// <summary>
-        /// lblFacultyName control.
+        /// sqlDsCtpat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFacultyName;
-        
-        /// <summary>
-        /// lblUserName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserName;
-        
-        /// <summary>
-        /// PlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder PlaceHolder;
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlDsCtpat;
     }
 }

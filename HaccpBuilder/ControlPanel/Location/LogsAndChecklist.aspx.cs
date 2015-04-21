@@ -43,6 +43,30 @@ namespace HaccpBuilder.ControlPanel.Location
 
         }
 
+        protected void rptWeekly_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
+            {
+
+
+                HyperLink hlTask = (HyperLink)e.Item.FindControl("hlTableName");
+
+
+                ///////////////////////////////////////////
+                // HIDE INFORMATION ON BASIS OF KITCHEN TYPE
+                ///////////////////////////////////////////
+                if (TypeId == 2 || TypeId == 3)
+                {
+                    hlTask.Enabled = false;
+
+                }
+                if (DataBinder.Eval(e.Item.DataItem, "Report").ToString() == "0")
+                {
+                    hlTask.Enabled = false;
+                }
+            }
+
+        }
 
         public int TypeId
         {

@@ -25,6 +25,12 @@
     <![endif]-->
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+
+    <script>
+        function goBack() {
+            window.history.go(-1);
+        }
+</script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -51,7 +57,7 @@
                         <a href="Dashboard.aspx" class=" btn-info top-btn text-center">
                             <i class="fa fa-home"></i>&nbsp;Dashboard
                         </a>
-                        <a href="" class=" btn-info top-btn  text-center">
+                        <a href="#" onclick="goBack();" class=" btn-info top-btn  text-center">
                             <i class="fa fa-arrow-right"></i>&nbsp;Previous
                         </a>
                     </div>
@@ -99,8 +105,8 @@
                                 <i class="fa fa-users"></i>
                             </li>
                             <li>
-                                
-                                <asp:LoginName runat="server" FormatString=" {0}" />
+                                 <asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label>
+                                <%--<asp:LoginName runat="server" FormatString=" {0}" />--%>
                             </li>
                         </ul>
                     </div>

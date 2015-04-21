@@ -22,6 +22,15 @@ namespace HaccpBuilder.ControlPanel.Location {
         protected global::System.Web.UI.WebControls.Repeater rptReports;
         
         /// <summary>
+        /// rptChecklist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptChecklist;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -38,5 +47,14 @@ namespace HaccpBuilder.ControlPanel.Location {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        
+        /// <summary>
+        /// odsChecklist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsChecklist;
     }
 }

@@ -20,6 +20,7 @@ namespace HaccpBuilder.ControlPanel.Location
         {
 
             getKitchName();
+            getUserName();
             if (Context.Session != null)
             {
                 //Tested and the IsNewSession is more advanced then simply checking if 
@@ -69,8 +70,40 @@ namespace HaccpBuilder.ControlPanel.Location
             }
         }
 
+
+        private void getUserName()
+        {
+
+            if (Session["Username"] != null)
+            {
+
+                using (var _context = new Entities())
+                {
+                    string userName = Session["Username"].ToString();
+                    string password = Session["Password"].ToString();
+                    var cnt = (from c in _context.Contacts
+                               where c.EmailAddress == userName && c.Password == password
+                               select c).FirstOrDefault();
+                    if (cnt != null)
+                    {
+                        lblUserName.Text = cnt.Name;
+                    }
+                    else
+                    {
+                        lblUserName.Text = "";
+
+                    }
+                }
+
+            }
+            else
+            {
+                lblUserName.Text = "";
+            }
+
+
+        }
+
+
     }
-
-
-
 }
