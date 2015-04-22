@@ -10,13 +10,13 @@
     <title>HACCP Builder Control Panel</title>
 
     <!-- Bootstrap -->
-    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../App_Themes/Location/css/bootstrap.min.css" rel="stylesheet" />
     <!-- FontAwsome -->
-    <link href="../../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../App_Themes/Location/css/font-awesome.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css' />
-    <link href="../../css/dashboard.css" rel="stylesheet" />
+    <link href="../../App_Themes/Location/css/dashboard.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -125,7 +125,7 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../App_Themes/Location/js/bootstrap.min.js"></script>
 
     </form>
 </body>
