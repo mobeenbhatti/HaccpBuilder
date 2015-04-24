@@ -64,14 +64,14 @@
             </a>
         </div>
         <div class="col-xs-12 col-sm-4 mt10" role="group">
-            <button class="btn btn-block btn-green btn-lh-40 btn3d" aria-hidden="true">
+            <a class="btn btn-block btn-green btn-lh-40 btn3d"  href="SOPs.aspx" aria-hidden="true">
 
                 <span class="fa fa-file-text-o"></span>
                 SUPPORT DOCUMENTATION
-            </button>
+            </a>
         </div>
         <div class="col-xs-12 col-sm-4 mt10" role="group">
-            <a class="btn btn-block btn-skyblue btn-lh-40 btn3d" href="SOPs.aspx" aria-hidden="true">
+            <a class="btn btn-block btn-skyblue btn-lh-40 btn3d" href="MenuItems.aspx" aria-hidden="true">
                 <span class="fa fa-pagelines"></span>
                 Mixes & Recipies
             </a>

@@ -11,12 +11,14 @@
 
     <!-- Bootstrap -->
     <link href="../../App_Themes/Location/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../JScript/jquery-ui.css" type="text/css" />
     <!-- FontAwsome -->
     <link href="../../App_Themes/Location/css/font-awesome.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css' />
     <link href="../../App_Themes/Location/css/dashboard.css" rel="stylesheet" />
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,11 +28,31 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    <script>
-        function goBack() {
-            window.history.go(-1);
+    
+    <style>
+        .ui-combobox {
+            position: relative;
+            display: inline-block;
         }
-</script>
+
+        .ui-combobox-toggle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin-left: -1px;
+            padding: 0;
+            /* support: IE7 */
+            *height: 1.7em;
+            *top: 0.1em;
+        }
+
+        .ui-combobox-input {
+            margin: 0;
+            padding: 0.3em;
+        }
+    </style>
+
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -57,7 +79,7 @@
                         <a href="Dashboard.aspx" class=" btn-info top-btn text-center">
                             <i class="fa fa-home"></i>&nbsp;Dashboard
                         </a>
-                        <a href="#" onclick="goBack();" class=" btn-info top-btn  text-center">
+                        <a href="#" onclick="return goBack();" class=" btn-info top-btn  text-center">
                             <i class="fa fa-arrow-right"></i>&nbsp;Previous
                         </a>
                     </div>
@@ -105,7 +127,7 @@
                                 <i class="fa fa-users"></i>
                             </li>
                             <li>
-                                 <asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label>
+                                <asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label>
                                 <%--<asp:LoginName runat="server" FormatString=" {0}" />--%>
                             </li>
                         </ul>
@@ -126,6 +148,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="../../App_Themes/Location/js/bootstrap.min.js"></script>
+
+        <script src="../../JScript/jquery-ui.js" type="text/javascript"></script>
+        <script src="../../JScript/ui.combobox.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('[data-editableCombobox="true"]').each(function () {
+                    $(this).combobox();
+                });
+            });
+            function goBack() {
+                window.history.go(-1); return false;
+            }
+    </script>
 
     </form>
 </body>

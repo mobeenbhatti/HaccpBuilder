@@ -62,8 +62,7 @@
              <div>
             <center>
                 <div class="form3" style="width:300px; margin-top:150px">
-            <div class="msg-error" id="errorMsg" runat="server">For security reasons, we have changed our login policy.  
-                Now, your username must be an email address and your password must be a length must be 8 characters or more, must contain one or more UPPER CASE letters, LOWER CASE letters, NUMERIC value and Special Character.
+            <div class="msg-error" id="errorMsg" runat="server">For security reasons, we have changed our login policy and we are requesting that you update your username and password.  Your username must be an email address you are able to access and your password must be at least eight characters in length and contain at least three of the following four character sets: English uppercase letters, English lowercase letters, Arabic numerals, and non-alphanumeric (“special”) characters.
             </div>
              <p class="left h1margin-r" >
                  Username: 
