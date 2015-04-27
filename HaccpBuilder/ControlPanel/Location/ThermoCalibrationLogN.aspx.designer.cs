@@ -10,7 +10,7 @@
 namespace HaccpBuilder.ControlPanel.Location {
     
     
-    public partial class FreezerLogN {
+    public partial class ThermoCalibrationLogN {
         
         /// <summary>
         /// hfTempLow control.
@@ -40,24 +40,6 @@ namespace HaccpBuilder.ControlPanel.Location {
         protected global::System.Web.UI.WebControls.ValidationSummary vldSummary;
         
         /// <summary>
-        /// Lbl_QCLMaxtempValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Lbl_QCLMaxtempValue;
-        
-        /// <summary>
-        /// Lbl_QCLMintempValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Lbl_QCLMintempValue;
-        
-        /// <summary>
         /// cldMealDate control.
         /// </summary>
         /// <remarks>
@@ -76,22 +58,22 @@ namespace HaccpBuilder.ControlPanel.Location {
         protected global::System.Web.UI.WebControls.CompareValidator CV_cldEntryDate;
         
         /// <summary>
-        /// ddlFreezerNewLogDevice control.
+        /// ddlThermometerDevice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFreezerNewLogDevice;
+        protected global::System.Web.UI.WebControls.DropDownList ddlThermometerDevice;
         
         /// <summary>
-        /// rfvIngredient control.
+        /// reqvldLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIngredient;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqvldLocation;
         
         /// <summary>
         /// txtTemperature control.
@@ -103,15 +85,6 @@ namespace HaccpBuilder.ControlPanel.Location {
         protected global::System.Web.UI.WebControls.TextBox txtTemperature;
         
         /// <summary>
-        /// CustomValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
-        
-        /// <summary>
         /// rglValidateTemp1 control.
         /// </summary>
         /// <remarks>
@@ -121,58 +94,40 @@ namespace HaccpBuilder.ControlPanel.Location {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator rglValidateTemp1;
         
         /// <summary>
-        /// tempratureTime1 control.
+        /// txtTemperature2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tempratureTime1;
+        protected global::System.Web.UI.WebControls.TextBox txtTemperature2;
         
         /// <summary>
-        /// Lbl_CorrectiveAction1 control.
+        /// RegularExpressionValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_CorrectiveAction1;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
-        /// rdlCorrectiveAction1 control.
+        /// txtTemperature3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdlCorrectiveAction1;
+        protected global::System.Web.UI.WebControls.TextBox txtTemperature3;
         
         /// <summary>
-        /// odsCorrectiveAction control.
+        /// RegularExpressionValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource odsCorrectiveAction;
-        
-        /// <summary>
-        /// trClearCorrectiveActions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl trClearCorrectiveActions;
-        
-        /// <summary>
-        /// chkClear control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkClear;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
         
         /// <summary>
         /// txtVerifiedBy control.
@@ -283,13 +238,13 @@ namespace HaccpBuilder.ControlPanel.Location {
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
         
         /// <summary>
-        /// odsFreezerNewLogDevice control.
+        /// odsThermometerDevice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource odsFreezerNewLogDevice;
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsThermometerDevice;
         
         /// <summary>
         /// odsIngredient control.
@@ -317,5 +272,14 @@ namespace HaccpBuilder.ControlPanel.Location {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource odsVendor;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

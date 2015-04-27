@@ -83,9 +83,13 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="service-date">Service Date:</label>
-                                <ew:CalendarPopup ID="cldMealDate" runat="server" CssClass="form-control" CommandName="Calendar"
-                                    ControlDisplay="TextBoxImage" ImageUrl="~/images/Calendar_scheduleHS.png" />
+                                <label for="cldMealDate">Service Date:</label>
+
+                                <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
+                                    <asp:TextBox CssClass="form-control" runat="server" ID="cldMealDate"></asp:TextBox>
+
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
                                 <asp:CompareValidator ID="CV_cldEntryDate" runat="server" ControlToValidate="cldMealDate"
                                     Display="None" ErrorMessage="Service date should not be future date" Operator="LessThanEqual"
                                     Type="Date"></asp:CompareValidator>
@@ -99,7 +103,7 @@
                                 <asp:ListItem>Select Freezer Device</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvIngredient" runat="server" Display="None" ErrorMessage="Please Select Freezer Device"
-                                ControlToValidate="ddlFreezerNewLogDevice" CssClass="log_textbox" Font-Names="Verdana"
+                                ControlToValidate="ddlFreezerNewLogDevice" CssClass="form-control" Font-Names="Verdana"
                                 Font-Size="10px" InitialValue="Select Freezer Device"></asp:RequiredFieldValidator>
                         </div>
                         <div class="col-sm-6">
@@ -116,22 +120,14 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="temp-time">Temperature Time:</label>
+                                <label for="tempratureTime1">Temperature Time:</label>
+                                <div class="input-group bootstrap-timepicker">
+                                    <asp:TextBox ID="tempratureTime1" MaxLength="8" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                </div>
 
-                                <asp:TextBox ID="tpHour1" MaxLength="2" CssClass="form-control" runat="server" Width="20"></asp:TextBox>:
-                <asp:TextBox ID="tpMinute1" CssClass="form-control" MaxLength="2" runat="server" Width="20"></asp:TextBox>
-                                <asp:DropDownList ID="tpTime1" CssClass="form-control" runat="server" Width="50">
-                                    <asp:ListItem Text="AM" Value="AM"></asp:ListItem>
-                                    <asp:ListItem Text="PM" Value="PM"></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RegularExpressionValidator ID="rdlVaildateTemp1Time" runat="server" ControlToValidate="tpHour1"
-                                    Display="None" ErrorMessage="The value in field Temp1 Hour is not valid. Please enter value les then or equal to 12"
-                                    ValidationExpression="^([0]?[1-9]|[1][0-2])$" Font-Names="Verdana"
-                                    Font-Size="10px"></asp:RegularExpressionValidator>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="tpMinute1"
-                                    Display="None" ErrorMessage="The value in field Temp1 Minute is not valid."
-                                    ValidationExpression="^([0-5][0-9]|[1-9])$" Font-Names="Verdana"
-                                    Font-Size="10px"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                     </div>
@@ -182,25 +178,32 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="verified-date">Verified Date:</label>
+                                   
+                                        <div class="form-group">
+                                            <label for="cldVerifiedDate">Verified Date:</label>
+
+                                           <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
+                                                <asp:TextBox CssClass="form-control" runat="server" ID="cldVerifiedDate"></asp:TextBox>
+
+                                               
+                                            </div> 
+                                            <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
+                                                Display="None" ErrorMessage="Verified date should not be future date" Operator="LessThanEqual"
+                                                Type="Date"></asp:CompareValidator>
+                                            <asp:CompareValidator ID="CV2_cldVerifiedDate" runat="server" ControlToValidate="cldMealDate"
+                                                Display="None" ControlToCompare="cldVerifiedDate" ErrorMessage="Verified date should be greater than or equal to service date."
+                                                Operator="LessThanEqual" Type="Date"></asp:CompareValidator>
+                                        </div>
 
 
-                                        <ew:CalendarPopup ID="cldVerifiedDate" runat="server" CssClass="form-control" CommandName="Calendar"
-                                            ControlDisplay="TextBoxImage" ImageUrl="~/images/Calendar_scheduleHS.png" />
-                                        <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
-                                            Display="None" ErrorMessage="Verified date should not be future date" Operator="LessThanEqual"
-                                            Type="Date"></asp:CompareValidator>
-                                        <asp:CompareValidator ID="CV2_cldVerifiedDate" runat="server" ControlToValidate="cldMealDate"
-                                            Display="None" ControlToCompare="cldVerifiedDate" ErrorMessage="Verified date should be greater than or equal to service date."
-                                            Operator="LessThanEqual" Type="Date"></asp:CompareValidator>
+
                                     </div>
-                                </div>
+                                
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="entry-date">Entry Date:</label>
 
-                                        <asp:TextBox ID="txtEntryDate" runat="server" Enabled="false" Width="150px" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true"    CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -278,4 +281,19 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldMealDate.ClientID %>').datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+            $('#<%= cldMealDate.ClientID %>').datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+            $('#<%= tempratureTime1.ClientID %>').timepicker();
+
+        });
+    </script>
 </asp:Content>

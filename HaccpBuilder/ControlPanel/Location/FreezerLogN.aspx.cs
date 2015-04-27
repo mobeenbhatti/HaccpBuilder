@@ -53,8 +53,8 @@ namespace HaccpBuilder.ControlPanel.Location
         }
         private void GetInitialData()
         {
-            cldMealDate.SelectedDate = DateTime.Today;
-            cldVerifiedDate.SelectedDate = DateTime.Today;
+            cldMealDate.Text = DateTime.Today.ToShortDateString();
+            cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
             txtEntryDate.Text = DateTime.Now.ToString();
 
             if ((int)Session["TypeId"] != 1)
@@ -95,7 +95,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 IDataReader logReader = getFreezerNewLog.ResultSet;
                 if (logReader.Read())
                 {
-                    cldMealDate.SelectedDate = DateTime.Parse(logReader["MealDate"].ToString());
+                    cldMealDate.Text = logReader["MealDate"].ToString();
                     //txtLocation.Text = logReader["Location"].ToString();
                     if (logReader["CustomInventoryID"].ToString() == "")
                     {
@@ -121,7 +121,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     {
                         //tpTime.Text = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
                         strTime1 = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
-                        SetTime(1, DateTime.Parse(strTime1));
+                        SetTime(1, strTime1);
                     }
                     catch (Exception ex)
                     {
@@ -129,12 +129,12 @@ namespace HaccpBuilder.ControlPanel.Location
                         {
                             //tpTime.Text = DateTime.Now.ToShortTimeString();
                             strTime1 = DateTime.Now.ToShortTimeString();
-                            SetTime(1, DateTime.Parse(strTime1));
+                            SetTime(1, strTime1);
                         }
                     }
                     //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                     txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                    cldVerifiedDate.SelectedDate = DateTime.Parse(logReader["VerifiedDate"].ToString());
+                    cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
                     txtEntryDate.Text = logReader["EntryDate"].ToString();
                     if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)
                     {
@@ -183,7 +183,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     if (logReader.Read())
                     {
                         Session["FreezerNewLogId"] = int.Parse(logReader["Id"].ToString());
-                        cldMealDate.SelectedDate = DateTime.Parse(logReader["MealDate"].ToString());
+                        cldMealDate.Text =logReader["MealDate"].ToString();
                         // txtLocation.Text = logReader["Location"].ToString();
                         if (logReader["CustomInventoryID"].ToString() == "")
                         {
@@ -207,7 +207,7 @@ namespace HaccpBuilder.ControlPanel.Location
                         {
                             //tpTime.Text = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
                             strTime1 = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
-                            SetTime(1, DateTime.Parse(strTime1));
+                            SetTime(1,strTime1);
                         }
                         catch (Exception ex)
                         {
@@ -215,12 +215,12 @@ namespace HaccpBuilder.ControlPanel.Location
                             {
                                 //tpTime.Text = DateTime.Now.ToShortTimeString();
                                 strTime1 = DateTime.Now.ToShortTimeString();
-                                SetTime(1, DateTime.Parse(strTime1));
+                                SetTime(1, strTime1);
                             }
                         }
                         //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                         txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                        cldVerifiedDate.SelectedDate = DateTime.Parse(logReader["VerifiedDate"].ToString());
+                        cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
                         txtEntryDate.Text = logReader["EntryDate"].ToString();
                         if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)
                         {
@@ -276,18 +276,18 @@ namespace HaccpBuilder.ControlPanel.Location
             {
                 if (Request.QueryString["date"] != null)
                 {
-                    cldMealDate.SelectedDate = DateTime.Parse(Request.QueryString["date"].ToString());
+                    cldMealDate.Text = Request.QueryString["date"].ToString();
                 }
                 else
                 {
-                    cldMealDate.SelectedDate = DateTime.Today;
+                    cldMealDate.Text = DateTime.Today.ToShortDateString();
                 }
-                cldVerifiedDate.SelectedDate = DateTime.Today;
+                cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
                 SetPageInEditMode("new");
                 //txtLocation.Text = "";
                 ddlFreezerNewLogDevice.SelectedIndex = 0;
                 txtTemperature.Text = "";
-                SetTime(1, DateTime.Now);
+                SetTime(1, DateTime.Now.ToShortTimeString());
                 //txtCorrectiveAction.Text = "";
                 //txtVerifiedBy.Text = Session["Initials"].ToString();
                 txtVerifiedBy.Text = "";
@@ -392,12 +392,12 @@ namespace HaccpBuilder.ControlPanel.Location
         private void InsertData()
         {
             FreezerNewLog freezerNewLog = new FreezerNewLog();
-            freezerNewLog.MealDate = cldMealDate.SelectedDate;
+            freezerNewLog.MealDate = DateTime.Parse(cldMealDate.Text);
             if (txtTemperature.Text != "")
             {
                 freezerNewLog.Temperature = float.Parse(txtTemperature.Text);
             }
-            if (tpHour1.Text != "")
+            if (tempratureTime1.Text != "")
             {
                 freezerNewLog.TempTime = DateTime.Parse(GetTime(1));
             }
@@ -426,7 +426,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 freezerNewLog.CorrectiveAction1 = int.Parse(rdlCorrectiveAction1.SelectedValue);
             }
             freezerNewLog.VerifiedBy = txtVerifiedBy.Text;
-            freezerNewLog.VerifiedDate = cldVerifiedDate.SelectedDate;
+            freezerNewLog.VerifiedDate = DateTime.Parse(cldVerifiedDate.Text);
             freezerNewLog.EntryDate = DateTime.Parse(txtEntryDate.Text);
             if (Session["KitchenId"] != null)
             {
@@ -460,12 +460,12 @@ namespace HaccpBuilder.ControlPanel.Location
                 }
             }
 
-            freezerNewLog.MealDate = cldMealDate.SelectedDate;
+            freezerNewLog.MealDate = DateTime.Parse(cldMealDate.Text);
             if (txtTemperature.Text != "")
             {
                 freezerNewLog.Temperature = float.Parse(txtTemperature.Text);
             }
-            if (tpHour1.Text != "")
+            if (tempratureTime1.Text != "")
             {
                 freezerNewLog.TempTime = DateTime.Parse(GetTime(1));
             }
@@ -492,7 +492,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 freezerNewLog.CorrectiveAction1 = int.Parse(rdlCorrectiveAction1.SelectedValue);
             }
             freezerNewLog.VerifiedBy = txtVerifiedBy.Text;
-            freezerNewLog.VerifiedDate = cldVerifiedDate.SelectedDate;
+            freezerNewLog.VerifiedDate = DateTime.Parse(cldVerifiedDate.Text);
             freezerNewLog.EntryDate = DateTime.Parse(txtEntryDate.Text);
             if (Session["KitchenId"] != null)
             {
@@ -586,16 +586,14 @@ namespace HaccpBuilder.ControlPanel.Location
         // }
         private string GetTime(int nPeriod)
         {
-            return tpHour1.Text + ":" + tpMinute1.Text + tpTime1.SelectedValue;
+            return tempratureTime1.Text;
         }
-        private void SetTime(int nPeriod, DateTime dtTime)
+        private void SetTime(int nPeriod, string dtTime)
         {
             if (nPeriod == 1)
             {
-                //tpHour1.Text = (((dtTime.Hour + 11) % 12) + 1).ToString();
-                tpHour1.Text = dtTime.ToString("hh");
-                tpMinute1.Text = dtTime.ToString("mm");
-                tpTime1.Text = dtTime.ToString("tt");
+                tempratureTime1.Text = dtTime;
+                
             }
 
         }

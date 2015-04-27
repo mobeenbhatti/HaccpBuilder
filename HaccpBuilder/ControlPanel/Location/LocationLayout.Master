@@ -10,13 +10,15 @@
     <title>HACCP Builder Control Panel</title>
 
     <!-- Bootstrap -->
-    <link href="../../App_Themes/Location/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../App_Themes/Location/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../JScript/jquery-ui.css" type="text/css" />
     <!-- FontAwsome -->
     <link href="../../App_Themes/Location/css/font-awesome.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css' />
+    <link href="../../App_Themes/Location/css/datepicker.css" rel="stylesheet" />
+    <link href="../../App_Themes/Location/css/bootstrap-timepicker.css" rel="stylesheet" />
     <link href="../../App_Themes/Location/css/dashboard.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -25,10 +27,33 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../../App_Themes/Location/js/bootstrap.min.js"></script>
+
+        <script src="../../JScript/jquery-ui.js" type="text/javascript"></script>
+        <script src="../../JScript/ui.combobox.js" type="text/javascript"></script>
+        <script src="../../App_Themes/Location/js/bootstrap-datepicker.js"></script>
+	<script src="../../App_Themes/Location/js/bootstrap-timepicker.js"></script>
+
+        <script type="text/javascript">
+            $(function () {
+                $('[data-editableCombobox="true"]').each(function () {
+                    $(this).combobox();
+                });
+            });
+            function goBack() {
+                window.history.go(-1); return false;
+            }
+        </script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-    
+
     <style>
         .ui-combobox {
             position: relative;
@@ -55,7 +80,7 @@
 
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form2" runat="server">
 
         <header>
             <div class="container">
@@ -144,25 +169,7 @@
                 © HACCP Builder 
             </div>
         </footer>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../../App_Themes/Location/js/bootstrap.min.js"></script>
-
-        <script src="../../JScript/jquery-ui.js" type="text/javascript"></script>
-        <script src="../../JScript/ui.combobox.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
-            $(function () {
-                $('[data-editableCombobox="true"]').each(function () {
-                    $(this).combobox();
-                });
-            });
-            function goBack() {
-                window.history.go(-1); return false;
-            }
-    </script>
-
+        
     </form>
 </body>
 </html>

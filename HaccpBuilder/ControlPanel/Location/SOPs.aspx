@@ -22,7 +22,7 @@
                             <div class="col-xs-10">
                                 <span><i class="fa fa-file-text-o"></i></span>
                                 <asp:HyperLink ID="hlSOP" Text='<%# Eval("IsAdditional").ToString() == "1"? "Custom Add - " + Eval("Title").ToString():Eval("Title").ToString() %>'
-                                    NavigateUrl='<%# "~/ControlPanel/Location/ViewSOP.aspx?SOPId=" + DataBinder.Eval(Container.DataItem, "KitchenSOPId") %>'
+                                    NavigateUrl='<%# "~/ControlPanel/Location/ViewSOPN.aspx?SOPId=" + DataBinder.Eval(Container.DataItem, "KitchenSOPId") %>'
                                     runat="server" Target="_blank"></asp:HyperLink>
                             </div>
 
