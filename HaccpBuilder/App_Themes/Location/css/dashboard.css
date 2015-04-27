@@ -292,7 +292,7 @@ ul.questionaire li:last-child{
 	border-bottom:none;	
 }
 /* Hiding default checkbox and Radio button design */
-.questionaire input[type=checkbox],input[type=radio] {
+.questionaire input[type=checkbox],.questionaire input[type=radio] {
     opacity: 0;
     position: absolute;
     z-index: 12;
@@ -305,7 +305,7 @@ ul.questionaire li:last-child{
     outline: none !important;
 }
  
-.questionaire input[type=checkbox]+.lbl,input[type=radio]+.lbl {
+.questionaire input[type=checkbox]+.lbl,input[type=radio]+.lbl,.fancyRadioBox input[type=radio]+label{
     position: relative;
     z-index: 11;
     display: inline-block;

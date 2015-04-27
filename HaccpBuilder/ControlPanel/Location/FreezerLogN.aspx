@@ -137,7 +137,7 @@
                                 <i class="fa fa-tasks"></i>Corrective Action
                             </div>
                             <div class="panel-body tasks">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <label>
                                         <%--  <input type="radio" name="dispose-item" id="dispose" />
                                         <span class="lbl padding-8">Disposed of product/item</span>--%>
@@ -145,8 +145,8 @@
 
                                         <asp:Label ID="Lbl_CorrectiveAction1" runat="server" Visible="false" CssClass="form-control"></asp:Label>
 
-                                        <asp:RadioButtonList ID="rdlCorrectiveAction1" Width="200px" DataValueField="CorrectiveActionID"
-                                            DataSourceID="odsCorrectiveAction" DataTextField="Name" CssClass="lbl padding-8" runat="server">
+                                        <asp:RadioButtonList ID="rdlCorrectiveAction1" DataValueField="CorrectiveActionID"
+                                            DataSourceID="odsCorrectiveAction" DataTextField="Name"  runat="server">
                                         </asp:RadioButtonList>
 
                                         <asp:ObjectDataSource ID="odsCorrectiveAction" runat="server" OldValuesParameterFormatString="original_{0}"
