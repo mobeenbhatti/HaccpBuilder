@@ -71,7 +71,7 @@ namespace SchoolHaccp.DataAccess.Update
 
 		private void Build()
 		{
-            object[] parameters = new object[19];
+            object[] parameters = new object[21];
             parameters[0] = this.District.Name;
             parameters[1] = this.District.DistrictPrinting;
             parameters[2] = this.District.DistrictType;
@@ -91,6 +91,8 @@ namespace SchoolHaccp.DataAccess.Update
             parameters[16] = this.District.TypeId;
             parameters[17] = this.Address.TimeZone;
             parameters[18] = this.Address.Country;
+            parameters[19] = this.Conatact.PasswordSalt;
+            parameters[20] = this.Conatact.IsUpdated;
             
            
             Parameters = parameters;
