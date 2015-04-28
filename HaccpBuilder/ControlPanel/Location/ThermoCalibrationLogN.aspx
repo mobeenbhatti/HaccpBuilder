@@ -90,6 +90,8 @@
                 <div class="col-sm-4">
                 </div>
             </div>
+
+             
         </div>
     </div>
 
@@ -245,22 +247,22 @@
                     <asp:GridView ID="grdHotHolding" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-hover table-bordered"
                         DataSourceID="ObjectDataSource1" AllowPaging="True">
                         <Columns>
-                            <asp:BoundField DataField="Id" HeaderText="Entry ID" ItemStyle-Width="30px" HeaderStyle-Width="30px" />
-                            <asp:TemplateField HeaderText="Service Date" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="Small" HeaderStyle-Font-Size="Small">
+                            <asp:BoundField DataField="Id" HeaderText="Entry ID"  />
+                            <asp:TemplateField HeaderText="Service Date" >
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/ThermoCalibrationLog.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
+                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/ThermoCalibrationLogN.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
                                         Text='<%# DataBinder.Eval(Container.DataItem, "MealDate","{0:d}")  %>'></asp:HyperLink>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="Thermometer" HeaderText="Thermometer" />
                             <%--    <asp:BoundField DataField="Temperature" HeaderText="Reading" ItemStyle-Width="50px"
                         HeaderStyle-CssClass="gridheaderline" />--%>
-                            <asp:TemplateField HeaderText="Reading" ItemStyle-Width="30px" HeaderStyle-Width="30px">
+                            <asp:TemplateField HeaderText="Reading" >
                                 <ItemTemplate>
                                     <asp:Label ID="lblReading" runat="server" Text='<%# Eval("Temperature").ToString()=="99999.00"? "":Eval("Temperature") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Entry Date" ItemStyle-Width="50px" HeaderStyle-Width="50px">
+                            <asp:TemplateField HeaderText="Entry Date" >
                                 <ItemTemplate>
                                     <asp:Label ID="lblEntrydate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EntryDate","{0:d}")  %>'></asp:Label>
                                 </ItemTemplate>

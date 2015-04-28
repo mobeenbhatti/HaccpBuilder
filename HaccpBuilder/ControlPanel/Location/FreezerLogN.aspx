@@ -8,7 +8,7 @@
     <h1>Freezer Log</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
-    <script language="javascript" type="text/javascript">
+    <script lang="javascript" type="text/javascript">
         function MoveBack() {
             window.location = "Default.aspx";
         }
@@ -97,7 +97,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="freezer-device">Select Freezer Device:</label>
-                            <asp:DropDownList ID="ddlFreezerNewLogDevice" Width="200px" DataSourceID="odsFreezerNewLogDevice"
+                            <asp:DropDownList ID="ddlFreezerNewLogDevice" DataSourceID="odsFreezerNewLogDevice"
                                 CssClass="form-control" DataTextField="Name" DataValueField="Id" Font-Size="Small" AppendDataBoundItems="false" data-editableCombobox="true"
                                 runat="server">
                                 <asp:ListItem>Select Freezer Device</asp:ListItem>
@@ -210,9 +210,9 @@
 
 
                                     <asp:Button ID="cmdSubmit" runat="server" OnClick="cmdSubmit_Click" Text="Submit" CssClass="btn btn-primary" />
-                                    <asp:Button ID="cmdDelete" Visible="false" CausesValidation="false" Text="Delete" CssClass="btn btn-primary" OnClick="cmdDelete_Click" runat="server" />
+                                    <asp:Button ID="cmdDelete" Visible="false" CausesValidation="false" Text="Delete" CssClass="btn btn-danger" OnClick="cmdDelete_Click" runat="server" />
                                     <asp:Button ID="cmdAdd" runat="server" OnClick="cmdAdd_Click" Text="Add" CssClass="btn btn-primary" />
-                                    <asp:Button ID="cmdCancel" runat="server" CausesValidation="false" Text="Cancel" CssClass="btn btn-default" OnClick="cmdCancel_Click" />
+                                    <asp:Button ID="cmdCancel" runat="server" CausesValidation="false" Text="Cancel" CssClass="btn btn-warning" OnClick="cmdCancel_Click" />
                                 </div>
                             </div>
                         </div>

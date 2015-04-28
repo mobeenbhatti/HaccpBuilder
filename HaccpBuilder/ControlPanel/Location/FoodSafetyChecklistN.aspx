@@ -74,7 +74,7 @@
                         <ul class="questionaire">
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <li>
+                        <li class="col-sm-12">
                             <div class="col-xs-12 mb10">
                                 <div class="row te">
                                     <i class="fa fa-question-circle"></i>
@@ -86,15 +86,22 @@
                             </div>
                             <div class="">
                                 <div class="col-sm-6 vAM">
-                                    <label>
+                                    <div class="col-xs-4">
+
                                         <asp:RadioButton ID="rdbAnswerYes" Text="Yes" GroupName="Answer" runat="server" />
-                                    </label>
-                                    <label>
+
+                                    </div>
+
+                                    <div class="col-xs-4">
+
                                         <asp:RadioButton ID="rdbAnswerNo" Text="No" GroupName="Answer" runat="server" />
-                                    </label>
-                                    <label>
+
+                                    </div>
+                                    <div class="col-xs-4">
+
                                         <asp:RadioButton ID="rdbAnswerNA" Text="NA" GroupName="Answer" runat="server" />
-                                    </label>
+
+                                    </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <asp:TextBox ID="txtCorrectiveAction" Rows="3" CssClass="form-control" TextMode="MultiLine" Enabled="false"
