@@ -199,7 +199,7 @@
 
                                            <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
                                                 <asp:TextBox CssClass="form-control" runat="server" ID="cldVerifiedDate"></asp:TextBox>
-
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                
                                             </div> 
                                             <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
@@ -218,7 +218,7 @@
                         <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
                             <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
 
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                           
                         </div>
                     </div>
                 </div>
@@ -314,4 +314,19 @@
         </SelectParameters>
     </asp:ObjectDataSource>
     <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldMealDate.ClientID %>').datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+            $('#<%= cldVerifiedDate.ClientID %>').datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+           
+
+        });
+    </script>
 </asp:Content>

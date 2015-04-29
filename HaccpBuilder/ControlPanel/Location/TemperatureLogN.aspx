@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ControlPanel/Location/LocationLayout.Master" AutoEventWireup="true" CodeBehind="ColdHoldingLogN.aspx.cs" Inherits="HaccpBuilder.ControlPanel.Location.ColdHoldingLogN" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ControlPanel/Location/LocationLayout.Master" AutoEventWireup="true" CodeBehind="TemperatureLogN.aspx.cs" Inherits="HaccpBuilder.ControlPanel.Location.TemperatureLogN" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageTitle" runat="server">
-    <h1>Cold Holding Time & Temperature Log</h1>
+    <h1>Cooking & Reheating Temperature Log</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
+
     <script lang="javascript" type="text/javascript">
         function MoveBack() {
             window.location = "Default.aspx";
         }
-
         function ClearCorrectiveActions(rdlCorrectiveActions) {
             var collection = document.getElementById(rdlCorrectiveActions).getElementsByTagName('INPUT');
             for (var x = 0; x < collection.length; x++) {
@@ -21,57 +21,155 @@
                 }
             }
         }
-
         function SetFoodItem(status) {
 
-            // var vldMenuItem = document.getElementById('PlaceHolder_rfvMenuItem');
-            // var vldIngrdient = document.getElementById('PlaceHolder_rfvIngredient');
+            var vldMenuItem = document.getElementById('PlaceHolder_rfvMenuItem');
+            var vldIngrdient = document.getElementById('PlaceHolder_rfvIngredient');
             var ddlMenuItem = document.getElementById('PlaceHolder_ddlMenuItem');
             var ddlIngredient = document.getElementById('PlaceHolder_ddlIngredient');
-
-
             if (status == 1) {
-
-                //  ValidatorEnable(vldMenuItem, true);
-                //  ValidatorEnable(vldIngrdient, false);
+                // ValidatorEnable(vldMenuItem, true);
+                // ValidatorEnable(vldIngrdient, false);
                 ddlMenuItem.disabled = false;
                 ddlIngredient.disabled = true;
                 ddlIngredient.selectedIndex = 0
-
             }
             if (status == 2) {
-                //   ValidatorEnable(vldMenuItem, false);             
-                //   ValidatorEnable(vldIngrdient, true);
+                // ValidatorEnable(vldMenuItem, false);
+                //  ValidatorEnable(vldIngrdient, true);
                 ddlMenuItem.disabled = true;
-                ddlMenuItem.selectedIndex = 0
                 ddlIngredient.disabled = false;
-
             }
             if (status == 3) {
-                //   ValidatorEnable(vldMenuItem, false);
-                //   ValidatorEnable(vldIngrdient, false);
+                // ValidatorEnable(vldMenuItem, false);
+                //  ValidatorEnable(vldIngrdient, false);
                 ddlMenuItem.disabled = true;
-                ddlMenuItem.selectedIndex = 0
                 ddlIngredient.disabled = true;
                 ddlIngredient.selectedIndex = 0
-
-
             }
         }
-
-        function CheckTemperature2(sender, args) {
+        function CheckTemperature() {
             // var vldCorrectiveAction = document.getElementById('PlaceHolder_rfvCorrectiveAction');
             // var vldIngrdient= document.getElementById('PlaceHolder_rfvIngredient');
 
-            var txtTemp2 = document.getElementById('PlaceHolder_txtTemp2');
+
+            var txtTemp1 = document.getElementById("<%= txtTemp1.ClientID %>").value;
+            var txtTemp2 = document.getElementById("<%= txtTemp2.ClientID %>").value;
+            var hfTempLow = document.getElementById("<%= hfTempLow.ClientID %>").value;
+
+            var hfTempHigh = document.getElementById("<%= hfTempHigh.ClientID %>").value;
+
+            var ddlCorrectiveAction1 = document.getElementById("<%= rdlCorrectiveAction1.ClientID %>");
+            var radio1 = ddlCorrectiveAction1.getElementsByTagName("input");
+            var ddlCorrectiveAction2 = document.getElementById("<%= rdlCorrectiveAction2.ClientID %>");
+            var radio2 = ddlCorrectiveAction2.getElementsByTagName("input");
+            var validSummary = document.getElementById("<%=vldSummary.ClientID %>");
+            var erroMsg = '';
+            var valid = true;
+            var nStatus = 0;
+            var temp1 = 0;
+            var temp2 = 0;
+            ////////////////////////
+            // FOR LOW TEMP
+            ///////////////////////
+
+            if (hfTempLow.length > 0) {
+                if (hfTempLow.trim() != 'NA') {
+                    if (txtTemp1.trim() != '') {
+                        if (txtTemp1 < hfTempLow) {
+                            for (var j = 0; j < radio1.length; j++) {
+                                if (radio1[j].checked) {
+                                    nStatus = 1;
+                                }
+                            }
+                            if (nStatus == 0) {
+                                valid = false;
+                                erroMsg = erroMsg + "• C1 - Please select Corrective Action for Temp1 field <BR>";
+                                temp1 = 1;
+                            }
+                        }
+                    }
+                    status = 0;
+                    if (txtTemp2.trim() != '') {
+                        if (txtTemp2 < hfTempLow) {
+
+                            for (var j = 0; j < radio2.length; j++) {
+                                if (radio2[j].checked)
+                                    nStatus = 1;
+                            }
+                            if (nStatus == 0) {
+                                valid = false;
+                                erroMsg = erroMsg + "• C1 - Please select Corrective Action for Temp2 field <BR>";
+                                var temp2 = 1;
+                            }
+                        }
+                    }
+                }
+            }
+            ///////////////////////
+            // FOR HIGH TEMP
+            //////////////////////
+
+            status = 0;
+            if (hfTempHigh.length > 0) {
+                if (hfTempHigh.trim() != 'NA') {
+                    if (txtTemp1.trim() != '') {
+                        if (txtTemp1 > hfTempHigh) {
+
+                            for (var j = 0; j < radio1.length; j++) {
+                                if (radio1[j].checked)
+                                    nStatus = 1;
+                            }
+                            if (nStatus == 0) {
+                                valid = false;
+                                if (temp1 == 0)
+                                    erroMsg = erroMsg + "• C2- Please select Corrective Action for Temp1 field <BR>";
+                            }
+                        }
+                    }
+                    nStatus = 0;
+                    if (txtTemp2.trim() != '') {
+                        if (txtTemp2 > hfTempHigh) {
+
+                            for (var j = 0; j < radio2.length; j++) {
+                                if (radio2[j].checked)
+                                    nStatus = 1;
+                            }
+                            if (nStatus == 0) {
+                                valid = false;
+                                if (temp2 == 0)
+                                    erroMsg = erroMsg + "• C2 - Please select Corrective Action for Temp2 field <BR>";
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (valid == false) {
+                validSummary.innerHTML = erroMsg;
+                validSummary.style.display = "";
+                return false;
+            }
+            else {
+                validSummary.innerHTML = '';
+                return true;
+            }
+        }
+        function CheckTemperature1(sender, args) {
+            // var vldCorrectiveAction = document.getElementById('PlaceHolder_rfvCorrectiveAction');
+            // var vldIngrdient= document.getElementById('PlaceHolder_rfvIngredient');
+            var txtTemp1 = document.getElementById('PlaceHolder_txtTemp1');
+
             var hfTempLow = document.getElementById('PlaceHolder_hfTempLow');
             var hfTempHigh = document.getElementById('PlaceHolder_hfTempHigh');
             var txtCorrectiveAction = document.getElementById('PlaceHolder_txtCorrectiveAction');
             var nStatus = 0;
+
             if (hfTempHigh.value != 'NA') {
-                if (txtTemp2.value != '') {
-                    if (txtTemp2.value <= hfTempLow.value || txtTemp2.value >= hfTempHigh.value) {
-                        var radio = document.getElementsByName("<%= rdlCorrectiveAction2.ClientID %>");
+                if (txtTemp1.value != '') {
+
+                    if (txtTemp1.value < hfTempLow.value || txtTemp1.value > hfTempHigh.value) {
+                        var radio = document.getElementsByName("<%= rdlCorrectiveAction1.ClientID %>");
 
                         for (var j = 0; j < radio.length; j++) {
 
@@ -88,14 +186,13 @@
                 }
             }
         }
-
     </script>
 
 
     <asp:HiddenField ID="hfTempLow" runat="server" />
     <asp:HiddenField ID="hfTempHigh" runat="server" />
-    <asp:HiddenField ID="hfMobileId" runat="server" />
-    <asp:Label ID="LogError" ForeColor="Red" runat="server" Text=""></asp:Label>
+    <asp:Label ForeColor="Red" ID="LogError" runat="server" Text=""></asp:Label>
+    <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
     <asp:ValidationSummary ID="vldSummary" DisplayMode="List" runat="server" CssClass="alert alert-danger mt30 row" ShowSummary="true"
         Enabled="true" />
 
@@ -103,11 +200,12 @@
     <p class="mt30 mb30">
         <strong>Directions: </strong>
         Record product name, time, the two temperatures/times, and any corrective
-                action taken on this form. If no foods are cold held on any working day, indicate
-                "No Ingredient/No Menu Item" in the form. The foodservice manager will verify that
-                foodservice employees have taken the required cooking temperatures by visually monitoring
-                foodservice employees and preparation procedures during the shift and reviewing,
-                initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
+                action taken on this form. <b>If no foods are cooked on any working day, indicate "No
+                    Ingredient/No Menu Item" in the form.</b> The foodservice manager will verify
+                that foodservice employees have taken the required cooking temperatures by visually
+                monitoring foodservice employees and preparation procedures during the shift and
+                reviewing, initialing, and dating this log daily. Maintain this log for a minimum
+                of 1 year.
     </p>
 
 
@@ -148,8 +246,8 @@
                     </div>
                 </div>
 
-                
-               
+
+
             </div>
 
 
@@ -164,37 +262,42 @@
                 <i class="fa fa-dashboard"></i>Food Items
             </div>
             <div class="panel-body">
-                
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <asp:RadioButton ID="rdbNoItem" Text="No Ingredient/Menu Item" CssClass="form-control"
+                            onClick="SetFoodItem(3)" Checked="true" GroupName="FoodItem" runat="server" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
                     <div class="form-group">
 
                         <label for="ddlIngredient">
-                           <asp:RadioButton ID="rdbIngredient" Checked="true" Text="Inputs" CssClass="form-control" onClick="SetFoodItem(2)"
+                            <asp:RadioButton ID="rdbIngredient" Text="Ingredients" onClick="SetFoodItem(2)" CssClass="form-control"
                                 GroupName="FoodItem" runat="server" /></label>
-                        <asp:DropDownList ID="ddlIngredient" DataSourceID="odsIngredient" CssClass="form-control"
-                            DataTextField="Name" DataValueField="IngredientId" AppendDataBoundItems="false" data-editableCombobox="true"
-                            runat="server">
-                            <asp:ListItem>Select Input</asp:ListItem>
+                        <asp:DropDownList ID="ddlIngredient" DataSourceID="odsIngredient" AutoPostBack="true"
+                            CssClass="form-control" Enabled="false" DataTextField="Name" DataValueField="IngredientId"
+                            AppendDataBoundItems="false" runat="server" EnableViewState="true" OnSelectedIndexChanged="ddlIngredient_SelectedIndexChanged">
+                            <asp:ListItem Value="-1">Select Ingredient</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvIngredient" runat="server" Display="None" ErrorMessage="Please Select Input"
-                            ControlToValidate="ddlIngredient"   Enabled="false" Font-Names="Verdana"
-                            Font-Size="10px" InitialValue="Select Ingredient"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvIngredient" runat="server" Display="None" ErrorMessage="Please Select Ingredient"
+                            ControlToValidate="ddlIngredient" CssClass="form-control" Enabled="false" Font-Names="Verdana"
+                            InitialValue="Select Ingredient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
 
                         <label for="ddlMenuItem">
-                            <asp:RadioButton ID="rdbMenuItem" Text="Output" onClick="SetFoodItem(1)"
-                                GroupName="FoodItem" runat="server" CssClass="form-control"/></label>
+                            <asp:RadioButton ID="rdbMenuItem" Text="Menu Item" onClick="SetFoodItem(1)"
+                                CssClass="form-control" GroupName="FoodItem" runat="server" /></label>
                         <asp:DropDownList ID="ddlMenuItem" DataSourceID="odsMenuItem" Enabled="false" CssClass="form-control"
-                            DataTextField="Name" DataValueField="MenuItemId" runat="server" data-editableCombobox="true"
+                            DataTextField="Name" DataValueField="MenuItemId" runat="server"
                             AppendDataBoundItems="false">
-                            <asp:ListItem>Select Output</asp:ListItem>
+                            <asp:ListItem>Select Menu Item</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvMenuItem"  Enabled="false" runat="server" Display="None"
-                            ErrorMessage="Please Select Output" ControlToValidate="ddlMenuItem" 
-                            Font-Names="Verdana" Font-Size="10px" InitialValue="Select Menu Item"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvMenuItem" Enabled="false" runat="server" Display="None"
+                            ErrorMessage="Please Select Menu Item" ControlToValidate="ddlMenuItem" CssClass="form-control"
+                            Font-Names="Verdana" InitialValue="Select Menu Item"></asp:RequiredFieldValidator>
 
                     </div>
                 </div>
@@ -248,7 +351,7 @@
                                     SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                        <asp:Parameter DefaultValue="3" Name="nLogTypeId" Type="Int32" />
+                                        <asp:Parameter DefaultValue="10" Name="nLogTypeId" Type="Int32" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <asp:RadioButtonList ID="rdlCorrectiveAction1" DataValueField="CorrectiveActionID"
@@ -309,10 +412,10 @@
                                     SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                        <asp:Parameter DefaultValue="3" Name="nLogTypeId" Type="Int32" />
+                                        <asp:Parameter DefaultValue="1" Name="nLogTypeId" Type="Int32" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
-                                <asp:RadioButtonList ID="rdlCorrectiveAction2"  DataValueField="CorrectiveActionID"
+                                <asp:RadioButtonList ID="rdlCorrectiveAction2" DataValueField="CorrectiveActionID"
                                     DataSourceID="odsCorrectiveAction" DataTextField="Name" runat="server">
                                 </asp:RadioButtonList>
                             </label>
@@ -329,14 +432,24 @@
             </div>
         </div>
 
-       
+
     </div>
 
 
     <div class="row mt10">
         <div class="panel panel-default plr-15">
             <div class="panel-body">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
+                    <label class="control-label">
+                        Lot/Batch No
+                    </label>
+
+                    <asp:TextBox ID="txtBatchNo" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtBatchNo"
+                        Display="None" ErrorMessage="The value in field 'Lot/Batch No' is not valid."
+                        Font-Names="Verdana" Font-Size="10px" ValidationExpression="^[A-Za-z0-9.\-_ ]+$"></asp:RegularExpressionValidator>
+                </div>
+                <div class="col-sm-2">
                     <label class="control-label">
                         Verified By*:
                     </label>
@@ -346,7 +459,7 @@
                         Display="None" ErrorMessage="The value in field 'Verified By' is not valid."
                         Font-Names="Verdana" Font-Size="10px" ValidationExpression="^[A-Za-z0-9.\-_ ]+$"></asp:RegularExpressionValidator>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
 
                     <div class="form-group">
                         <label for="cldVerifiedDate">Verified Date:</label>
@@ -366,17 +479,17 @@
 
 
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="form-group">
                         <label for="serviceDate">Entry Date </label>
                         <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
                             <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
 
-                            
+
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3" style="margin-top: 24px;">
+                <div class="col-sm-4" style="margin-top: 24px;">
 
 
                     <asp:Button ID="cmdSubmit" runat="server" OnClick="cmdSubmit_Click" Text="Submit" CssClass="btn btn-primary" />
@@ -438,16 +551,14 @@
             </div>
         </div>
     </div>
-
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}"
-        SelectMethod="GetColdHoldingLogByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetColdHoldingLog">
+        SelectMethod="GetTemperatureLogByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetTemperatureLog">
         <SelectParameters>
             <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
                 Type="Int32" />
             <asp:SessionParameter DefaultValue="1" Name="nMobileId" SessionField="MobileId" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-
     <asp:ObjectDataSource ID="odsIngredient" runat="server" OldValuesParameterFormatString="original_{0}"
         SelectMethod="GetIngredientByKitchenId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetIngredient">
         <SelectParameters>
@@ -464,9 +575,9 @@
     </asp:ObjectDataSource>
     <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
 
-      <script type="text/javascript">
-          $(document).ready(function () {
-              $('#<%= cldEntryDate.ClientID %>').datepicker({
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldEntryDate.ClientID %>').datepicker({
                 format: "dd/mm/yyyy"
             });
 
@@ -474,8 +585,8 @@
                 format: "dd/mm/yyyy"
             });
 
-              $('#<%= tempratureTime1.ClientID %>').timepicker();
-              $('#<%= tempratureTime2.ClientID %>').timepicker();
+            $('#<%= tempratureTime1.ClientID %>').timepicker();
+            $('#<%= tempratureTime2.ClientID %>').timepicker();
 
         });
     </script>

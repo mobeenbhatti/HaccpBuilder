@@ -184,7 +184,7 @@
 
                                            <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
                                                 <asp:TextBox CssClass="form-control" runat="server" ID="cldVerifiedDate"></asp:TextBox>
-
+                                               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                
                                             </div> 
                                             <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
@@ -288,7 +288,7 @@
                 format: "dd/mm/yyyy"
             });
 
-            $('#<%= cldMealDate.ClientID %>').datepicker({
+            $('#<%= cldVerifiedDate.ClientID %>').datepicker({
                 format: "dd/mm/yyyy"
             });
 

@@ -345,7 +345,7 @@
                      <asp:SessionParameter DefaultValue="1" Name="nMobileId" SessionField="MobileId" Type="Int32" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-        </div>
+       
         <asp:ObjectDataSource ID="odsIngredient" runat="server" OldValuesParameterFormatString="original_{0}"
             SelectMethod="GetIngredientByKitchenId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetIngredient">
             <SelectParameters>

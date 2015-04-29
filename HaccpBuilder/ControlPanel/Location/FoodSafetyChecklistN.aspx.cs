@@ -281,7 +281,7 @@ namespace HaccpBuilder.ControlPanel.Location
 
             if (int.Parse(lblIteration.Text) > 11)
             {
-                Response.Redirect("~/ControlPanel/Location/FoodSafetyChecklisReview.aspx?week=" + nWeek + "&year=" + nYear + "&Date=" + dtDate.ToShortDateString());
+                Response.Redirect("~/ControlPanel/Location/FoodSafetyChecklisReviewN.aspx?week=" + nWeek + "&year=" + nYear + "&Date=" + dtDate.ToShortDateString());
                 //Response.Redirect("~/ControlPanel/Kitchen/FoodSafetyChecklisReview.aspx?week=" + Request.QueryString["week"] + "&year=" + Request.QueryString["year"]);
             }
             if (int.Parse(lblIteration.Text) <= 11)

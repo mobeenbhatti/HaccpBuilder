@@ -1,16 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ControlPanel/Location/LocationLayout.Master" AutoEventWireup="true" CodeBehind="ColdHoldingLogN.aspx.cs" Inherits="HaccpBuilder.ControlPanel.Location.ColdHoldingLogN" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ControlPanel/Location/LocationLayout.Master" AutoEventWireup="true" CodeBehind="ShippingLogN.aspx.cs" Inherits="HaccpBuilder.ControlPanel.Location.ShippingLogN" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageTitle" runat="server">
-    <h1>Cold Holding Time & Temperature Log</h1>
+    <h1>Shipping Log</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
     <script lang="javascript" type="text/javascript">
         function MoveBack() {
             window.location = "Default.aspx";
         }
-
         function ClearCorrectiveActions(rdlCorrectiveActions) {
             var collection = document.getElementById(rdlCorrectiveActions).getElementsByTagName('INPUT');
             for (var x = 0; x < collection.length; x++) {
@@ -21,80 +20,84 @@
                 }
             }
         }
-
         function SetFoodItem(status) {
 
-            // var vldMenuItem = document.getElementById('PlaceHolder_rfvMenuItem');
-            // var vldIngrdient = document.getElementById('PlaceHolder_rfvIngredient');
+            var vldMenuItem = document.getElementById('PlaceHolder_rfvMenuItem');
+            var rfvCustomer = document.getElementById('PlaceHolder_rfvCustomer');
             var ddlMenuItem = document.getElementById('PlaceHolder_ddlMenuItem');
-            var ddlIngredient = document.getElementById('PlaceHolder_ddlIngredient');
-
+            var ddlVendor = document.getElementById('PlaceHolder_ddlVendor');
 
             if (status == 1) {
-
-                //  ValidatorEnable(vldMenuItem, true);
-                //  ValidatorEnable(vldIngrdient, false);
-                ddlMenuItem.disabled = false;
-                ddlIngredient.disabled = true;
-                ddlIngredient.selectedIndex = 0
+                // ValidatorEnable(vldMenuItem, true);
+                // ValidatorEnable(vldIngrdient, false);
+                //  ddlMenuItem.disabled = false;
+                //ddlIngredient.disabled = true;
+                //ddlIngredient.selectedIndex = 0
 
             }
             if (status == 2) {
-                //   ValidatorEnable(vldMenuItem, false);             
-                //   ValidatorEnable(vldIngrdient, true);
-                ddlMenuItem.disabled = true;
-                ddlMenuItem.selectedIndex = 0
-                ddlIngredient.disabled = false;
-
+                //  ValidatorEnable(vldMenuItem, false);
+                //  ValidatorEnable(vldIngrdient, true);
+                ddlMenuItem.disabled = false;
+                ddlVendor.disabled = false;
+                //ddlIngredient.disabled = false;
             }
             if (status == 3) {
-                //   ValidatorEnable(vldMenuItem, false);
-                //   ValidatorEnable(vldIngrdient, false);
+                // ValidatorEnable(vldMenuItem, false);
+                // ValidatorEnable(vldIngrdient, false);
                 ddlMenuItem.disabled = true;
+                ddlVendor.disabled = true;
                 ddlMenuItem.selectedIndex = 0
-                ddlIngredient.disabled = true;
-                ddlIngredient.selectedIndex = 0
-
-
+                ddlVendor.selectedIndex = 0
+                //ddlIngredient.disabled = true;
             }
         }
-
-        function CheckTemperature2(sender, args) {
-            // var vldCorrectiveAction = document.getElementById('PlaceHolder_rfvCorrectiveAction');
+        function CheckTemperature(sender, args) {
+            var vldCorrectiveAction = document.getElementById('PlaceHolder_rfvCorrectiveAction');
             // var vldIngrdient= document.getElementById('PlaceHolder_rfvIngredient');
+            var txtTemp1 = document.getElementById('PlaceHolder_txtTemperature');
 
-            var txtTemp2 = document.getElementById('PlaceHolder_txtTemp2');
             var hfTempLow = document.getElementById('PlaceHolder_hfTempLow');
             var hfTempHigh = document.getElementById('PlaceHolder_hfTempHigh');
             var txtCorrectiveAction = document.getElementById('PlaceHolder_txtCorrectiveAction');
-            var nStatus = 0;
             if (hfTempHigh.value != 'NA') {
-                if (txtTemp2.value != '') {
-                    if (txtTemp2.value <= hfTempLow.value || txtTemp2.value >= hfTempHigh.value) {
-                        var radio = document.getElementsByName("<%= rdlCorrectiveAction2.ClientID %>");
-
-                        for (var j = 0; j < radio.length; j++) {
-
-                            if (radio[j].checked)
-
-                                nStatus = 1;
-
-                        }
-                        if (nStatus = 0) {
-
-                            args.IsValid = false;
-                        }
+                if (txtTemp1.value != '') {
+                    if ((txtTemp1.value < hfTempLow.value || txtTemp1.value > hfTempHigh.value) && txtCorrectiveAction.value == '') {
+                        // ValidatorEnable(vldMenuItem, true);
+                        args.IsValid = false;
                     }
                 }
             }
         }
+        function ValidatePage() {
+            var validSummary = document.getElementById("<%=vldSummary.ClientID %>");
+            var erroMsg = '';
+            var valid = true;
+            var txtTemp = document.getElementById("<%= txtTemperature.ClientID %>");
+            var txtBatch = document.getElementById("<%= txtBatch.ClientID %>");
 
+            if (txtTemp.value.length > 10) {
+                erroMsg = erroMsg + "The value in field Internal Temp1 is not valid. <BR>";
+                valid = false;
+            }
+            if (txtBatch.value.length > 10) {
+                erroMsg = erroMsg + "The value in field Batch No. is not valid. <BR>";
+                valid = false;
+            }
+            if (valid == false) {
+                validSummary.innerHTML = erroMsg;
+                validSummary.style.display = "";
+                return true;
+            }
+            if (valid == true) {
+                validSummary.innerHTML = '';
+                return true;
+            }
+        }
     </script>
-
 
     <asp:HiddenField ID="hfTempLow" runat="server" />
     <asp:HiddenField ID="hfTempHigh" runat="server" />
-    <asp:HiddenField ID="hfMobileId" runat="server" />
     <asp:Label ID="LogError" ForeColor="Red" runat="server" Text=""></asp:Label>
     <asp:ValidationSummary ID="vldSummary" DisplayMode="List" runat="server" CssClass="alert alert-danger mt30 row" ShowSummary="true"
         Enabled="true" />
@@ -102,19 +105,19 @@
 
     <p class="mt30 mb30">
         <strong>Directions: </strong>
-        Record product name, time, the two temperatures/times, and any corrective
-                action taken on this form. If no foods are cold held on any working day, indicate
-                "No Ingredient/No Menu Item" in the form. The foodservice manager will verify that
-                foodservice employees have taken the required cooking temperatures by visually monitoring
-                foodservice employees and preparation procedures during the shift and reviewing,
-                initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
+        Use this Log for deliveries or shipping foods. Record any temperatures
+                and corrective action taken on the Shipping Log. <b>If no foods are received on any
+                    working day, indicate "No Ingredient/No Menu Item" in the form. </b>The foodservice
+                manager will verify that foodservice employees are shipping products using the proper
+                procedure by visually monitoring foodservice employees and shipping practices during
+                the shift and reviewing the log daily. Maintain this log for a minimum of 1 year.
     </p>
 
 
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Cold Holding Time & Temperature Log
+                <i class="fa fa-dashboard"></i>Shipping Log
             </div>
             <div class="panel-body">
 
@@ -137,19 +140,19 @@
                         <label for="cldMealDate">Service Date:</label>
 
                         <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
-                            <asp:TextBox CssClass="form-control" runat="server" ID="cldEntryDate"></asp:TextBox>
+                            <asp:TextBox CssClass="form-control" runat="server" ID="cldMealDate"></asp:TextBox>
 
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
-                        <asp:CompareValidator ID="CV_cldEntryDate" runat="server" ControlToValidate="cldEntryDate"
+                        <asp:CompareValidator ID="CV_cldEntryDate" runat="server" ControlToValidate="cldMealDate"
                             Display="None" ErrorMessage="Service date should not be future date" Operator="LessThanEqual"
                             Type="Date"></asp:CompareValidator>
 
                     </div>
                 </div>
 
-                
-               
+
+
             </div>
 
 
@@ -164,37 +167,34 @@
                 <i class="fa fa-dashboard"></i>Food Items
             </div>
             <div class="panel-body">
-                
+
                 <div class="col-sm-6">
                     <div class="form-group">
 
                         <label for="ddlIngredient">
-                           <asp:RadioButton ID="rdbIngredient" Checked="true" Text="Inputs" CssClass="form-control" onClick="SetFoodItem(2)"
-                                GroupName="FoodItem" runat="server" /></label>
-                        <asp:DropDownList ID="ddlIngredient" DataSourceID="odsIngredient" CssClass="form-control"
-                            DataTextField="Name" DataValueField="IngredientId" AppendDataBoundItems="false" data-editableCombobox="true"
-                            runat="server">
-                            <asp:ListItem>Select Input</asp:ListItem>
+                            <asp:RadioButton ID="rdbMenuItem" Checked="true" Text="Product/Menu Item"
+                                CssClass="form-control" GroupName="FoodItem" runat="server" /></label>
+                        <asp:DropDownList ID="ddlMenuItem" DataSourceID="odsMenuItem" CssClass="form-control"
+                            DataTextField="Name" DataValueField="MenuItemId" runat="server" data-editableCombobox="true"
+                            AppendDataBoundItems="false">
+                            <asp:ListItem>Select Menu Item</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvIngredient" runat="server" Display="None" ErrorMessage="Please Select Input"
-                            ControlToValidate="ddlIngredient"   Enabled="false" Font-Names="Verdana"
-                            Font-Size="10px" InitialValue="Select Ingredient"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvMenuItem" Enabled="false" runat="server" Display="None"
+                            ErrorMessage="Please Select Menu Item" ControlToValidate="ddlMenuItem" CssClass="form-control"
+                            Font-Names="Verdana" InitialValue="Select Menu Item"></asp:RequiredFieldValidator>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
 
                         <label for="ddlMenuItem">
-                            <asp:RadioButton ID="rdbMenuItem" Text="Output" onClick="SetFoodItem(1)"
-                                GroupName="FoodItem" runat="server" CssClass="form-control"/></label>
-                        <asp:DropDownList ID="ddlMenuItem" DataSourceID="odsMenuItem" Enabled="false" CssClass="form-control"
-                            DataTextField="Name" DataValueField="MenuItemId" runat="server" data-editableCombobox="true"
-                            AppendDataBoundItems="false">
-                            <asp:ListItem>Select Output</asp:ListItem>
+                            Customer:</label>
+                        <asp:DropDownList ID="ddlVendor" runat="server" DataSourceID="odsVendor" CssClass="form-control" data-editableCombobox="true"
+                            DataTextField="CompanyName" DataValueField="CustomerID" Font-Size="Small" AppendDataBoundItems="false">
+                            <asp:ListItem>Select Customer</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvMenuItem"  Enabled="false" runat="server" Display="None"
-                            ErrorMessage="Please Select Output" ControlToValidate="ddlMenuItem" 
-                            Font-Names="Verdana" Font-Size="10px" InitialValue="Select Menu Item"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvCustomer" Enabled="true" runat="server" Display="None"
+                            InitialValue="Select Customer" ErrorMessage="Please Select Customer" ControlToValidate="ddlVendor"></asp:RequiredFieldValidator>
 
                     </div>
                 </div>
@@ -209,19 +209,25 @@
     </div>
 
     <div class="row mt10">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="panel panel-default plr-15">
                 <div class="panel-heading">
-                    <i class="fa fa-info"></i>Internal Temp 1 and Temp 1 Time
+                    <i class="fa fa-info"></i>Internal Temperature and Time
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="input-group">
-                            <asp:TextBox ID="txtTemp1" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
-                            <asp:CustomValidator ID="CustomValidator2" ControlToValidate="txtTemp1" OnServerValidate="ValidateTemp1"
-                                runat="server" ErrorMessage="Please select Corrective Action1 field for Temp1"
-                                Display="None"></asp:CustomValidator>
-                            <asp:RegularExpressionValidator ID="rglValidateTemp1" runat="server" ControlToValidate="txtTemp1"
+                            <asp:CheckBox ID="chkTempRequired" Text="Temperature Not Required" OnCheckedChanged="chkTempRequired_CheckedChanged"
+                                AutoPostBack="true" Checked="false" CssClass="form-control" runat="server" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+
+                            <asp:TextBox ID="txtTemperature" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
+                            <asp:CustomValidator ID="CustomValidator2" ControlToValidate="txtTemperature" OnServerValidate="ValidateTemp1"
+                                runat="server" ErrorMessage="Please select Corrective Action field" Display="None"></asp:CustomValidator>
+                            <asp:RegularExpressionValidator ID="rglValidateTemp1" runat="server" ControlToValidate="txtTemperature"
                                 Display="None" ErrorMessage="The value in field Internal Temp1 is not valid.Please enter the temperature value between 9999.99 to -9999.99"
                                 Font-Names="Verdana" Font-Size="10px" ValidationExpression="^[\-+]?[0-9]{1,4}(\.[0-9]{1,2})?$"></asp:RegularExpressionValidator>
                             <span class="input-group-addon">
@@ -239,6 +245,26 @@
                         </div>
                     </div>
                     <hr />
+                    <div class="form-group">
+                        <div class="input-group">
+                            Batch No:
+                            <asp:TextBox ID="txtBatch" runat="server" MaxLength="10" CssClass="form-control"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtBatch"
+                                Display="None" ErrorMessage="The value in field Batch No. is not valid."
+                                ValidationExpression="^[a-zA-Z0-9'.\s\,\.\']{1,50}$"></asp:RegularExpressionValidator>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Volume:
+                            <asp:TextBox ID="txtVolume" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtVolume"
+                                Display="None" ErrorMessage="The value in field Volume is not valid."
+                                ValidationExpression="^[a-zA-Z0-9'.\s\,\.\']{1,10}$"></asp:RegularExpressionValidator>
+                        </div>
+                    </div>
+                    <hr />
                     <p>Corrective Actions</p>
                     <ul class="corrective-actions">
                         <li>
@@ -248,7 +274,7 @@
                                     SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
                                     <SelectParameters>
                                         <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                        <asp:Parameter DefaultValue="3" Name="nLogTypeId" Type="Int32" />
+                                        <asp:Parameter DefaultValue="10" Name="nLogTypeId" Type="Int32" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <asp:RadioButtonList ID="rdlCorrectiveAction1" DataValueField="CorrectiveActionID"
@@ -269,67 +295,9 @@
             </div>
         </div>
 
-        <div class="col-sm-6">
-            <div class="panel panel-default plr-15">
-                <div class="panel-heading">
-                    <i class="fa fa-info"></i>Internal Temp 2 and Temp 2 Time
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <asp:TextBox ID="txtTemp2" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
-                            <asp:CustomValidator ID="CustomValidator1" ControlToValidate="txtTemp2" OnServerValidate="ValidateTemp2"
-                                runat="server" ErrorMessage="Please select Corrective Action2 field for Temp2"
-                                Display="None"></asp:CustomValidator>
-                            <asp:RegularExpressionValidator ID="rglValidateTemp2" runat="server" ControlToValidate="txtTemp2"
-                                Display="None" ErrorMessage="The value in field Internal Temp 2 is not valid.Please enter the temperature value between 9999.99 to -9999.99"
-                                Font-Names="Verdana" Font-Size="10px" ValidationExpression="^[\-+]?[0-9]{1,4}(\.[0-9]{1,2})?$"></asp:RegularExpressionValidator>
-
-                            <span class="input-group-addon">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group bootstrap-timepicker">
-                            <asp:TextBox ID="tempratureTime2" MaxLength="8" runat="server" CssClass="form-control"></asp:TextBox>
-
-                            <span class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <hr />
-                    <p>Corrective Actions</p>
-                    <ul class="corrective-actions">
-                        <li>
-                            <label>
-                                <asp:Label ID="Lbl_CorrectiveAction2" runat="server" Visible="false"></asp:Label>
-                                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}"
-                                    SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
-                                    <SelectParameters>
-                                        <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                        <asp:Parameter DefaultValue="3" Name="nLogTypeId" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
-                                <asp:RadioButtonList ID="rdlCorrectiveAction2"  DataValueField="CorrectiveActionID"
-                                    DataSourceID="odsCorrectiveAction" DataTextField="Name" runat="server">
-                                </asp:RadioButtonList>
-                            </label>
-                        </li>
-
-                    </ul>
-                    <hr />
-                    <div id="trClearCorrectiveActions2" runat="server" class="text-center">
-                        <asp:Button runat="server" ID="chkClear2" CausesValidation="false" CssClass="btn btn-warning" Text="Clear Corrective Actions" />
-                    </div>
 
 
-                </div>
-            </div>
-        </div>
 
-       
     </div>
 
 
@@ -359,7 +327,7 @@
                         <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
                             Display="None" ErrorMessage="Verified date should not be future date" Operator="LessThanEqual"
                             Type="Date"></asp:CompareValidator>
-                        <asp:CompareValidator ID="CV2_cldVerifiedDate" runat="server" ControlToValidate="cldEntryDate"
+                        <asp:CompareValidator ID="CV2_cldVerifiedDate" runat="server" ControlToValidate="cldMealDate"
                             Display="None" ControlToCompare="cldVerifiedDate" ErrorMessage="Verified date should be greater than or equal to service date."
                             Operator="LessThanEqual" Type="Date"></asp:CompareValidator>
                     </div>
@@ -372,7 +340,7 @@
                         <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
                             <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -406,24 +374,17 @@
                             <asp:BoundField DataField="Id" HeaderText="Entry ID" />
                             <asp:TemplateField HeaderText="Service Date">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/ColdHoldingLogN.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
-                                        Text='<%# DataBinder.Eval(Container.DataItem, "MealDate","{0:d}")  %>' CssClass="HyperLink"></asp:HyperLink>
+                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/ShippingLog.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
+                                        Text='<%# DataBinder.Eval(Container.DataItem, "MealDate","{0:d}")  %>'></asp:HyperLink>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Item Category">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblFoodItem" runat="server" Text='<%#Eval("FoodItem").ToString() == "2"? "Product/Menu Item":Eval("FoodItem").ToString() == "1"?"Ingredient":"No Ingredient/Menu Item"%>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:BoundField DataField="Customer" HeaderText="Customer" />
                             <asp:TemplateField HeaderText=" Product/Menu Item">
                                 <ItemTemplate>
                                     <asp:Label ID="lblFoodItem" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "MenuItem") %>'></asp:Label>
                                 </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Ingredient">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblFoodItem" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Ingredient") %>'></asp:Label>
-                                </ItemTemplate>
+                                <ItemStyle Width="150px" />
+                                <HeaderStyle CssClass="gridheaderline" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Entry Date">
                                 <ItemTemplate>
@@ -440,14 +401,13 @@
     </div>
 
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}"
-        SelectMethod="GetColdHoldingLogByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetColdHoldingLog">
+        SelectMethod="GetShippingLogByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetShippingLog">
         <SelectParameters>
             <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
                 Type="Int32" />
             <asp:SessionParameter DefaultValue="1" Name="nMobileId" SessionField="MobileId" Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-
     <asp:ObjectDataSource ID="odsIngredient" runat="server" OldValuesParameterFormatString="original_{0}"
         SelectMethod="GetIngredientByKitchenId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetIngredient">
         <SelectParameters>
@@ -462,11 +422,18 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsVendor" runat="server" OldValuesParameterFormatString="original_{0}"
+        SelectMethod="GetCustomerByKitchenId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetCustomer">
+        <SelectParameters>
+            <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
+                Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
     <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
 
-      <script type="text/javascript">
-          $(document).ready(function () {
-              $('#<%= cldEntryDate.ClientID %>').datepicker({
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldMealDate.ClientID %>').datepicker({
                 format: "dd/mm/yyyy"
             });
 
@@ -474,8 +441,8 @@
                 format: "dd/mm/yyyy"
             });
 
-              $('#<%= tempratureTime1.ClientID %>').timepicker();
-              $('#<%= tempratureTime2.ClientID %>').timepicker();
+            $('#<%= tempratureTime1.ClientID %>').timepicker();
+
 
         });
     </script>
