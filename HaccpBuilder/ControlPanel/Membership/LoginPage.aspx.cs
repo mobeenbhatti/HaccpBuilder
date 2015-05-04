@@ -382,7 +382,7 @@ public partial class ControlPanel_Membership_LoginPage : System.Web.UI.Page
                             //if (dsAgreement.Tables[0].Rows.Count > 0)
                             if (CheckAgreement(nContactId) == true)
                             {
-                                Response.Redirect("~/ControlPanel/Location/Default.aspx");
+                                Response.Redirect("~/ControlPanel/Location/Dashboard.aspx");
                             }
                             else
                             {

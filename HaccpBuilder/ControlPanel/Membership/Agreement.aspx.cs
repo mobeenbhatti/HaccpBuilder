@@ -41,7 +41,7 @@ public partial class ControlPanel_Membership_Agreement : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Redirect("~/ControlPanel/Location/Default.aspx");
+                    Response.Redirect("~/ControlPanel/Location/Dashboard.aspx");
                 }
                 
             }
@@ -108,7 +108,7 @@ public partial class ControlPanel_Membership_Agreement : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Redirect("~/ControlPanel/Location/Default.aspx");
+                    Response.Redirect("~/ControlPanel/Location/Dashboard.aspx");
                 }
 
             }

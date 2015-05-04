@@ -115,7 +115,7 @@ namespace SchoolHaccp.DataAccess.Update
 
 		private void Build()
 		{
-            object[] parameters = new object[84];
+            object[] parameters = new object[86];
             parameters[0] = this.Kitchen.DistrictId;
             parameters[1] = this.Kitchen.Name;
             parameters[2] = this.Kitchen.TemperatureLog;
@@ -200,7 +200,8 @@ namespace SchoolHaccp.DataAccess.Update
             parameters[81] = this.Kitchen.CheckList;
             parameters[82] = this.Kitchen.CheckListAlert;
             parameters[83] = this.Address.Country;
-            
+            parameters[84] = this.Conatact.PasswordSalt;
+            parameters[85] = this.Conatact.IsUpdated;
            
             Parameters = parameters;
 		}
