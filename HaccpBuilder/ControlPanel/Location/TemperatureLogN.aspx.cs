@@ -311,7 +311,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                     txtBatchNo.Text = logReader["BatchNo"].ToString();
                     txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                    cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
+                    cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
                     txtEntryDate.Text = logReader["EntryDate"].ToString();
                     logReader.Close();
                 }
@@ -459,7 +459,7 @@ namespace HaccpBuilder.ControlPanel.Location
                         //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();                    
                         txtBatchNo.Text = logReader["BatchNo"].ToString();
                         txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                        cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
+                        cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
                         txtEntryDate.Text = logReader["EntryDate"].ToString();
                         logReader.Close();
                     }

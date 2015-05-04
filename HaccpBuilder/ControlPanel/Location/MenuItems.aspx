@@ -21,7 +21,7 @@
 
                             <div class="col-xs-10">
                                 <span><i class="fa fa-file-text-o"></i></span>
-                                <asp:HyperLink ID="hlTableName" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/MenuRecipePrint.aspx?MenuId=" + Eval("MenuItemID")%>'
+                                <asp:HyperLink ID="hlTableName" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/MenuRecipePrintN.aspx?MenuId=" + Eval("MenuItemID")%>'
                                     Text='<%#Eval("Name")  %>'></asp:HyperLink>
                             </div>
 

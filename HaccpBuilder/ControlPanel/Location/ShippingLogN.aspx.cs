@@ -107,7 +107,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 IDataReader logReader = getShippingLog.ResultSet;
                 if (logReader.Read())
                 {
-                    cldMealDate.Text = logReader["MealDate"].ToString();
+                    cldMealDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                     //if (logReader["FoodItem"].ToString() == "1")
                     //{
                     //    //ddlItem.DataSource = odsIngredient;
@@ -205,7 +205,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     txtVolume.Text = logReader["Volume"].ToString();
                     //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                     txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                    cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
+                    cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
                     txtEntryDate.Text = logReader["EntryDate"].ToString();
 
                     if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)
@@ -254,7 +254,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     if (logReader.Read())
                     {
                         Session["ShippingLogId"] = int.Parse(logReader["Id"].ToString());
-                        cldMealDate.Text = logReader["MealDate"].ToString();
+                        cldMealDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                         //if (logReader["FoodItem"].ToString() == "1")
                         //{
                         //    //ddlItem.DataSource = odsIngredient;
@@ -343,7 +343,7 @@ namespace HaccpBuilder.ControlPanel.Location
                         txtVolume.Text = logReader["Volume"].ToString();
                         //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                         txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                        cldVerifiedDate.Text =logReader["VerifiedDate"].ToString();
+                        cldVerifiedDate.Text =DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
                         txtEntryDate.Text = logReader["EntryDate"].ToString();
                         if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)
                         {

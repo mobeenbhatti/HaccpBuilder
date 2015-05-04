@@ -238,7 +238,7 @@
 
     <div class="panel panel-primary mt10">
         <div class="panel-heading">
-            <h4 class="left">List of Cooling Temperature Log Entries</h4>
+            <h4 class="left">List of ThermoCalibration Temperature Log Entries</h4>
         </div>
         <div class="panel-body">
             <div class="table">

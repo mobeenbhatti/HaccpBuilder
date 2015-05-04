@@ -253,7 +253,7 @@ namespace HaccpBuilder.ControlPanel.Location {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button chkClear;
+        protected global::System.Web.UI.WebControls.CheckBox chkClear;
         
         /// <summary>
         /// txtVerifiedBy control.

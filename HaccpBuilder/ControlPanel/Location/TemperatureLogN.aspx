@@ -504,7 +504,7 @@
 
     <div class="panel panel-primary mt10">
         <div class="panel-heading">
-            <h4 class="left">List of Cooling Temperature Log Entries</h4>
+            <h4 class="left">List Temperature Log Entries</h4>
         </div>
         <div class="panel-body">
             <div class="table">
@@ -515,35 +515,35 @@
 
                     <asp:GridView ID="grdHotHolding" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-hover table-bordered"
                         DataSourceID="ObjectDataSource1" AllowPaging="True">
-                        <Columns>
-                            <asp:BoundField DataField="Id" HeaderText="Entry ID" />
-                            <asp:TemplateField HeaderText="Service Date">
+                         <Columns>
+                            <asp:BoundField DataField="Id" HeaderText="Entry ID" ItemStyle-Width="50px" HeaderStyle-CssClass="gridheaderline" />
+                            <asp:TemplateField HeaderText="Service Date" >
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/ColdHoldingLogN.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
-                                        Text='<%# DataBinder.Eval(Container.DataItem, "MealDate","{0:d}")  %>' CssClass="HyperLink"></asp:HyperLink>
+                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/TemperatureLogN.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
+                                        Text='<%# DataBinder.Eval(Container.DataItem, "MealDate","{0:d}")  %>'></asp:HyperLink>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Item Category">
+                            <asp:TemplateField HeaderText="Item Category" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lblFoodItem" runat="server" Text='<%#Eval("FoodItem").ToString() == "2"? "Product/Menu Item":Eval("FoodItem").ToString() == "1"?"Ingredient":"No Ingredient/Menu Item"%>'></asp:Label>
+                                    <asp:Label ID="lblFoodItem" runat="server" Text='<%#Eval("FoodItem").ToString() == "2"? " Product/Menu Item":Eval("FoodItem").ToString() == "1"?"Ingredient":"No Ingredient/Menu Item"%>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText=" Product/Menu Item">
+                            <asp:TemplateField HeaderText=" Product/Menu Item" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lblFoodItem" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "MenuItem") %>'></asp:Label>
+                                    <asp:Label ID="lblMenuItem" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "MenuItem") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Ingredient">
+                            <asp:TemplateField HeaderText="Ingredient" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lblFoodItem" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Ingredient") %>'></asp:Label>
+                                    <asp:Label ID="lblIngredient" runat="server" Text='<%#DataBinder.Eval(Container.DataItem, "Ingredient") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Entry Date">
+                            <asp:TemplateField HeaderText="Entry Date" >
                                 <ItemTemplate>
                                     <asp:Label ID="lblEntrydate" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EntryDate","{0:d}")  %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                        </Columns>
+                                </Columns>
                     </asp:GridView>
 
                 </div>
@@ -552,27 +552,27 @@
         </div>
     </div>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}"
-        SelectMethod="GetTemperatureLogByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetTemperatureLog">
-        <SelectParameters>
-            <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
-                Type="Int32" />
-            <asp:SessionParameter DefaultValue="1" Name="nMobileId" SessionField="MobileId" Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="odsIngredient" runat="server" OldValuesParameterFormatString="original_{0}"
-        SelectMethod="GetIngredientByKitchenId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetIngredient">
-        <SelectParameters>
-            <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
-                Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="odsMenuItem" runat="server" OldValuesParameterFormatString="original_{0}"
-        SelectMethod="GetMenuItemNewDataSet" TypeName="SchoolHaccp.BusinessLogic.ProcessGetMenuItemNew">
-        <SelectParameters>
-            <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
-                Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
+                        SelectMethod="GetTemperatureLogByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetTemperatureLog">
+                        <SelectParameters>
+                            <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
+                                Type="Int32" />
+                           <asp:SessionParameter DefaultValue="1" Name="nMobileId" SessionField="MobileId" Type="Int32" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+ <asp:ObjectDataSource ID="odsIngredient" runat="server" OldValuesParameterFormatString="original_{0}"
+            SelectMethod="GetIngredientByKitchenId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetIngredient">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
+                    Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="odsMenuItem" runat="server" OldValuesParameterFormatString="original_{0}"
+            SelectMethod="GetMenuItemNewDataSet" TypeName="SchoolHaccp.BusinessLogic.ProcessGetMenuItemNew">
+            <SelectParameters>
+                <asp:SessionParameter DefaultValue="1" Name="nKitchenId" SessionField="KitchenId"
+                    Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>   
     <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
 
     <script type="text/javascript">

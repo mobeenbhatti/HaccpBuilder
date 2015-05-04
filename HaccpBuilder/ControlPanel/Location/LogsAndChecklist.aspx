@@ -20,7 +20,7 @@
                         <li>
                             <div class="col-xs-10">
                                 <span><i class="fa fa-file-text-o"></i></span>
-                                <asp:HyperLink ID="hlTableName" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/Default2.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>'
+                                <asp:HyperLink ID="hlTableName" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/Default2N.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>'
                                     Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'></asp:HyperLink>
                             </div>
 
@@ -51,7 +51,7 @@
                         <li>
                             <div class="col-xs-10">
                                 <span><i class="fa fa-check-square-o"></i></span>
-                                <asp:HyperLink ID="hlEditQuestion" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>' NavigateUrl='<%# "~/ControlPanel/Location/ChecklistQuestion.aspx?SectionId=" + DataBinder.Eval(Container.DataItem, "CheckListSectionId") + "&Date=" + DateTime.Today.ToShortDateString()   %>'></asp:HyperLink>
+                                <asp:HyperLink ID="hlEditQuestion" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Name") %>' NavigateUrl='<%# "~/ControlPanel/Location/ChecklistQuestionN.aspx?SectionId=" + DataBinder.Eval(Container.DataItem, "CheckListSectionId") + "&Date=" + DateTime.Today.ToShortDateString()   %>'></asp:HyperLink>
 
                             </div>
 
@@ -60,7 +60,7 @@
                             <div class="col-xs-10">
                                 <span><i class="fa fa-check-square-o"></i></span>
 
-                                <asp:HyperLink ID="HyperLink3" runat="server" Text="Edit" NavigateUrl='<%# "~/ControlPanel/Location/ChecklistsHistory.aspx?SectionId=" + DataBinder.Eval(Container.DataItem, "CheckListSectionId") + "&Date=" + DateTime.Today.ToShortDateString()   %>'></asp:HyperLink>
+                                <asp:HyperLink ID="HyperLink3" runat="server" Text="Edit" NavigateUrl='<%# "~/ControlPanel/Location/ChecklistsHistoryN.aspx?SectionId=" + DataBinder.Eval(Container.DataItem, "CheckListSectionId") + "&Date=" + DateTime.Today.ToShortDateString()   %>'></asp:HyperLink>
                             </div>
 
                         </li>

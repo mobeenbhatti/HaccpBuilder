@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="pull-right loginout">
-                        <a class="dropdown-toggle" href="../LogOut.aspx" data-toggle="dropdown" id="navLogin">
+                        <a  href="../LogOut.aspx"  id="navLogin">
                             <i class="fa fa-user"></i>Logout
                         </a>
                     </div>

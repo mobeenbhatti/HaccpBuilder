@@ -113,7 +113,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 IDataReader logReader = getThermoCalibrationLog.ResultSet;
                 if (logReader.Read())
                 {
-                    cldMealDate.Text = logReader["MealDate"].ToString();
+                    cldMealDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                     //txtThermometer.Text = logReader["Thermometer"].ToString();
                     if (logReader["ThermometerID"].ToString() == "")
                     {
@@ -165,7 +165,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     }
                     // txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                     txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                    cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
+                    cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
                     txtEntryDate.Text = logReader["EntryDate"].ToString();
                     //for (int i = 0; i < rdlCorrectiveAction1.Items.Count; i++)
                     //{
@@ -186,7 +186,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     if (logReader.Read())
                     {
                         Session["ThermoCalibrationLogId"] = int.Parse(logReader["Id"].ToString());
-                        cldMealDate.Text = logReader["MealDate"].ToString();
+                        cldMealDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                         //txtThermometer.Text = logReader["Thermometer"].ToString();
                         if (logReader["ThermometerID"].ToString() == "")
                         {
@@ -237,7 +237,7 @@ namespace HaccpBuilder.ControlPanel.Location
                         }
                         //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                         txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                        cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
+                        cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
                         txtEntryDate.Text = logReader["EntryDate"].ToString();
                         //for (int i = 0; i < rdlCorrectiveAction1.Items.Count; i++)
                         //{

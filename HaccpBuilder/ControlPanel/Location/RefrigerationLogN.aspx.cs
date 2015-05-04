@@ -14,10 +14,9 @@ using System.Xml.Linq;
 using SchoolHaccp.BusinessLogic;
 using SchoolHaccp.Common;
 using SchoolHaccp.Operational;
-
 namespace HaccpBuilder.ControlPanel.Location
 {
-    public partial class FreezerLogN : System.Web.UI.Page
+    public partial class RefrigerationLogN : System.Web.UI.Page
     {
         public string mode = "new";
 
@@ -62,7 +61,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 ProcessGetKitchen getKitchen = new ProcessGetKitchen();
                 ProcessGetCriticalLimits getLimits = new ProcessGetCriticalLimits();
                 //dsTemperature = getKitchen.GetKitchenTemperatureRangeByKitchenId((int)Session["KitchenId"], 1);
-                DataSet dsTemperature = getLimits.GetCriticalLimitsByKitchenId((int)Session["KitchenId"], 7);
+                DataSet dsTemperature = getLimits.GetCriticalLimitsByKitchenId((int)Session["KitchenId"], 5);
                 if (dsTemperature.Tables[0].Rows.Count > 0)
                 {
                     hfTempHigh.Value = dsTemperature.Tables[0].Rows[0]["QCLTempHigh"].ToString();
@@ -86,24 +85,24 @@ namespace HaccpBuilder.ControlPanel.Location
             string strTime1;
             if (Request.QueryString["Id"] != null)
             {
-                FreezerNewLog freezerNewLog = new FreezerNewLog();
-                freezerNewLog.FreezerNewLogId = int.Parse(Request.QueryString["Id"]);
-                ProcessGetFreezerNewLog getFreezerNewLog = new ProcessGetFreezerNewLog();
-                getFreezerNewLog.FreezerNewLog = freezerNewLog;
-                getFreezerNewLog.Invoke();
+                RefrigerationLog refrigerationLog = new RefrigerationLog();
+                refrigerationLog.RefrigerationLogId = int.Parse(Request.QueryString["Id"]);
+                ProcessGetRefrigerationLog getRefrigerationLog = new ProcessGetRefrigerationLog();
+                getRefrigerationLog.RefrigerationLog = refrigerationLog;
+                getRefrigerationLog.Invoke();
 
-                IDataReader logReader = getFreezerNewLog.ResultSet;
+                IDataReader logReader = getRefrigerationLog.ResultSet;
                 if (logReader.Read())
                 {
                     cldMealDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                     //txtLocation.Text = logReader["Location"].ToString();
                     if (logReader["CustomInventoryID"].ToString() == "")
                     {
-                        ddlFreezerNewLogDevice.SelectedIndex = 0;
+                        ddlRefrigerationDevice.SelectedIndex = 0;
                     }
                     else
                     {
-                        ddlFreezerNewLogDevice.SelectedValue = logReader["CustomInventoryID"].ToString();
+                        ddlRefrigerationDevice.SelectedValue = logReader["CustomInventoryID"].ToString();
                     }
 
 
@@ -121,7 +120,7 @@ namespace HaccpBuilder.ControlPanel.Location
                     {
                         //tpTime.Text = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
                         strTime1 = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
-                        SetTime(1, strTime1);
+                        SetTime(1, DateTime.Parse(strTime1));
                     }
                     catch (Exception ex)
                     {
@@ -129,12 +128,12 @@ namespace HaccpBuilder.ControlPanel.Location
                         {
                             //tpTime.Text = DateTime.Now.ToShortTimeString();
                             strTime1 = DateTime.Now.ToShortTimeString();
-                            SetTime(1, strTime1);
+                            SetTime(1, DateTime.Parse(strTime1));
                         }
                     }
                     //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                     txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                    cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
+                    cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
                     txtEntryDate.Text = logReader["EntryDate"].ToString();
                     if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)
                     {
@@ -178,20 +177,20 @@ namespace HaccpBuilder.ControlPanel.Location
             {
                 if (Request.QueryString["date"] != null)
                 {
-                    ProcessGetFreezerNewLog getFreezerNewLog = new ProcessGetFreezerNewLog();
-                    IDataReader logReader = getFreezerNewLog.GetFreezerNewLogByEntryDate(DateTime.Parse(Request.QueryString["date"].ToString()), (int)Session["KitchenId"]);
+                    ProcessGetRefrigerationLog getRefrigerationLog = new ProcessGetRefrigerationLog();
+                    IDataReader logReader = getRefrigerationLog.GetRefrigerationLogByEntryDate(DateTime.Parse(Request.QueryString["date"].ToString()), (int)Session["KitchenId"]);
                     if (logReader.Read())
                     {
-                        Session["FreezerNewLogId"] = int.Parse(logReader["Id"].ToString());
-                        cldMealDate.Text =DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
+                        Session["RefrigerationLogId"] = int.Parse(logReader["Id"].ToString());
+                        cldMealDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                         // txtLocation.Text = logReader["Location"].ToString();
                         if (logReader["CustomInventoryID"].ToString() == "")
                         {
-                            ddlFreezerNewLogDevice.SelectedIndex = 0;
+                            ddlRefrigerationDevice.SelectedIndex = 0;
                         }
                         else
                         {
-                            ddlFreezerNewLogDevice.SelectedValue = logReader["CustomInventoryID"].ToString();
+                            ddlRefrigerationDevice.SelectedValue = logReader["CustomInventoryID"].ToString();
                         }
                         if (logReader["Temperature"].ToString() != "99999.00")
                         {
@@ -207,7 +206,7 @@ namespace HaccpBuilder.ControlPanel.Location
                         {
                             //tpTime.Text = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
                             strTime1 = DateTime.Parse(logReader["TempTime"].ToString()).ToShortTimeString();
-                            SetTime(1,strTime1);
+                            SetTime(1, DateTime.Parse(strTime1));
                         }
                         catch (Exception ex)
                         {
@@ -215,12 +214,12 @@ namespace HaccpBuilder.ControlPanel.Location
                             {
                                 //tpTime.Text = DateTime.Now.ToShortTimeString();
                                 strTime1 = DateTime.Now.ToShortTimeString();
-                                SetTime(1, strTime1);
+                                SetTime(1, DateTime.Parse(strTime1));
                             }
                         }
                         //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                         txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                        cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
+                        cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
                         txtEntryDate.Text = logReader["EntryDate"].ToString();
                         if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)
                         {
@@ -271,7 +270,6 @@ namespace HaccpBuilder.ControlPanel.Location
         }
         private void SetPage()
         {
-
             if (mode == "new")
             {
                 if (Request.QueryString["date"] != null)
@@ -285,23 +283,24 @@ namespace HaccpBuilder.ControlPanel.Location
                 cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
                 SetPageInEditMode("new");
                 //txtLocation.Text = "";
-                ddlFreezerNewLogDevice.SelectedIndex = 0;
+                ddlRefrigerationDevice.SelectedIndex = 0;
                 txtTemperature.Text = "";
-                SetTime(1, DateTime.Now.ToShortTimeString());
+                SetTime(1, DateTime.Now);
                 //txtCorrectiveAction.Text = "";
                 //txtVerifiedBy.Text = Session["Initials"].ToString();
                 txtVerifiedBy.Text = "";
                 txtEntryDate.Text = DateTime.Now.ToString();
                 rdlCorrectiveAction1.SelectedIndex = -1;
+                trClearCorrectiveActions.Style.Add("display", "''");
                 cmdAdd.Visible = true;
                 cmdCancel.Visible = true;
                 cmdDelete.Visible = false;
                 cmdSubmit.Visible = false;
-                trClearCorrectiveActions.Style.Add("display", "''");
                 rdlCorrectiveAction1.DataBind();
+                //ddlRefrigerationDevice.DataBind();
 
-                GetInitialData();
                 rdlCorrectiveAction1.Visible = true;
+                GetInitialData();
                 Lbl_CorrectiveAction1.Visible = false;
 
 
@@ -312,10 +311,11 @@ namespace HaccpBuilder.ControlPanel.Location
 
             }
             grdHotHolding.DataBind();
+            ddlRefrigerationDevice.DataBind();
+            ddlRefrigerationDevice.Items.Insert(0, "Select Refrigeration Device");
+            ddlRefrigerationDevice.SelectedIndex = 0;
 
-            ddlFreezerNewLogDevice.DataBind();
-            ddlFreezerNewLogDevice.Items.Insert(0, "Select Freezer Device");
-            ddlFreezerNewLogDevice.SelectedIndex = 0;
+
 
         }
         private void SetPageInEditMode(string type)
@@ -323,13 +323,14 @@ namespace HaccpBuilder.ControlPanel.Location
             if (type == "new")
             {
                 txtTemperature.Enabled = true;
-
+                tempratureTime1.Enabled = true;
+               
                 txtVerifiedBy.Enabled = true;
                 cldVerifiedDate.Enabled = true;
                 cldMealDate.Enabled = true;
                 // txtLocation.Enabled = true;
+                ddlRefrigerationDevice.Enabled = true;
                 trClearCorrectiveActions.Style.Add("display", "''");
-                ddlFreezerNewLogDevice.Enabled = true;
                 cmdAdd.Visible = false;
                 cmdCancel.Visible = true;
                 cmdDelete.Visible = true;
@@ -337,12 +338,13 @@ namespace HaccpBuilder.ControlPanel.Location
             }
             else if (type == "edit")
             {
-                txtVerifiedBy.Enabled = false;
                 txtTemperature.Enabled = false;
+                tempratureTime1.Enabled = false;
+               
                 cldMealDate.Enabled = false;
                 txtVerifiedBy.Enabled = false;
                 cldVerifiedDate.Enabled = false;
-                ddlFreezerNewLogDevice.Enabled = false;
+                ddlRefrigerationDevice.Enabled = false;
                 trClearCorrectiveActions.Style.Add("display", "none");
                 cmdAdd.Visible = false;
                 cmdCancel.Visible = true;
@@ -385,140 +387,141 @@ namespace HaccpBuilder.ControlPanel.Location
         protected void cmdAddNew_Click(object sender, EventArgs e)
         {
             mode = "new";
-            //ddlFreezerNewLogDevice.DataBind();
             SetPage();
         }
 
         private void InsertData()
         {
-            FreezerNewLog freezerNewLog = new FreezerNewLog();
-            freezerNewLog.MealDate = DateTime.Parse(cldMealDate.Text);
+            RefrigerationLog refrigerationLog = new RefrigerationLog();
+            refrigerationLog.MealDate = DateTime.Parse(cldMealDate.Text);
             if (txtTemperature.Text != "")
             {
-                freezerNewLog.Temperature = float.Parse(txtTemperature.Text);
+                refrigerationLog.Temperature = float.Parse(txtTemperature.Text);
             }
             if (tempratureTime1.Text != "")
             {
-                freezerNewLog.TempTime = DateTime.Parse(GetTime(1));
+                refrigerationLog.TempTime = DateTime.Parse(GetTime(1));
             }
             else
             {
-                freezerNewLog.TempTime = DateTime.Now;
+                refrigerationLog.TempTime = DateTime.Now;
 
             }
-            //freezerNewLog.Location = txtLocation.Text;
 
-            freezerNewLog.FreezerNewLogDevice = int.Parse(ddlFreezerNewLogDevice.SelectedValue);
+            //refrigerationLog.Location = txtLocation.Text;
+
+            refrigerationLog.RefrigerationDevice = int.Parse(ddlRefrigerationDevice.SelectedValue);
             //if (txtCorrectiveAction.Text.Trim() != "")
             //{
-            //    freezerNewLog.CorrectiveAction = txtCorrectiveAction.Text;
+            //    refrigerationLog.CorrectiveAction = txtCorrectiveAction.Text;
             //}
             //else
             //{
-            //    freezerNewLog.CorrectiveAction = null;
+            //    refrigerationLog.CorrectiveAction = null;
             //}
             if (rdlCorrectiveAction1.SelectedIndex == -1)
             {
-                freezerNewLog.CorrectiveAction1 = 0;
+                refrigerationLog.CorrectiveAction1 = 0;
             }
             else
             {
-                freezerNewLog.CorrectiveAction1 = int.Parse(rdlCorrectiveAction1.SelectedValue);
+                refrigerationLog.CorrectiveAction1 = int.Parse(rdlCorrectiveAction1.SelectedValue);
             }
-            freezerNewLog.VerifiedBy = txtVerifiedBy.Text;
-            freezerNewLog.VerifiedDate = DateTime.Parse(cldVerifiedDate.Text);
-            freezerNewLog.EntryDate = DateTime.Parse(txtEntryDate.Text);
+            refrigerationLog.VerifiedBy = txtVerifiedBy.Text;
+            refrigerationLog.VerifiedDate = DateTime.Parse(cldVerifiedDate.Text);
+            refrigerationLog.EntryDate = DateTime.Parse(txtEntryDate.Text);
             if (Session["KitchenId"] != null)
             {
-                freezerNewLog.KitchenId = (int)Session["KitchenId"];
+                refrigerationLog.KitchenId = (int)Session["KitchenId"];
             }
             if (Session["UserName"] != null)
             {
-                freezerNewLog.UserName = (string)Session["UserName"];
+                refrigerationLog.UserName = (string)Session["UserName"];
             }
-            if (Session["MobileId"] != null)
+            if ((int)Session["MobileId"] != null)
             {
-                freezerNewLog.MobileId = (int)Session["MobileId"];
+                refrigerationLog.MobileId = (int)Session["MobileId"];
             }
-            ProcessCreateFreezerNewLog createFreezerNewLog = new ProcessCreateFreezerNewLog();
-            createFreezerNewLog.FreezerNewLog = freezerNewLog;
-            createFreezerNewLog.Invoke();
+            ProcessCreateRefrigerationLog createRefrigerationLog = new ProcessCreateRefrigerationLog();
+            createRefrigerationLog.RefrigerationLog = refrigerationLog;
+            createRefrigerationLog.Invoke();
 
         }
         private void SubmitData()
         {
-            FreezerNewLog freezerNewLog = new FreezerNewLog();
+            RefrigerationLog refrigerationLog = new RefrigerationLog();
             if (Request.QueryString["Id"] != null)
             {
-                freezerNewLog.FreezerNewLogId = int.Parse(Request.QueryString["Id"].ToString());
+                refrigerationLog.RefrigerationLogId = int.Parse(Request.QueryString["Id"].ToString());
             }
             else
             {
-                if (Session["FreezerNewLogId"] != null)
+                if (Session["RefrigerationLogId"] != null)
                 {
-                    freezerNewLog.FreezerNewLogId = (int)Session["FreezerNewLogId"];
+                    refrigerationLog.RefrigerationLogId = (int)Session["RefrigerationLogId"];
                 }
             }
 
-            freezerNewLog.MealDate = DateTime.Parse(cldMealDate.Text);
+            refrigerationLog.MealDate = DateTime.Parse(cldMealDate.Text);
             if (txtTemperature.Text != "")
             {
-                freezerNewLog.Temperature = float.Parse(txtTemperature.Text);
+                refrigerationLog.Temperature = float.Parse(txtTemperature.Text);
             }
             if (tempratureTime1.Text != "")
             {
-                freezerNewLog.TempTime = DateTime.Parse(GetTime(1));
+                refrigerationLog.TempTime = DateTime.Parse(GetTime(1));
             }
             else
             {
-                freezerNewLog.TempTime = DateTime.Now;
+                refrigerationLog.TempTime = DateTime.Now;
 
             }
-            freezerNewLog.FreezerNewLogDevice = int.Parse(ddlFreezerNewLogDevice.SelectedValue);
+            refrigerationLog.RefrigerationDevice = int.Parse(ddlRefrigerationDevice.SelectedValue);
             //if (txtCorrectiveAction.Text.Trim() != "")
             //{
-            //    freezerNewLog.CorrectiveAction = txtCorrectiveAction.Text;
+            //    refrigerationLog.CorrectiveAction = txtCorrectiveAction.Text;
             //}
             //else
             //{
-            //    freezerNewLog.CorrectiveAction = null;
+            //    refrigerationLog.CorrectiveAction = null;
             //}
             if (rdlCorrectiveAction1.SelectedIndex == -1)
             {
-                freezerNewLog.CorrectiveAction1 = 0;
+                refrigerationLog.CorrectiveAction1 = 0;
             }
             else
             {
-                freezerNewLog.CorrectiveAction1 = int.Parse(rdlCorrectiveAction1.SelectedValue);
+                refrigerationLog.CorrectiveAction1 = int.Parse(rdlCorrectiveAction1.SelectedValue);
             }
-            freezerNewLog.VerifiedBy = txtVerifiedBy.Text;
-            freezerNewLog.VerifiedDate = DateTime.Parse(cldVerifiedDate.Text);
-            freezerNewLog.EntryDate = DateTime.Parse(txtEntryDate.Text);
+            refrigerationLog.VerifiedBy = txtVerifiedBy.Text;
+            refrigerationLog.VerifiedDate = DateTime.Parse(cldVerifiedDate.Text);
+            refrigerationLog.EntryDate = DateTime.Parse(txtEntryDate.Text);
             if (Session["KitchenId"] != null)
             {
-                freezerNewLog.KitchenId = (int)Session["KitchenId"];
+                refrigerationLog.KitchenId = (int)Session["KitchenId"];
             }
             if (Session["UserName"] != null)
             {
-                freezerNewLog.UserName = (string)Session["UserName"];
+                refrigerationLog.UserName = (string)Session["UserName"];
             }
-            if (Session["MobileId"] != null)
+
+            if ((int)Session["MobileId"] != null)
             {
-                freezerNewLog.MobileId = (int)Session["MobileId"];
+                refrigerationLog.MobileId = (int)Session["MobileId"];
             }
-            ProcessSetFreezerNewLog setFreezerNewLog = new ProcessSetFreezerNewLog();
-            setFreezerNewLog.FreezerNewLog = freezerNewLog;
-            setFreezerNewLog.Invoke();
+            ProcessSetRefrigerationLog setRefrigerationLog = new ProcessSetRefrigerationLog();
+            setRefrigerationLog.RefrigerationLog = refrigerationLog;
+            setRefrigerationLog.Invoke();
 
 
         }
         private void RemoveData()
         {
-            FreezerNewLog freezerNewLog = new FreezerNewLog();
-            freezerNewLog.FreezerNewLogId = int.Parse(Request.QueryString["Id"].ToString());
-            ProcessDeleteFreezerNewLog removeFreezerNewLog = new ProcessDeleteFreezerNewLog();
-            removeFreezerNewLog.FreezerNewLog = freezerNewLog;
-            removeFreezerNewLog.Invoke();
+            RefrigerationLog refrigerationLog = new RefrigerationLog();
+            refrigerationLog.RefrigerationLogId = int.Parse(Request.QueryString["Id"].ToString());
+            ProcessDeleteRefrigerationLog removeRefrigerationLog = new ProcessDeleteRefrigerationLog();
+            removeRefrigerationLog.RefrigerationLog = refrigerationLog;
+            removeRefrigerationLog.Invoke();
 
         }
 
@@ -567,6 +570,20 @@ namespace HaccpBuilder.ControlPanel.Location
             //    }
             //}
         }
+        private string GetTime(int nPeriod)
+        {
+            return tempratureTime1.Text;
+        }
+        private void SetTime(int nPeriod, DateTime dtTime)
+        {
+            if (nPeriod == 1)
+            {
+                //tpHour1.Text = (((dtTime.Hour + 11) % 12) + 1).ToString();
+                tempratureTime1.Text = dtTime.ToShortTimeString();
+               
+            }
+
+        }
         //     var vldCorrectiveAction = document.getElementById('PlaceHolder_rfvCorrectiveAction');
         //// var vldIngrdient= document.getElementById('PlaceHolder_rfvIngredient');
         // var txtTemp1 = document.getElementById('PlaceHolder_txtTemperature');
@@ -584,19 +601,7 @@ namespace HaccpBuilder.ControlPanel.Location
         //         }
         //     }
         // }
-        private string GetTime(int nPeriod)
-        {
-            return tempratureTime1.Text;
-        }
-        private void SetTime(int nPeriod, string dtTime)
-        {
-            if (nPeriod == 1)
-            {
-                tempratureTime1.Text = dtTime;
-                
-            }
 
-        }
         protected void ValidateTemp1(object source, ServerValidateEventArgs args)
         {
             int nResult = 0;

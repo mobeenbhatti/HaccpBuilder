@@ -248,8 +248,8 @@ namespace HaccpBuilder.ControlPanel.Location
                     //txtTime2.Text = logReader["Temp2Time"].ToString();
                     //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                     txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
-                    cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
-                    cldEntryDate.Text = logReader["MealDate"].ToString();
+                    cldVerifiedDate.Text = DateTime.Parse(logReader["VerifiedDate"].ToString()).ToShortDateString();
+                    cldEntryDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
 
 
                     txtEntryDate.Text = logReader["EntryDate"].ToString();
@@ -422,7 +422,7 @@ namespace HaccpBuilder.ControlPanel.Location
                         //txtCorrectiveAction.Text = logReader["CorrectiveAction"].ToString();
                         txtVerifiedBy.Text = logReader["VerifiedBy"].ToString();
                         cldVerifiedDate.Text = logReader["VerifiedDate"].ToString();
-                        cldEntryDate.Text = logReader["MealDate"].ToString();
+                        cldEntryDate.Text = DateTime.Parse(logReader["MealDate"].ToString()).ToShortDateString();
                         txtEntryDate.Text = logReader["EntryDate"].ToString();
 
                         if (Utilities.CalculateLogsEntryTime(DateTime.Now.Subtract(DateTime.Parse(logReader["EntryDate"].ToString()))) == false)

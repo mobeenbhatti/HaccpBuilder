@@ -112,7 +112,7 @@ header{
 .loginout a{
 	padding:10px 20px;
 	margin-top:10px;
-	width:105px;
+	width:120px;
 	color:#fff;
 	position:relative;
 	font-weight:bold;
@@ -173,11 +173,22 @@ header{
 .mt10{
 	margin-top:10px;	
 }
+
+.mt8{
+	margin-top:8px;	
+}
+.mt6{
+	margin-top:6px;	
+}
+
 .mb30{
 	margin-bottom:30px;	
 }
 .mb10{
 	margin-bottom:10px;	
+}
+.mb12{
+	margin-bottom:12px;	
 }
 .mL2{
 	margin-left:2px;	
@@ -571,4 +582,7 @@ ul.corrective-actions {
 }
 ul.corrective-actions li{
 	padding:0;	
+    list-style: none;
 }
+
+
