@@ -305,9 +305,10 @@ namespace SchoolHaccp.Operational
                            where n.EmailAddress == username && n.IsUpdated == true
                            select n).FirstOrDefault();
 
-                    _context.Refresh(System.Data.Objects.RefreshMode.StoreWins, con);
+                    
                     if (con != null)
                     {
+                        _context.Refresh(System.Data.Objects.RefreshMode.StoreWins, con);
                         string pwd = Utilities.CreatePasswordHash(password, con.PasswordSalt);
                         if (con.Password != pwd)
                             return false;

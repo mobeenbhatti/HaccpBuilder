@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-sm-6 text-center">
                         <span class="userGuide">
-                            <a href="#" class="white-link">
+                            <a id="hlUserGuide" runat="server" class="white-link">
                                 <i class="fa fa-question-circle"></i>&nbsp;User Guide
                             </a>
                         </span>

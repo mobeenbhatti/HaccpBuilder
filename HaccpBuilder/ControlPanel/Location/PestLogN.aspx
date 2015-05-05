@@ -232,7 +232,7 @@
                             <asp:BoundField DataField="Id" HeaderText="Entry ID" />
                             <asp:TemplateField HeaderText="Service Date">
                                 <ItemTemplate>
-                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/PestLog.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
+                                    <asp:HyperLink ID="hlEntryDate" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/PestLogN.aspx?Id=" + DataBinder.Eval(Container.DataItem, "Id") %>'
                                         Text='<%# DataBinder.Eval(Container.DataItem, "ServiceDate","{0:d}")  %>'></asp:HyperLink>
                                 </ItemTemplate>
                             </asp:TemplateField>

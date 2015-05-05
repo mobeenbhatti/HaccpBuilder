@@ -21,6 +21,16 @@ namespace HaccpBuilder.ControlPanel.Location
 
             getKitchName();
             getUserName();
+
+
+            if (TypeId == 1)
+            {
+                hlUserGuide.HRef = "~/StaticContent/Files/Free Trial Instruction Guide.pdf";
+            }
+            else
+            {
+                hlUserGuide.HRef = "~/StaticContent/Files/HACCP Builder Instruction Guide.pdf";
+            }
             if (Context.Session != null)
             {
                 //Tested and the IsNewSession is more advanced then simply checking if 
@@ -104,6 +114,19 @@ namespace HaccpBuilder.ControlPanel.Location
 
         }
 
+        public int TypeId
+        {
+            get
+            {
+                if (Session["TypeId"] != null)
+                    return (int)Session["TypeId"];
+                else
+                {
+                    Response.Redirect("~/ControlPanel/LogOut.aspx");
+                    return 0;
+                }
 
+            }
+        }
     }
 }
