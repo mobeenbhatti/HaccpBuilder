@@ -6,7 +6,7 @@
     <h1>Thermometer Calibration Log</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
-    <script language="javascript" type="text/javascript">
+    <script lang="javascript" type="text/javascript">
         function CheckTemperature(sender, args) {
             var vldCorrectiveAction = document.getElementById('PlaceHolder_rfvCorrectiveAction');
             // var vldIngrdient= document.getElementById('PlaceHolder_rfvIngredient');
