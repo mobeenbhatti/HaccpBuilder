@@ -337,4 +337,18 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
             <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldEntryDate.ClientID %>').datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+            $('#<%= cldVerifiedDate.ClientID %>').datepicker({
+                format: "dd/mm/yyyy"
+            });
+
+           
+
+        });
+    </script>
 </asp:Content>
