@@ -84,8 +84,8 @@
                                     <asp:Label ID="lblQuestion" runat="server" Text='<%# Eval("Question") %>'></asp:Label>
                                 </div>
                             </div>
-                            <div class="">
-                                <div class="col-sm-6 vAM">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-sm-6 vAM">
                                     <div class="col-xs-4">
 
                                         <asp:RadioButton ID="rdbAnswerYes" Text="Yes" GroupName="Answer" runat="server" />
@@ -103,7 +103,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-xs-12 col-sm-6">
                                     <asp:TextBox ID="txtCorrectiveAction" Rows="3" CssClass="form-control" TextMode="MultiLine" Enabled="false"
                                         runat="server"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="vldAnswerValidate" runat="server" Display="Dynamic" CssClass="alert-danger"
@@ -123,10 +123,12 @@
             </div>
         </div>
     </div>
-    <div class="mt30 mb30">
+    <div class="mt30 mb30 col-xs-12">
+        <div class="col-xs-6">
         <div class="btn-group">
 
             <asp:Button ID="btnContinue" runat="server" OnClick="Button1_Click" Text="Continue" CssClass="btn btn-primary btn-square" />
+        </div>
         </div>
         <div class="btn-group">
 

@@ -69,11 +69,11 @@ namespace HaccpBuilder.ControlPanel.Location
                     case "FREEZER LOG":
                         if (Request.QueryString["date"] != null)
                         {
-                            Response.Redirect("~/ControlPanel/Location/FreezerNewLog.aspx?date=" + Request.QueryString["date"].ToString());
+                            Response.Redirect("~/ControlPanel/Location/FreezerNewLogN.aspx?date=" + Request.QueryString["date"].ToString());
                         }
                         else
                         {
-                            Response.Redirect("~/ControlPanel/Location/FreezerNewLog.aspx");
+                            Response.Redirect("~/ControlPanel/Location/FreezerNewLogN.aspx");
                         }
                         break;
                     case "MAINTENANCE LOG":

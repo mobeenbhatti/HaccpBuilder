@@ -426,7 +426,7 @@ thead{
 	padding:5px;
 	margin:7px;
 	display:inline-block;
-	width:100px;
+	width:125px;
 	-webkit-border-radius: 25px;
 	-moz-border-radius: 25px;
 	border-radius: 25px;
@@ -585,4 +585,13 @@ ul.corrective-actions li{
     list-style: none;
 }
 
-
+@media (max-width: 767px) {
+  .page-heading {
+    text-align:center !important;
+  }
+}
+@media (min-width: 768px) {
+  .page-heading {
+    text-align:right !important;
+  }
+}

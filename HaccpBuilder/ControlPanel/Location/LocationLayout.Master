@@ -98,37 +98,41 @@
         </header>
         <div class="container-fluid top-nav-bg">
             <div class="container">
-
-                <div class="col-sm-9">
-                    <div class="col-sm-6 text-left">
-                        <a href="Dashboard.aspx" class=" btn-info top-btn text-center">
+                <div class="row">
+                    
+                    <div class="col-xs-6 col-sm-3 text-center">
+                        <a href="Dashboard.aspx" class="btn-info top-btn text-center">
                             <i class="fa fa-home"></i>&nbsp;Dashboard
                         </a>
+                    </div>
+                    <div class="col-xs-6  col-sm-3 text-center">
                         <a href="#" onclick="return goBack();" class=" btn-info top-btn  text-center">
                             <i class="fa fa-arrow-right"></i>&nbsp;Previous
                         </a>
                     </div>
-                    <div class="col-sm-6 text-right">
+
+                    <div class="col-sm-3 page-heading">
                         <asp:ContentPlaceHolder runat="server" ID="pageTitle"></asp:ContentPlaceHolder>
 
                     </div>
-                </div>
-                <div class="col-sm-3 text-right time">
-                    <div class="col-sm-6 text-center">
-                        <span class="currentTime">
-                            <i class="fa fa-clock-o"></i>&nbsp;04:35 PM
-                        </span>
+               
+                    <div class="col-sm-3 text-right time">
+                        <div class="col-xs-6 text-center">
+                            <span class="currentTime">
+                                <i class="fa fa-clock-o"></i>&nbsp;04:35 PM
+                            </span>
+                        </div>
+                        <div class="col-xs-6 text-center">
+                            <span class="userGuide">
+                                <a id="hlUserGuide" runat="server" class="white-link">
+                                    <i class="fa fa-question-circle"></i>&nbsp;User Guide
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="col-sm-6 text-center">
-                        <span class="userGuide">
-                            <a id="hlUserGuide" runat="server" class="white-link">
-                                <i class="fa fa-question-circle"></i>&nbsp;User Guide
-                            </a>
-                        </span>
-                    </div>
                 </div>
-
             </div>
+         </div>
         </div>
 
         <div class="container">
