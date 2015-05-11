@@ -76,19 +76,19 @@
     <asp:ValidationSummary ID="vldSummary" DisplayMode="List" runat="server" CssClass="alert alert-danger mt30 row" ShowSummary="true"
         Enabled="true" />
 
-    <p class="mt30 mb30">
+   <%-- <p class="mt30 mb30">
         <strong>Drirections: </strong>
         Record item name, time, the Maintenance levels, and any corrective action taken on this form. 
                 <b>If no items are testing any working day, indicate "No Ingredient/No Menu Item" in the form. </b>
         The foodservice manager will verify that foodservice employees have taken the required Maintenance level by visually monitoring foodservice employees
                  and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
-    </p>
+    </p>--%>
 
 
     <div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <i class="fa fa-tasks"></i>Freezer Log
+                <i class="fa fa-tasks"></i>Maintenance Log
             </div>
             <div class="panel-body tasks">
                 <div class="row">
@@ -274,7 +274,8 @@
                 </div>
             </div>
 
-
+            </div>
+        </div>
 
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}"
                 SelectMethod="GetMaintenanceLogDataSetByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetMaintenanceLog">

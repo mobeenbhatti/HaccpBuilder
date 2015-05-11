@@ -132,7 +132,7 @@
         Enabled="true" />
 
 
-    <p class="mt30 mb30">
+   <%-- <p class="mt30 mb30">
         <strong>Directions: </strong>
         Use this Log for deliveries or receiving foods. Record any temperatures
                 and corrective action taken on the Receiving Log. <b>If no foods are received on any
@@ -141,7 +141,7 @@
                 proper procedure by visually monitoring foodservice employees and receiving practices
                 during the shift and reviewing the log daily. Maintain this log for a minimum of
                 1 year.
-    </p>
+    </p>--%>
 
     <div class="row mt30">
         <div class="panel panel-primary">

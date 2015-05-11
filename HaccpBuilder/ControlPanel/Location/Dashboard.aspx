@@ -6,7 +6,7 @@
     <h1>Dashboard</h1>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="PlaceHolder" runat="server">
-    <div class="row mt30">
+    <%--<div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <i class="fa fa-tasks"></i>Today's Tasks
@@ -55,7 +55,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>--%>
     <div class="mt10 mb30" role="group" aria-label="...">
         <div class="col-xs-12 col-sm-4 mt10" role="group">
             <a class="btn btn-block btn-orange btn-lh-40 btn3d" href="LogsAndChecklist.aspx" aria-hidden="true">

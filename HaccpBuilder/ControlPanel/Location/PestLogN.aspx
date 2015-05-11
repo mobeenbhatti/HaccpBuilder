@@ -66,13 +66,13 @@
     <asp:Label ID="LogError" ForeColor="Red" runat="server" Text=""></asp:Label>
     <asp:ValidationSummary ID="vldSummary" DisplayMode="List" runat="server" CssClass="alert alert-danger mt30 row" ShowSummary="true"
         Enabled="true" />
-    <p class="mt30 mb30">
+    <%--<p class="mt30 mb30">
         <strong>Directions: </strong>
         Record item name, time, the Pest levels, and any corrective action taken on this form. 
                 <b>If no items are testing any working day, indicate "No Ingredient/No Menu Item" in the form. </b>
         The foodservice manager will verify that foodservice employees have taken the required Pest level by visually monitoring foodservice employees
                  and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
-    </p>
+    </p>--%>
 
     <div class="row mt30">
         <div class="panel panel-primary">

@@ -99,7 +99,7 @@
         Enabled="true" />
 
 
-    <p class="mt30 mb30">
+    <%--<p class="mt30 mb30">
         <strong>Directions: </strong>
         Record product name, time, the two temperatures/times, and any corrective
                 action taken on this form. <b>If no foods are hot held on any working day, indicate
@@ -108,7 +108,7 @@
                 monitoring foodservice employees and preparation procedures during the shift and
                 reviewing, initialing, and dating this log daily. Maintain this log for a minimum
                 of 1 year.
-    </p>
+    </p>--%>
 
     <div class="row mt30">
         <div class="panel panel-default">

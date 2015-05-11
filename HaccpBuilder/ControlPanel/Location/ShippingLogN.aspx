@@ -103,7 +103,7 @@
         Enabled="true" />
 
 
-    <p class="mt30 mb30">
+  <%--  <p class="mt30 mb30">
         <strong>Directions: </strong>
         Use this Log for deliveries or shipping foods. Record any temperatures
                 and corrective action taken on the Shipping Log. <b>If no foods are received on any
@@ -111,7 +111,7 @@
                 manager will verify that foodservice employees are shipping products using the proper
                 procedure by visually monitoring foodservice employees and shipping practices during
                 the shift and reviewing the log daily. Maintain this log for a minimum of 1 year.
-    </p>
+    </p>--%>
 
 
     <div class="row mt30">

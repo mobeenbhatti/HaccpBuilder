@@ -77,13 +77,13 @@
     <asp:ValidationSummary ID="vldSummary" DisplayMode="List" runat="server" ShowSummary="true" CssClass="alert alert-danger"
         Enabled="true" />
 
-    <p class="mt30 mb30">
+   <%-- <p class="mt30 mb30">
         <strong>Directions: </strong>
         Record item name, time, the Cleaning levels, and any corrective action taken on this form. 
                 <b>If no items are testing any working day, indicate "No Ingredient/No Menu Item" in the form. </b>
         The foodservice manager will verify that foodservice employees have taken the required Cleaning level by visually monitoring foodservice employees
                  and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
-    </p>
+    </p>--%>
 
 
     <div class="row mt30">
