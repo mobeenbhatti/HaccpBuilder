@@ -584,7 +584,9 @@ ul.corrective-actions li{
 	padding:0;	
     list-style: none;
 }
-
+.cw {
+    color: #fff !important;
+}
 @media (max-width: 767px) {
   .page-heading {
     text-align:center !important;

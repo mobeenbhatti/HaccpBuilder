@@ -10,7 +10,7 @@
     <div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <i class="fa fa-tasks"></i>Standard Operating Procedures - SOP Detailed Index
+                <i class="fa fa-tasks"></i>Support Documentation
             </div>
             <div class="panel-body tasks">
                 <asp:Repeater ID="rptSop" runat="server">

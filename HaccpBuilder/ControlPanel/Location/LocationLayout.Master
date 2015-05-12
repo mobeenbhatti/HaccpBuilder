@@ -10,7 +10,7 @@
     <title>HACCP Builder Control Panel</title>
 
     <!-- Bootstrap -->
-    <link href="../../App_Themes/Location/css/bootstrap.css" rel="stylesheet" />
+    <link href="../../App_Themes/Location/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../JScript/jquery-ui.css" type="text/css" />
     <!-- FontAwsome -->
     <link href="../../App_Themes/Location/css/font-awesome.min.css" rel="stylesheet" />
@@ -111,7 +111,7 @@
                         </a>
                     </div>
 
-                    <div class="col-sm-3 page-heading">
+                    <div class="col-xs-12 col-sm-3 page-heading">
                         <asp:ContentPlaceHolder runat="server" ID="pageTitle"></asp:ContentPlaceHolder>
 
                     </div>

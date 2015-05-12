@@ -33,6 +33,7 @@
                     }
                 });
             });
+            $('[data-toggle="tooltip"]').tooltip();
         });
             function MoveBack() {
                 window.location = "Default.aspx";
@@ -146,7 +147,9 @@
     <div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Recieving Log
+                <a href="#" data-toggle="tooltip" title="All Information Goes Here">
+                <i class="fa fa-dashboard cw"></i></a>
+                Recieving Log
             </div>
             <div class="panel-body">
                 <div class="row">
