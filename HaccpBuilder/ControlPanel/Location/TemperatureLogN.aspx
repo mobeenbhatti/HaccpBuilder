@@ -206,7 +206,7 @@
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>
+               
                  <a href="#" data-toggle="tooltip" title="Drirections: Record product name, time, the two temperatures/times, and any corrective action taken on this form. If no foods are cooked on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that foodservice employees have taken the required cooking temperatures by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
                     <i class="fa fa-dashboard cw"></i></a>
               Cooking & Reheating Temperature Log
