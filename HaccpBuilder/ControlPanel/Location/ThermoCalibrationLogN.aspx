@@ -53,7 +53,7 @@
     </p>--%>
 
     <div class="row mt30">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                
                  <a href="#" data-toggle="tooltip" title="Drirections: A designated foodservice employee will record the location or description of holding unit, date, time, air temperature, corrective action, and initials on this log. The foodservice manager will verify that foodservice employees have taken the required temperatures by visually monitoring food employees during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">

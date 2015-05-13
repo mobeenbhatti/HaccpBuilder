@@ -15,13 +15,13 @@ namespace HaccpBuilder.ControlPanel.Location
 {
     public partial class LocationLayout : System.Web.UI.MasterPage
     {
-
+        public string currentTime = DateTime.Now.ToShortTimeString();
         protected void Page_Load(object sender, EventArgs e)
         {
 
             getKitchName();
             getUserName();
-
+            
 
             if (TypeId == 1)
             {

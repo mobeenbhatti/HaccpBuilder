@@ -87,7 +87,7 @@
 
 
     <div class="row mt30">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                
                  <a href="#" data-toggle="tooltip" title="Directions: Record item name, time, the Cleaning levels, and any corrective action taken on this form.If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required Cleaning level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
@@ -174,7 +174,7 @@
                                                 SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
                                                 <SelectParameters>
                                                     <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                                    <asp:Parameter DefaultValue="7" Name="nLogTypeId" Type="Int32" />
+                                                    <asp:Parameter DefaultValue="12" Name="nLogTypeId" Type="Int32" />
                                                 </SelectParameters>
                                             </asp:ObjectDataSource>
                                             <asp:RadioButtonList ID="rdlCorrectiveAction1" DataValueField="CorrectiveActionID"

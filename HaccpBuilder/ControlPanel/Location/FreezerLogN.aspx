@@ -165,7 +165,7 @@
 
 
     <div class="row mt30">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                
                  <a href="#" data-toggle="tooltip" title="Drirections: Record temperatures every hour during the cooling cycle. Record corrective actions, if applicable. If no foods are cooled on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that the foodservice staff is cooling food properly by visually monitoring foodservice employees during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">

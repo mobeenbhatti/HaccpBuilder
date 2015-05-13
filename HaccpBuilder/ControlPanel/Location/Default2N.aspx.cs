@@ -36,7 +36,7 @@ namespace HaccpBuilder.ControlPanel.Location
                             Response.Redirect("~/ControlPanel/Location/CleaningLogN.aspx");
                         }
                         break;
-                    case "TEMPERATURE LOG":
+                    case "END POINT TEMPERATURE LOG":
                         if (Request.QueryString["date"] != null)
                         {
                             Response.Redirect("~/ControlPanel/Location/TemperatureLogN.aspx?date=" + Request.QueryString["date"].ToString());

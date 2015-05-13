@@ -119,7 +119,7 @@
                     <div class="col-sm-3 text-right time">
                         <div class="col-xs-6 text-center">
                             <span class="currentTime">
-                                <i class="fa fa-clock-o"></i>&nbsp;04:35 PM
+                                <i class="fa fa-clock-o"></i>&nbsp;<%= currentTime %>
                             </span>
                         </div>
                         <div class="col-xs-6 text-center">

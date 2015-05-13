@@ -57,7 +57,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                
-                <a href="#" data-toggle="tooltip" title="Drirections: Record item name, time, the Pest levels, and any corrective action taken on this form.If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required Pest level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                <a href="#" data-toggle="tooltip" title="A designated foodservice employee will record the location or description of holding unit, date, time, air temperature, corrective action, and initials on this log. The foodservice manager will verify that foodservice employees have taken the required temperatures by visually monitoring food employees during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
                     <i class="fa fa-dashboard cw"></i></a>
                 Refrigration Log
             </div>
@@ -151,7 +151,7 @@
                                             SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
                                             <SelectParameters>
                                                 <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                                <asp:Parameter DefaultValue="10" Name="nLogTypeId" Type="Int32" />
+                                                <asp:Parameter DefaultValue="5" Name="nLogTypeId" Type="Int32" />
                                             </SelectParameters>
                                         </asp:ObjectDataSource>
 

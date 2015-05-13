@@ -279,7 +279,7 @@
                                             SelectMethod="GetKitchenCorrectiveActionByStatusId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetKitchenCorrectiveAction">
                                             <SelectParameters>
                                                 <asp:SessionParameter Name="nKitchenId" SessionField="KitchenId" Type="Int32" />
-                                                <asp:Parameter DefaultValue="10" Name="nLogTypeId" Type="Int32" />
+                                                <asp:Parameter DefaultValue="4" Name="nLogTypeId" Type="Int32" />
                                             </SelectParameters>
                                         </asp:ObjectDataSource>
                                         <asp:RadioButtonList ID="rdlCorrectiveAction1" DataValueField="CorrectiveActionID"

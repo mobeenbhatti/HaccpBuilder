@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageTitle" runat="server">
-    <h1>Cooking & Reheating Temperature Log</h1>
+    <h1>End Point Temperature Log</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
 
@@ -204,12 +204,12 @@
 
 
     <div class="row mt30">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                
                  <a href="#" data-toggle="tooltip" title="Drirections: Record product name, time, the two temperatures/times, and any corrective action taken on this form. If no foods are cooked on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that foodservice employees have taken the required cooking temperatures by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
                     <i class="fa fa-dashboard cw"></i></a>
-              Cooking & Reheating Temperature Log
+              End Point Temperature Log
             </div>
             <div class="panel-body">
 
@@ -352,7 +352,7 @@
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <asp:RadioButtonList ID="rdlCorrectiveAction1" DataValueField="CorrectiveActionID"
-                                    DataSourceID="odsCorrectiveAction" DataTextField="Name" runat="server">
+                                     DataTextField="Name" runat="server">
                                 </asp:RadioButtonList>
                             </label>
                         </li>
@@ -413,7 +413,7 @@
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
                                 <asp:RadioButtonList ID="rdlCorrectiveAction2" DataValueField="CorrectiveActionID"
-                                    DataSourceID="odsCorrectiveAction" DataTextField="Name" runat="server">
+                                     DataTextField="Name" runat="server">
                                 </asp:RadioButtonList>
                             </label>
                         </li>
