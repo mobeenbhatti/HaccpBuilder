@@ -145,15 +145,10 @@
 
     </script>
 
-    <p class="mt30 mb30">
+   <%-- <p class="mt30 mb30">
         <strong>Drirections: </strong>
-        Record temperatures every hour during the cooling cycle. Record corrective
-                actions, if applicable. <b>If no foods are cooled on any working day, indicate "No Ingredient/
-                    No Menu Item" in the form. </b>The foodservice manager will verify that the
-                foodservice staff is cooling food properly by visually monitoring foodservice employees
-                during the shift and reviewing, initialing, and dating this log daily. Maintain
-                this log for a minimum of 1 year.
-    </p>
+        Record temperatures every hour during the cooling cycle. Record corrective actions, if applicable. If no foods are cooled on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that the foodservice staff is cooling food properly by visually monitoring foodservice employees during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
+    </p>--%>
 
     <asp:HiddenField ID="hfTempLow" runat="server" />
     <asp:HiddenField ID="hfTempHigh" runat="server" />
@@ -172,7 +167,10 @@
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Cooling Temperature Log
+               
+                 <a href="#" data-toggle="tooltip" title="Drirections: Record temperatures every hour during the cooling cycle. Record corrective actions, if applicable. If no foods are cooled on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that the foodservice staff is cooling food properly by visually monitoring foodservice employees during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                <i class="fa fa-dashboard cw"></i></a>
+               Cooling Temperature Log
             </div>
             <div class="panel-body">
                 <div class="col-sm-12">
@@ -575,7 +573,7 @@
              $('#<%= tempratureTime1.ClientID %>').timepicker();
              $('#<%= tempratureTime2.ClientID %>').timepicker();
              $('#<%= tempratureTime3.ClientID %>').timepicker();
-
+             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </asp:Content>

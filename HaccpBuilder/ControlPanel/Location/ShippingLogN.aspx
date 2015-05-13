@@ -105,19 +105,18 @@
 
   <%--  <p class="mt30 mb30">
         <strong>Directions: </strong>
-        Use this Log for deliveries or shipping foods. Record any temperatures
-                and corrective action taken on the Shipping Log. <b>If no foods are received on any
-                    working day, indicate "No Ingredient/No Menu Item" in the form. </b>The foodservice
-                manager will verify that foodservice employees are shipping products using the proper
-                procedure by visually monitoring foodservice employees and shipping practices during
-                the shift and reviewing the log daily. Maintain this log for a minimum of 1 year.
+        Use this Log for deliveries or shipping foods. Record any temperatures and corrective action taken on the Shipping Log.If no foods are received on any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees are shipping products using the proper procedure by visually monitoring foodservice employees and shipping practices during the shift and reviewing the log daily. Maintain this log for a minimum of 1 year.
     </p>--%>
 
 
     <div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Shipping Log
+                <i class="fa fa-dashboard"></i>
+
+                 <a href="#" data-toggle="tooltip" title="Drirections: Use this Log for deliveries or shipping foods. Record any temperatures and corrective action taken on the Shipping Log.If no foods are received on any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees are shipping products using the proper procedure by visually monitoring foodservice employees and shipping practices during the shift and reviewing the log daily. Maintain this log for a minimum of 1 year.">
+                    <i class="fa fa-dashboard cw"></i></a>
+                Shipping Log
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -393,7 +392,7 @@
             });
 
             $('#<%= tempratureTime1.ClientID %>').timepicker();
-
+            $('[data-toggle="tooltip"]').tooltip();
 
         });
     </script>

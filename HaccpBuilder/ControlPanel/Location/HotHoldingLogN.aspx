@@ -101,23 +101,20 @@
 
     <%--<p class="mt30 mb30">
         <strong>Directions: </strong>
-        Record product name, time, the two temperatures/times, and any corrective
-                action taken on this form. <b>If no foods are hot held on any working day, indicate
-                    "No Ingredient/No Menu Item" in the form.</b> The foodservice manager will verify
-                that foodservice employees have taken the required cooking temperatures by visually
-                monitoring foodservice employees and preparation procedures during the shift and
-                reviewing, initialing, and dating this log daily. Maintain this log for a minimum
-                of 1 year.
+        Record product name, time, the two temperatures/times, and any corrective action taken on this form.If no foods are hot held on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that foodservice employees have taken the required cooking temperatures by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
     </p>--%>
 
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Hot Holding Time & Temperature Log
+
+                <a href="#" data-toggle="tooltip" title="Drirections: Record product name, time, the two temperatures/times, and any corrective action taken on this form.If no foods are hot held on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that foodservice employees have taken the required cooking temperatures by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                    <i class="fa fa-dashboard cw"></i></a>
+                Hot Holding Time & Temperature Log
             </div>
             <div class="panel-body">
 
-                
+
 
                 <div class="col-sm-4">
                     <div class="form-group">
@@ -147,7 +144,7 @@
 
                     </div>
                 </div>
-               
+
             </div>
 
 
@@ -471,6 +468,7 @@
 
             $('#<%= tempratureTime1.ClientID %>').timepicker();
             $('#<%= tempratureTime2.ClientID %>').timepicker();
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </asp:Content>

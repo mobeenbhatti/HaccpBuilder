@@ -49,17 +49,17 @@
 
     <%--<p class="mt30 mb30">
         <strong>Drirections: </strong>
-        Record item name, time, the Pest levels, and any corrective action taken on this form. 
-                <b>If no items are testing any working day, indicate "No Ingredient/No Menu Item" in the form. </b>
-        The foodservice manager will verify that foodservice employees have taken the required Pest level by visually monitoring foodservice employees
-                 and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
+        Record item name, time, the Pest levels, and any corrective action taken on this form.If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required Pest level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
     </p>--%>
 
 
     <div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <i class="fa fa-tasks"></i>Refrigration Log
+               
+                <a href="#" data-toggle="tooltip" title="Drirections: Record item name, time, the Pest levels, and any corrective action taken on this form.If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required Pest level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                    <i class="fa fa-dashboard cw"></i></a>
+                Refrigration Log
             </div>
             <div class="panel-body tasks">
                 <div class="row">
@@ -292,7 +292,7 @@
                     });
 
                     $('#<%= tempratureTime1.ClientID %>').timepicker();
-
+            $('[data-toggle="tooltip"]').tooltip();
                 });
     </script>
 </asp:Content>

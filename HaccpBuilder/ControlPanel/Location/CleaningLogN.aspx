@@ -89,7 +89,10 @@
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Cleaning and Sanitization Log
+               
+                 <a href="#" data-toggle="tooltip" title="Directions: Record item name, time, the Cleaning levels, and any corrective action taken on this form.If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required Cleaning level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                <i class="fa fa-dashboard cw"></i></a>
+                Cleaning and Sanitization Log
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -347,7 +350,7 @@
                 format: "dd/mm/yyyy"
             });
 
-           
+            $('[data-toggle="tooltip"]').tooltip();
 
         });
     </script>

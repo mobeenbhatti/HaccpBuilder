@@ -33,7 +33,7 @@
                     }
                 });
             });
-            $('[data-toggle="tooltip"]').tooltip();
+           
         });
             function MoveBack() {
                 window.location = "Default.aspx";
@@ -147,7 +147,7 @@
     <div class="row mt30">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <a href="#" data-toggle="tooltip" title="All Information Goes Here">
+                <a href="#" data-toggle="tooltip" title="Directions: Use this Log for deliveries or receiving foods. Record any temperatures and corrective action taken on the Receiving Log.If no foods are received on any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees are receiving products using the proper procedure by visually monitoring foodservice employees and receiving practices during the shift and reviewing the log daily. Maintain this log for a minimum of 1 year.">
                 <i class="fa fa-dashboard cw"></i></a>
                 Recieving Log
             </div>
@@ -428,7 +428,7 @@
 
             $('#<%= tempratureTime1.ClientID %>').timepicker();
 
-
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 </asp:Content>

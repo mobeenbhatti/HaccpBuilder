@@ -100,21 +100,19 @@
         Enabled="true" />
 
 
- <%--   <p class="mt30 mb30">
+    <%--   <p class="mt30 mb30">
         <strong>Directions: </strong>
-        Record product name, time, the two temperatures/times, and any corrective
-                action taken on this form. If no foods are cold held on any working day, indicate
-                "No Ingredient/No Menu Item" in the form. The foodservice manager will verify that
-                foodservice employees have taken the required cooking temperatures by visually monitoring
-                foodservice employees and preparation procedures during the shift and reviewing,
-                initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
+        Record product name, time, the two temperatures/times, and any corrective action taken on this form. If no foods are cold held on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that foodservice employees have taken the required cooking temperatures by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
     </p>--%>
 
 
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>Cold Holding Time & Temperature Log
+
+                <a href="#" data-toggle="tooltip" title="Directions: Record product name, time, the two temperatures/times, and any corrective action taken on this form. If no foods are cold held on any working day, indicate 'No Ingredient/No Menu Item' in the form. The foodservice manager will verify that foodservice employees have taken the required cooking temperatures by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                    <i class="fa fa-dashboard cw"></i></a>
+                Cold Holding Time & Temperature Log
             </div>
             <div class="panel-body">
 
@@ -148,8 +146,8 @@
                     </div>
                 </div>
 
-                
-               
+
+
             </div>
 
 
@@ -164,12 +162,12 @@
                 <i class="fa fa-dashboard"></i>Food Items
             </div>
             <div class="panel-body">
-                
+
                 <div class="col-sm-6">
                     <div class="form-group">
 
                         <label for="ddlIngredient">
-                           <asp:RadioButton ID="rdbIngredient" Checked="true" Text="Inputs" CssClass="form-control" onClick="SetFoodItem(2)"
+                            <asp:RadioButton ID="rdbIngredient" Checked="true" Text="Inputs" CssClass="form-control" onClick="SetFoodItem(2)"
                                 GroupName="FoodItem" runat="server" /></label>
                         <asp:DropDownList ID="ddlIngredient" DataSourceID="odsIngredient" CssClass="form-control"
                             DataTextField="Name" DataValueField="IngredientId" AppendDataBoundItems="false" data-editableCombobox="true"
@@ -177,7 +175,7 @@
                             <asp:ListItem>Select Input</asp:ListItem>
                         </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvIngredient" runat="server" Display="None" ErrorMessage="Please Select Input"
-                            ControlToValidate="ddlIngredient"   Enabled="false" Font-Names="Verdana"
+                            ControlToValidate="ddlIngredient" Enabled="false" Font-Names="Verdana"
                             Font-Size="10px" InitialValue="Select Ingredient"></asp:RequiredFieldValidator>
                     </div>
                 </div>
@@ -186,14 +184,14 @@
 
                         <label for="ddlMenuItem">
                             <asp:RadioButton ID="rdbMenuItem" Text="Output" onClick="SetFoodItem(1)"
-                                GroupName="FoodItem" runat="server" CssClass="form-control"/></label>
+                                GroupName="FoodItem" runat="server" CssClass="form-control" /></label>
                         <asp:DropDownList ID="ddlMenuItem" DataSourceID="odsMenuItem" Enabled="false" CssClass="form-control"
                             DataTextField="Name" DataValueField="MenuItemId" runat="server" data-editableCombobox="true"
                             AppendDataBoundItems="false">
                             <asp:ListItem>Select Output</asp:ListItem>
                         </asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="rfvMenuItem"  Enabled="false" runat="server" Display="None"
-                            ErrorMessage="Please Select Output" ControlToValidate="ddlMenuItem" 
+                        <asp:RequiredFieldValidator ID="rfvMenuItem" Enabled="false" runat="server" Display="None"
+                            ErrorMessage="Please Select Output" ControlToValidate="ddlMenuItem"
                             Font-Names="Verdana" Font-Size="10px" InitialValue="Select Menu Item"></asp:RequiredFieldValidator>
 
                     </div>
@@ -312,7 +310,7 @@
                                         <asp:Parameter DefaultValue="3" Name="nLogTypeId" Type="Int32" />
                                     </SelectParameters>
                                 </asp:ObjectDataSource>
-                                <asp:RadioButtonList ID="rdlCorrectiveAction2"  DataValueField="CorrectiveActionID"
+                                <asp:RadioButtonList ID="rdlCorrectiveAction2" DataValueField="CorrectiveActionID"
                                     DataSourceID="odsCorrectiveAction" DataTextField="Name" runat="server">
                                 </asp:RadioButtonList>
                             </label>
@@ -329,7 +327,7 @@
             </div>
         </div>
 
-       
+
     </div>
 
 
@@ -372,7 +370,7 @@
                         <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
                             <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -464,19 +462,19 @@
     </asp:ObjectDataSource>
     <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
 
-      <script type="text/javascript">
-          $(document).ready(function () {
-              $('#<%= cldEntryDate.ClientID %>').datepicker({
-                format: "dd/mm/yyyy"
-            });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldEntryDate.ClientID %>').datepicker({
+                  format: "dd/mm/yyyy"
+              });
 
-            $('#<%= cldVerifiedDate.ClientID %>').datepicker({
-                format: "dd/mm/yyyy"
-            });
+              $('#<%= cldVerifiedDate.ClientID %>').datepicker({
+                  format: "dd/mm/yyyy"
+              });
 
               $('#<%= tempratureTime1.ClientID %>').timepicker();
               $('#<%= tempratureTime2.ClientID %>').timepicker();
-
-        });
+            $('[data-toggle="tooltip"]').tooltip();
+          });
     </script>
 </asp:Content>

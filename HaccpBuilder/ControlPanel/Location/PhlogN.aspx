@@ -137,18 +137,19 @@
         Enabled="true" />
 
 
-   <%-- <p class="mt30 mb30">
+    <%-- <p class="mt30 mb30">
         <strong>Directions: </strong>
-        Record item name, time, the pH levels, and any corrective action taken on this form. 
-                <b>If no items are testing any working day, indicate "No Ingredient/No Menu Item" in the form. </b>
-        The foodservice manager will verify that foodservice employees have taken the required pH level by visually monitoring foodservice employees
-                 and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
+        Record item name, time, the pH levels, and any corrective action taken on this form. If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required pH level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.
     </p>--%>
 
     <div class="row mt30">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-dashboard"></i>ph Log
+
+
+                <a href="#" data-toggle="tooltip" title="Drirections: Record item name, time, the pH levels, and any corrective action taken on this form. If no items are testing any working day, indicate 'No Ingredient/No Menu Item' in the form.The foodservice manager will verify that foodservice employees have taken the required pH level by visually monitoring foodservice employees and preparation procedures during the shift and reviewing, initialing, and dating this log daily. Maintain this log for a minimum of 1 year.">
+                    <i class="fa fa-dashboard cw"></i></a>
+                ph Log
             </div>
             <div class="panel-body">
 
@@ -470,73 +471,73 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-6">
-                    <label class="control-label">
-                        Lot/Batch Number:
-                    </label>
+                        <label class="control-label">
+                            Lot/Batch Number:
+                        </label>
 
-                    <asp:TextBox ID="txtBarch" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
-                    
-                </div>
+                        <asp:TextBox ID="txtBarch" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+
+                    </div>
                     <div class="col-sm-6">
-                    <label class="control-label">
-                        Volume:
-                    </label>
+                        <label class="control-label">
+                            Volume:
+                        </label>
 
-                    <asp:TextBox ID="txtVolume" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
-                   
-                </div>
+                        <asp:TextBox ID="txtVolume" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+
+                    </div>
 
                 </div>
                 <div class="row">
-                <div class="col-sm-3">
-                    <label class="mt10">
-                        Verified By*:
-                    </label>
+                    <div class="col-sm-3">
+                        <label class="mt10">
+                            Verified By*:
+                        </label>
 
-                    <asp:TextBox ID="txtVerifiedBy" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="REV_txtVerifiedBy" runat="server" ControlToValidate="txtVerifiedBy"
-                        Display="None" ErrorMessage="The value in field 'Verified By' is not valid."
-                        Font-Names="Verdana" Font-Size="10px" ValidationExpression="^[A-Za-z0-9.\-_ ]+$"></asp:RegularExpressionValidator>
-                </div>
-                <div class="col-sm-3">
+                        <asp:TextBox ID="txtVerifiedBy" runat="server" MaxLength="50" CssClass="form-control"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="REV_txtVerifiedBy" runat="server" ControlToValidate="txtVerifiedBy"
+                            Display="None" ErrorMessage="The value in field 'Verified By' is not valid."
+                            Font-Names="Verdana" Font-Size="10px" ValidationExpression="^[A-Za-z0-9.\-_ ]+$"></asp:RegularExpressionValidator>
+                    </div>
+                    <div class="col-sm-3">
 
-                    <div class="form-group">
-                        <label class="mt10" for="cldVerifiedDate">Verified Date:</label>
+                        <div class="form-group">
+                            <label class="mt10" for="cldVerifiedDate">Verified Date:</label>
 
-                        <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
-                            <asp:TextBox CssClass="form-control" runat="server" ID="cldVerifiedDate"></asp:TextBox>
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
+                                <asp:TextBox CssClass="form-control" runat="server" ID="cldVerifiedDate"></asp:TextBox>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 
+                            </div>
+                            <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
+                                Display="None" ErrorMessage="Verified date should not be future date" Operator="LessThanEqual"
+                                Type="Date"></asp:CompareValidator>
+                            <asp:CompareValidator ID="CV2_cldVerifiedDate" runat="server" ControlToValidate="cldEntryDate"
+                                Display="None" ControlToCompare="cldVerifiedDate" ErrorMessage="Verified date should be greater than or equal to service date."
+                                Operator="LessThanEqual" Type="Date"></asp:CompareValidator>
                         </div>
-                        <asp:CompareValidator ID="CV_cldVerifiedDate" runat="server" ControlToValidate="cldVerifiedDate"
-                            Display="None" ErrorMessage="Verified date should not be future date" Operator="LessThanEqual"
-                            Type="Date"></asp:CompareValidator>
-                        <asp:CompareValidator ID="CV2_cldVerifiedDate" runat="server" ControlToValidate="cldEntryDate"
-                            Display="None" ControlToCompare="cldVerifiedDate" ErrorMessage="Verified date should be greater than or equal to service date."
-                            Operator="LessThanEqual" Type="Date"></asp:CompareValidator>
+
+
                     </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="mt10" for="serviceDate">Entry Date </label>
+                            <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
+                                <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
 
 
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label class="mt10" for="serviceDate">Entry Date </label>
-                        <div data-date-format="dd-mm-yyyy" data-date="12-02-2012" class="input-group">
-                            <asp:TextBox ID="txtEntryDate" runat="server" ReadOnly="true" CssClass="form-control"></asp:TextBox>
-
-
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-3" style="margin-top: 34px;">
+                    <div class="col-sm-3" style="margin-top: 34px;">
 
 
-                    <asp:Button ID="cmdSubmit" runat="server" OnClick="cmdSubmit_Click" Text="Submit" CssClass="btn btn-primary" />
-                    <asp:Button ID="cmdDelete" Visible="false" CausesValidation="false" Text="Delete" CssClass="btn btn-danger" OnClick="cmdDelete_Click" runat="server" />
-                    <asp:Button ID="cmdAdd" runat="server" OnClick="cmdAdd_Click" Text="Add" CssClass="btn btn-primary" />
-                    <asp:Button ID="cmdCancel" runat="server" CausesValidation="false" Text="Cancel" CssClass="btn btn-warning" OnClick="cmdCancel_Click" />
-                </div>
+                        <asp:Button ID="cmdSubmit" runat="server" OnClick="cmdSubmit_Click" Text="Submit" CssClass="btn btn-primary" />
+                        <asp:Button ID="cmdDelete" Visible="false" CausesValidation="false" Text="Delete" CssClass="btn btn-danger" OnClick="cmdDelete_Click" runat="server" />
+                        <asp:Button ID="cmdAdd" runat="server" OnClick="cmdAdd_Click" Text="Add" CssClass="btn btn-primary" />
+                        <asp:Button ID="cmdCancel" runat="server" CausesValidation="false" Text="Cancel" CssClass="btn btn-warning" OnClick="cmdCancel_Click" />
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -620,9 +621,9 @@
     </asp:ObjectDataSource>
     <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
 
-      <script type="text/javascript">
-          $(document).ready(function () {
-              $('#<%= cldEntryDate.ClientID %>').datepicker({
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#<%= cldEntryDate.ClientID %>').datepicker({
                   format: "dd/mm/yyyy"
               });
 
@@ -633,7 +634,7 @@
               $('#<%= PhLevelTime.ClientID %>').timepicker();
               $('#<%= PhWaterTime.ClientID %>').timepicker
               $('#<%= PhMinutesTime.ClientID %>').timepicker();
-
+              $('[data-toggle="tooltip"]').tooltip();
           });
     </script>
 </asp:Content>
