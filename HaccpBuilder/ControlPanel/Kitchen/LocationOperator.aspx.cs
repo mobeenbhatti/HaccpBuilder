@@ -14,6 +14,7 @@ using DataModel;
 using System.Web.Services;
 //using Newtonsoft.Json;
 using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
 
 namespace HaccpBuilder.ControlPanel.Kitchen
 {
@@ -184,11 +185,14 @@ namespace HaccpBuilder.ControlPanel.Kitchen
                 //cmdAddAlert.Visible = false;
                 hfEdit.Value = "N";
                 // grdAlerts.DataBind();
+                RequiredFieldValidator6.Enabled = true;
+                RegularExpressionValidator7.Enabled = true;
 
             }
             else
             {
-
+                RequiredFieldValidator6.Enabled = false;
+                RegularExpressionValidator7.Enabled = false;
                 cmdCancel.Visible = true;
                 cmdAdd.Visible = false;
                 cmdSubmit.Visible = true;
@@ -795,6 +799,8 @@ namespace HaccpBuilder.ControlPanel.Kitchen
             txtEmployeeName.Text = contact.Name;
             txtInitials.Text = contact.Initials;
             //txtPassword.Text = "Leave Blank"; //contact.Password;
+            hfPassword.Value = contact.Password;
+            hfpasswordSalt.Value = contact.PasswordSalt;
 
             txtPhone1.Text = contact.Phone;
             txtPhone2.Text = contact.AltPhone;
@@ -937,10 +943,9 @@ namespace HaccpBuilder.ControlPanel.Kitchen
         #region Crude operations
         private int UpdateData(int nMode)
         {
-            string password = txtPassword.Text;
-            string passwordSalt = Guid.NewGuid().ToString();
-            if (txtUserId.Text.Contains("@"))
-                password = Utilities.CreatePasswordHash(password, passwordSalt);
+
+
+
 
             SchoolHaccp.Common.Address newAddress = new SchoolHaccp.Common.Address();
             newAddress.AddressId = int.Parse(hfAddressId.Value);
@@ -954,6 +959,30 @@ namespace HaccpBuilder.ControlPanel.Kitchen
             newAddress.Country = hfCountry.Value;
 
             SchoolHaccp.Common.Contact newContact = new SchoolHaccp.Common.Contact();
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                newContact.Password = hfPassword.Value;
+                newContact.PasswordSalt = hfpasswordSalt.Value;
+            }
+            else
+            {
+                Regex regex = new Regex(@"(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+                Match match = regex.Match(txtPassword.Text);
+                if (match.Success)
+                {
+                    string password = txtPassword.Text;
+                    string passwordSalt = Guid.NewGuid().ToString();
+                    if (txtUserId.Text.Contains("@"))
+                        password = Utilities.CreatePasswordHash(password, passwordSalt);
+                    newContact.Password = password;
+                    newContact.PasswordSalt = passwordSalt;
+                }
+                else
+                {
+
+                    return 0;
+                }
+            }
             newContact.ContactId = int.Parse(hfContactId.Value);
             newContact.AltPhone = txtPhone2.Text;
             newContact.Fax = txtFax.Text;
@@ -963,8 +992,7 @@ namespace HaccpBuilder.ControlPanel.Kitchen
             newContact.EmailAlerts = 0;
             newContact.ContactId = int.Parse(hfContactId.Value);
             newContact.UserId = txtUserId.Text;
-            newContact.Password = password;
-            newContact.PasswordSalt = passwordSalt;
+
 
             newContact.IsUpdated = true;
 
@@ -1900,8 +1928,17 @@ namespace HaccpBuilder.ControlPanel.Kitchen
                     mode = "NEW";
                     // 1 - Update the Data
                     // 2 - Delete Data 
-                    UpdateData(1);
-                    SetPage();
+                    if (UpdateData(1) == 0)
+                    {
+                        lblInfo.Text = "Please enter a valid password.";
+                        lblInfo.Visible = true;
+                    }
+                    else
+                    {
+                        lblInfo.Text = "";
+                        lblInfo.Visible = false;
+                        SetPage();
+                    }
                 }
 
             }

@@ -196,6 +196,9 @@
                      <img id="Img_passwordhelp" style="vertical-align: middle" alt="" runat="server"
                         src="~/App_Themes/Control/images/board_help.gif" />
                 </div>
+                <asp:HiddenField runat="server" ID="hfPassword" />
+                 <asp:HiddenField runat="server" ID="hfpasswordSalt" />
+                
                  <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtPassword"
                     Display="None" EnableClientScript="true" ErrorMessage="Please enter a valid password.<br />"
                     ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>

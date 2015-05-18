@@ -88,6 +88,8 @@ function ValidatorsEnabled(state)
         <asp:TextBox ID="txtPasswordEdit" runat="server" Width="200px" ></asp:TextBox>
               <img id="Img_passwordhelp" style="vertical-align: middle" alt="" runat="server"
                             src="~/App_Themes/Control/images/board_help.gif" />
+              <asp:HiddenField runat="server" ID="hfPassword" />
+                 <asp:HiddenField runat="server" ID="hfpasswordSalt" />
              <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPasswordEdit"
                              EnableClientScript="true" Text="Please Enter a valid password." ErrorMessage="Please enter a valid password.<br />"
                             display="Dynamic" ValidationExpression="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"></asp:RegularExpressionValidator>

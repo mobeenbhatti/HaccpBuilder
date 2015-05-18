@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using SchoolHaccp.BusinessLogic;
 using SchoolHaccp.Common;
 using SchoolHaccp.Operational;
+using System.Text.RegularExpressions;
 
 
 public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
@@ -21,7 +22,7 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lblInfo.Visible = false;
-       // btnBack.Attributes.Add("onclick", "MoveBack( )");
+        // btnBack.Attributes.Add("onclick", "MoveBack( )");
         if (!this.IsPostBack)
         {
             if (Request.QueryString["UserId"] != null)
@@ -78,7 +79,7 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
                 //rqVldRole.Enabled = false;
                 //ValidationSummary1.Enabled = false;
                 //cmdSubmit.Enabled = false;
-                
+
             }
         }
     }
@@ -86,7 +87,7 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
     {
         Response.Redirect("~/ControlPanel/District/DistrictControl.aspx");
     }
-    
+
     protected void cmdSearchByEmail_Click(object sender, EventArgs e)
     {
         GetData(3);
@@ -107,7 +108,7 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
         {
             case 1:
                 // Search By Kitchen Id
-               // dsResultSet = contact.GetContactByKitchen(int.Parse(ddlKitchenName.SelectedValue));
+                // dsResultSet = contact.GetContactByKitchen(int.Parse(ddlKitchenName.SelectedValue));
                 break;
             case 2:
                 // Search By User Name
@@ -130,25 +131,91 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             lblInfo.Text = "No Data Found";
             lblInfo.Visible = true;
         }
-       
+
     }
     protected void cmdSubmit_Click(object sender, EventArgs e)
     {
         if (CheckData() == true)
         {
-            string password = txtPasswordEdit.Text;
-            string passwordSalt = Guid.NewGuid().ToString();
-            if (txtUserEdit.Text.Contains("@"))
-                password = Utilities.CreatePasswordHash(password, passwordSalt);
+
+
+
+
 
             Contact contact = new Contact();
             contact.ContactId = int.Parse(hfContactId.Value);
             contact.Email = txtUserEdit.Text;
             contact.UserId = txtUserEdit.Text;
-            contact.Password = password;
+
             contact.RoleName = "KitchenAdmin";
-            contact.PasswordSalt = passwordSalt;
+
             contact.IsUpdated = true;
+
+            if (string.IsNullOrEmpty(txtPasswordEdit.Text))
+            {
+
+                contact.PasswordSalt = hfPassword.Value;
+                contact.Password = hfpasswordSalt.Value;
+
+                rqVldPassword.Enabled = false;
+                RegularExpressionValidator7.Enabled = false;
+
+
+
+                    ProcessSetContact setContact = new ProcessSetContact();
+                    setContact.Contact = contact;
+                    setContact.Invoke();
+                    int nStatus = SendMessage(contact.UserId, txtPasswordEdit.Text, contact.Email);
+                    if (nStatus == 1)
+                    {
+                        lblInfo.Text = "User Information Updated Succesfully and email has been sent";
+                    }
+                    else
+                    {
+                        lblInfo.Text = "User Information Updated Succesfully";
+                    }
+                    lblInfo.Visible = true;
+                    SetPage(2);
+
+            }
+            else
+            {
+                Regex regex = new Regex(@"(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+                Match match = regex.Match(txtPasswordEdit.Text);
+                if (match.Success)
+                {
+                    string password = txtPasswordEdit.Text;
+                    string passwordSalt = Guid.NewGuid().ToString();
+                    if (txtUserEdit.Text.Contains("@"))
+                        password = Utilities.CreatePasswordHash(password, passwordSalt);
+                    contact.PasswordSalt = passwordSalt;
+                    contact.Password = password;
+                    lblError.Text = "";
+                    lblError.Visible = false;
+
+                    ProcessSetContact setContact = new ProcessSetContact();
+                    setContact.Contact = contact;
+                    setContact.Invoke();
+                    int nStatus = SendMessage(contact.UserId, txtPasswordEdit.Text, contact.Email);
+                    if (nStatus == 1)
+                    {
+                        lblInfo.Text = "User Information Updated Succesfully and email has been sent";
+                    }
+                    else
+                    {
+                        lblInfo.Text = "User Information Updated Succesfully";
+                    }
+                    lblInfo.Visible = true;
+                    SetPage(2);
+
+                }
+                else
+                {
+                    lblError.Text = "Please enter a valid password.";
+                    lblError.Visible = true;
+              
+                }
+            }
             //if (rdbLoginLevel.SelectedIndex == 1)
             //{ contact.RoleName = "KitchenAdmin"; }
             //else
@@ -166,28 +233,15 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             //    contact.RoleName = "DistrictReadOnly";
             //}
 
-            ProcessSetContact setContact = new ProcessSetContact();
-            setContact.Contact = contact;
-            setContact.Invoke();
-            int nStatus = SendMessage(contact.UserId, txtPasswordEdit.Text, contact.Email);
-           if (nStatus == 1)
-           {
-               lblInfo.Text = "User Information Updated Succesfully and email has been sent";
-           }
-           else
-           {
-               lblInfo.Text = "User Information Updated Succesfully";
-           }
-            lblInfo.Visible = true;
-            SetPage(2);
+           
         }
-        
+
     }
     private bool CheckData()
     {
         ProcessGetContact contact = new ProcessGetContact();
-        DataSet dsContact = contact.GetContactByUserName(txtUserEdit.Text,int.Parse(hfContactId.Value));
-        if(dsContact.Tables[0].Rows.Count > 0)
+        DataSet dsContact = contact.GetContactByUserName(txtUserEdit.Text, int.Parse(hfContactId.Value));
+        if (dsContact.Tables[0].Rows.Count > 0)
         {
             lblInfo.Text = "User Already Exists";
             lblInfo.Visible = true;
@@ -220,10 +274,15 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             if (nState == 1)
             {
                 dsContact = getContact.GetContactsByContactId(int.Parse(Request.QueryString["UserId"]));
+
+                rqVldPassword.Enabled = false;
+                RegularExpressionValidator7.Enabled = false;
             }
             else
             {
                 dsContact = getContact.GetContactByKitchen(int.Parse(ddlKitchenEdit.SelectedValue));
+                rqVldPassword.Enabled = true;
+                RegularExpressionValidator7.Enabled = true;
             }
             if (dsContact.Tables[0].Rows.Count > 0)
             {
@@ -233,6 +292,9 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
                 //txtPasswordEdit.Text = dsContact.Tables[0].Rows[0]["Password"].ToString();
                 txtUserEdit.Text = dsContact.Tables[0].Rows[0]["UserId"].ToString();
                 strRoleName = dsContact.Tables[0].Rows[0]["RoleName"].ToString();
+
+                hfPassword.Value = dsContact.Tables[0].Rows[0]["Password"].ToString();
+                hfpasswordSalt.Value = dsContact.Tables[0].Rows[0]["PasswordSalt"].ToString();
             }
             //if (strRoleName == "KitchenAdmin")
             //{
@@ -248,28 +310,28 @@ public partial class ControlPanel_District_DistrictUsers : System.Web.UI.Page
             //{
             //    //rdbDistrictRead.Checked = true;
             //}
-           // txtEmailAddressEdit.Enabled = true;
+            // txtEmailAddressEdit.Enabled = true;
             txtPasswordEdit.Enabled = true;
             txtUserEdit.Enabled = true;
-           // rqVldEmail.Enabled = true;
+            // rqVldEmail.Enabled = true;
             rqVldName.Enabled = true;
-            rqVldPassword.Enabled = true;
+            // rqVldPassword.Enabled = true;
             ValidationSummary1.Enabled = true;
             //rqVldRole.Enabled = false;
             cmdSubmit.Enabled = true;
         }
         if (nState == 2)
         {
-          //  txtEmailAddressEdit.Enabled = false;
+            //  txtEmailAddressEdit.Enabled = false;
             txtPasswordEdit.Enabled = false;
             txtUserEdit.Enabled = false;
-           // rqVldEmail.Enabled = false;
+            // rqVldEmail.Enabled = false;
             rqVldName.Enabled = false;
             rqVldPassword.Enabled = false;
             //rqVldRole.Enabled = false;
             ValidationSummary1.Enabled = false;
             cmdSubmit.Enabled = false;
-           // txtEmailAddressEdit.Text = "";
+            // txtEmailAddressEdit.Text = "";
             txtUserEdit.Text = "";
             txtPasswordEdit.Text = "";
             grdUser.DataBind();

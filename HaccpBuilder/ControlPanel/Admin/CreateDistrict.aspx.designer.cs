@@ -363,6 +363,24 @@ public partial class ControlPanel_Admin_CreateDistrict {
     protected global::System.Web.UI.HtmlControls.HtmlImage Img_passwordhelp;
     
     /// <summary>
+    /// hfPassword control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.HiddenField hfPassword;
+    
+    /// <summary>
+    /// hfpasswordSalt control.
+    /// </summary>
+    /// <remarks>
+    /// Auto-generated field.
+    /// To modify move field declaration from designer file to code-behind file.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.HiddenField hfpasswordSalt;
+    
+    /// <summary>
     /// RegularExpressionValidator4 control.
     /// </summary>
     /// <remarks>

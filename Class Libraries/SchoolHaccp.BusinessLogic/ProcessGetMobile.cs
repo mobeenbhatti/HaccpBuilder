@@ -90,6 +90,7 @@ namespace SchoolHaccp.BusinessLogic
                     this.Contact.EmailAlerts = 0;
                     this.Contact.UserId = dr["UserName"].ToString();
                     this.Contact.Password = dr["Password"].ToString();
+                    this.Contact.PasswordSalt = dr["PasswordSalt"].ToString();
                     this.Contact.Initials = dr["Initials"].ToString();
 
                 }

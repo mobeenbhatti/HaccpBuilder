@@ -112,6 +112,24 @@ namespace HaccpBuilder.ControlPanel.Kitchen {
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
+        /// hfPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfPassword;
+        
+        /// <summary>
+        /// hfpasswordSalt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfpasswordSalt;
+        
+        /// <summary>
         /// Img_passwordhelp control.
         /// </summary>
         /// <remarks>

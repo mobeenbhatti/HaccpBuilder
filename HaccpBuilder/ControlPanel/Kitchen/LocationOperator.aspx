@@ -645,6 +645,8 @@
                     <label>Password:</label>
                     <div class="input">
                         <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                         <asp:HiddenField runat="server" ID="hfPassword" />
+                 <asp:HiddenField runat="server" ID="hfpasswordSalt" />
                         <img id="Img_passwordhelp" style="vertical-align: middle" alt="" runat="server"
                             src="~/App_Themes/Control/images/board_help.gif" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" Text="*"

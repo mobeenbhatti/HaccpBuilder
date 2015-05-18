@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using SchoolHaccp.BusinessLogic;
 using SchoolHaccp.Common;
 using SchoolHaccp.Operational;
+using System.Text.RegularExpressions;
 
 public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
 {
@@ -32,6 +33,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 state = "District";
                 SetPage();
                 RequiredFieldValidator8.Enabled = false;
+                RegularExpressionValidator4.Enabled = false;
                 GetData();
             }
             else if (Request.QueryString["RequestId"] != null)
@@ -40,6 +42,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                 state = "FreeTrial";
                 SetPage();
                 RequiredFieldValidator8.Enabled = false;
+                RegularExpressionValidator4.Enabled = false;
                 GetData();
             }
             else
@@ -253,7 +256,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         Info1 += "<b>The password must contain one or more numeric values.</b><br /> ";
         Info1 += "<b>The password must contain one or more special characters.</b><br /> ";
 
-       
+
         Img_passwordhelp.Attributes.Add("onmouseover", "return overlib('" + Info1 + "', WRAP,BASE,2,LEFT,OFFSETX,-16,OFFSETY,20,TEXTFONTCLASS,'popUpBox');");
         Img_passwordhelp.Attributes.Add("onmouseout", "return nd();");
 
@@ -311,6 +314,8 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                     txtEmail.Text = dr["EmailAddress"].ToString().Trim();
                     txtKitchenNumber.Text = dr["NumberOfKitchens"].ToString();
                     txtManagerName.Text = dr["DistrictManager"].ToString().Trim();
+                    hfPassword.Value = dr["Password"].ToString();
+                    hfpasswordSalt.Value = dr["PasswordSalt"].ToString();
                     //txtPassword.Text = dr["Password"].ToString().Trim();
                     //txtUser.Text = dr["UserId"].ToString().Trim();
                     txtZipCode.Text = dr["PostalCode"].ToString();
@@ -344,6 +349,8 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
                     txtUser.Text = dr["UserId"].ToString().Trim();
                     txtZipCode.Text = dr["PostalCode"].ToString();
                     ddlTimeZone.SelectedValue = dr["TimeZone"].ToString();
+                    hfPassword.Value = dr["Password"].ToString();
+                    hfpasswordSalt.Value = dr["PasswordSalt"].ToString();
                     if (dr["DistrictPrinting"].ToString() == "1")
                     {
                         ddlDistrictPrint.SelectedIndex = 1;
@@ -415,7 +422,7 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         }
 
     }
-    private void UpdateData()
+    private bool UpdateData()
     {
 
 
@@ -450,15 +457,37 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         newContact.Email = this.txtEmail.Text.Trim();
         newContact.Name = this.txtManagerName.Text.Trim();
         newContact.UserId = this.txtUser.Text.Trim();
-      
 
+        if (string.IsNullOrEmpty(txtPassword.Text))
+        {
+          
+
+                newContact.Password = hfPassword.Value;
+                newContact.PasswordSalt = hfpasswordSalt.Value;
+           
+
+        }
+        else
+        {  Regex regex = new Regex(@"(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+            Match match = regex.Match(txtPassword.Text);
+            if (match.Success)
+            {
             string password = txtPassword.Text;
             string passwordSalt = Guid.NewGuid().ToString();
             if (txtUser.Text.Contains("@"))
                 password = Utilities.CreatePasswordHash(password, passwordSalt);
             newContact.Password = password;
             newContact.PasswordSalt = passwordSalt;
-            newContact.IsUpdated = true;
+            }
+            else
+            {
+                lblInfo.Text = "Please enter a valid password.";
+                lblInfo.Visible = true;
+                return false;
+            }
+        }
+
+        newContact.IsUpdated = true;
 
 
         newContact.ContactId = int.Parse(hfContactId.Value);
@@ -468,6 +497,8 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
         setDistrict.Contact = newContact;
         setDistrict.Address = newAddress;
         setDistrict.Invoke();
+
+        return true;
     }
     private void DeleteData()
     {
@@ -479,14 +510,17 @@ public partial class ControlPanel_Admin_CreateDistrict : System.Web.UI.Page
     }
     protected void cmdEdit_Click(object sender, ImageClickEventArgs e)
     {
-
+        bool response = false;
         if (CheckData(2) == true)
         {
-            UpdateData();
-            lblInfo.Text = "District Updated Succesfully";
-            lblInfo.Visible = true;
-            mode = "NEW";
-            SetPage();
+            response = UpdateData();
+            if (response == true)
+            {
+                lblInfo.Text = "District Updated Succesfully";
+                lblInfo.Visible = true;
+                mode = "NEW";
+                SetPage();
+            }
         }
 
     }
