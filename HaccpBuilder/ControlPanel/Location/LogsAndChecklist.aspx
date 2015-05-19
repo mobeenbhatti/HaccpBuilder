@@ -3,14 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageTitle" runat="server">
-    <h1>Logs\CheckLists</h1>
+    <h1>Logs & Check Lists</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
     <div class="row mt30">
         <div class="panel panel-primary">
-            <div class="panel-heading">
+<%--            <div class="panel-heading">
                 <i class="fa fa-tasks"></i>Logs
-            </div>
+            </div>--%>
             <div class="panel-body tasks">
                 <asp:Repeater ID="rptReports" runat="server" DataSourceID="ObjectDataSource1" OnItemDataBound="rptReports_ItemDataBound">
                     <HeaderTemplate>
@@ -33,15 +33,32 @@
                     </FooterTemplate>
                 </asp:Repeater>
 
+                 <asp:Repeater ID="rptWeekly" runat="server"   onitemdatabound="rptWeekly_ItemDataBound" DataSourceID="ObjectDataSource2"> 
+                      <HeaderTemplate>
+                        <ul class="tasksTime">
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <li>
+                            <div class="col-xs-10">
+                                <span><i class="fa fa-file-text-o"></i></span>
+                               <asp:HyperLink ID="hlTableName" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/Default2N.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>' Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'></asp:HyperLink>
 
+                        </li>
+
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </ul>
+                    </FooterTemplate> 
+                     </asp:Repeater>
             </div>
         </div>
 
 
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                <i class="fa fa-tasks"></i>CheckLists
-            </div>
+           <%-- <div class="panel-heading">
+                <i class="fa fa-tasks"></i>Check Lists
+            </div>--%>
             <div class="panel-body tasks">
                 <asp:Repeater ID="rptChecklist" runat="server" DataSourceID="odsChecklist">
                     <HeaderTemplate>
@@ -71,11 +88,47 @@
                         </ul>
                     </FooterTemplate>
                 </asp:Repeater>
+                <asp:Repeater ID="rptOther" runat="server" DataSourceID="ObjectDataSource3" OnItemDataBound="rptOther_ItemDataBound">
+                    <HeaderTemplate>
+                        <ul class="tasksTime">
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <li>
+                            <div class="col-xs-10">
+                                <span><i class="fa fa-check-square-o"></i></span>
+                                <asp:HyperLink ID="hlTableName" runat="server" NavigateUrl='<%#"~/ControlPanel/Location/Default2N.aspx?task=" + DataBinder.Eval(Container.DataItem, "TableName")%>' Text='<%# DataBinder.Eval(Container.DataItem, "TableName")  %>'></asp:HyperLink></td>
+                            </div>
+
+                        </li>
+
+                    </ItemTemplate>
+
+                    <FooterTemplate>
+                        </ul>
+                    </FooterTemplate>
+                </asp:Repeater>
             </div>
         </div>
 
         <asp:Label ID="Label1" runat="server" Visible="false" Text="Label"></asp:Label>
     </div>
+     <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" OldValuesParameterFormatString="original_{0}"
+                SelectMethod="GetWeeklyReportsByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetWeeklyReport">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="Label1" DefaultValue="02/08/2008" Name="dtStartDate"
+                        PropertyName="Text" Type="DateTime" />
+                    <asp:SessionParameter Name="nMobileId" SessionField="MobileId" Type="Int32" />
+                </SelectParameters>
+      </asp:ObjectDataSource>
+
+       <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" OldValuesParameterFormatString="original_{0}"
+            SelectMethod="GetOtherReportsByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetWeeklyReport">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="Label1" DefaultValue="02/08/2008" Name="dtStartDate"
+                    PropertyName="Text" Type="DateTime" />
+                <asp:SessionParameter Name="nMobileId" SessionField="MobileId" Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}"
         SelectMethod="GetDailyReportsByMobileId" TypeName="SchoolHaccp.BusinessLogic.ProcessGetDailyReports">
         <SelectParameters>

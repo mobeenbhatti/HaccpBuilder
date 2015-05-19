@@ -60,7 +60,7 @@
         <div class="col-xs-12 col-sm-4 mt10" role="group">
             <a class="btn btn-block btn-orange btn-lh-40 btn3d" href="LogsAndChecklist.aspx" aria-hidden="true">
                 <span class="fa fa-list-ul" aria-hidden="true"></span>
-                LOGS & CHECKLIST
+                LOGS & CHECK LISTS
             </a>
         </div>
         <div class="col-xs-12 col-sm-4 mt10" role="group">

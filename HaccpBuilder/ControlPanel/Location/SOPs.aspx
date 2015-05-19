@@ -3,15 +3,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="pageTitle" runat="server">
-    <h1>Standard Operating Procedures</h1>
+    <h1>Support Documentation</h1>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="PlaceHolder" runat="server">
 
     <div class="row mt30">
         <div class="panel panel-primary">
-            <div class="panel-heading">
+            <%--<div class="panel-heading">
                 <i class="fa fa-tasks"></i>Support Documentation
-            </div>
+            </div>--%>
             <div class="panel-body tasks">
                 <asp:Repeater ID="rptSop" runat="server">
                     <HeaderTemplate>
