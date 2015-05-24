@@ -362,14 +362,14 @@ public partial class ControlPanel_District_CreateKitchen : System.Web.UI.Page
     }
     private string GenerateRandomPassword()
     {
-        
+
         int maxSize = 20;
-        int minSize = 8;
-        char[] passwordCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
+        int minSize = 10;
+        char[] passwordCharacters = "GHIJKLMNOPQRST@#$!0123456789".ToCharArray();
         //char[] passwordCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".ToCharArray();
 
         int size = maxSize;
-        byte[] data = new byte[7];
+        byte[] data = new byte[9];
         System.Security.Cryptography.RNGCryptoServiceProvider crypto = new System.Security.Cryptography.RNGCryptoServiceProvider();
         crypto.GetNonZeroBytes(data);
         size = (data[0] % (maxSize - minSize)) + minSize;
