@@ -1,0 +1,214 @@
+Alter PROCEDURE [dbo].[uspAdm_GetDistrictDetailByID]  
+ -- Add the parameters for the stored procedure here  
+ @nDistrictId INT  
+AS  
+BEGIN  
+ -- SET NOCOUNT ON added to prevent extra result sets from  
+ -- interfering with SELECT statements.  
+ SET NOCOUNT ON;  
+  
+    SELECT     dbo.District.DistrictId, dbo.District.Name, dbo.District.NumberOfKitchens, dbo.District.DistrictType, dbo.District.DistrictPrinting,dbo.District.Active,    
+                      dbo.District.Reports,dbo.District.TypeId,dbo.Contact.Name AS DistrictManager, dbo.Contact.Password, dbo.Contact.PasswordSalt, dbo.StateProvince.CountryRegionCode, dbo.Contact.EmailAddress, dbo.Contact.UserId, dbo.Address.Name AS DistrictAddress, dbo.Address.City,   
+                      dbo.Address.StateProvinceId, dbo.Address.PostalCode,dbo.Contact.ContactId,dbo.Address.AddressId,Address.TimeZone,StateProvince.Name as State,Address.Country  
+FROM         dbo.Address INNER JOIN  
+                      dbo.DistrictAddress ON dbo.Address.AddressId = dbo.DistrictAddress.AddressId INNER JOIN  
+                      dbo.District ON dbo.DistrictAddress.DistrictId = dbo.District.DistrictId INNER JOIN  
+                      dbo.DistrictContact ON dbo.District.DistrictId = dbo.DistrictContact.DistrictId INNER JOIN  
+                      dbo.Contact ON dbo.DistrictContact.ContactId = dbo.Contact.ContactId INNER JOIN  
+                      dbo.StateProvince ON Address.StateProvinceId = StateProvince.StateProvinceId  
+WHERE     (dbo.District.DistrictId = @nDistrictId)  
+END  
+
+Go
+
+
+Alter PROCEDURE [dbo].[uspAdm_GetContactDetailByUserName]  
+ -- Add the parameters for the stored procedure here  
+ @vchUserName varchar(150)  
+AS  
+BEGIN  
+ -- SET NOCOUNT ON added to prevent extra result sets from  
+ -- interfering with SELECT statements.  
+ SET NOCOUNT ON;  
+  
+    -- Insert statements for procedure here  
+ SELECT     dbo.Contact.ContactId,dbo.Contact.Password,dbo.Contact.PasswordSalt, dbo.Contact.EmailAddress, dbo.Contact.UserId,dbo.Contact.PrimaryPhone AS Phone, dbo.Roles.RoleName,  
+  dbo.Kitchen.Name AS Kitchen,dbo.Kitchen.KitchenId,Contact.Initials,Contact.[Active]  
+FROM         dbo.Contact INNER JOIN  
+                      dbo.ContactRole ON dbo.Contact.ContactId = dbo.ContactRole.ContactId INNER JOIN  
+                      dbo.Roles ON dbo.ContactRole.RoleId = dbo.Roles.RoleId INNER JOIN  
+                      dbo.KitchenContact ON dbo.Contact.ContactId = dbo.KitchenContact.ContactId INNER JOIN  
+                      dbo.Kitchen ON dbo.KitchenContact.KitchenId = dbo.Kitchen.KitchenId  
+WHERE     (dbo.Contact.UserId = @vchUserName)  
+END  
+
+GO
+
+
+Alter PROCEDURE [dbo].[uspAdm_GetContactsByEmail]  
+ -- Add the parameters for the stored procedure here  
+ @vchEmail nvarchar(150)  
+ ,@nDistrictId INT  
+AS  
+BEGIN  
+ -- SET NOCOUNT ON added to prevent extra result sets from  
+ -- interfering with SELECT statements.  
+ SET NOCOUNT ON;  
+  
+   SELECT     dbo.Contact.ContactId,dbo.Contact.Password,dbo.Contact.PasswordSalt,dbo.Contact.EmailAddress, dbo.Contact.UserId,dbo.Contact.PrimaryPhone AS Phone, dbo.Roles.RoleName,  
+  dbo.Kitchen.Name AS Kitchen,dbo.Kitchen.KitchenId  
+FROM         dbo.Contact INNER JOIN  
+                      dbo.ContactRole ON dbo.Contact.ContactId = dbo.ContactRole.ContactId INNER JOIN  
+                      dbo.Roles ON dbo.ContactRole.RoleId = dbo.Roles.RoleId INNER JOIN  
+                      dbo.KitchenContact ON dbo.Contact.ContactId = dbo.KitchenContact.ContactId INNER JOIN  
+                      dbo.Kitchen ON dbo.KitchenContact.KitchenId = dbo.Kitchen.KitchenId  
+WHERE     (dbo.Contact.EmailAddress like @vchEmail AND Kitchen.DistrictId = @nDistrictId )  
+END
+
+GO
+
+
+-- =============================================  
+Alter PROCEDURE [dbo].[uspAdm_GetContactsByContactId]  
+ -- Add the parameters for the stored procedure here  
+ @nContactId INT  
+AS  
+BEGIN  
+ -- SET NOCOUNT ON added to prevent extra result sets from  
+ -- interfering with SELECT statements.  
+ SET NOCOUNT ON;  
+  
+     SELECT     dbo.Contact.ContactId,dbo.Contact.Password,dbo.Contact.PasswordSalt, dbo.Contact.EmailAddress, dbo.Contact.UserId,dbo.Contact.PrimaryPhone AS Phone, dbo.Roles.RoleName,  
+  dbo.Kitchen.Name AS Kitchen,dbo.Kitchen.KitchenId  
+FROM         dbo.Contact INNER JOIN  
+                      dbo.ContactRole ON dbo.Contact.ContactId = dbo.ContactRole.ContactId INNER JOIN  
+                      dbo.Roles ON dbo.ContactRole.RoleId = dbo.Roles.RoleId INNER JOIN  
+                      dbo.KitchenContact ON dbo.Contact.ContactId = dbo.KitchenContact.ContactId INNER JOIN  
+                      dbo.Kitchen ON dbo.KitchenContact.KitchenId = dbo.Kitchen.KitchenId  
+WHERE     (dbo.Contact.ContactId = @nContactId)  
+END  
+
+GO
+
+------------------------------------------------  
+Alter PROCEDURE [dbo].[uspAdm_GetContactByKitchen]  
+ -- Add the parameters for the stored procedure here  
+ @nKitchenId INT  
+AS  
+BEGIN  
+ -- SET NOCOUNT ON added to prevent extra result sets from  
+ -- interfering with SELECT statements.  
+ SET NOCOUNT ON;  
+ SELECT     dbo.Contact.ContactId,dbo.Contact.Password,dbo.Contact.PasswordSalt, dbo.Contact.EmailAddress, dbo.Contact.UserId,dbo.Contact.PrimaryPhone AS Phone, dbo.Roles.RoleName,dbo.Contact.Initials,Contact.[Active],  
+   dbo.Kitchen.Name AS Kitchen,dbo.Kitchen.KitchenId  
+ FROM         dbo.Contact INNER JOIN  
+        dbo.ContactRole ON dbo.Contact.ContactId = dbo.ContactRole.ContactId INNER JOIN  
+        dbo.Roles ON dbo.ContactRole.RoleId = dbo.Roles.RoleId INNER JOIN  
+        dbo.KitchenContact ON dbo.Contact.ContactId = dbo.KitchenContact.ContactId INNER JOIN  
+        dbo.Kitchen ON dbo.KitchenContact.KitchenId = dbo.Kitchen.KitchenId  
+ WHERE     (dbo.Kitchen.KitchenId =  @nKitchenId )  
+ END  
+
+GO
+
+Alter PROCEDURE [dbo].[uspAdm_GetMobileById]  
+(  
+    @nMobileId    int  
+)  
+AS   
+BEGIN   
+    SET NOCOUNT ON;   
+ SELECT [Mobile].[MobileId] AS MobileId  
+      ,[KitchenId]       
+      ,[Mobile].[Name] AS Mobile  
+      ,[Mobile].[CreatedDate]  
+      ,[Mobile].[ModifiedDate]  
+      ,[TemperatureLog]  
+      ,[HotHoldingLog]  
+      ,[ColdHoldingLog]  
+      ,[ReceivingLog]  
+      ,[FreezerLog]  
+      ,[RefrigerationLog]  
+      ,[FoodSafetyChecklist]  
+      ,[Thermometer]  
+      ,[TemperatureLogAlert]  
+      ,[TemperatureLogMax]  
+      ,[TemperatureLogMin]  
+      ,[HotHoldingLogAlert]  
+      ,[HotHoldingLogMax]  
+      ,[HotHoldingLogMin]  
+      ,[ColdHoldingLogAlert]  
+      ,[ColdHoldingLogMax]  
+      ,[ColdHoldingLogMin]  
+      ,[ReceivingLogAlert]  
+      ,[ReceivingLogMax]  
+      ,[ReceivingLogMin]  
+      ,[FreezerLogAlert]  
+      ,[FreezerLogMax]  
+      ,[FreezerLogMin]  
+      ,[RefrigerationLogAlert]  
+      ,[RefrigerationLogMax]  
+      ,[RefrigerationLogMin]  
+      ,[FoodSafetyChecklistAlert]  
+      ,[ThermometerAlert]  
+      ,[ThermometerMax]  
+      ,[ThermometerMin]  
+      ,[Validation]  
+      ,[ValidationAlert]  
+      ,[FreezerNewLog]  
+      ,[FreezerNewLogAlert]  
+      ,[FreezerNewLogMax]  
+      ,[FreezerNewLogMin]  
+      ,[ShippingLog]  
+      ,[ShippingLogAlert]  
+      ,[ShippingLogMax]  
+      ,[ShippingLogMin]  
+   ,Address.[AddressId]  
+      ,Address.[Name]  
+      ,[AddressLine1]  
+      ,[AddressLine2]  
+      ,[City]  
+      ,[County]  
+      ,Address.[StateProvinceId]  
+      ,[PostalCode]  
+      ,[IsDefault]  
+      ,[TimeZone]   
+   ,Contact.[ContactId]  
+      ,Contact.[Name] AS Manager  
+      ,[Password] 
+      ,[PasswordSalt] 
+      ,[EmailAddress]  
+      ,[EmailAlerts]  
+      ,[PrimaryPhone]  
+      ,[SecondaryPhone]  
+      ,[Fax]  
+ ,[UserId] AS UserName  
+ ,Mobile.[Active]  
+ ,[Initials]   
+ ,Mobile.[PhLog]   
+ ,Mobile.[PhLogAlert]   
+ ,Mobile.[PhLogMax]   
+ ,Mobile.[PhLogMin]   
+ ,Mobile.[PestLog]   
+ ,Mobile.[PestLogAlert]   
+ ,Mobile.[PestLogMax]   
+ ,Mobile.[PestLogMin]   
+ ,Mobile.[MaintenanceLog]   
+ ,Mobile.[MaintenanceLogAlert]   
+ ,Mobile.[MaintenanceLogMax]   
+ ,Mobile.[MaintenanceLogMin]   
+ ,Mobile.[CleaningLog]   
+ ,Mobile.[CleaningLogAlert]   
+ ,Mobile.[CleaningLogMax]   
+ ,Mobile.[CleaningLogMin]   
+ ,Mobile.[CheckList]   
+ ,Mobile.[CheckListAlert]   
+   
+   
+  FROM [dbo].[Mobile]  
+INNER JOIN MobileContact ON MobileContact.MobileId = Mobile.MobileId  
+INNER JOIN Contact ON Contact.ContactId = MobileContact.ContactId  
+INNER JOIN MobileAddress ON MobileAddress.MobileId = Mobile.MobileId  
+INNER JOIN Address ON Address.AddressId = MobileAddress.AddressId  
+WHERE [Mobile].[MobileId] =@nMobileId  
+END  
