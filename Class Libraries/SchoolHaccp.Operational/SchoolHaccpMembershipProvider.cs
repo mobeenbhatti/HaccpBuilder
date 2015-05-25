@@ -217,12 +217,12 @@ namespace SchoolHaccp.Operational
         {
 
             int maxSize = 20;
-            int minSize = 8;
-            char[] passwordCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
+            int minSize = 10;
+            char[] passwordCharacters = "GHIJKLMNOPQRST@#$!0123456789".ToCharArray();
             //char[] passwordCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".ToCharArray();
 
             int size = maxSize;
-            byte[] data = new byte[7];
+            byte[] data = new byte[9];
             System.Security.Cryptography.RNGCryptoServiceProvider crypto = new System.Security.Cryptography.RNGCryptoServiceProvider();
             crypto.GetNonZeroBytes(data);
             size = (data[0] % (maxSize - minSize)) + minSize;
@@ -242,7 +242,7 @@ namespace SchoolHaccp.Operational
 
             HaccpUser user = new HaccpUser();
             DataModel.Contact con;
-    
+
             string newPassword = GenerateRandomPassword();
 
             if (username.Contains("@"))
@@ -250,7 +250,7 @@ namespace SchoolHaccp.Operational
                 con = (from n in _context.Contacts
                        where n.EmailAddress == username && n.IsUpdated == true
                        select n).FirstOrDefault();
-            
+
             }
             else
             {
@@ -264,13 +264,28 @@ namespace SchoolHaccp.Operational
 
             if (con != null)
             {
-              
-                string pwd = Utilities.CreatePasswordHash(newPassword, con.PasswordSalt);
+                string passwordSalt=string.Empty;
+
+                if (string.IsNullOrEmpty(con.PasswordSalt))
+                {
+                    passwordSalt = Guid.NewGuid().ToString();
+
+
+                }
+                else
+                {
+                    passwordSalt = con.PasswordSalt;
+                }
+
+
+                string pwd = Utilities.CreatePasswordHash(newPassword, passwordSalt);
 
                 con.Password = pwd;
+                con.PasswordSalt = passwordSalt;
+                con.IsUpdated = true;
                 _context.SaveChanges();
 
-                
+
             }
 
 
@@ -298,14 +313,14 @@ namespace SchoolHaccp.Operational
             }
             else
             {
-               
+
                 if (username.Contains("@"))
                 {
                     con = (from n in _context.Contacts
                            where n.EmailAddress == username && n.IsUpdated == true
                            select n).FirstOrDefault();
 
-                    
+
                     if (con != null)
                     {
                         _context.Refresh(System.Data.Objects.RefreshMode.StoreWins, con);
