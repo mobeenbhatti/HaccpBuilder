@@ -814,6 +814,7 @@ public partial class ControlPanel_District_CreateKitchen : System.Web.UI.Page
             hfAddressId.Value = drKitchen["AddressId"].ToString();
             hfUserId.Value = drKitchen["UserName"].ToString();
             hfPassword.Value = drKitchen["Password"].ToString();
+            hfPasswordSalt.Value = drKitchen["PasswordSalt"].ToString();
             hfContactId.Value = drKitchen["ContactId"].ToString();
             txtAddress1.Text = drKitchen["AddressLine1"].ToString();
             txtAddress2.Text = drKitchen["AddressLine2"].ToString();
@@ -978,6 +979,9 @@ public partial class ControlPanel_District_CreateKitchen : System.Web.UI.Page
         newContact.ContactId = int.Parse(hfContactId.Value);
         newContact.UserId = hfUserId.Value;
         newContact.Password = hfPassword.Value;
+        newContact.PasswordSalt = hfPasswordSalt.Value;
+        if (newContact.PasswordSalt != "")
+            newContact.IsUpdated = true;
 
         ProcessSetKitchen setKitchen = new ProcessSetKitchen();
         setKitchen.Kitchen = newKitchen;

@@ -323,6 +323,7 @@ function SetAlerts(nLogId)
         <asp:HiddenField ID="hfAddressId" runat="server" />
         <asp:HiddenField ID="hfUserId" runat="server" />  
         <asp:HiddenField ID="hfPassword" runat="server" /> 
+        <asp:HiddenField ID="hfPasswordSalt" runat="server" /> 
         <asp:Label ID="lblInfo" Text="" Visible="false" runat="server" CssClass="msg-error"></asp:Label>
         <asp:ValidationSummary ID="vldSummary" DisplayMode="List" ShowSummary="true" runat="server" CssClass="msg-error" />
     </div>
