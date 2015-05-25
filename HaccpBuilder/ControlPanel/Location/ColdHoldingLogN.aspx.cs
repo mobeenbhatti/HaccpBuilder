@@ -21,7 +21,7 @@ namespace HaccpBuilder.ControlPanel.Location
     public partial class ColdHoldingLogN : System.Web.UI.Page
     {
         public string mode = "new";
-
+        protected DateTime currentTime = DateTime.Now;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -30,7 +30,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 CV_cldVerifiedDate.ValueToCompare = DateTime.Now.ToShortDateString();
                 chkClear.Attributes.Add("onClick", "ClearCorrectiveActions('" + rdlCorrectiveAction1.ClientID + "')");
                 chkClear2.Attributes.Add("onClick", "ClearCorrectiveActions('" + rdlCorrectiveAction2.ClientID + "')");
-
+                currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
                 GetInitialData();
                 if (Request.QueryString["Id"] != null || Request.QueryString["date"] != null)
                 {
@@ -76,10 +76,10 @@ namespace HaccpBuilder.ControlPanel.Location
             //txtTime2.Text = DateTime.Now.ToShortTimeString();
             //tpTime1.Text = DateTime.Now.ToShortTimeString();
             //tpTime2.Text = DateTime.Now.ToShortTimeString();
-            SetTime(3, DateTime.Now);
+            SetTime(3, currentTime);
             cldEntryDate.Text = DateTime.Today.ToShortDateString();
             cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-            txtEntryDate.Text = DateTime.Now.ToString();
+            txtEntryDate.Text = currentTime.ToString();
             if ((int)Session["TypeId"] != 1)
             {
                 ProcessGetKitchen getKitchen = new ProcessGetKitchen();
@@ -485,7 +485,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 txtTemp1.Text = "";
                 //tpTime1.Text = DateTime.Now.ToShortTimeString();
                 //tpTime2.Text = DateTime.Now.ToShortTimeString();
-                SetTime(3, DateTime.Now);
+                SetTime(3, currentTime);
                 //txtTime1.Text = DateTime.Now.ToShortTimeString();
                 txtTemp2.Text = "";
                 //txtTime2.Text = DateTime.Now.ToShortTimeString();
@@ -713,7 +713,7 @@ namespace HaccpBuilder.ControlPanel.Location
         private bool CheckPage(int nMode)
         {
             bool result = true;
-
+            currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
             if (rdbIngredient.Checked == true && ddlIngredient.SelectedItem.Text == "Select Ingredient")
             {
                 LogError.Text += "<br />Please Select Ingredient";
