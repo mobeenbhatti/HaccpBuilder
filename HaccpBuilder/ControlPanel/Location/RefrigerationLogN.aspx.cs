@@ -19,7 +19,7 @@ namespace HaccpBuilder.ControlPanel.Location
     public partial class RefrigerationLogN : System.Web.UI.Page
     {
         public string mode = "new";
-
+        public DateTime currentTime = DateTime.Now;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -27,6 +27,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 CV_cldEntryDate.ValueToCompare = DateTime.Now.ToShortDateString();
                 CV_cldVerifiedDate.ValueToCompare = DateTime.Now.ToShortDateString();
                 chkClear.Attributes.Add("onClick", "ClearCorrectiveActions('" + rdlCorrectiveAction1.ClientID + "')");
+                currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
                 //cmdBack.Attributes.Add("onclick", "MoveBack( )");
                 GetInitialData();
                 if (Request.QueryString["Id"] != null || Request.QueryString["date"] != null)
@@ -52,9 +53,9 @@ namespace HaccpBuilder.ControlPanel.Location
         }
         private void GetInitialData()
         {
-            cldMealDate.Text = DateTime.Today.ToShortDateString();
-            cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-            txtEntryDate.Text = DateTime.Now.ToString();
+            cldMealDate.Text = currentTime.ToShortDateString();
+            cldVerifiedDate.Text = currentTime.ToShortDateString();
+            txtEntryDate.Text = currentTime.ToString();
 
             if ((int)Session["TypeId"] != 1)
             {
@@ -278,18 +279,18 @@ namespace HaccpBuilder.ControlPanel.Location
                 }
                 else
                 {
-                    cldMealDate.Text = DateTime.Today.ToShortDateString();
+                    cldMealDate.Text = currentTime.ToShortDateString();
                 }
-                cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
+                cldVerifiedDate.Text = currentTime.ToShortDateString();
                 SetPageInEditMode("new");
                 //txtLocation.Text = "";
                 ddlRefrigerationDevice.SelectedIndex = 0;
                 txtTemperature.Text = "";
-                SetTime(1, DateTime.Now);
+                SetTime(1, currentTime);
                 //txtCorrectiveAction.Text = "";
                 //txtVerifiedBy.Text = Session["Initials"].ToString();
                 txtVerifiedBy.Text = "";
-                txtEntryDate.Text = DateTime.Now.ToString();
+                txtEntryDate.Text = currentTime.ToString();
                 rdlCorrectiveAction1.SelectedIndex = -1;
                 trClearCorrectiveActions.Style.Add("display", "''");
                 cmdAdd.Visible = true;

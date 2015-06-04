@@ -24,7 +24,7 @@ namespace HaccpBuilder.ControlPanel.Location
     public partial class RecievingLogN : System.Web.UI.Page
     {
         public string mode = "new";
-
+        public DateTime currentTime = DateTime.Now;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -33,6 +33,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 CV_cldVerifiedDate.ValueToCompare = DateTime.Now.ToShortDateString();
                 chkClear.Attributes.Add("onClick", "ClearCorrectiveActions('" + rdlCorrectiveAction1.ClientID + "')");
                 //cmdBack.Attributes.Add("onclick", "MoveBack( )");
+                currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
                 GetInitialData();
                 if (Request.QueryString["Id"] != null || Request.QueryString["date"] != null)
                 {
@@ -80,10 +81,10 @@ namespace HaccpBuilder.ControlPanel.Location
         private void GetInitialData()
         {
             cldMealDate.Text = DateTime.Today.ToShortDateString();
-            SetTime(1, DateTime.Now);
+            SetTime(1, currentTime);
             chkTempRequired.Checked = false;
-            cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-            txtEntryDate.Text = DateTime.Now.ToString();
+            cldVerifiedDate.Text = currentTime.ToShortDateString();
+            txtEntryDate.Text = currentTime.ToString();
 
             if ((int)Session["TypeId"] != 1)
             {
@@ -575,7 +576,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 SetPageInEditMode("new");
 
                 txtTemperature.Text = "";
-                SetTime(1, DateTime.Now);
+                SetTime(1, currentTime);
 
                 trClearCorrectiveActions.Style.Add("display", "''");
                 txtBatch.Text = "";
@@ -596,8 +597,8 @@ namespace HaccpBuilder.ControlPanel.Location
                 //txtVerifiedBy.Text = Session["Initials"].ToString();
                 txtVerifiedBy.Text = "";
                 GetInitialData();
-                cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-                txtEntryDate.Text = DateTime.Now.ToString();
+                cldVerifiedDate.Text = currentTime.ToShortDateString();
+                txtEntryDate.Text = currentTime.ToString();
                 rdlCorrectiveAction1.SelectedIndex = -1;
                 LogError.Text = "";
                 cmdAdd.Visible = true;
@@ -717,7 +718,7 @@ namespace HaccpBuilder.ControlPanel.Location
         }
         private bool CheckPage(int nMode)
         {
-
+            currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
             bool result = true;
             if (rdbIngredient.Checked == true && ddlIngredient.SelectedItem.Text == "Select Ingredient")
             {
@@ -728,7 +729,7 @@ namespace HaccpBuilder.ControlPanel.Location
             {
                 if (DateTime.Parse(cldMealDate.Text).ToShortDateString() == DateTime.Now.ToShortDateString())
                 {
-                    if (DateTime.Parse(GetTime(1)) > DateTime.Now)
+                    if (DateTime.Parse(GetTime(1)) > currentTime)
                     {
                         LogError.Text += " <br />Please enter correct time in ‘Temp 1 time’ field";
                         result = false;

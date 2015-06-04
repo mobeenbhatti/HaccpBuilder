@@ -21,7 +21,7 @@ namespace HaccpBuilder.ControlPanel.Location
     public partial class ThermoCalibrationLogN : System.Web.UI.Page
     {
         public string mode = "new";
-
+        public DateTime currentTime = DateTime.Now;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -29,6 +29,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 CV_cldEntryDate.ValueToCompare = DateTime.Now.ToShortDateString();
                 CV_cldVerifiedDate.ValueToCompare = DateTime.Now.ToShortDateString();
                 //cmdBack.Attributes.Add("onclick", "MoveBack( )");
+                currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
                 GetInitialData();
                 if (Request.QueryString["Id"] != null || Request.QueryString["date"] != null)
                 {
@@ -53,9 +54,9 @@ namespace HaccpBuilder.ControlPanel.Location
         }
         private void GetInitialData()
         {
-            cldMealDate.Text = DateTime.Today.ToShortDateString();
-            cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-            txtEntryDate.Text = DateTime.Now.ToString();
+            cldMealDate.Text = currentTime.ToShortDateString();
+            cldVerifiedDate.Text = currentTime.ToShortDateString();
+            txtEntryDate.Text = currentTime.ToString();
 
             if ((int)Session["TypeId"] != 1)
             {
@@ -307,9 +308,9 @@ namespace HaccpBuilder.ControlPanel.Location
                 }
                 else
                 {
-                    cldMealDate.Text = DateTime.Today.ToShortDateString();
+                    cldMealDate.Text = currentTime.ToShortDateString();
                 }
-                cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
+                cldVerifiedDate.Text = currentTime.ToShortDateString();
                 //txtThermometer.Text = "";
                 ddlThermometerDevice.SelectedIndex = 0;
                 txtTemperature.Text = "";
@@ -321,7 +322,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 // rdlCorrectiveAction1.SelectedIndex = -1;
                 //txtVerifiedBy.Text = Session["Initials"].ToString();
                 txtVerifiedBy.Text = "";
-                txtEntryDate.Text = DateTime.Now.ToString();
+                txtEntryDate.Text = currentTime.ToString();
                 cmdAdd.Visible = true;
                 cmdCancel.Visible = true;
                 cmdDelete.Visible = false;

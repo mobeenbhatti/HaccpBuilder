@@ -21,7 +21,8 @@ namespace HaccpBuilder.ControlPanel.Location
     public partial class ColdHoldingLogN : System.Web.UI.Page
     {
         public string mode = "new";
-        protected DateTime currentTime = DateTime.Now;
+        public DateTime currentTime = DateTime.Now;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -70,6 +71,7 @@ namespace HaccpBuilder.ControlPanel.Location
         {
             Response.Redirect("~/ControlPanel/Kitchen/Default.aspx");
         }
+       
         private void GetInitialData()
         {
             //txtTime1.Text = DateTime.Now.ToShortTimeString();
@@ -77,9 +79,13 @@ namespace HaccpBuilder.ControlPanel.Location
             //tpTime1.Text = DateTime.Now.ToShortTimeString();
             //tpTime2.Text = DateTime.Now.ToShortTimeString();
             SetTime(3, currentTime);
-            cldEntryDate.Text = DateTime.Today.ToShortDateString();
-            cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
+            cldVerifiedDate.Text = currentTime.Date.ToShortDateString();
+           
             txtEntryDate.Text = currentTime.ToString();
+
+            //cldEntryDate.Text = DateTime.Today.ToShortDateString();
+            //cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
+            txtEntryDate.Text = DateTime.Now.ToString();
             if ((int)Session["TypeId"] != 1)
             {
                 ProcessGetKitchen getKitchen = new ProcessGetKitchen();
@@ -731,9 +737,9 @@ namespace HaccpBuilder.ControlPanel.Location
 
             if (tempratureTime1.Text != "")
             {
-                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == DateTime.Now.ToShortDateString())
+                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == currentTime.ToShortDateString())
                 {
-                    if (DateTime.Parse(GetTime(1)) > DateTime.Now)
+                    if (DateTime.Parse(GetTime(1)) > currentTime)
                     {
                         LogError.Text += " <br />Please enter correct time in ‘Temp 1 time’ field";
                         result = false;
@@ -744,9 +750,9 @@ namespace HaccpBuilder.ControlPanel.Location
 
             if (tempratureTime2.Text != "")
             {
-                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == DateTime.Now.ToShortDateString())
+                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == currentTime.ToShortDateString())
                 {
-                    if (DateTime.Parse(GetTime(2)) > DateTime.Now)
+                    if (DateTime.Parse(GetTime(2)) > currentTime)
                     {
                         LogError.Text += " <br />Please enter correct time in ‘Temp 2 time’ field";
                         result = false;

@@ -52,6 +52,8 @@ namespace HaccpBuilder.ControlPanel.Location
                         Response.Redirect("~/ControlPanel/Logout.aspx");
                     }
                 }
+                if (Session["KitchenId"] != null)
+                currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]).ToShortTimeString();
             }
         }
 

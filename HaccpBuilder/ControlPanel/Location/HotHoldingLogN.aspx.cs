@@ -19,7 +19,7 @@ namespace HaccpBuilder.ControlPanel.Location
     public partial class HotHoldingLogN : System.Web.UI.Page
     {
         public string mode = "new";
-
+        protected DateTime currentTime = DateTime.Now;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -29,6 +29,7 @@ namespace HaccpBuilder.ControlPanel.Location
                 chkClear.Attributes.Add("onClick", "ClearCorrectiveActions('" + rdlCorrectiveAction1.ClientID + "')");
                 chkClear2.Attributes.Add("onClick", "ClearCorrectiveActions('" + rdlCorrectiveAction2.ClientID + "')");
                 //cmdBack.Attributes.Add("onclick", "MoveBack( )");
+                currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
                 GetInitialData();
                 if (Request.QueryString["Id"] != null || Request.QueryString["date"] != null)
                 {
@@ -78,11 +79,11 @@ namespace HaccpBuilder.ControlPanel.Location
         {
             //tpTime1.Text = DateTime.Now.ToShortTimeString();
             //tpTime2.Text = DateTime.Now.ToShortTimeString();
-            SetTime(3, DateTime.Now);
+            SetTime(3, currentTime);
             //tpTime1.SelectedTime = DateTime.Now;
             //tpTime2.SelectedTime = DateTime.Now;
-            cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-            txtEntryDate.Text = DateTime.Now.ToString();
+            cldVerifiedDate.Text = currentTime.ToShortDateString();
+            txtEntryDate.Text = currentTime.ToString();
 
             if ((int)Session["TypeId"] != 1)
             {
@@ -474,15 +475,15 @@ namespace HaccpBuilder.ControlPanel.Location
                 txtTemp1.Text = "";
                 //tpTime1.Text = DateTime.Now.ToShortTimeString();
                 //tpTime2.Text = DateTime.Now.ToShortTimeString();
-                SetTime(3, DateTime.Now);
+                SetTime(3, currentTime);
                 //txtTime1.Text = DateTime.Now.ToShortTimeString();
                 txtTemp2.Text = "";
                 //txtTime2.Text = DateTime.Now.ToShortTimeString();
                 //txtCorrectiveAction.Text = "";
                 //txtVerifiedBy.Text = Session["Initials"].ToString();
                 txtVerifiedBy.Text = "";
-                cldVerifiedDate.Text = DateTime.Today.ToShortDateString();
-                cldEntryDate.Text = DateTime.Today.ToShortDateString();
+                cldVerifiedDate.Text = currentTime.ToShortDateString();
+                cldEntryDate.Text = currentTime.ToShortDateString();
                 rdbMenuItem.Checked = false;
                 rdbIngredient.Checked = true;
                 trClearCorrectiveActions.Style.Add("display", "''");
@@ -822,7 +823,7 @@ namespace HaccpBuilder.ControlPanel.Location
         private bool CheckPage(int nMode)
         {
             bool result = true;
-
+            currentTime = Utilities.GetTimeByZone((int)Session["KitchenId"]);
             if (rdbIngredient.Checked == true && ddlIngredient.SelectedItem.Text == "Select Ingredient")
             {
                 LogError.Text += "<br/>Please Select Ingredient";
@@ -836,9 +837,9 @@ namespace HaccpBuilder.ControlPanel.Location
             }
             if (tempratureTime1.Text != "")
             {
-                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == DateTime.Now.ToShortDateString())
+                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == currentTime.ToShortDateString())
                 {
-                    if (DateTime.Parse(GetTime(1)) > DateTime.Now)
+                    if (DateTime.Parse(GetTime(1)) > currentTime)
                     {
                         LogError.Text += " <br />Please enter correct time in ‘Temp 1 time’ field";
                         result = false;
@@ -849,9 +850,9 @@ namespace HaccpBuilder.ControlPanel.Location
 
             if (tempratureTime2.Text != "")
             {
-                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == DateTime.Now.ToShortDateString())
+                if (DateTime.Parse(cldEntryDate.Text).ToShortDateString() == currentTime.ToShortDateString())
                 {
-                    if (DateTime.Parse(GetTime(2)) > DateTime.Now)
+                    if (DateTime.Parse(GetTime(2)) > currentTime)
                     {
                         LogError.Text += " <br />Please enter correct time in ‘Temp 2 time’ field";
                         result = false;

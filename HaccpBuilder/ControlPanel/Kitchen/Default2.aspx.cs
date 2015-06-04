@@ -47,6 +47,16 @@ public partial class ControlPanel_Kitchen_Default2 : System.Web.UI.Page
                         Response.Redirect("~/ControlPanel/Kitchen/TemperatureLog.aspx");
                     }
                     break;
+                case "END POINT TEMPERATURE LOG":
+                    if (Request.QueryString["date"] != null)
+                    {
+                        Response.Redirect("~/ControlPanel/Kitchen/TemperatureLog.aspx?date=" + Request.QueryString["date"].ToString());
+                    }            
+                    else
+                    {
+                        Response.Redirect("~/ControlPanel/Kitchen/TemperatureLog.aspx");
+                    }
+                    break;
                 case "HOT HOLDING LOG":
                     if (Request.QueryString["date"] != null)
                     {
